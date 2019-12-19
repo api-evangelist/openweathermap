@@ -1,0 +1,92 @@
+{
+    "name": "OpenWeatherMap",
+    "description": "Get current weather, daily forecast for 16 days, and 3-hourly forecast 5 days for your city. Helpful stats, graphics, and this day in history charts are available for your reference. Interactive maps show precipitation, clouds, pressure, wind around yo...",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1348-openweathermap.jpg",
+    "tags": [
+        "broadcasts",
+        "have api",
+        "have swagger",
+        "weather"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/openweathermap\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "OpenWeatherMap",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1348-openweathermap.jpg",
+            "humanURL": "https:\/\/openweathermap.org",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/openweathermap.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/openweathermap-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Sample",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1348-openweathermap.jpg",
+            "humanURL": "https:\/\/openweathermap.org",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/sample.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/sample-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Base",
+            "url": "http:\/\/api.openweathermap.org"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/openweathermap"
+        },
+        {
+            "type": "Developers",
+            "url": "http:\/\/openweathermap.org\/API"
+        },
+        {
+            "type": "Email",
+            "url": "info@openweathermap.org"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/1348-2019-09-04-01-14-55.json"
+        },
+        {
+            "type": "Pricing",
+            "url": "http:\/\/openweathermap.org\/price"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/OpenWeatherMap"
+        },
+        {
+            "type": "Website",
+            "url": "https:\/\/openweathermap.org"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/openweathermap.org"
+        }
+    ]
+}
