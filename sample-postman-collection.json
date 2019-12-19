@@ -1,0 +1,44 @@
+{
+    "id": "ee358ea777a526096b6d14ca0b494475",
+    "name": "Sample",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "323b0c7ddadd89c869805e9bc30c368d",
+            "name": "",
+            "url": "http:\/\/api.openweathermap.org\/data\/2.5\/\/weather",
+            "description": "",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "get",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "q",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "ee358ea777a526096b6d14ca0b494475",
+            "rawModeData": ""
+        }
+    ]
+}
