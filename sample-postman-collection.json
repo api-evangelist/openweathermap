@@ -1,5 +1,5 @@
 {
-    "id": "ee358ea777a526096b6d14ca0b494475",
+    "id": "9dab442997b0cb250901447ac1fc9359",
     "name": "Sample",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "323b0c7ddadd89c869805e9bc30c368d",
+            "id": "49653a4e1077c8cec888e17ada7f80ee",
             "name": "",
             "url": "http:\/\/api.openweathermap.org\/data\/2.5\/\/weather",
             "description": "",
@@ -37,7 +37,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "ee358ea777a526096b6d14ca0b494475",
+            "collectionId": "9dab442997b0cb250901447ac1fc9359",
             "rawModeData": ""
         }
     ]
