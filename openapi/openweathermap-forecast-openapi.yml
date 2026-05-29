@@ -1,0 +1,458 @@
+openapi: 3.1.0
+info:
+  title: OpenWeatherMap Forecast APIs
+  version: 2.5.0
+  description: >-
+    OpenWeather forecast APIs including 5-day/3-hour forecast, Hourly Forecast
+    4 Days, Daily Forecast 16 Days, and Climatic Forecast 30 Days. These
+    forecasts provide weather predictions at varying granularities and time
+    horizons for any global coordinate.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+servers:
+  - url: https://api.openweathermap.org/data/2.5
+    description: 5-day/3-hour Forecast API base URL
+  - url: https://pro.openweathermap.org/data/2.5
+    description: Pro forecast APIs base URL (Hourly Forecast 4 Days, Daily Forecast 16 Days, Climatic Forecast 30 Days)
+paths:
+  /forecast:
+    get:
+      operationId: getForecastFiveDay
+      summary: Five Day Three Hour Forecast
+      description: >-
+        Returns forecast weather data with 3-hour granularity for the next 5 days
+        for the supplied latitude and longitude. Includes temperature, weather
+        conditions, wind, precipitation probability, and more for 40 forecast
+        timestamps.
+      tags:
+        - Forecast
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - name: cnt
+          in: query
+          required: false
+          description: Number of timestamps to return. Defaults to 40.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 40
+        - $ref: '#/components/parameters/Mode'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Lang'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Five day three hour forecast response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForecastResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized. Missing or invalid API key.
+        '404':
+          description: Location not found.
+        '429':
+          description: Too many requests.
+  /forecast/hourly:
+    get:
+      operationId: getForecastHourly
+      summary: Four Day Hourly Forecast
+      description: >-
+        Returns hourly forecast weather data for the next 4 days (up to 96
+        hourly timestamps) for the supplied latitude and longitude. Available
+        on Developer, Professional, and Expert plans.
+      tags:
+        - Forecast
+      servers:
+        - url: https://pro.openweathermap.org/data/2.5
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - name: cnt
+          in: query
+          required: false
+          description: Number of hourly timestamps to return. Up to 96.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 96
+        - $ref: '#/components/parameters/Mode'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Lang'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Hourly forecast response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ForecastResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /forecast/daily:
+    get:
+      operationId: getForecastDaily
+      summary: Sixteen Day Daily Forecast
+      description: >-
+        Returns daily forecast weather data for up to 16 days for the supplied
+        latitude and longitude. Each daily entry includes morning, day,
+        evening, night, and min/max temperatures.
+      tags:
+        - Forecast
+      servers:
+        - url: https://pro.openweathermap.org/data/2.5
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - name: cnt
+          in: query
+          required: false
+          description: Number of days to return. 1 to 16.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 16
+        - $ref: '#/components/parameters/Mode'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Lang'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Daily forecast response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyForecastResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /forecast/climate:
+    get:
+      operationId: getForecastClimate
+      summary: Thirty Day Climatic Forecast
+      description: >-
+        Returns daily climatic forecast weather data for the next 30 days for
+        the supplied latitude and longitude.
+      tags:
+        - Forecast
+      servers:
+        - url: https://pro.openweathermap.org/data/2.5
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - name: cnt
+          in: query
+          required: false
+          description: Number of days to return. 1 to 30.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 30
+        - $ref: '#/components/parameters/Mode'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Lang'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Climatic forecast response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyForecastResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+components:
+  parameters:
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
+    Mode:
+      name: mode
+      in: query
+      required: false
+      description: Response format. Default is JSON.
+      schema:
+        type: string
+        enum:
+          - json
+          - xml
+    Units:
+      name: units
+      in: query
+      required: false
+      description: Units of measurement. standard, metric, or imperial.
+      schema:
+        type: string
+        enum:
+          - standard
+          - metric
+          - imperial
+    Lang:
+      name: lang
+      in: query
+      required: false
+      description: Localization language code.
+      schema:
+        type: string
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+  schemas:
+    City:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        coord:
+          type: object
+          properties:
+            lat:
+              type: number
+              format: float
+            lon:
+              type: number
+              format: float
+        country:
+          type: string
+        population:
+          type: integer
+        timezone:
+          type: integer
+        sunrise:
+          type: integer
+          format: int64
+        sunset:
+          type: integer
+          format: int64
+    Weather:
+      type: object
+      properties:
+        id:
+          type: integer
+        main:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+    ForecastItem:
+      type: object
+      properties:
+        dt:
+          type: integer
+          format: int64
+        main:
+          type: object
+          properties:
+            temp:
+              type: number
+              format: float
+            feels_like:
+              type: number
+              format: float
+            temp_min:
+              type: number
+              format: float
+            temp_max:
+              type: number
+              format: float
+            pressure:
+              type: integer
+            humidity:
+              type: integer
+        weather:
+          type: array
+          items:
+            $ref: '#/components/schemas/Weather'
+        clouds:
+          type: object
+          properties:
+            all:
+              type: integer
+        wind:
+          type: object
+          properties:
+            speed:
+              type: number
+              format: float
+            deg:
+              type: integer
+            gust:
+              type: number
+              format: float
+        visibility:
+          type: integer
+        pop:
+          type: number
+          format: float
+        rain:
+          type: object
+          properties:
+            3h:
+              type: number
+              format: float
+        snow:
+          type: object
+          properties:
+            3h:
+              type: number
+              format: float
+        sys:
+          type: object
+          properties:
+            pod:
+              type: string
+        dt_txt:
+          type: string
+    ForecastResponse:
+      type: object
+      properties:
+        cod:
+          type: string
+        message:
+          type: number
+        cnt:
+          type: integer
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ForecastItem'
+        city:
+          $ref: '#/components/schemas/City'
+    DailyForecastItem:
+      type: object
+      properties:
+        dt:
+          type: integer
+          format: int64
+        sunrise:
+          type: integer
+          format: int64
+        sunset:
+          type: integer
+          format: int64
+        temp:
+          type: object
+          properties:
+            day:
+              type: number
+              format: float
+            min:
+              type: number
+              format: float
+            max:
+              type: number
+              format: float
+            night:
+              type: number
+              format: float
+            eve:
+              type: number
+              format: float
+            morn:
+              type: number
+              format: float
+        feels_like:
+          type: object
+          properties:
+            day:
+              type: number
+              format: float
+            night:
+              type: number
+              format: float
+            eve:
+              type: number
+              format: float
+            morn:
+              type: number
+              format: float
+        pressure:
+          type: integer
+        humidity:
+          type: integer
+        weather:
+          type: array
+          items:
+            $ref: '#/components/schemas/Weather'
+        speed:
+          type: number
+          format: float
+        deg:
+          type: integer
+        gust:
+          type: number
+          format: float
+        clouds:
+          type: integer
+        rain:
+          type: number
+          format: float
+        snow:
+          type: number
+          format: float
+        pop:
+          type: number
+          format: float
+    DailyForecastResponse:
+      type: object
+      properties:
+        city:
+          $ref: '#/components/schemas/City'
+        cod:
+          type: string
+        message:
+          type: number
+        cnt:
+          type: integer
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/DailyForecastItem'
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid
+security:
+  - appid: []
+tags:
+  - name: Forecast
+    description: Weather forecasts at multiple granularities and time horizons.

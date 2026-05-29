@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/openweathermap/main/json-schema/openweathermap-air-pollution-schema.json",
+  "title": "OpenWeatherMap Air Pollution",
+  "description": "Schema for OpenWeather Air Pollution API response. Lists AQI and pollutant concentrations.",
+  "type": "object",
+  "required": ["coord", "list"],
+  "properties": {
+    "coord": {
+      "type": "object",
+      "properties": {
+        "lon": { "type": "number" },
+        "lat": { "type": "number" }
+      }
+    },
+    "list": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dt", "main", "components"],
+        "properties": {
+          "dt": { "type": "integer" },
+          "main": {
+            "type": "object",
+            "required": ["aqi"],
+            "properties": {
+              "aqi": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5,
+                "description": "Air Quality Index. 1 Good, 2 Fair, 3 Moderate, 4 Poor, 5 Very Poor."
+              }
+            }
+          },
+          "components": {
+            "type": "object",
+            "properties": {
+              "co": { "type": "number" },
+              "no": { "type": "number" },
+              "no2": { "type": "number" },
+              "o3": { "type": "number" },
+              "so2": { "type": "number" },
+              "pm2_5": { "type": "number" },
+              "pm10": { "type": "number" },
+              "nh3": { "type": "number" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

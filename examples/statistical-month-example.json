@@ -1,0 +1,38 @@
+{
+  "operation": "getStatisticalAggregatedMonth",
+  "request": {
+    "method": "GET",
+    "url": "https://history.openweathermap.org/data/2.5/aggregated/month?lat=51.5&lon=-0.13&month=5&appid={API_KEY}"
+  },
+  "response": {
+    "cod": 200,
+    "city_id": 2643743,
+    "calctime": 0.087,
+    "result": {
+      "month": 5,
+      "temp": {
+        "record_min": 273.15,
+        "record_max": 304.15,
+        "average_min": 281.42,
+        "average_max": 293.18,
+        "median": 287.04,
+        "mean": 286.97,
+        "p25": 283.65,
+        "p75": 290.21,
+        "st_dev": 4.83,
+        "num": 1240
+      },
+      "pressure": {
+        "min": 985.0,
+        "max": 1030.0,
+        "median": 1014.0,
+        "mean": 1013.85,
+        "p25": 1010.0,
+        "p75": 1018.0,
+        "st_dev": 6.45,
+        "num": 1240
+      },
+      "sunshine_hours": 191.5
+    }
+  }
+}

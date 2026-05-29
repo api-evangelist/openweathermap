@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/openweathermap/main/json-schema/openweathermap-forecast-schema.json",
+  "title": "OpenWeatherMap Forecast Item",
+  "description": "Schema for one forecast timestamp returned by the OpenWeather forecast APIs.",
+  "type": "object",
+  "required": ["dt", "main", "weather"],
+  "properties": {
+    "dt": { "type": "integer" },
+    "main": {
+      "type": "object",
+      "properties": {
+        "temp": { "type": "number" },
+        "feels_like": { "type": "number" },
+        "temp_min": { "type": "number" },
+        "temp_max": { "type": "number" },
+        "pressure": { "type": "integer" },
+        "humidity": { "type": "integer" }
+      }
+    },
+    "weather": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "main": { "type": "string" },
+          "description": { "type": "string" },
+          "icon": { "type": "string" }
+        }
+      }
+    },
+    "clouds": {
+      "type": "object",
+      "properties": { "all": { "type": "integer" } }
+    },
+    "wind": {
+      "type": "object",
+      "properties": {
+        "speed": { "type": "number" },
+        "deg": { "type": "integer" },
+        "gust": { "type": "number" }
+      }
+    },
+    "pop": { "type": "number" },
+    "rain": {
+      "type": "object",
+      "properties": { "3h": { "type": "number" } }
+    },
+    "snow": {
+      "type": "object",
+      "properties": { "3h": { "type": "number" } }
+    },
+    "dt_txt": { "type": "string" }
+  }
+}

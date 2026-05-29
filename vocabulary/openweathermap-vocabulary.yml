@@ -1,0 +1,111 @@
+name: OpenWeatherMap Vocabulary
+description: Controlled vocabulary for the OpenWeather API surface, covering core weather, climate, air quality, solar, and operational concepts.
+created: '2026-05-29'
+modified: '2026-05-29'
+namespaces:
+  - prefix: owm
+    uri: https://openweathermap.org/ns#
+  - prefix: schema
+    uri: https://schema.org/
+  - prefix: geo
+    uri: http://www.w3.org/2003/01/geo/wgs84_pos#
+terms:
+  weather:
+    - term: Observation
+      definition: A single time-stamped weather measurement set for a location.
+    - term: CurrentWeather
+      definition: Latest available observation at the requested coordinates.
+    - term: Forecast
+      definition: Predicted weather at a future time and location.
+    - term: HistoricalWeather
+      definition: Observation captured at a past time stamp.
+    - term: WeatherAlert
+      definition: Government-issued weather warning or alert for a region.
+  parameters:
+    - term: Temperature
+      definition: Air temperature at the observation location. Units depend on units parameter.
+    - term: FeelsLike
+      definition: Human perception of temperature accounting for wind and humidity.
+    - term: Pressure
+      definition: Atmospheric pressure at sea level in hectopascals unless otherwise indicated.
+    - term: Humidity
+      definition: Relative humidity expressed as a percentage.
+    - term: WindSpeed
+      definition: Wind speed in meters per second (standard, metric) or miles per hour (imperial).
+    - term: WindDirection
+      definition: Compass direction the wind originates from in meteorological degrees.
+    - term: Cloudiness
+      definition: Sky cloud coverage expressed as a percentage.
+    - term: Visibility
+      definition: Horizontal visibility in meters, capped at 10000.
+    - term: Precipitation
+      definition: Rain or snow accumulation over a window such as 1h or 3h.
+    - term: UVIndex
+      definition: Ultraviolet exposure index for the surface.
+    - term: DewPoint
+      definition: Temperature at which dew forms given current humidity.
+  airQuality:
+    - term: AirQualityIndex
+      definition: OpenWeather AQI on a scale of 1 to 5.
+    - term: AQILevels
+      definition: 1 Good, 2 Fair, 3 Moderate, 4 Poor, 5 Very Poor.
+    - term: CarbonMonoxide
+      definition: CO concentration in micrograms per cubic meter.
+    - term: NitrogenMonoxide
+      definition: NO concentration in micrograms per cubic meter.
+    - term: NitrogenDioxide
+      definition: NO2 concentration in micrograms per cubic meter.
+    - term: Ozone
+      definition: O3 concentration in micrograms per cubic meter.
+    - term: SulphurDioxide
+      definition: SO2 concentration in micrograms per cubic meter.
+    - term: FineParticulateMatter
+      definition: PM2.5 concentration in micrograms per cubic meter.
+    - term: CoarseParticulateMatter
+      definition: PM10 concentration in micrograms per cubic meter.
+    - term: Ammonia
+      definition: NH3 concentration in micrograms per cubic meter.
+  solar:
+    - term: GlobalHorizontalIrradiance
+      definition: Total solar irradiance on a horizontal surface in W/m2.
+    - term: DirectNormalIrradiance
+      definition: Direct beam solar irradiance perpendicular to the sun in W/m2.
+    - term: DiffuseHorizontalIrradiance
+      definition: Diffuse solar irradiance on a horizontal surface in W/m2.
+    - term: ClearSkyModel
+      definition: Solar irradiance assuming a cloud-free atmosphere.
+    - term: CloudySkyModel
+      definition: Solar irradiance accounting for prevailing cloud cover.
+  geocoding:
+    - term: DirectGeocoding
+      definition: Convert location name to coordinates.
+    - term: ReverseGeocoding
+      definition: Convert coordinates to one or more location names.
+    - term: ZipGeocoding
+      definition: Convert a postal code and country to coordinates.
+  operations:
+    - term: APIKey
+      definition: OpenWeather appid query parameter used to authenticate requests.
+    - term: RateLimit
+      definition: Per-tier ceiling on calls per minute and calls per month.
+    - term: Tier
+      definition: A subscription level Free, Startup, Developer, Professional, Expert.
+    - term: PayAsYouCall
+      definition: Pricing model for One Call 4.0 where the first 1,000 daily calls are free and additional calls are billed per call.
+    - term: Quota
+      definition: Total request volume permitted within a billing cycle.
+  maps:
+    - term: TileLayer
+      definition: Weather data raster overlay tile referenced by z/x/y coordinates.
+    - term: Layer
+      definition: Named weather variable rendered on a tile (clouds_new, precipitation_new, pressure_new, wind_new, temp_new).
+units:
+  temperature: [standard (Kelvin), metric (Celsius), imperial (Fahrenheit)]
+  windSpeed: [metric (m/s), imperial (mph)]
+  pressure: hPa
+  precipitation: mm
+  visibility: meters
+  concentration: ug/m3
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

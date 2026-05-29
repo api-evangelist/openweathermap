@@ -1,0 +1,15 @@
+{
+  "name": "OpenWeatherMapGeocoding",
+  "description": "JSON Structure description of OpenWeather Geocoding API location records.",
+  "version": "1.0.0",
+  "source": "https://openweathermap.org/api/geocoding-api",
+  "fields": [
+    { "path": "name", "type": "string", "description": "Canonical location name." },
+    { "path": "local_names", "type": "object", "description": "Map of ISO language code to translated location name." },
+    { "path": "lat", "type": "number", "unit": "degrees", "description": "Latitude of the location." },
+    { "path": "lon", "type": "number", "unit": "degrees", "description": "Longitude of the location." },
+    { "path": "country", "type": "string", "description": "ISO 3166 country code." },
+    { "path": "state", "type": "string", "description": "Sub-national administrative area where available." },
+    { "path": "zip", "type": "string", "description": "Zip or postal code, present on the /zip response." }
+  ]
+}

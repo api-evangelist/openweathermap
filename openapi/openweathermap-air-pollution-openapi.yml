@@ -1,0 +1,205 @@
+openapi: 3.1.0
+info:
+  title: OpenWeatherMap Air Pollution API
+  version: 2.5.0
+  description: >-
+    Returns current, forecast, and historical air pollution data including the
+    Air Quality Index and concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5,
+    and PM10 for any coordinates on the globe.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api/air-pollution
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+servers:
+  - url: https://api.openweathermap.org/data/2.5
+    description: Air Pollution API base URL
+paths:
+  /air_pollution:
+    get:
+      operationId: getCurrentAirPollution
+      summary: Current Air Pollution Data
+      description: >-
+        Returns current air pollution data including the Air Quality Index and
+        concentrations of common pollutants for the supplied latitude and
+        longitude.
+      tags:
+        - Air Pollution
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Current air pollution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AirPollutionResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /air_pollution/forecast:
+    get:
+      operationId: getAirPollutionForecast
+      summary: Hourly Air Pollution Forecast
+      description: >-
+        Returns the hourly air pollution forecast for the next 5 days for the
+        supplied latitude and longitude.
+      tags:
+        - Air Pollution
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Air pollution forecast response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AirPollutionResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /air_pollution/history:
+    get:
+      operationId: getAirPollutionHistory
+      summary: Historical Air Pollution Data
+      description: >-
+        Returns historical hourly air pollution data for the supplied
+        coordinates and time window. Data is available from 27 November 2020
+        onwards.
+      tags:
+        - Air Pollution
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - name: start
+          in: query
+          required: true
+          description: Unix UTC start timestamp.
+          schema:
+            type: integer
+            format: int64
+        - name: end
+          in: query
+          required: true
+          description: Unix UTC end timestamp.
+          schema:
+            type: integer
+            format: int64
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Historical air pollution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AirPollutionResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+components:
+  parameters:
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+  schemas:
+    AirPollutionComponents:
+      type: object
+      properties:
+        co:
+          type: number
+          format: float
+        no:
+          type: number
+          format: float
+        no2:
+          type: number
+          format: float
+        o3:
+          type: number
+          format: float
+        so2:
+          type: number
+          format: float
+        pm2_5:
+          type: number
+          format: float
+        pm10:
+          type: number
+          format: float
+        nh3:
+          type: number
+          format: float
+    AirPollutionListItem:
+      type: object
+      properties:
+        dt:
+          type: integer
+          format: int64
+        main:
+          type: object
+          properties:
+            aqi:
+              type: integer
+              description: Air Quality Index. 1 Good, 2 Fair, 3 Moderate, 4 Poor, 5 Very Poor.
+        components:
+          $ref: '#/components/schemas/AirPollutionComponents'
+    AirPollutionResponse:
+      type: object
+      properties:
+        coord:
+          type: object
+          properties:
+            lat:
+              type: number
+              format: float
+            lon:
+              type: number
+              format: float
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/AirPollutionListItem'
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid
+security:
+  - appid: []
+tags:
+  - name: Air Pollution
+    description: Current, forecast, and historical air pollution data with AQI.

@@ -1,0 +1,155 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: OpenWeatherMap
+providerId: openweathermap
+created: '2026-05-29'
+modified: '2026-05-29'
+tags:
+  - Weather
+  - Forecast
+  - Air Pollution
+  - Rate Limiting
+  - Quotas
+  - Throttling
+description: Rate limit definitions for the OpenWeather API surface across all subscription tiers. Captures per-minute call ceilings, per-month quotas, response signaling, and recovery semantics.
+headers:
+  limit: X-RateLimit-Limit
+  remaining: X-RateLimit-Remaining
+  reset: X-RateLimit-Reset
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+  - tier: free
+    name: Free Per-Minute
+    scope: api-key
+    metric: requests_per_minute
+    limit: 60
+    timeFrame: minute
+    applies:
+      - Current Weather Data API
+      - 5-day / 3-hour Forecast API
+      - 16-day Daily Forecast API
+      - Air Pollution API
+      - Geocoding API
+      - Weather Maps 1.0
+  - tier: free
+    name: Free Monthly Quota
+    scope: api-key
+    metric: requests_per_month
+    limit: 1000000
+    timeFrame: month
+    applies:
+      - Current Weather Data API
+      - 5-day / 3-hour Forecast API
+      - 16-day Daily Forecast API
+      - Air Pollution API
+      - Geocoding API
+      - Weather Maps 1.0
+  - tier: startup
+    name: Startup Per-Minute
+    scope: api-key
+    metric: requests_per_minute
+    limit: 600
+    timeFrame: minute
+    applies:
+      - All Free Tier APIs
+  - tier: startup
+    name: Startup Monthly Quota
+    scope: api-key
+    metric: requests_per_month
+    limit: 10000000
+    timeFrame: month
+    applies:
+      - All Free Tier APIs
+  - tier: developer
+    name: Developer Per-Minute
+    scope: api-key
+    metric: requests_per_minute
+    limit: 3000
+    timeFrame: minute
+    applies:
+      - All Startup Tier APIs
+      - Hourly Forecast 4 Days
+      - Climatic Forecast 30 Days
+      - Weather Maps 2.0 (3h)
+  - tier: developer
+    name: Developer Monthly Quota
+    scope: api-key
+    metric: requests_per_month
+    limit: 100000000
+    timeFrame: month
+    applies:
+      - All Developer Tier APIs
+  - tier: professional
+    name: Professional Per-Minute
+    scope: api-key
+    metric: requests_per_minute
+    limit: 30000
+    timeFrame: minute
+    applies:
+      - All Developer Tier APIs
+      - Historical Weather API
+      - Bulk Current Data
+      - Accumulated Parameters
+      - Global Precipitation Maps (Historical)
+  - tier: professional
+    name: Professional Monthly Quota
+    scope: api-key
+    metric: requests_per_month
+    limit: 1000000000
+    timeFrame: month
+    applies:
+      - All Professional Tier APIs
+  - tier: expert
+    name: Expert Per-Minute
+    scope: api-key
+    metric: requests_per_minute
+    limit: 100000
+    timeFrame: minute
+    applies:
+      - All Professional Tier APIs
+      - Statistical Weather Data API
+      - Road Risk API
+      - Solar Irradiance API
+  - tier: expert
+    name: Expert Monthly Quota
+    scope: api-key
+    metric: requests_per_month
+    limit: 3000000000
+    timeFrame: month
+    applies:
+      - All Expert Tier APIs
+  - tier: one-call-payg
+    name: One Call 4.0 Free Daily Allotment
+    scope: api-key
+    metric: requests_per_day
+    limit: 1000
+    timeFrame: day
+    applies:
+      - One Call API 4.0
+  - tier: enterprise
+    name: Enterprise Negotiated Limit
+    scope: contract
+    metric: requests_per_minute
+    limit: -1
+    timeFrame: minute
+    applies:
+      - All OpenWeather APIs
+policies:
+  - name: Backoff Strategy
+    description: Clients should implement exponential backoff with jitter and honor the Retry-After header.
+  - name: Quota Reset
+    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute windows reset on a sliding-window basis.
+  - name: One Call Daily Window
+    description: One Call 4.0 daily counter resets at 00:00 UTC; calls in excess of 1,000 per day are billed at the published per-call price.
+  - name: Tier Switching
+    description: Plan changes take effect at the start of the next billing cycle unless explicitly accelerated by OpenWeather support.
+  - name: Fair Use
+    description: Even on uncapped enterprise contracts, sustained traffic that materially impacts shared infrastructure may be subject to fair-use throttling.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

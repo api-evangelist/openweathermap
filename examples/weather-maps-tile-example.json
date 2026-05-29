@@ -1,0 +1,18 @@
+{
+  "operation": "getWeatherMapTile",
+  "request": {
+    "method": "GET",
+    "url": "https://tile.openweathermap.org/map/temp_new/5/15/12.png?appid={API_KEY}"
+  },
+  "response": {
+    "contentType": "image/png",
+    "description": "Binary PNG tile depicting the temp_new weather layer at zoom 5, tile (15, 12). Compatible with Leaflet, OpenLayers, and other tile-based mapping libraries.",
+    "layers": [
+      "clouds_new",
+      "precipitation_new",
+      "pressure_new",
+      "wind_new",
+      "temp_new"
+    ]
+  }
+}

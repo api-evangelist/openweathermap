@@ -1,0 +1,45 @@
+{
+  "operation": "getForecastFiveDay",
+  "request": {
+    "method": "GET",
+    "url": "https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&units=metric&appid={API_KEY}"
+  },
+  "response": {
+    "cod": "200",
+    "message": 0,
+    "cnt": 1,
+    "list": [
+      {
+        "dt": 1748520000,
+        "main": {
+          "temp": 13.85,
+          "feels_like": 13.12,
+          "temp_min": 13.85,
+          "temp_max": 14.07,
+          "pressure": 1015,
+          "humidity": 82
+        },
+        "weather": [
+          { "id": 500, "main": "Rain", "description": "light rain", "icon": "10n" }
+        ],
+        "clouds": { "all": 99 },
+        "wind": { "speed": 2.31, "deg": 218, "gust": 3.40 },
+        "visibility": 10000,
+        "pop": 0.43,
+        "rain": { "3h": 0.51 },
+        "sys": { "pod": "n" },
+        "dt_txt": "2026-05-29 12:00:00"
+      }
+    ],
+    "city": {
+      "id": 3163858,
+      "name": "Zocca",
+      "coord": { "lat": 44.34, "lon": 10.99 },
+      "country": "IT",
+      "population": 4593,
+      "timezone": 7200,
+      "sunrise": 1748490231,
+      "sunset": 1748545392
+    }
+  }
+}

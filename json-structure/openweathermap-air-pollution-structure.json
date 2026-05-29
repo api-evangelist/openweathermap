@@ -1,0 +1,31 @@
+{
+  "name": "OpenWeatherMapAirPollution",
+  "description": "JSON Structure description of the OpenWeather Air Pollution API response, including the AQI scale and pollutant concentrations in micrograms per cubic meter.",
+  "version": "1.0.0",
+  "source": "https://openweathermap.org/api/air-pollution",
+  "fields": [
+    { "path": "coord.lon", "type": "number", "unit": "degrees" },
+    { "path": "coord.lat", "type": "number", "unit": "degrees" },
+    { "path": "list[].dt", "type": "integer", "unit": "unix-time" },
+    {
+      "path": "list[].main.aqi",
+      "type": "integer",
+      "description": "Air Quality Index.",
+      "enum": [
+        { "value": 1, "label": "Good" },
+        { "value": 2, "label": "Fair" },
+        { "value": 3, "label": "Moderate" },
+        { "value": 4, "label": "Poor" },
+        { "value": 5, "label": "Very Poor" }
+      ]
+    },
+    { "path": "list[].components.co", "type": "number", "unit": "ug/m3", "description": "Carbon monoxide concentration." },
+    { "path": "list[].components.no", "type": "number", "unit": "ug/m3", "description": "Nitrogen monoxide concentration." },
+    { "path": "list[].components.no2", "type": "number", "unit": "ug/m3", "description": "Nitrogen dioxide concentration." },
+    { "path": "list[].components.o3", "type": "number", "unit": "ug/m3", "description": "Ozone concentration." },
+    { "path": "list[].components.so2", "type": "number", "unit": "ug/m3", "description": "Sulphur dioxide concentration." },
+    { "path": "list[].components.pm2_5", "type": "number", "unit": "ug/m3", "description": "Fine particulate matter." },
+    { "path": "list[].components.pm10", "type": "number", "unit": "ug/m3", "description": "Coarse particulate matter." },
+    { "path": "list[].components.nh3", "type": "number", "unit": "ug/m3", "description": "Ammonia concentration." }
+  ]
+}

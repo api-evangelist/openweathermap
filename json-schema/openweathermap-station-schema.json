@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/openweathermap/main/json-schema/openweathermap-station-schema.json",
+  "title": "OpenWeatherMap Weather Station",
+  "description": "Schema for a registered personal weather station.",
+  "type": "object",
+  "required": ["external_id", "name", "latitude", "longitude"],
+  "properties": {
+    "id": { "type": "string" },
+    "external_id": { "type": "string" },
+    "name": { "type": "string" },
+    "latitude": { "type": "number" },
+    "longitude": { "type": "number" },
+    "altitude": { "type": "number" },
+    "rank": { "type": "integer" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "operation": "getOneCallCurrent",
+  "request": {
+    "method": "GET",
+    "url": "https://api.openweathermap.org/data/4.0/onecall/current?lat=33.44&lon=-94.04&units=imperial&appid={API_KEY}"
+  },
+  "response": {
+    "lat": 33.44,
+    "lon": -94.04,
+    "timezone": "America/Chicago",
+    "timezone_offset": -18000,
+    "current": {
+      "dt": 1748505600,
+      "sunrise": 1748518000,
+      "sunset": 1748567000,
+      "temp": 76.32,
+      "feels_like": 76.92,
+      "pressure": 1015,
+      "humidity": 88,
+      "dew_point": 72.59,
+      "uvi": 0.85,
+      "clouds": 0,
+      "visibility": 10000,
+      "wind_speed": 4.12,
+      "wind_deg": 130,
+      "weather": [
+        { "id": 800, "main": "Clear", "description": "clear sky", "icon": "01d" }
+      ]
+    }
+  }
+}

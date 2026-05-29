@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenWeatherMap Historical Weather
+  description: Naftiko capability for OpenWeather Historical Weather API (hourly history).
+  tags:
+    - OpenWeather
+    - History
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      OPENWEATHER_API_KEY: OPENWEATHER_API_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: openweathermap-history
+      baseUri: https://history.openweathermap.org/data/2.5
+      description: OpenWeather Historical Weather API.
+      resources:
+        - name: history-city
+          path: /history/city
+          operations:
+            - name: gethistoricalweathercity
+              method: GET
+              description: Historical hourly weather by coordinate.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: lat
+                  in: query
+                  type: number
+                  required: true
+                - name: lon
+                  in: query
+                  type: number
+                  required: true
+                - name: type
+                  in: query
+                  type: string
+                  required: true
+                - name: start
+                  in: query
+                  type: integer
+                - name: end
+                  in: query
+                  type: integer
+                - name: cnt
+                  in: query
+                  type: integer
+                - name: units
+                  in: query
+                  type: string
+                - name: appid
+                  in: query
+                  type: string
+                  required: true
+      authentication:
+        type: apikey
+        key: appid
+        value: '{{env.OPENWEATHER_API_KEY}}'
+        placement: query
+  exposes:
+    - type: rest
+      namespace: openweathermap-history-rest
+      port: 8080
+      resources:
+        - path: /v1/history/city
+          name: history-city
+          operations:
+            - method: GET
+              name: gethistoricalweathercity
+              call: openweathermap-history.gethistoricalweathercity
+              with:
+                lat: rest.lat
+                lon: rest.lon
+                type: rest.type
+                start: rest.start
+                end: rest.end
+                cnt: rest.cnt
+                units: rest.units
+                appid: rest.appid
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: openweathermap-history-mcp
+      port: 9090
+      transport: http
+      tools:
+        - name: get-historical-weather
+          description: Historical hourly weather by coordinate.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: openweathermap-history.gethistoricalweathercity
+          with:
+            lat: tools.lat
+            lon: tools.lon
+            type: tools.type
+            start: tools.start
+            end: tools.end
+            cnt: tools.cnt
+            units: tools.units
+            appid: tools.appid
+          outputParameters:
+            - type: object
+              mapping: $.

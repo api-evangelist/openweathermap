@@ -1,0 +1,42 @@
+{
+  "operation": "postRoadRisk",
+  "request": {
+    "method": "POST",
+    "url": "https://api.openweathermap.org/data/2.5/roadrisk?appid={API_KEY}",
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "track": [
+        { "lat": 51.5074, "lon": -0.1278, "dt": 1748505600 },
+        { "lat": 51.4543, "lon": -2.5879, "dt": 1748509200 }
+      ]
+    }
+  },
+  "response": [
+    {
+      "dt": 1748505600,
+      "coord": [51.5074, -0.1278],
+      "weather": {
+        "temp": 287.5,
+        "wind_speed": 4.2,
+        "wind_deg": 215,
+        "precipitation_intensity": 0.0,
+        "dew_point": 281.9
+      },
+      "road": { "state": 0, "surface_temp": 289.1 },
+      "alerts": []
+    },
+    {
+      "dt": 1748509200,
+      "coord": [51.4543, -2.5879],
+      "weather": {
+        "temp": 286.1,
+        "wind_speed": 5.1,
+        "wind_deg": 220,
+        "precipitation_intensity": 0.4,
+        "dew_point": 282.4
+      },
+      "road": { "state": 0, "surface_temp": 286.7 },
+      "alerts": []
+    }
+  ]
+}

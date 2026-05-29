@@ -1,0 +1,202 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenWeatherMap Air Pollution
+  description: Naftiko capability for OpenWeather Air Pollution API covering current, forecast, and history.
+  tags:
+    - OpenWeather
+    - Air Pollution
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      OPENWEATHER_API_KEY: OPENWEATHER_API_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: openweathermap-air-pollution
+      baseUri: https://api.openweathermap.org/data/2.5
+      description: OpenWeather Air Pollution API.
+      resources:
+        - name: air-pollution
+          path: /air_pollution
+          operations:
+            - name: getcurrentairpollution
+              method: GET
+              description: Current air pollution data.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: lat
+                  in: query
+                  type: number
+                  required: true
+                - name: lon
+                  in: query
+                  type: number
+                  required: true
+                - name: appid
+                  in: query
+                  type: string
+                  required: true
+        - name: air-pollution-forecast
+          path: /air_pollution/forecast
+          operations:
+            - name: getairpollutionforecast
+              method: GET
+              description: Hourly air pollution forecast.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: lat
+                  in: query
+                  type: number
+                  required: true
+                - name: lon
+                  in: query
+                  type: number
+                  required: true
+                - name: appid
+                  in: query
+                  type: string
+                  required: true
+        - name: air-pollution-history
+          path: /air_pollution/history
+          operations:
+            - name: getairpollutionhistory
+              method: GET
+              description: Historical hourly air pollution data.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: lat
+                  in: query
+                  type: number
+                  required: true
+                - name: lon
+                  in: query
+                  type: number
+                  required: true
+                - name: start
+                  in: query
+                  type: integer
+                  required: true
+                - name: end
+                  in: query
+                  type: integer
+                  required: true
+                - name: appid
+                  in: query
+                  type: string
+                  required: true
+      authentication:
+        type: apikey
+        key: appid
+        value: '{{env.OPENWEATHER_API_KEY}}'
+        placement: query
+  exposes:
+    - type: rest
+      namespace: openweathermap-air-pollution-rest
+      port: 8080
+      description: REST surface for OpenWeather Air Pollution.
+      resources:
+        - path: /v1/air_pollution
+          name: air-pollution
+          operations:
+            - method: GET
+              name: getcurrentairpollution
+              call: openweathermap-air-pollution.getcurrentairpollution
+              with:
+                lat: rest.lat
+                lon: rest.lon
+                appid: rest.appid
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/air_pollution/forecast
+          name: air-pollution-forecast
+          operations:
+            - method: GET
+              name: getairpollutionforecast
+              call: openweathermap-air-pollution.getairpollutionforecast
+              with:
+                lat: rest.lat
+                lon: rest.lon
+                appid: rest.appid
+              outputParameters:
+                - type: object
+                  mapping: $.
+        - path: /v1/air_pollution/history
+          name: air-pollution-history
+          operations:
+            - method: GET
+              name: getairpollutionhistory
+              call: openweathermap-air-pollution.getairpollutionhistory
+              with:
+                lat: rest.lat
+                lon: rest.lon
+                start: rest.start
+                end: rest.end
+                appid: rest.appid
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: openweathermap-air-pollution-mcp
+      port: 9090
+      transport: http
+      description: MCP surface for OpenWeather Air Pollution.
+      tools:
+        - name: get-current-air-pollution
+          description: Current air pollution data.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: openweathermap-air-pollution.getcurrentairpollution
+          with:
+            lat: tools.lat
+            lon: tools.lon
+            appid: tools.appid
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-air-pollution-forecast
+          description: Hourly air pollution forecast.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: openweathermap-air-pollution.getairpollutionforecast
+          with:
+            lat: tools.lat
+            lon: tools.lon
+            appid: tools.appid
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: get-air-pollution-history
+          description: Historical hourly air pollution data.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: openweathermap-air-pollution.getairpollutionhistory
+          with:
+            lat: tools.lat
+            lon: tools.lon
+            start: tools.start
+            end: tools.end
+            appid: tools.appid
+          outputParameters:
+            - type: object
+              mapping: $.

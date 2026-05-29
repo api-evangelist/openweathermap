@@ -1,0 +1,105 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenWeatherMap Current Weather
+  description: Naftiko capability for the OpenWeather Current Weather Data API. Wraps the /data/2.5/weather endpoint as both a REST and MCP surface.
+  tags:
+    - OpenWeather
+    - Current Weather
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      OPENWEATHER_API_KEY: OPENWEATHER_API_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: openweathermap-current-weather
+      baseUri: https://api.openweathermap.org/data/2.5
+      description: OpenWeather Current Weather Data API consumer.
+      resources:
+        - name: weather
+          path: /weather
+          operations:
+            - name: getcurrentweather
+              method: GET
+              description: Current weather data for a coordinate.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: lat
+                  in: query
+                  type: number
+                  description: Latitude in decimal degrees.
+                  required: true
+                - name: lon
+                  in: query
+                  type: number
+                  description: Longitude in decimal degrees.
+                  required: true
+                - name: units
+                  in: query
+                  type: string
+                  description: standard, metric, or imperial.
+                - name: lang
+                  in: query
+                  type: string
+                  description: ISO language code.
+                - name: appid
+                  in: query
+                  type: string
+                  description: OpenWeather API key.
+                  required: true
+      authentication:
+        type: apikey
+        key: appid
+        value: '{{env.OPENWEATHER_API_KEY}}'
+        placement: query
+  exposes:
+    - type: rest
+      namespace: openweathermap-current-weather-rest
+      port: 8080
+      description: REST surface for OpenWeather Current Weather Data.
+      resources:
+        - path: /v1/weather
+          name: weather
+          description: REST surface for getCurrentWeather.
+          operations:
+            - method: GET
+              name: getcurrentweather
+              description: Current weather data for a coordinate.
+              call: openweathermap-current-weather.getcurrentweather
+              with:
+                lat: rest.lat
+                lon: rest.lon
+                units: rest.units
+                lang: rest.lang
+                appid: rest.appid
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: openweathermap-current-weather-mcp
+      port: 9090
+      transport: http
+      description: MCP surface for OpenWeather Current Weather Data.
+      tools:
+        - name: get-current-weather
+          description: Current weather data for a coordinate.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: openweathermap-current-weather.getcurrentweather
+          with:
+            lat: tools.lat
+            lon: tools.lon
+            units: tools.units
+            lang: tools.lang
+            appid: tools.appid
+          outputParameters:
+            - type: object
+              mapping: $.

@@ -1,0 +1,40 @@
+{
+  "operation": "getCurrentWeather",
+  "request": {
+    "method": "GET",
+    "url": "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&units=metric&appid={API_KEY}"
+  },
+  "response": {
+    "coord": { "lon": 10.99, "lat": 44.34 },
+    "weather": [
+      { "id": 501, "main": "Rain", "description": "moderate rain", "icon": "10d" }
+    ],
+    "base": "stations",
+    "main": {
+      "temp": 12.36,
+      "feels_like": 11.65,
+      "temp_min": 11.45,
+      "temp_max": 13.21,
+      "pressure": 1015,
+      "humidity": 87,
+      "sea_level": 1015,
+      "grnd_level": 933
+    },
+    "visibility": 10000,
+    "wind": { "speed": 2.66, "deg": 200, "gust": 4.12 },
+    "rain": { "1h": 1.27 },
+    "clouds": { "all": 100 },
+    "dt": 1748505600,
+    "sys": {
+      "type": 2,
+      "id": 2004688,
+      "country": "IT",
+      "sunrise": 1748490231,
+      "sunset": 1748545392
+    },
+    "timezone": 7200,
+    "id": 3163858,
+    "name": "Zocca",
+    "cod": 200
+  }
+}

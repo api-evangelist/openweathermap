@@ -1,0 +1,110 @@
+extends: spectral:oas
+functionsDir: ./functions
+documentationUrl: https://openweathermap.org/api
+rules:
+  openweathermap-summary-required:
+    description: Every operation must have a summary in Title Case.
+    given: $.paths.*[get,post,put,delete,patch]
+    severity: warn
+    then:
+      field: summary
+      function: truthy
+  openweathermap-summary-title-case:
+    description: Operation summaries should use Title Case (each major word capitalized).
+    given: $.paths.*[get,post,put,delete,patch].summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][a-zA-Z0-9]*)( ([A-Z][a-zA-Z0-9]*|For|And|To|By|Of|The|A|An|In|On|With|From|Or|Per))*$'
+  openweathermap-description-required:
+    description: Every operation must have a description.
+    given: $.paths.*[get,post,put,delete,patch]
+    severity: warn
+    then:
+      field: description
+      function: truthy
+  openweathermap-operationid-required:
+    description: Every operation must have an operationId.
+    given: $.paths.*[get,post,put,delete,patch]
+    severity: error
+    then:
+      field: operationId
+      function: truthy
+  openweathermap-operationid-camelcase:
+    description: operationId values should be camelCase.
+    given: $.paths.*[get,post,put,delete,patch].operationId
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$'
+  openweathermap-tags-required:
+    description: Every operation must declare at least one tag.
+    given: $.paths.*[get,post,put,delete,patch]
+    severity: warn
+    then:
+      field: tags
+      function: truthy
+  openweathermap-appid-required:
+    description: Every operation must accept an appid query parameter for API key auth.
+    given: $.paths[*][get,post,put,delete,patch].parameters[?(@.name=='appid')]
+    severity: warn
+    then:
+      function: truthy
+  openweathermap-coord-lat-lon-required:
+    description: Weather endpoints should accept lat and lon parameters.
+    given: "$.paths['/weather','/forecast','/forecast/hourly','/forecast/daily','/forecast/climate','/air_pollution','/air_pollution/forecast','/air_pollution/history','/current','/timeline/1min','/timeline/15min','/timeline/1h','/timeline/1day'].get.parameters[*].name"
+    severity: warn
+    then:
+      function: enumeration
+      functionOptions:
+        values:
+          - lat
+          - lon
+          - appid
+          - mode
+          - units
+          - lang
+          - cnt
+          - exclude
+          - start
+          - end
+          - dt
+          - q
+          - limit
+          - zip
+          - month
+          - day
+          - threshold
+          - type
+          - from
+          - to
+          - station_id
+          - date
+          - interval
+          - tz
+          - alert_id
+          - location_id
+          - panel_id
+  openweathermap-units-enum:
+    description: The units parameter must be one of standard, metric, or imperial.
+    given: $.paths.*[get,post].parameters[?(@.name=='units')]
+    severity: warn
+    then:
+      field: schema.enum
+      function: truthy
+  openweathermap-security-appid:
+    description: Specs should declare an appid apiKey security scheme.
+    given: $.components.securitySchemes
+    severity: warn
+    then:
+      field: appid
+      function: truthy
+  openweathermap-error-responses:
+    description: Operations should document 400, 401, and 429 error responses.
+    given: $.paths.*[get,post,put,delete,patch].responses
+    severity: warn
+    then:
+      field: '429'
+      function: truthy

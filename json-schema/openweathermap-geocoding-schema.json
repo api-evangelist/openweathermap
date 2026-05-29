@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/openweathermap/main/json-schema/openweathermap-geocoding-schema.json",
+  "title": "OpenWeatherMap Geocoding Result",
+  "description": "Schema for a single OpenWeather Geocoding API location result.",
+  "type": "object",
+  "required": ["name", "lat", "lon", "country"],
+  "properties": {
+    "name": { "type": "string" },
+    "local_names": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "lat": { "type": "number" },
+    "lon": { "type": "number" },
+    "country": { "type": "string" },
+    "state": { "type": "string" },
+    "zip": { "type": "string" }
+  }
+}

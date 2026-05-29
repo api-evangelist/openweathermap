@@ -1,0 +1,31 @@
+{
+  "operation": "getHistoricalWeatherCity",
+  "request": {
+    "method": "GET",
+    "url": "https://history.openweathermap.org/data/2.5/history/city?lat=41.85&lon=-87.65&type=hour&start=1748419200&end=1748505600&appid={API_KEY}"
+  },
+  "response": {
+    "message": "Count: 24",
+    "cod": "200",
+    "city_id": 4887398,
+    "calctime": 0.041,
+    "list": [
+      {
+        "dt": 1748419200,
+        "main": {
+          "temp": 286.42,
+          "feels_like": 285.71,
+          "pressure": 1015,
+          "humidity": 82,
+          "temp_min": 285.93,
+          "temp_max": 287.04
+        },
+        "wind": { "speed": 3.13, "deg": 130 },
+        "clouds": { "all": 90 },
+        "weather": [
+          { "id": 803, "main": "Clouds", "description": "broken clouds", "icon": "04n" }
+        ]
+      }
+    ]
+  }
+}

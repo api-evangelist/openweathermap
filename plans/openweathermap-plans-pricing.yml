@@ -1,0 +1,266 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: OpenWeatherMap
+providerId: openweathermap
+created: '2026-05-29'
+modified: '2026-05-29'
+tags:
+  - Weather
+  - Forecast
+  - Air Pollution
+  - Climate
+  - Solar
+  - Geocoding
+description: Plans and pricing for the OpenWeather API surface. Captures the public Free, Startup, Developer, Professional, and Expert subscription tiers, the One Call 4.0 pay-per-call model, plus enterprise and marketplace bulk offerings. Specific monthly prices are not published on the public site and must be reconciled against current contracts or sales quotes.
+plans:
+  - id: openweathermap-free
+    name: Free
+    type: freemium
+    description: Free entry tier suitable for evaluation, hobby, and low-volume production use. Includes current weather, 5-day/3-hour forecast, 16-day daily forecast, Air Pollution API, and Geocoding API.
+    entries:
+      - label: Monthly Call Quota
+        description: Maximum calls per month across included endpoints.
+        name: api_requests_month
+        type: quota
+        metric: requests
+        limit: 1000000
+        timeFrame: month
+        geo: global
+        domains: []
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Per Minute Rate Limit
+        description: Per-key request rate ceiling.
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 60
+        timeFrame: minute
+        geo: global
+        domains: []
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Current Weather Data API
+      - name: 5-day / 3-hour Forecast API
+      - name: 16-day Daily Forecast API (limited)
+      - name: Air Pollution API
+      - name: Geocoding API
+      - name: Weather Maps 1.0 (current tile layers)
+      - name: Community Support
+  - id: openweathermap-startup
+    name: Startup
+    type: paid
+    description: Production tier with significantly higher quota and rate limits. Includes everything in Free, with elevated availability.
+    entries:
+      - label: Monthly Call Quota
+        name: api_requests_month
+        type: quota
+        metric: requests
+        limit: 10000000
+        timeFrame: month
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+      - label: Per Minute Rate Limit
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 600
+        timeFrame: minute
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: All Free Tier APIs
+      - name: 1-minute Forecast (Limited)
+      - name: 95% Availability SLA
+      - name: Email Support
+  - id: openweathermap-developer
+    name: Developer
+    type: paid
+    description: Developer tier adds extended forecasts and historical maps suited to commercial apps and SaaS integrations.
+    entries:
+      - label: Monthly Call Quota
+        name: api_requests_month
+        type: quota
+        metric: requests
+        limit: 100000000
+        timeFrame: month
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+      - label: Per Minute Rate Limit
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 3000
+        timeFrame: minute
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: All Startup Tier APIs
+      - name: Hourly Forecast 4 Days
+      - name: Climatic Forecast 30 Days
+      - name: Weather Maps 2.0 (3h Step)
+      - name: Relief Maps
+  - id: openweathermap-professional
+    name: Professional
+    type: paid
+    description: Professional tier suitable for high-volume production with bulk and historical data access.
+    entries:
+      - label: Monthly Call Quota
+        name: api_requests_month
+        type: quota
+        metric: requests
+        limit: 1000000000
+        timeFrame: month
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+      - label: Per Minute Rate Limit
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 30000
+        timeFrame: minute
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: All Developer Tier APIs
+      - name: Historical Weather API
+      - name: Bulk Current Data
+      - name: Accumulated Parameters
+      - name: Global Precipitation Maps (Historical)
+  - id: openweathermap-expert
+    name: Expert
+    type: paid
+    description: Top-tier subscription with the highest quotas, all data products, and a 99.9% availability target.
+    entries:
+      - label: Monthly Call Quota
+        name: api_requests_month
+        type: quota
+        metric: requests
+        limit: 3000000000
+        timeFrame: month
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+      - label: Per Minute Rate Limit
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: 100000
+        timeFrame: minute
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+      - label: Availability SLA
+        name: availability
+        type: sla
+        metric: percent
+        limit: 99.9
+        timeFrame: month
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: All Professional Tier APIs
+      - name: Statistical Weather Data API
+      - name: Road Risk API
+      - name: Solar Irradiance API
+      - name: Fire Weather Index API
+      - name: 99.9% Availability SLA
+      - name: 10-minute Data Refresh
+  - id: openweathermap-onecall-payg
+    name: One Call by Call
+    type: paid
+    description: Pay-per-call subscription for One Call 4.0. First 1,000 calls per day are free; additional calls are billed per call.
+    entries:
+      - label: Free Daily Calls
+        name: free_calls_day
+        type: quota
+        metric: requests
+        limit: 1000
+        timeFrame: day
+        geo: global
+        domains: []
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: Per-Call Overage
+        name: overage
+        type: metered
+        metric: requests
+        limit: -1
+        timeFrame: day
+        geo: global
+        domains: []
+        unit: 1
+        price: TBD
+        userMultiplied: false
+    elements:
+      - name: One Call API 4.0 (Current, Hourly, Daily, Alerts)
+      - name: Historical Data (47+ years)
+  - id: openweathermap-enterprise
+    name: Enterprise
+    type: enterprise
+    description: Custom contracts for high-throughput, regulated, or specialty use cases. Includes named account management and contractual SLAs.
+    entries:
+      - label: Volume
+        name: volume
+        type: quota
+        metric: requests
+        limit: -1
+        timeFrame: month
+        geo: configurable
+        domains: []
+        unit: 1
+        price: custom
+        userMultiplied: false
+      - label: Rate Limit
+        name: rate_limit
+        type: rate
+        metric: requests_per_minute
+        limit: -1
+        timeFrame: minute
+        geo: configurable
+        domains: []
+        unit: 1
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: All OpenWeather APIs
+      - name: Dedicated Account Manager
+      - name: Contractual SLA
+      - name: Security and Compliance Review
+      - name: History Bulk, Solar Bulk, Map Bulk Offerings
+      - name: Fire Weather Index Maps
+      - name: Weather Maps 2.0 (1h Step)
+      - name: Global Precipitation Maps (Forecast)
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

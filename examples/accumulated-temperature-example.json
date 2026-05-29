@@ -1,0 +1,12 @@
+{
+  "operation": "getAccumulatedTemperature",
+  "request": {
+    "method": "GET",
+    "url": "https://history.openweathermap.org/data/2.5/history/accumulated_temperature?lat=45.5&lon=-122.6&start=1746057600&end=1748736000&threshold=10&appid={API_KEY}"
+  },
+  "response": [
+    { "date": 1746057600, "temp": 14.21, "count": 24 },
+    { "date": 1746144000, "temp": 15.07, "count": 24 },
+    { "date": 1746230400, "temp": 13.58, "count": 24 }
+  ]
+}

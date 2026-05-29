@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: OpenWeatherMap Solar Energy
+  description: Naftiko capability for OpenWeather Solar Irradiance and Solar Panel Energy Prediction APIs.
+  tags:
+    - OpenWeather
+    - Solar Irradiance
+    - Solar Panels
+  created: '2026-05-29'
+  modified: '2026-05-29'
+binds:
+  - namespace: env
+    keys:
+      OPENWEATHER_API_KEY: OPENWEATHER_API_KEY
+capability:
+  consumes:
+    - type: http
+      namespace: openweathermap-solar
+      baseUri: https://api.openweathermap.org/energy/2.0
+      description: OpenWeather Solar Energy APIs.
+      resources:
+        - name: solar-interval
+          path: /solar/interval_data
+          operations:
+            - name: getsolarirradianceintervaldata
+              method: GET
+              description: Solar irradiance interval data.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: lat
+                  in: query
+                  type: number
+                  required: true
+                - name: lon
+                  in: query
+                  type: number
+                  required: true
+                - name: date
+                  in: query
+                  type: string
+                  required: true
+                - name: interval
+                  in: query
+                  type: string
+                - name: tz
+                  in: query
+                  type: string
+                - name: appid
+                  in: query
+                  type: string
+                  required: true
+        - name: locations
+          path: /locations
+          operations:
+            - name: listsolarlocations
+              method: GET
+              description: List modeled locations.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: array
+                  value: $.
+              inputParameters:
+                - name: appid
+                  in: query
+                  type: string
+                  required: true
+            - name: createsolarlocation
+              method: POST
+              description: Create a modeled location.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+              inputParameters:
+                - name: appid
+                  in: query
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+      authentication:
+        type: apikey
+        key: appid
+        value: '{{env.OPENWEATHER_API_KEY}}'
+        placement: query
+  exposes:
+    - type: rest
+      namespace: openweathermap-solar-rest
+      port: 8080
+      resources:
+        - path: /v1/solar/interval_data
+          name: solar-interval
+          operations:
+            - method: GET
+              name: getsolarirradianceintervaldata
+              call: openweathermap-solar.getsolarirradianceintervaldata
+              with:
+                lat: rest.lat
+                lon: rest.lon
+                date: rest.date
+                interval: rest.interval
+                tz: rest.tz
+                appid: rest.appid
+              outputParameters:
+                - type: object
+                  mapping: $.
+    - type: mcp
+      namespace: openweathermap-solar-mcp
+      port: 9090
+      transport: http
+      tools:
+        - name: get-solar-irradiance
+          description: Solar irradiance interval data.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: openweathermap-solar.getsolarirradianceintervaldata
+          with:
+            lat: tools.lat
+            lon: tools.lon
+            date: tools.date
+            interval: tools.interval
+            tz: tools.tz
+            appid: tools.appid
+          outputParameters:
+            - type: object
+              mapping: $.
