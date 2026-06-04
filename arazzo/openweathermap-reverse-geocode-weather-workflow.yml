@@ -1,0 +1,139 @@
+arazzo: 1.0.1
+info:
+  title: OpenWeatherMap Reverse Geocode Weather
+  summary: Turn coordinates into a place name, then fetch current weather and One Call conditions.
+  description: >-
+    Starts from a raw latitude and longitude, resolves a human-readable place
+    name with reverse geocoding, then reads the classic current weather endpoint
+    and the unified One Call current conditions endpoint at the same point. The
+    reverse geocoding result labels the snapshot with a recognizable location.
+    Every step spells out its request inline, including the appid API key the
+    security scheme requires, so the flow can be read and executed without
+    opening the underlying OpenAPI descriptions.
+  version: 1.0.0
+sourceDescriptions:
+- name: geocodingApi
+  url: ../openapi/openweathermap-geocoding-openapi.yml
+  type: openapi
+- name: currentWeatherApi
+  url: ../openapi/openweathermap-current-weather-openapi.yml
+  type: openapi
+- name: oneCallApi
+  url: ../openapi/openweathermap-one-call-openapi.yml
+  type: openapi
+workflows:
+- workflowId: reverse-geocode-weather
+  summary: Reverse geocode a coordinate, then return current weather and One Call conditions.
+  description: >-
+    Calls reverse geocoding to label a coordinate with a place name, then reads
+    the current weather and One Call current conditions endpoints at that same
+    coordinate.
+  inputs:
+    type: object
+    required:
+    - lat
+    - lon
+    - appid
+    properties:
+      lat:
+        type: number
+        description: Latitude in decimal degrees, range -90 to 90.
+      lon:
+        type: number
+        description: Longitude in decimal degrees, range -180 to 180.
+      limit:
+        type: integer
+        description: Maximum number of reverse geocoding place names to return.
+      units:
+        type: string
+        description: Units of measurement (standard, metric, or imperial).
+      lang:
+        type: string
+        description: Localization language code for weather condition text.
+      appid:
+        type: string
+        description: OpenWeather API key.
+  steps:
+  - stepId: reverseGeocode
+    description: >-
+      Resolve the supplied coordinate into one or more human-readable place
+      names, keeping the first match.
+    operationId: getReverseGeocoding
+    parameters:
+    - name: lat
+      in: query
+      value: $inputs.lat
+    - name: lon
+      in: query
+      value: $inputs.lon
+    - name: limit
+      in: query
+      value: $inputs.limit
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      placeName: $response.body#/0/name
+      country: $response.body#/0/country
+      state: $response.body#/0/state
+  - stepId: currentWeather
+    description: >-
+      Read the classic current weather endpoint at the same coordinate for
+      temperature, wind, humidity, and a brief weather condition.
+    operationId: getCurrentWeather
+    parameters:
+    - name: lat
+      in: query
+      value: $inputs.lat
+    - name: lon
+      in: query
+      value: $inputs.lon
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: lang
+      in: query
+      value: $inputs.lang
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      temp: $response.body#/main/temp
+      conditions: $response.body#/weather/0/main
+  - stepId: oneCallCurrent
+    description: >-
+      Read the unified One Call current conditions endpoint at the same
+      coordinate for richer fields such as UV index and dew point.
+    operationId: getOneCallCurrent
+    parameters:
+    - name: lat
+      in: query
+      value: $inputs.lat
+    - name: lon
+      in: query
+      value: $inputs.lon
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: lang
+      in: query
+      value: $inputs.lang
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      timezone: $response.body#/timezone
+      uvi: $response.body#/current/uvi
+      dewPoint: $response.body#/current/dew_point
+  outputs:
+    placeName: $steps.reverseGeocode.outputs.placeName
+    country: $steps.reverseGeocode.outputs.country
+    currentTemp: $steps.currentWeather.outputs.temp
+    currentConditions: $steps.currentWeather.outputs.conditions
+    uvi: $steps.oneCallCurrent.outputs.uvi

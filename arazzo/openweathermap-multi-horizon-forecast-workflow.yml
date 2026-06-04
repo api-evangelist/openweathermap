@@ -1,0 +1,164 @@
+arazzo: 1.0.1
+info:
+  title: OpenWeatherMap Multi Horizon Forecast
+  summary: Geocode a city, then stack hourly, daily, and climatic forecasts for it.
+  description: >-
+    Resolves a city name into coordinates with the geocoding API, then chains
+    those coordinates across three forecast horizons served from the Pro
+    forecast base URL: the four day hourly forecast, the sixteen day daily
+    forecast, and the thirty day climatic forecast. The result is a single
+    multi-horizon view from the next few hours out to the next month. Every step
+    spells out its request inline, including the appid API key the security
+    scheme requires, so the flow can be read and executed without opening the
+    underlying OpenAPI descriptions.
+  version: 1.0.0
+sourceDescriptions:
+- name: geocodingApi
+  url: ../openapi/openweathermap-geocoding-openapi.yml
+  type: openapi
+- name: forecastApi
+  url: ../openapi/openweathermap-forecast-openapi.yml
+  type: openapi
+workflows:
+- workflowId: multi-horizon-forecast
+  summary: Resolve a city name, then return hourly, daily, and climatic forecasts.
+  description: >-
+    Calls direct geocoding to turn a city query into coordinates, then chains
+    the latitude and longitude into the four day hourly, sixteen day daily, and
+    thirty day climatic forecast endpoints.
+  inputs:
+    type: object
+    required:
+    - q
+    - appid
+    properties:
+      q:
+        type: string
+        description: City name, optionally with state and ISO country codes, comma-separated.
+      units:
+        type: string
+        description: Units of measurement (standard, metric, or imperial).
+      lang:
+        type: string
+        description: Localization language code for weather condition text.
+      hourlyCount:
+        type: integer
+        description: Number of hourly timestamps to return (up to 96).
+      dailyCount:
+        type: integer
+        description: Number of days to return from the daily forecast (1 to 16).
+      climateCount:
+        type: integer
+        description: Number of days to return from the climatic forecast (1 to 30).
+      appid:
+        type: string
+        description: OpenWeather API key.
+  steps:
+  - stepId: geocodeCity
+    description: >-
+      Resolve the supplied city query into geographic coordinates, keeping the
+      first and best match.
+    operationId: getDirectGeocoding
+    parameters:
+    - name: q
+      in: query
+      value: $inputs.q
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lat: $response.body#/0/lat
+      lon: $response.body#/0/lon
+      name: $response.body#/0/name
+  - stepId: hourlyForecast
+    description: >-
+      Fetch the four day hourly forecast at the geocoded coordinates. Served
+      from the Pro forecast base URL.
+    operationId: getForecastHourly
+    parameters:
+    - name: lat
+      in: query
+      value: $steps.geocodeCity.outputs.lat
+    - name: lon
+      in: query
+      value: $steps.geocodeCity.outputs.lon
+    - name: cnt
+      in: query
+      value: $inputs.hourlyCount
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: lang
+      in: query
+      value: $inputs.lang
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      hourlyList: $response.body#/list
+  - stepId: dailyForecast
+    description: >-
+      Fetch the sixteen day daily forecast at the same coordinates. Served from
+      the Pro forecast base URL.
+    operationId: getForecastDaily
+    parameters:
+    - name: lat
+      in: query
+      value: $steps.geocodeCity.outputs.lat
+    - name: lon
+      in: query
+      value: $steps.geocodeCity.outputs.lon
+    - name: cnt
+      in: query
+      value: $inputs.dailyCount
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: lang
+      in: query
+      value: $inputs.lang
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      dailyList: $response.body#/list
+  - stepId: climaticForecast
+    description: >-
+      Fetch the thirty day climatic forecast at the same coordinates. Served
+      from the Pro forecast base URL.
+    operationId: getForecastClimate
+    parameters:
+    - name: lat
+      in: query
+      value: $steps.geocodeCity.outputs.lat
+    - name: lon
+      in: query
+      value: $steps.geocodeCity.outputs.lon
+    - name: cnt
+      in: query
+      value: $inputs.climateCount
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: lang
+      in: query
+      value: $inputs.lang
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      climateList: $response.body#/list
+  outputs:
+    lat: $steps.geocodeCity.outputs.lat
+    lon: $steps.geocodeCity.outputs.lon
+    hourlyList: $steps.hourlyForecast.outputs.hourlyList
+    dailyList: $steps.dailyForecast.outputs.dailyList
+    climateList: $steps.climaticForecast.outputs.climateList

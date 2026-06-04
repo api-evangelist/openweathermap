@@ -1,0 +1,126 @@
+arazzo: 1.0.1
+info:
+  title: OpenWeatherMap Zip To Forecast
+  summary: Resolve a zip or postal code to coordinates, then return five day and sixteen day forecasts.
+  description: >-
+    Converts a zip or postal code into coordinates with the zip geocoding
+    endpoint, then chains the resolved latitude and longitude into the five day
+    three hour forecast and the sixteen day daily forecast for a near-term and
+    extended outlook. Every step spells out its request inline, including the
+    appid API key the security scheme requires, so the flow can be read and
+    executed without opening the underlying OpenAPI descriptions.
+  version: 1.0.0
+sourceDescriptions:
+- name: geocodingApi
+  url: ../openapi/openweathermap-geocoding-openapi.yml
+  type: openapi
+- name: forecastApi
+  url: ../openapi/openweathermap-forecast-openapi.yml
+  type: openapi
+workflows:
+- workflowId: zip-to-forecast
+  summary: Resolve a zip code to coordinates, then return five day and sixteen day forecasts.
+  description: >-
+    Calls zip geocoding to turn a postal code into coordinates, then chains the
+    latitude and longitude into the five day three hour forecast and the sixteen
+    day daily forecast endpoints.
+  inputs:
+    type: object
+    required:
+    - zip
+    - appid
+    properties:
+      zip:
+        type: string
+        description: Zip or postal code and country code, comma-separated (e.g. "90210,US").
+      units:
+        type: string
+        description: Units of measurement (standard, metric, or imperial).
+      lang:
+        type: string
+        description: Localization language code for weather condition text.
+      dailyCount:
+        type: integer
+        description: Number of days to return from the daily forecast (1 to 16).
+      appid:
+        type: string
+        description: OpenWeather API key.
+  steps:
+  - stepId: geocodeZip
+    description: >-
+      Resolve the supplied zip or postal code into geographic coordinates.
+    operationId: getZipGeocoding
+    parameters:
+    - name: zip
+      in: query
+      value: $inputs.zip
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lat: $response.body#/lat
+      lon: $response.body#/lon
+      name: $response.body#/name
+      country: $response.body#/country
+  - stepId: fiveDayForecast
+    description: >-
+      Fetch the five day three hour forecast at the geocoded coordinates for a
+      near-term outlook.
+    operationId: getForecastFiveDay
+    parameters:
+    - name: lat
+      in: query
+      value: $steps.geocodeZip.outputs.lat
+    - name: lon
+      in: query
+      value: $steps.geocodeZip.outputs.lon
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: lang
+      in: query
+      value: $inputs.lang
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      timestampCount: $response.body#/cnt
+      forecastList: $response.body#/list
+  - stepId: dailyForecast
+    description: >-
+      Fetch the sixteen day daily forecast at the same coordinates for an
+      extended outlook. Served from the Pro forecast base URL.
+    operationId: getForecastDaily
+    parameters:
+    - name: lat
+      in: query
+      value: $steps.geocodeZip.outputs.lat
+    - name: lon
+      in: query
+      value: $steps.geocodeZip.outputs.lon
+    - name: cnt
+      in: query
+      value: $inputs.dailyCount
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: lang
+      in: query
+      value: $inputs.lang
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      dayCount: $response.body#/cnt
+      dailyList: $response.body#/list
+  outputs:
+    lat: $steps.geocodeZip.outputs.lat
+    lon: $steps.geocodeZip.outputs.lon
+    forecastList: $steps.fiveDayForecast.outputs.forecastList
+    dailyList: $steps.dailyForecast.outputs.dailyList

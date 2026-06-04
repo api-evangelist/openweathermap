@@ -1,0 +1,133 @@
+arazzo: 1.0.1
+info:
+  title: OpenWeatherMap Coordinate Weather And Air Snapshot
+  summary: From raw coordinates, gather current weather, One Call current conditions, and air pollution.
+  description: >-
+    Builds a complete environmental snapshot for a known latitude and longitude
+    by fanning out across three OpenWeather products. It reads the classic
+    current weather endpoint, the unified One Call current conditions endpoint,
+    and the current air pollution endpoint, then surfaces the most useful values
+    from each. Every step spells out its request inline, including the appid API
+    key the security scheme requires, so the flow can be read and executed
+    without opening the underlying OpenAPI descriptions.
+  version: 1.0.0
+sourceDescriptions:
+- name: currentWeatherApi
+  url: ../openapi/openweathermap-current-weather-openapi.yml
+  type: openapi
+- name: oneCallApi
+  url: ../openapi/openweathermap-one-call-openapi.yml
+  type: openapi
+- name: airPollutionApi
+  url: ../openapi/openweathermap-air-pollution-openapi.yml
+  type: openapi
+workflows:
+- workflowId: coordinate-weather-and-air-snapshot
+  summary: Gather current weather, One Call current conditions, and air pollution for a coordinate.
+  description: >-
+    Takes a latitude and longitude and reads three independent OpenWeather
+    endpoints, returning a combined view of current weather, One Call current
+    conditions, and air quality.
+  inputs:
+    type: object
+    required:
+    - lat
+    - lon
+    - appid
+    properties:
+      lat:
+        type: number
+        description: Latitude in decimal degrees, range -90 to 90.
+      lon:
+        type: number
+        description: Longitude in decimal degrees, range -180 to 180.
+      units:
+        type: string
+        description: Units of measurement (standard, metric, or imperial).
+      lang:
+        type: string
+        description: Localization language code for weather condition text.
+      appid:
+        type: string
+        description: OpenWeather API key.
+  steps:
+  - stepId: currentWeather
+    description: >-
+      Read the classic current weather endpoint for temperature, wind, humidity,
+      and a brief weather condition.
+    operationId: getCurrentWeather
+    parameters:
+    - name: lat
+      in: query
+      value: $inputs.lat
+    - name: lon
+      in: query
+      value: $inputs.lon
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: lang
+      in: query
+      value: $inputs.lang
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      temp: $response.body#/main/temp
+      conditions: $response.body#/weather/0/main
+  - stepId: oneCallCurrent
+    description: >-
+      Read the unified One Call current conditions endpoint for richer fields
+      such as UV index and dew point.
+    operationId: getOneCallCurrent
+    parameters:
+    - name: lat
+      in: query
+      value: $inputs.lat
+    - name: lon
+      in: query
+      value: $inputs.lon
+    - name: units
+      in: query
+      value: $inputs.units
+    - name: lang
+      in: query
+      value: $inputs.lang
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      timezone: $response.body#/timezone
+      uvi: $response.body#/current/uvi
+      dewPoint: $response.body#/current/dew_point
+  - stepId: currentAirPollution
+    description: >-
+      Read the current air pollution endpoint for the Air Quality Index and
+      pollutant concentrations at the same coordinates.
+    operationId: getCurrentAirPollution
+    parameters:
+    - name: lat
+      in: query
+      value: $inputs.lat
+    - name: lon
+      in: query
+      value: $inputs.lon
+    - name: appid
+      in: query
+      value: $inputs.appid
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      aqi: $response.body#/list/0/main/aqi
+      components: $response.body#/list/0/components
+  outputs:
+    currentTemp: $steps.currentWeather.outputs.temp
+    currentConditions: $steps.currentWeather.outputs.conditions
+    uvi: $steps.oneCallCurrent.outputs.uvi
+    dewPoint: $steps.oneCallCurrent.outputs.dewPoint
+    aqi: $steps.currentAirPollution.outputs.aqi
+    components: $steps.currentAirPollution.outputs.components
