@@ -1,0 +1,686 @@
+"""
+OpenWeatherMap GraphQL Schema
+Conceptual schema representing the OpenWeatherMap REST API surface
+covering current weather, forecasts, air quality, geocoding, history,
+solar, weather maps, stations, and related administrative types.
+"""
+
+# ─── Scalars ────────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar JSON
+
+# ─── Enums ──────────────────────────────────────────────────────────────────
+
+enum TemperatureUnit {
+  KELVIN
+  CELSIUS
+  FAHRENHEIT
+}
+
+enum WindSpeedUnit {
+  METERS_PER_SECOND
+  MILES_PER_HOUR
+  KILOMETERS_PER_HOUR
+  KNOTS
+}
+
+enum AQILevel {
+  GOOD
+  FAIR
+  MODERATE
+  POOR
+  VERY_POOR
+}
+
+enum WeatherMapLayer {
+  CLOUDS
+  PRECIPITATION
+  SEA_LEVEL_PRESSURE
+  WIND_SPEED
+  TEMPERATURE
+  HUMIDITY
+}
+
+enum ForecastInterval {
+  HOURLY
+  THREE_HOURLY
+  DAILY
+  MINUTE
+}
+
+enum StationGranularity {
+  MINUTE
+  HOUR
+  DAY
+}
+
+enum PollutantType {
+  CO
+  NO
+  NO2
+  O3
+  SO2
+  NH3
+  PM2_5
+  PM10
+}
+
+enum SolarComponent {
+  GHI
+  DNI
+  DHI
+}
+
+# ─── Core Weather Types ──────────────────────────────────────────────────────
+
+"""Root weather container combining all observation data for a location."""
+type Weather {
+  id: ID!
+  dt: DateTime!
+  coord: Coordinates!
+  city: City
+  timezone: String
+  timezoneOffset: Int
+  current: CurrentWeather
+  minutely: [MinuteForecast]
+  hourly: [HourlyForecast]
+  daily: [DailyForecast]
+  alerts: [WeatherAlert]
+}
+
+"""Current weather conditions at a coordinate or city."""
+type CurrentWeather {
+  dt: DateTime!
+  sunrise: Sunrise
+  sunset: Sunset
+  temp: Float!
+  feelsLike: Float!
+  pressure: Pressure!
+  humidity: Humidity!
+  dewPoint: Float
+  uvIndex: UVIndex
+  clouds: Clouds!
+  visibility: Visibility
+  wind: Wind!
+  rain: Rain
+  snow: Snow
+  conditions: [WeatherCondition!]!
+}
+
+"""One-minute precipitation forecast bucket."""
+type MinuteForecast {
+  dt: DateTime!
+  precipitation: Precipitation!
+}
+
+"""Hourly forecast time slice."""
+type HourlyForecast {
+  dt: DateTime!
+  temp: Float!
+  feelsLike: Float!
+  pressure: Pressure!
+  humidity: Humidity!
+  dewPoint: Float
+  uvIndex: UVIndex
+  clouds: Clouds!
+  visibility: Visibility
+  wind: Wind!
+  pop: Float
+  rain: Rain
+  snow: Snow
+  conditions: [WeatherCondition!]!
+}
+
+"""Daily forecast time slice with high/low temperatures."""
+type DailyForecast {
+  dt: DateTime!
+  sunrise: Sunrise
+  sunset: Sunset
+  moonrise: Int
+  moonset: Int
+  moonPhase: MoonPhase
+  summary: String
+  temp: Temperature!
+  feelsLike: Temperature!
+  pressure: Pressure!
+  humidity: Humidity!
+  dewPoint: Float
+  windSpeed: WindSpeed!
+  windGust: WindGust
+  windDeg: WindDegree!
+  clouds: Clouds!
+  pop: Float
+  rain: Rain
+  snow: Snow
+  uvIndex: UVIndex
+  conditions: [WeatherCondition!]!
+}
+
+"""3-hour forecast step (Forecast 5 Day API)."""
+type Forecast5Day {
+  cod: String
+  message: Float
+  cnt: Int!
+  list: [HourlyForecast!]!
+  city: City!
+}
+
+"""16-day daily forecast list."""
+type Forecast16Day {
+  city: City!
+  cnt: Int!
+  list: [DailyForecast!]!
+}
+
+# ─── Weather Condition / Description ────────────────────────────────────────
+
+"""High-level weather group (Rain, Snow, Clear, etc.)."""
+type WeatherGroup {
+  id: Int!
+  main: String!
+  icon: String
+}
+
+"""Detailed weather condition with ID, group, and icon."""
+type WeatherCondition {
+  id: Int!
+  main: String!
+  description: String!
+  icon: String!
+  group: WeatherGroup
+}
+
+"""Human-readable weather description string."""
+type WeatherDescription {
+  text: String!
+  lang: String
+}
+
+# ─── Atmospheric Parameters ──────────────────────────────────────────────────
+
+"""Temperature reading with optional min/max/morn/eve/night breakdown."""
+type Temperature {
+  day: Float
+  min: Float
+  max: Float
+  night: Float
+  eve: Float
+  morn: Float
+  unit: TemperatureUnit
+}
+
+"""Atmospheric pressure in hPa."""
+type Pressure {
+  value: Float!
+  seaLevel: Float
+  groundLevel: Float
+  unit: String
+}
+
+"""Relative humidity percentage."""
+type Humidity {
+  value: Float!
+  unit: String
+}
+
+"""Cloud coverage percentage."""
+type Clouds {
+  all: Float!
+  unit: String
+}
+
+"""Visibility distance in metres."""
+type Visibility {
+  value: Float!
+  unit: String
+}
+
+# ─── Wind ────────────────────────────────────────────────────────────────────
+
+"""Composite wind reading."""
+type Wind {
+  speed: WindSpeed!
+  gust: WindGust
+  deg: WindDegree!
+}
+
+"""Wind speed scalar with unit."""
+type WindSpeed {
+  value: Float!
+  unit: WindSpeedUnit
+}
+
+"""Wind gust speed scalar with unit."""
+type WindGust {
+  value: Float!
+  unit: WindSpeedUnit
+}
+
+"""Wind direction in meteorological degrees."""
+type WindDegree {
+  value: Float!
+  cardinal: String
+}
+
+# ─── Precipitation ───────────────────────────────────────────────────────────
+
+"""Rain accumulation for a time window."""
+type Rain {
+  oneHour: Float
+  threeHour: Float
+  unit: String
+}
+
+"""Snow accumulation for a time window."""
+type Snow {
+  oneHour: Float
+  threeHour: Float
+  unit: String
+}
+
+"""Generic precipitation amount."""
+type Precipitation {
+  value: Float!
+  unit: String
+}
+
+# ─── Celestial / Astronomy ───────────────────────────────────────────────────
+
+"""Sunrise time and azimuth."""
+type Sunrise {
+  dt: DateTime!
+  azimuth: Float
+}
+
+"""Sunset time and azimuth."""
+type Sunset {
+  dt: DateTime!
+  azimuth: Float
+}
+
+"""Moon phase value (0-1) and descriptive name."""
+type MoonPhase {
+  value: Float!
+  name: String
+}
+
+"""Tide level (placeholder for coastal/marine extensions)."""
+type Tide {
+  dt: DateTime!
+  height: Float!
+  type: String
+  unit: String
+}
+
+# ─── UV Index ────────────────────────────────────────────────────────────────
+
+"""UV index reading with exposure risk category."""
+type UVIndex {
+  value: Float!
+  risk: String
+}
+
+# ─── Air Quality ─────────────────────────────────────────────────────────────
+
+"""Air quality index and pollutant breakdown for a single time step."""
+type AirQuality {
+  dt: DateTime!
+  coord: Coordinates!
+  aqi: Int!
+  aqiLevel: AQILevel!
+  components: AirComponents!
+}
+
+"""Concentrations of individual pollutants (µg/m³)."""
+type AirComponents {
+  co: Float
+  no: Float
+  no2: Float
+  o3: Float
+  so2: Float
+  nh3: Float
+  pm2_5: Float
+  pm10: Float
+}
+
+"""Single air pollution observation."""
+type AirPollution {
+  dt: DateTime!
+  main: AirQualityMain!
+  components: AirComponents!
+}
+
+"""AQI wrapper for the air pollution API response."""
+type AirQualityMain {
+  aqi: Int!
+}
+
+"""List response for current/forecast/historical air pollution."""
+type AirPollutionList {
+  coord: Coordinates!
+  list: [AirPollution!]!
+}
+
+# ─── Weather Alerts ──────────────────────────────────────────────────────────
+
+"""Container for all active alerts for a location."""
+type Alerts {
+  location: Coordinates!
+  alerts: [WeatherAlert!]!
+}
+
+"""A single government or meteorological weather alert."""
+type WeatherAlert {
+  senderName: String!
+  event: String!
+  start: DateTime!
+  end: DateTime!
+  description: String!
+  tags: [String]
+  metadata: AlertMetadata
+}
+
+"""Extended metadata carried by a weather alert."""
+type AlertMetadata {
+  severity: String
+  certainty: String
+  urgency: String
+  areas: [String]
+  sourceURL: String
+}
+
+# ─── Geocoding ───────────────────────────────────────────────────────────────
+
+"""Coordinates pair."""
+type Coordinates {
+  lat: Float!
+  lon: Float!
+}
+
+"""Result of a forward geocoding request."""
+type GeocodeResult {
+  name: String!
+  localNames: JSON
+  lat: Float!
+  lon: Float!
+  country: String!
+  state: String
+}
+
+"""Convenience alias grouping forward geocode results."""
+type Geocode {
+  query: String!
+  results: [GeocodeResult!]!
+}
+
+"""Result of a reverse geocoding request (coordinates to place)."""
+type ReverseGeocode {
+  lat: Float!
+  lon: Float!
+  name: String!
+  localNames: JSON
+  country: String!
+  state: String
+  suburb: String
+}
+
+# ─── City / Location ─────────────────────────────────────────────────────────
+
+"""City entity with id, name, and coordinate."""
+type City {
+  id: Int
+  name: String!
+  coord: Coordinates!
+  country: String!
+  state: String
+  population: Int
+  timezone: Int
+  sunrise: Int
+  sunset: Int
+}
+
+"""Country metadata."""
+type Country {
+  code: String!
+  name: String
+  timezone: String
+}
+
+# ─── Historical Weather ───────────────────────────────────────────────────────
+
+"""Historical weather observation at a single timestamp."""
+type WeatherHistory {
+  dt: DateTime!
+  lat: Float!
+  lon: Float!
+  current: CurrentWeather!
+  hourly: [HourlyForecast]
+}
+
+"""Historical weather archive retrieval parameters and results."""
+type WeatherArchive {
+  lat: Float!
+  lon: Float!
+  start: DateTime!
+  end: DateTime!
+  timezone: String
+  observations: [WeatherHistory!]!
+}
+
+"""Accumulated temperature or precipitation total over a time window."""
+type WeatherStat {
+  lat: Float!
+  lon: Float!
+  start: DateTime!
+  end: DateTime!
+  parameter: String!
+  value: Float!
+  unit: String
+}
+
+# ─── Weather Maps / Tiles ─────────────────────────────────────────────────────
+
+"""Weather map tile service descriptor."""
+type WeatherMap {
+  layer: WeatherMapLayer!
+  zoom: Int!
+  x: Int!
+  y: Int!
+  tileURL: String!
+  timestamp: DateTime
+}
+
+"""Map tile layer configuration."""
+type TileLayer {
+  layer: WeatherMapLayer!
+  baseURL: String!
+  attribution: String
+  opacity: Float
+  availableZoomLevels: [Int]
+}
+
+# ─── Weather Stations ─────────────────────────────────────────────────────────
+
+"""Registered personal weather station."""
+type Station {
+  id: ID!
+  externalId: String!
+  name: String!
+  latitude: Float!
+  longitude: Float!
+  altitude: Float
+  rank: Int
+}
+
+"""Aggregated measurement from a weather station."""
+type StationData {
+  stationId: ID!
+  type: StationGranularity!
+  date: DateTime!
+  temp: Float
+  humidity: Float
+  pressure: Float
+  wind_speed: Float
+  wind_deg: Float
+  rain: Float
+  snow: Float
+  dew_point: Float
+}
+
+# ─── Solar ───────────────────────────────────────────────────────────────────
+
+"""Solar irradiance reading for a single timestamp."""
+type SolarIrradiance {
+  dt: DateTime!
+  lat: Float!
+  lon: Float!
+  ghi: Float
+  dni: Float
+  dhi: Float
+  ghiClearSky: Float
+  dniClearSky: Float
+  dhiClearSky: Float
+  unit: String
+}
+
+"""Solar panel energy prediction for a configured panel location."""
+type SolarPanelOutput {
+  locationId: ID!
+  dt: DateTime!
+  powerOutput: Float!
+  energyOutput: Float!
+  unit: String
+}
+
+# ─── API / Account ────────────────────────────────────────────────────────────
+
+"""OpenWeatherMap API service descriptor."""
+type WeatherAPI {
+  id: ID!
+  name: String!
+  version: String!
+  baseURL: String!
+  endpoints: [String]
+  authMethod: String
+}
+
+"""Record of an individual API call."""
+type APICall {
+  id: ID!
+  endpoint: String!
+  timestamp: DateTime!
+  statusCode: Int!
+  latencyMs: Int
+  cached: Boolean
+}
+
+"""Current API quota usage for a subscription."""
+type APIQuota {
+  subscriptionId: ID!
+  dailyLimit: Int
+  dailyUsed: Int
+  minuteLimit: Int
+  minuteUsed: Int
+  resetAt: DateTime
+}
+
+"""API subscription / plan details."""
+type APISubscription {
+  id: ID!
+  plan: String!
+  tier: String!
+  apiKey: String
+  quotas: APIQuota
+  activeSince: DateTime
+  expiresAt: DateTime
+}
+
+# ─── Queries ──────────────────────────────────────────────────────────────────
+
+type Query {
+  """Current weather by city name."""
+  currentWeatherByCity(city: String!, countryCode: String, units: TemperatureUnit, lang: String): CurrentWeather
+
+  """Current weather by coordinates."""
+  currentWeatherByCoords(lat: Float!, lon: Float!, units: TemperatureUnit, lang: String): CurrentWeather
+
+  """5-day / 3-hour forecast by city."""
+  forecast5DayByCity(city: String!, countryCode: String, units: TemperatureUnit, lang: String): Forecast5Day
+
+  """5-day / 3-hour forecast by coordinates."""
+  forecast5DayByCoords(lat: Float!, lon: Float!, units: TemperatureUnit, lang: String): Forecast5Day
+
+  """16-day daily forecast."""
+  forecast16Day(lat: Float!, lon: Float!, cnt: Int, units: TemperatureUnit): Forecast16Day
+
+  """One Call API — full weather timeline for a coordinate."""
+  oneCall(lat: Float!, lon: Float!, exclude: [String], units: TemperatureUnit, lang: String): Weather
+
+  """Historical One Call data for a specific timestamp."""
+  oneCallHistory(lat: Float!, lon: Float!, dt: DateTime!, units: TemperatureUnit): WeatherHistory
+
+  """Current air pollution at coordinates."""
+  airPollutionCurrent(lat: Float!, lon: Float!): AirPollutionList
+
+  """Air pollution forecast (4-day hourly)."""
+  airPollutionForecast(lat: Float!, lon: Float!): AirPollutionList
+
+  """Historical air pollution over a time window."""
+  airPollutionHistory(lat: Float!, lon: Float!, start: DateTime!, end: DateTime!): AirPollutionList
+
+  """Forward geocoding by city name."""
+  geocode(q: String!, limit: Int): Geocode
+
+  """Forward geocoding by zip/postal code."""
+  geocodeByZip(zip: String!, countryCode: String!): GeocodeResult
+
+  """Reverse geocoding by coordinates."""
+  reverseGeocode(lat: Float!, lon: Float!, limit: Int): [ReverseGeocode]
+
+  """Historical weather archive."""
+  weatherHistory(lat: Float!, lon: Float!, start: DateTime!, end: DateTime!): WeatherArchive
+
+  """Statistical weather data for a calendar period."""
+  weatherStats(lat: Float!, lon: Float!, month: Int, day: Int): [WeatherStat]
+
+  """Solar irradiance history or forecast."""
+  solarIrradiance(lat: Float!, lon: Float!, start: DateTime!, end: DateTime!): [SolarIrradiance]
+
+  """List registered weather stations."""
+  stations: [Station]
+
+  """Get a single station by ID."""
+  station(id: ID!): Station
+
+  """Get aggregated station measurements."""
+  stationData(stationId: ID!, type: StationGranularity!, from: DateTime!, to: DateTime!): [StationData]
+
+  """Weather map tile metadata."""
+  weatherMapTile(layer: WeatherMapLayer!, zoom: Int!, x: Int!, y: Int!): WeatherMap
+
+  """Available tile layers."""
+  tileLayers: [TileLayer]
+
+  """API subscription details for the authenticated key."""
+  apiSubscription: APISubscription
+
+  """Current API quota usage."""
+  apiQuota: APIQuota
+}
+
+# ─── Mutations ────────────────────────────────────────────────────────────────
+
+type Mutation {
+  """Register a new personal weather station."""
+  createStation(externalId: String!, name: String!, latitude: Float!, longitude: Float!, altitude: Float): Station
+
+  """Update an existing weather station."""
+  updateStation(id: ID!, name: String, latitude: Float, longitude: Float, altitude: Float): Station
+
+  """Delete a weather station."""
+  deleteStation(id: ID!): Boolean
+
+  """Submit a measurement batch to a station."""
+  submitStationMeasurements(stationId: ID!, measurements: [JSON!]!): Boolean
+}

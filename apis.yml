@@ -1,12 +1,11 @@
 aid: openweathermap
 name: OpenWeatherMap
-description: >-
-  OpenWeather (operating openweathermap.org) is a global weather data
-  platform delivering current weather, multi-horizon forecasts, historical
-  archives, climate statistics, air pollution, solar irradiance, road risk,
-  geocoding, and weather map tiles. Data is sourced from satellites, weather
-  models, radars, and a worldwide network of weather stations, served through
-  REST APIs across a freemium, multi-tier, and pay-per-call commercial model.
+description: OpenWeather (operating openweathermap.org) is a global weather data platform
+  delivering current weather, multi-horizon forecasts, historical archives, climate
+  statistics, air pollution, solar irradiance, road risk, geocoding, and weather map
+  tiles. Data is sourced from satellites, weather models, radars, and a worldwide
+  network of weather stations, served through REST APIs across a freemium, multi-tier,
+  and pay-per-call commercial model.
 url: https://openweathermap.org/api
 specificationVersion: '0.20'
 created: '2026-05-28'
@@ -17,477 +16,490 @@ x-tier: 2
 x-tier-reason: comprehensive-weather-suite-with-multi-tier-pricing
 image: https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png
 tags:
-  - Weather
-  - Forecast
-  - Climate
-  - Air Pollution
-  - Air Quality
-  - Solar
-  - Geocoding
-  - History
-  - Maps
-  - Road Risk
-  - Public APIs
+- Weather
+- Forecast
+- Climate
+- Air Pollution
+- Air Quality
+- Solar
+- Geocoding
+- History
+- Maps
+- Road Risk
+- Public APIs
 apis:
-  - aid: openweathermap:current-weather
-    name: Current Weather Data API
-    description: >-
-      Returns current weather data for any location on Earth, including over
-      200,000 cities, sourced from satellites, radars, models, and a global
-      network of weather stations.
-    humanURL: https://openweathermap.org/current
-    baseURL: https://api.openweathermap.org/data/2.5
-    tags:
-      - Weather
-      - Current Weather
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/current
-      - type: OpenAPI
-        url: openapi/openweathermap-current-weather-openapi.yml
-      - type: JSONSchema
-        url: json-schema/openweathermap-current-weather-schema.json
-      - type: JSONStructure
-        url: json-structure/openweathermap-current-weather-structure.json
-      - type: NaftikoCapability
-        url: capabilities/current-weather.yaml
-      - type: Example
-        url: examples/current-weather-example.json
-      - type: Authentication
-        url: https://openweathermap.org/appid
-  - aid: openweathermap:forecast
-    name: Forecast APIs
-    description: >-
-      OpenWeather forecast surface including the public 5-day/3-hour forecast
-      plus pro hourly (4 days), daily (16 days), and climatic (30 days)
-      forecasts.
-    humanURL: https://openweathermap.org/forecast5
-    baseURL: https://api.openweathermap.org/data/2.5
-    tags:
-      - Weather
-      - Forecast
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/forecast5
-      - type: Documentation
-        url: https://openweathermap.org/api/hourly-forecast
-      - type: Documentation
-        url: https://openweathermap.org/forecast16
-      - type: Documentation
-        url: https://openweathermap.org/api/forecast30
-      - type: OpenAPI
-        url: openapi/openweathermap-forecast-openapi.yml
-      - type: JSONSchema
-        url: json-schema/openweathermap-forecast-schema.json
-      - type: NaftikoCapability
-        url: capabilities/forecast.yaml
-      - type: Example
-        url: examples/forecast-five-day-example.json
-  - aid: openweathermap:one-call
-    name: One Call API 4.0
-    description: >-
-      Unified weather timeline including current conditions, hourly, daily,
-      1-minute precipitation, 15-minute forecasts, government weather alerts,
-      and 47 plus years of historical data via pay-per-call pricing.
-    humanURL: https://openweathermap.org/api/one-call-4
-    baseURL: https://api.openweathermap.org/data/4.0/onecall
-    tags:
-      - Weather
-      - Forecast
-      - History
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/one-call-4
-      - type: OpenAPI
-        url: openapi/openweathermap-one-call-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/one-call.yaml
-      - type: Example
-        url: examples/one-call-current-example.json
-  - aid: openweathermap:air-pollution
-    name: Air Pollution API
-    description: >-
-      Current, forecast, and historical air pollution data including the Air
-      Quality Index and concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5,
-      and PM10 for any coordinates on the globe.
-    humanURL: https://openweathermap.org/api/air-pollution
-    baseURL: https://api.openweathermap.org/data/2.5
-    tags:
-      - Air Pollution
-      - Air Quality
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/air-pollution
-      - type: OpenAPI
-        url: openapi/openweathermap-air-pollution-openapi.yml
-      - type: JSONSchema
-        url: json-schema/openweathermap-air-pollution-schema.json
-      - type: JSONStructure
-        url: json-structure/openweathermap-air-pollution-structure.json
-      - type: NaftikoCapability
-        url: capabilities/air-pollution.yaml
-      - type: Example
-        url: examples/air-pollution-current-example.json
-  - aid: openweathermap:geocoding
-    name: Geocoding API
-    description: >-
-      Direct and reverse geocoding for city names, postal codes, and coordinate
-      pairs. Supports city, state, country, and area-level resolution.
-    humanURL: https://openweathermap.org/api/geocoding-api
-    baseURL: https://api.openweathermap.org/geo/1.0
-    tags:
-      - Geocoding
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/geocoding-api
-      - type: OpenAPI
-        url: openapi/openweathermap-geocoding-openapi.yml
-      - type: JSONSchema
-        url: json-schema/openweathermap-geocoding-schema.json
-      - type: JSONStructure
-        url: json-structure/openweathermap-geocoding-structure.json
-      - type: NaftikoCapability
-        url: capabilities/geocoding.yaml
-      - type: Example
-        url: examples/geocoding-direct-example.json
-  - aid: openweathermap:history
-    name: Historical Weather API
-    description: >-
-      Historical weather observations for any global coordinate at one-hour
-      granularity, spanning 47 plus years. Available on Professional and
-      Expert plans.
-    humanURL: https://openweathermap.org/history
-    baseURL: https://history.openweathermap.org/data/2.5
-    tags:
-      - Weather
-      - History
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/history
-      - type: OpenAPI
-        url: openapi/openweathermap-history-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/history.yaml
-      - type: Example
-        url: examples/history-city-example.json
-  - aid: openweathermap:statistical
-    name: Statistical Weather Data API
-    description: >-
-      Statistical aggregates (record min/max, average, mean, percentiles,
-      standard deviation) for main weather parameters on any day, month, or
-      yearly basis. Expert plan only.
-    humanURL: https://openweathermap.org/api/statistics-api
-    baseURL: https://history.openweathermap.org/data/2.5
-    tags:
-      - Weather
-      - Climate
-      - Statistics
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/statistics-api
-      - type: OpenAPI
-        url: openapi/openweathermap-statistical-weather-openapi.yml
-      - type: Example
-        url: examples/statistical-month-example.json
-  - aid: openweathermap:accumulated-parameters
-    name: Accumulated Parameters API
-    description: >-
-      Accumulated temperature and precipitation totals over a historical time
-      window, primarily for agriculture and energy applications. Available on
-      Professional and Expert plans.
-    humanURL: https://openweathermap.org/api/accumulated-parameters
-    baseURL: https://history.openweathermap.org/data/2.5/history
-    tags:
-      - Weather
-      - History
-      - Agriculture
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/accumulated-parameters
-      - type: OpenAPI
-        url: openapi/openweathermap-accumulated-parameters-openapi.yml
-      - type: Example
-        url: examples/accumulated-temperature-example.json
-  - aid: openweathermap:solar
-    name: Solar Energy APIs
-    description: >-
-      Solar Irradiance API (GHI, DNI, DHI for clear and cloudy sky models, 15
-      minute or hourly intervals, 47 plus years history) and Solar Panel
-      Energy Prediction API (manage modeled locations and solar panel
-      configurations and retrieve per-panel power and energy output).
-    humanURL: https://openweathermap.org/api/solar-irradiance
-    baseURL: https://api.openweathermap.org/energy/2.0
-    tags:
-      - Solar
-      - Energy
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/solar-irradiance
-      - type: Documentation
-        url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
-      - type: OpenAPI
-        url: openapi/openweathermap-solar-openapi.yml
-      - type: NaftikoCapability
-        url: capabilities/solar.yaml
-      - type: Example
-        url: examples/solar-irradiance-interval-example.json
-  - aid: openweathermap:road-risk
-    name: Road Risk API
-    description: >-
-      Route-specific weather data, national alerts, current conditions plus
-      five-day forecast, and one year of historical data for a sequence of
-      waypoints. Custom quote required.
-    humanURL: https://openweathermap.org/api/road-risk
-    baseURL: https://api.openweathermap.org
-    tags:
-      - Weather
-      - Routing
-      - Risk
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/road-risk
-      - type: OpenAPI
-        url: openapi/openweathermap-road-risk-openapi.yml
-      - type: Example
-        url: examples/road-risk-example.json
-  - aid: openweathermap:weather-stations
-    name: Weather Stations API
-    description: >-
-      Register and manage personal weather stations and submit measurement
-      data. Aggregated readings are retrievable at minute, hour, and day
-      granularity.
-    humanURL: https://openweathermap.org/stations
-    baseURL: https://api.openweathermap.org/data/3.0
-    tags:
-      - Weather
-      - Stations
-      - IoT
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/stations
-      - type: OpenAPI
-        url: openapi/openweathermap-weather-stations-openapi.yml
-      - type: JSONSchema
-        url: json-schema/openweathermap-station-schema.json
-      - type: Example
-        url: examples/weather-stations-create-example.json
-  - aid: openweathermap:weather-maps
-    name: Weather Maps 1.0
-    description: >-
-      Tile map service overlaying weather data layers (clouds, precipitation,
-      pressure, wind, temperature) on top of base maps using standard z/x/y
-      tile coordinates. Compatible with Leaflet, OpenLayers, Google Maps.
-    humanURL: https://openweathermap.org/api/weathermaps
-    baseURL: https://tile.openweathermap.org
-    tags:
-      - Weather
-      - Maps
-      - Tiles
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/weathermaps
-      - type: OpenAPI
-        url: openapi/openweathermap-weather-maps-openapi.yml
-      - type: Example
-        url: examples/weather-maps-tile-example.json
-common:
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-    - url: arazzo/openweathermap-air-quality-by-city-workflow.yml
-      name: OpenWeatherMap Air Quality By City
-      summary: Geocode a city name, then fetch current air pollution and its hourly forecast.
-    - url: arazzo/openweathermap-coordinate-weather-and-air-snapshot-workflow.yml
-      name: OpenWeatherMap Coordinate Weather And Air Snapshot
-      summary: From raw coordinates, gather current weather, One Call current conditions, and air pollution.
-    - url: arazzo/openweathermap-historical-air-pollution-window-workflow.yml
-      name: OpenWeatherMap Historical Air Pollution Window
-      summary: Geocode a city, then fetch historical air pollution for a window and the current reading.
-    - url: arazzo/openweathermap-locate-and-report-current-weather-workflow.yml
-      name: OpenWeatherMap Locate And Report Current Weather
-      summary: Geocode a city name, then fetch current weather and a five day forecast for it.
-    - url: arazzo/openweathermap-multi-horizon-forecast-workflow.yml
-      name: OpenWeatherMap Multi Horizon Forecast
-      summary: Geocode a city, then stack hourly, daily, and climatic forecasts for it.
-    - url: arazzo/openweathermap-reverse-geocode-weather-workflow.yml
-      name: OpenWeatherMap Reverse Geocode Weather
-      summary: Turn coordinates into a place name, then fetch current weather and One Call conditions.
-    - url: arazzo/openweathermap-weather-map-overlay-context-workflow.yml
-      name: OpenWeatherMap Weather Map Overlay Context
-      summary: Geocode a city, read its current weather, then fetch a matching weather map tile.
-    - url: arazzo/openweathermap-zip-to-forecast-workflow.yml
-      name: OpenWeatherMap Zip To Forecast
-      summary: Resolve a zip or postal code to coordinates, then return five day and sixteen day forecasts.
-  - type: Website
-    url: https://openweathermap.org/
-    name: Website
-  - type: DeveloperPortal
-    url: https://openweathermap.org/api
-    name: API Catalog
-  - type: GettingStarted
-    url: https://openweathermap.org/guide
-    name: Getting Started Guide
-  - type: APIReference
-    url: https://openweathermap.org/api
-    name: API Reference
+- aid: openweathermap:current-weather
+  name: Current Weather Data API
+  description: Returns current weather data for any location on Earth, including over
+    200,000 cities, sourced from satellites, radars, models, and a global network
+    of weather stations.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Weather
+  - Current Weather
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: OpenAPI
+    url: openapi/openweathermap-current-weather-openapi.yml
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Example
+    url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-    name: How to Start Working with the API
-  - type: SignUp
-    url: https://home.openweathermap.org/users/sign_up
-    name: Sign Up
-  - type: Login
-    url: https://home.openweathermap.org/users/sign_in
-    name: Sign In
-  - type: Console
-    url: https://dashboard.openweather.co.uk/
-    name: Weather Dashboard
-  - type: Pricing
-    url: https://openweathermap.org/price
-    name: Pricing
-  - type: Plans
-    url: plans/openweathermap-plans-pricing.yml
-    name: Plans and Pricing
-  - type: RateLimits
-    url: rate-limits/openweathermap-rate-limits.yml
-    name: Rate Limits
-  - type: Marketplace
-    url: https://openweathermap.org/marketplace
-    name: Marketplace
-  - type: Blog
-    url: https://openweather.co.uk/blog
-    name: Blog
-  - type: FAQ
-    url: https://openweathermap.org/faq
-    name: FAQ
-  - type: Support
-    url: https://openweathermap.org/support-centre
-    name: Support Centre
-  - type: TermsOfService
-    url: https://openweather.co.uk/terms
-    name: Terms of Service
-  - type: PrivacyPolicy
-    url: https://openweather.co.uk/privacy-policy
-    name: Privacy Policy
-  - type: GitHubOrganization
-    url: https://github.com/OpenWeatherMap
-    name: OpenWeatherMap GitHub Organization
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/openweathermap
-    name: LinkedIn
-  - type: SpectralRules
-    url: rules/openweathermap-rules.yml
-    name: Spectral Ruleset
-  - type: Vocabulary
-    url: vocabulary/openweathermap-vocabulary.yml
-    name: Vocabulary
-  - type: JSONLD
-    url: json-ld/openweathermap-context.jsonld
-    name: JSON-LD Context
-  - type: Features
-    name: Features
-    data:
-      - name: Global Weather Coverage
-        description: Real-time and forecast weather for any latitude/longitude on Earth.
-      - name: Long-Range Historical Archive
-        description: Over 47 years of historical weather observations available via History, One Call 4.0, and Statistical APIs.
-      - name: Air Quality Telemetry
-        description: AQI plus eight pollutant concentrations covering current, forecast, and historical air pollution.
-      - name: Solar Energy Modeling
-        description: GHI, DNI, DHI irradiance and per-panel power output predictions for solar projects.
-      - name: Map Tile Overlays
-        description: Direct integration with Leaflet, OpenLayers, and Google Maps via raster tile layers.
-      - name: Pay-Per-Call One Call 4.0
-        description: First 1,000 daily One Call requests free; additional calls billed per call for flexible cost control.
-      - name: Multi-Tier Subscriptions
-        description: Free, Startup, Developer, Professional, Expert, and Enterprise tiers tuned for varying volume and SLA.
-      - name: Personal Weather Stations
-        description: Register stations, submit measurements, and retrieve aggregated readings.
-      - name: Road and Route Risk
-        description: Per-waypoint weather and road surface state with severity-tagged alerts for routing.
-      - name: Multi-Lingual Output
-        description: Forecast and condition text returned in 40 plus languages.
-  - type: UseCases
-    name: Use Cases
-    data:
-      - name: Consumer Weather Apps
-        description: Power mobile and web weather apps with current, forecast, and alert data.
-      - name: Logistics and Routing
-        description: Use Road Risk and forecast data to optimize fleet routing and arrival times.
-      - name: Energy and Utilities
-        description: Forecast solar generation and demand with solar irradiance and panel energy prediction APIs.
-      - name: Agriculture
-        description: Use accumulated temperature and precipitation data to inform irrigation, planting, and harvest decisions.
-      - name: Insurance and Risk
-        description: Combine historical and statistical weather with air quality and road risk to underwrite and adjudicate claims.
-      - name: Smart City and Air Quality
-        description: Surface AQI and pollutant concentrations in civic dashboards and citizen notification systems.
-      - name: Outdoor and Travel
-        description: Embed weather data in trip planning, ski resort, sailing, and outdoor recreation experiences.
-      - name: Aviation and Maritime
-        description: Use high-frequency forecast and wind data for flight planning and marine operations.
-  - type: Integrations
-    name: Integrations
-    data:
-      - name: Leaflet
-        description: Weather Maps 1.0 tile layers render directly inside Leaflet maps.
-      - name: OpenLayers
-        description: Tile layers compatible with OpenLayers raster sources.
-      - name: Google Maps
-        description: Weather tiles can be added as overlays in Google Maps.
-      - name: Home Assistant
-        description: OpenWeather integration is a first-class weather provider in the Home Assistant ecosystem.
-      - name: Node-RED
-        description: Numerous community Node-RED nodes wrap the OpenWeather APIs.
-      - name: Power BI and Tableau
-        description: REST connectors and community templates ingest OpenWeather data for analytics dashboards.
-      - name: Model Context Protocol Servers
-        description: Multiple community MCP servers (NimbleBrainInc, robertn702, fgladisch, jezweb, SaintDoresh, tristau) expose OpenWeather data to MCP-compatible agents and Claude.
-      - name: Claude Code Skills
-        description: ForecastSkill and OpenWeather API Automation skills add weather capabilities to Claude Code workflows.
-  - type: Solutions
-    name: Solutions
-    data:
-      - name: VANE Geospatial Platform
-        description: OpenWeather's geospatial platform for working with weather grids and time series.
-      - name: Deker Storage Engine
-        description: OpenWeather's open-source multidimensional array storage engine used internally for weather time series.
-      - name: Marketplace Bulk Data
-        description: Bulk history, forecast, solar, and tile downloads for analytics and ML pipelines.
-      - name: Enterprise SLAs
-        description: Contractual SLAs with dedicated account management and data residency options.
-  - type: KubernetesCRD
-    name: Kubernetes Custom Resources
-    description: No first-party Kubernetes CRDs are published. Skipped.
-  - type: Tools
-    name: Tools and Ecosystem
-    data:
-      - name: OpenWeatherMap MCP Server (NimbleBrainInc)
-        description: Production-ready MCP server for OpenWeather with hybrid tools and graceful degradation.
-      - name: mcp-openweathermap (robertn702)
-        description: Node.js/TypeScript MCP server covering current weather, forecasts, geocoding, alerts.
-      - name: openweathermap-mcp-server (fgladisch)
-        description: NestJS-based MCP server exposing OpenWeather data to MCP-compatible agent frameworks.
-      - name: weather-mcp-server (jezweb)
-        description: Python FastMCP-based weather MCP server backed by OpenWeather.
-      - name: Weather-MCP-ClaudeDesktop (SaintDoresh)
-        description: MCP tool for Claude Desktop with real-time, forecast, and historical OpenWeather data.
-      - name: openweathermap-mcp (tristau)
-        description: Lightweight MCP server requiring the OpenWeather API key as a CLI argument.
-      - name: ForecastSkill (kevinl95)
-        description: Claude Skill for OpenWeather forecasts inside Claude conversations.
-      - name: OpenWeather API Automation Skill (MCPmarket)
-        description: Claude Code skill that automates OpenWeather API interactions via the Rube MCP and Composio toolkit.
-      - name: Awesome OpenWeather
-        description: Curated list of OpenWeather resources maintained on GitHub.
-      - name: leaflet-weather-layer
-        description: OpenWeather-published Leaflet layer for weather tile overlays.
-      - name: leaflet-coupled-layers
-        description: OpenWeather-published Leaflet plugin for coupled tile layer controls.
-      - name: weatherchecker-go
-        description: Open-source Go utility from OpenWeather to compare weather providers.
-      - name: choose-a-period
-        description: OpenWeather UI component for selecting time periods.
+  - url: graphql/openweathermap-graphql.md
+    type: GraphQL
+- aid: openweathermap:forecast
+  name: Forecast APIs
+  description: OpenWeather forecast surface including the public 5-day/3-hour forecast
+    plus pro hourly (4 days), daily (16 days), and climatic (30 days) forecasts.
+  humanURL: https://openweathermap.org/forecast5
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Weather
+  - Forecast
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: OpenAPI
+    url: openapi/openweathermap-forecast-openapi.yml
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Example
+    url: examples/forecast-five-day-example.json
+- aid: openweathermap:one-call
+  name: One Call API 4.0
+  description: Unified weather timeline including current conditions, hourly, daily,
+    1-minute precipitation, 15-minute forecasts, government weather alerts, and 47
+    plus years of historical data via pay-per-call pricing.
+  humanURL: https://openweathermap.org/api/one-call-4
+  baseURL: https://api.openweathermap.org/data/4.0/onecall
+  tags:
+  - Weather
+  - Forecast
+  - History
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: OpenAPI
+    url: openapi/openweathermap-one-call-openapi.yml
+  - type: Example
+    url: examples/one-call-current-example.json
+- aid: openweathermap:air-pollution
+  name: Air Pollution API
+  description: Current, forecast, and historical air pollution data including the
+    Air Quality Index and concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5, and
+    PM10 for any coordinates on the globe.
+  humanURL: https://openweathermap.org/api/air-pollution
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Air Pollution
+  - Air Quality
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: OpenAPI
+    url: openapi/openweathermap-air-pollution-openapi.yml
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Example
+    url: examples/air-pollution-current-example.json
+- aid: openweathermap:geocoding
+  name: Geocoding API
+  description: Direct and reverse geocoding for city names, postal codes, and coordinate
+    pairs. Supports city, state, country, and area-level resolution.
+  humanURL: https://openweathermap.org/api/geocoding-api
+  baseURL: https://api.openweathermap.org/geo/1.0
+  tags:
+  - Geocoding
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: OpenAPI
+    url: openapi/openweathermap-geocoding-openapi.yml
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Example
+    url: examples/geocoding-direct-example.json
+- aid: openweathermap:history
+  name: Historical Weather API
+  description: Historical weather observations for any global coordinate at one-hour
+    granularity, spanning 47 plus years. Available on Professional and Expert plans.
+  humanURL: https://openweathermap.org/history
+  baseURL: https://history.openweathermap.org/data/2.5
+  tags:
+  - Weather
+  - History
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: OpenAPI
+    url: openapi/openweathermap-history-openapi.yml
+  - type: Example
+    url: examples/history-city-example.json
+- aid: openweathermap:statistical
+  name: Statistical Weather Data API
+  description: Statistical aggregates (record min/max, average, mean, percentiles,
+    standard deviation) for main weather parameters on any day, month, or yearly basis.
+    Expert plan only.
+  humanURL: https://openweathermap.org/api/statistics-api
+  baseURL: https://history.openweathermap.org/data/2.5
+  tags:
+  - Weather
+  - Climate
+  - Statistics
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: OpenAPI
+    url: openapi/openweathermap-statistical-weather-openapi.yml
+  - type: Example
+    url: examples/statistical-month-example.json
+- aid: openweathermap:accumulated-parameters
+  name: Accumulated Parameters API
+  description: Accumulated temperature and precipitation totals over a historical
+    time window, primarily for agriculture and energy applications. Available on Professional
+    and Expert plans.
+  humanURL: https://openweathermap.org/api/accumulated-parameters
+  baseURL: https://history.openweathermap.org/data/2.5/history
+  tags:
+  - Weather
+  - History
+  - Agriculture
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: OpenAPI
+    url: openapi/openweathermap-accumulated-parameters-openapi.yml
+  - type: Example
+    url: examples/accumulated-temperature-example.json
+- aid: openweathermap:solar
+  name: Solar Energy APIs
+  description: Solar Irradiance API (GHI, DNI, DHI for clear and cloudy sky models,
+    15 minute or hourly intervals, 47 plus years history) and Solar Panel Energy Prediction
+    API (manage modeled locations and solar panel configurations and retrieve per-panel
+    power and energy output).
+  humanURL: https://openweathermap.org/api/solar-irradiance
+  baseURL: https://api.openweathermap.org/energy/2.0
+  tags:
+  - Solar
+  - Energy
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: OpenAPI
+    url: openapi/openweathermap-solar-openapi.yml
+  - type: Example
+    url: examples/solar-irradiance-interval-example.json
+- aid: openweathermap:road-risk
+  name: Road Risk API
+  description: Route-specific weather data, national alerts, current conditions plus
+    five-day forecast, and one year of historical data for a sequence of waypoints.
+    Custom quote required.
+  humanURL: https://openweathermap.org/api/road-risk
+  baseURL: https://api.openweathermap.org
+  tags:
+  - Weather
+  - Routing
+  - Risk
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: OpenAPI
+    url: openapi/openweathermap-road-risk-openapi.yml
+  - type: Example
+    url: examples/road-risk-example.json
+- aid: openweathermap:weather-stations
+  name: Weather Stations API
+  description: Register and manage personal weather stations and submit measurement
+    data. Aggregated readings are retrievable at minute, hour, and day granularity.
+  humanURL: https://openweathermap.org/stations
+  baseURL: https://api.openweathermap.org/data/3.0
+  tags:
+  - Weather
+  - Stations
+  - IoT
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: OpenAPI
+    url: openapi/openweathermap-weather-stations-openapi.yml
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Example
+    url: examples/weather-stations-create-example.json
+- aid: openweathermap:weather-maps
+  name: Weather Maps 1.0
+  description: Tile map service overlaying weather data layers (clouds, precipitation,
+    pressure, wind, temperature) on top of base maps using standard z/x/y tile coordinates.
+    Compatible with Leaflet, OpenLayers, Google Maps.
+  humanURL: https://openweathermap.org/api/weathermaps
+  baseURL: https://tile.openweathermap.org
+  tags:
+  - Weather
+  - Maps
+  - Tiles
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: OpenAPI
+    url: openapi/openweathermap-weather-maps-openapi.yml
+  - type: Example
+    url: examples/weather-maps-tile-example.json
+common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/openweathermap/overview
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/openweathermap-air-quality-by-city-workflow.yml
+    name: OpenWeatherMap Air Quality By City
+    summary: Geocode a city name, then fetch current air pollution and its hourly
+      forecast.
+  - url: arazzo/openweathermap-coordinate-weather-and-air-snapshot-workflow.yml
+    name: OpenWeatherMap Coordinate Weather And Air Snapshot
+    summary: From raw coordinates, gather current weather, One Call current conditions,
+      and air pollution.
+  - url: arazzo/openweathermap-historical-air-pollution-window-workflow.yml
+    name: OpenWeatherMap Historical Air Pollution Window
+    summary: Geocode a city, then fetch historical air pollution for a window and
+      the current reading.
+  - url: arazzo/openweathermap-locate-and-report-current-weather-workflow.yml
+    name: OpenWeatherMap Locate And Report Current Weather
+    summary: Geocode a city name, then fetch current weather and a five day forecast
+      for it.
+  - url: arazzo/openweathermap-multi-horizon-forecast-workflow.yml
+    name: OpenWeatherMap Multi Horizon Forecast
+    summary: Geocode a city, then stack hourly, daily, and climatic forecasts for
+      it.
+  - url: arazzo/openweathermap-reverse-geocode-weather-workflow.yml
+    name: OpenWeatherMap Reverse Geocode Weather
+    summary: Turn coordinates into a place name, then fetch current weather and One
+      Call conditions.
+  - url: arazzo/openweathermap-weather-map-overlay-context-workflow.yml
+    name: OpenWeatherMap Weather Map Overlay Context
+    summary: Geocode a city, read its current weather, then fetch a matching weather
+      map tile.
+  - url: arazzo/openweathermap-zip-to-forecast-workflow.yml
+    name: OpenWeatherMap Zip To Forecast
+    summary: Resolve a zip or postal code to coordinates, then return five day and
+      sixteen day forecasts.
+- type: Website
+  url: https://openweathermap.org/
+  name: Website
+- type: DeveloperPortal
+  url: https://openweathermap.org/api
+  name: API Catalog
+- type: GettingStarted
+  url: https://openweathermap.org/guide
+  name: Getting Started Guide
+- type: APIReference
+  url: https://openweathermap.org/api
+  name: API Reference
+- type: Authentication
+  url: https://openweathermap.org/appid
+  name: How to Start Working with the API
+- type: SignUp
+  url: https://home.openweathermap.org/users/sign_up
+  name: Sign Up
+- type: Login
+  url: https://home.openweathermap.org/users/sign_in
+  name: Sign In
+- type: Console
+  url: https://dashboard.openweather.co.uk/
+  name: Weather Dashboard
+- type: Pricing
+  url: https://openweathermap.org/price
+  name: Pricing
+- type: Plans
+  url: plans/openweathermap-plans-pricing.yml
+  name: Plans and Pricing
+- type: RateLimits
+  url: rate-limits/openweathermap-rate-limits.yml
+  name: Rate Limits
+- type: Marketplace
+  url: https://openweathermap.org/marketplace
+  name: Marketplace
+- type: Blog
+  url: https://openweather.co.uk/blog
+  name: Blog
+- type: FAQ
+  url: https://openweathermap.org/faq
+  name: FAQ
+- type: Support
+  url: https://openweathermap.org/support-centre
+  name: Support Centre
+- type: TermsOfService
+  url: https://openweather.co.uk/terms
+  name: Terms of Service
+- type: PrivacyPolicy
+  url: https://openweather.co.uk/privacy-policy
+  name: Privacy Policy
+- type: GitHubOrganization
+  url: https://github.com/OpenWeatherMap
+  name: OpenWeatherMap GitHub Organization
+- type: LinkedIn
+  url: https://www.linkedin.com/company/openweathermap
+  name: LinkedIn
+- type: SpectralRules
+  url: rules/openweathermap-rules.yml
+  name: Spectral Ruleset
+- type: Vocabulary
+  url: vocabulary/openweathermap-vocabulary.yml
+  name: Vocabulary
+- type: JSONLD
+  url: json-ld/openweathermap-context.jsonld
+  name: JSON-LD Context
+- type: Features
+  name: Features
+  data:
+  - name: Global Weather Coverage
+    description: Real-time and forecast weather for any latitude/longitude on Earth.
+  - name: Long-Range Historical Archive
+    description: Over 47 years of historical weather observations available via History,
+      One Call 4.0, and Statistical APIs.
+  - name: Air Quality Telemetry
+    description: AQI plus eight pollutant concentrations covering current, forecast,
+      and historical air pollution.
+  - name: Solar Energy Modeling
+    description: GHI, DNI, DHI irradiance and per-panel power output predictions for
+      solar projects.
+  - name: Map Tile Overlays
+    description: Direct integration with Leaflet, OpenLayers, and Google Maps via
+      raster tile layers.
+  - name: Pay-Per-Call One Call 4.0
+    description: First 1,000 daily One Call requests free; additional calls billed
+      per call for flexible cost control.
+  - name: Multi-Tier Subscriptions
+    description: Free, Startup, Developer, Professional, Expert, and Enterprise tiers
+      tuned for varying volume and SLA.
+  - name: Personal Weather Stations
+    description: Register stations, submit measurements, and retrieve aggregated readings.
+  - name: Road and Route Risk
+    description: Per-waypoint weather and road surface state with severity-tagged
+      alerts for routing.
+  - name: Multi-Lingual Output
+    description: Forecast and condition text returned in 40 plus languages.
+- type: UseCases
+  name: Use Cases
+  data:
+  - name: Consumer Weather Apps
+    description: Power mobile and web weather apps with current, forecast, and alert
+      data.
+  - name: Logistics and Routing
+    description: Use Road Risk and forecast data to optimize fleet routing and arrival
+      times.
+  - name: Energy and Utilities
+    description: Forecast solar generation and demand with solar irradiance and panel
+      energy prediction APIs.
+  - name: Agriculture
+    description: Use accumulated temperature and precipitation data to inform irrigation,
+      planting, and harvest decisions.
+  - name: Insurance and Risk
+    description: Combine historical and statistical weather with air quality and road
+      risk to underwrite and adjudicate claims.
+  - name: Smart City and Air Quality
+    description: Surface AQI and pollutant concentrations in civic dashboards and
+      citizen notification systems.
+  - name: Outdoor and Travel
+    description: Embed weather data in trip planning, ski resort, sailing, and outdoor
+      recreation experiences.
+  - name: Aviation and Maritime
+    description: Use high-frequency forecast and wind data for flight planning and
+      marine operations.
+- type: Integrations
+  name: Integrations
+  data:
+  - name: Leaflet
+    description: Weather Maps 1.0 tile layers render directly inside Leaflet maps.
+  - name: OpenLayers
+    description: Tile layers compatible with OpenLayers raster sources.
+  - name: Google Maps
+    description: Weather tiles can be added as overlays in Google Maps.
+  - name: Home Assistant
+    description: OpenWeather integration is a first-class weather provider in the
+      Home Assistant ecosystem.
+  - name: Node-RED
+    description: Numerous community Node-RED nodes wrap the OpenWeather APIs.
+  - name: Power BI and Tableau
+    description: REST connectors and community templates ingest OpenWeather data for
+      analytics dashboards.
+  - name: Model Context Protocol Servers
+    description: Multiple community MCP servers (NimbleBrainInc, robertn702, fgladisch,
+      jezweb, SaintDoresh, tristau) expose OpenWeather data to MCP-compatible agents
+      and Claude.
+  - name: Claude Code Skills
+    description: ForecastSkill and OpenWeather API Automation skills add weather capabilities
+      to Claude Code workflows.
+- type: Solutions
+  name: Solutions
+  data:
+  - name: VANE Geospatial Platform
+    description: OpenWeather's geospatial platform for working with weather grids
+      and time series.
+  - name: Deker Storage Engine
+    description: OpenWeather's open-source multidimensional array storage engine used
+      internally for weather time series.
+  - name: Marketplace Bulk Data
+    description: Bulk history, forecast, solar, and tile downloads for analytics and
+      ML pipelines.
+  - name: Enterprise SLAs
+    description: Contractual SLAs with dedicated account management and data residency
+      options.
+- type: KubernetesCRD
+  name: Kubernetes Custom Resources
+  description: No first-party Kubernetes CRDs are published. Skipped.
+- type: Tools
+  name: Tools and Ecosystem
+  data:
+  - name: OpenWeatherMap MCP Server (NimbleBrainInc)
+    description: Production-ready MCP server for OpenWeather with hybrid tools and
+      graceful degradation.
+  - name: mcp-openweathermap (robertn702)
+    description: Node.js/TypeScript MCP server covering current weather, forecasts,
+      geocoding, alerts.
+  - name: openweathermap-mcp-server (fgladisch)
+    description: NestJS-based MCP server exposing OpenWeather data to MCP-compatible
+      agent frameworks.
+  - name: weather-mcp-server (jezweb)
+    description: Python FastMCP-based weather MCP server backed by OpenWeather.
+  - name: Weather-MCP-ClaudeDesktop (SaintDoresh)
+    description: MCP tool for Claude Desktop with real-time, forecast, and historical
+      OpenWeather data.
+  - name: openweathermap-mcp (tristau)
+    description: Lightweight MCP server requiring the OpenWeather API key as a CLI
+      argument.
+  - name: ForecastSkill (kevinl95)
+    description: Claude Skill for OpenWeather forecasts inside Claude conversations.
+  - name: OpenWeather API Automation Skill (MCPmarket)
+    description: Claude Code skill that automates OpenWeather API interactions via
+      the Rube MCP and Composio toolkit.
+  - name: Awesome OpenWeather
+    description: Curated list of OpenWeather resources maintained on GitHub.
+  - name: leaflet-weather-layer
+    description: OpenWeather-published Leaflet layer for weather tile overlays.
+  - name: leaflet-coupled-layers
+    description: OpenWeather-published Leaflet plugin for coupled tile layer controls.
+  - name: weatherchecker-go
+    description: Open-source Go utility from OpenWeather to compare weather providers.
+  - name: choose-a-period
+    description: OpenWeather UI component for selecting time periods.
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
