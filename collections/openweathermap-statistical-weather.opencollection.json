@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Statistical Weather API",
+    "version": "2.5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Statistical Weather",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Yearly Aggregated Weather Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://history.openweathermap.org/data/2.5/aggregated/year",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns 365 groups of statistical weather data for each day of the calendar year for the supplied coordinates."
+        },
+        {
+          "info": {
+            "name": "Monthly Aggregated Weather Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://history.openweathermap.org/data/2.5/aggregated/month",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees."
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "query",
+                "description": "Month of the year, 1-12."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns aggregated monthly weather statistics for the supplied coordinates and month."
+        },
+        {
+          "info": {
+            "name": "Daily Aggregated Weather Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://history.openweathermap.org/data/2.5/aggregated/day",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees."
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "query",
+                "description": "Month of the year, 1-12."
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "query",
+                "description": "Day of the month, 1-31."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns aggregated daily weather statistics for the supplied coordinates, month, and day."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

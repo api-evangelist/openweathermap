@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Accumulated Parameters API",
+    "version": "2.5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accumulated Parameters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Accumulated Temperature For A Time Window",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://history.openweathermap.org/data/2.5/history/accumulated_temperature",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Unix UTC start timestamp."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Unix UTC end timestamp."
+              },
+              {
+                "name": "threshold",
+                "value": "",
+                "type": "query",
+                "description": "Minimum temperature value to include in the accumulation."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns the sum of daily mean temperatures above an optional threshold for the supplied coordinates and time window."
+        },
+        {
+          "info": {
+            "name": "Accumulated Precipitation For A Time Window",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://history.openweathermap.org/data/2.5/history/accumulated_precipitation",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Unix UTC start timestamp."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Unix UTC end timestamp."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns the sum of precipitation for the supplied coordinates and time window."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

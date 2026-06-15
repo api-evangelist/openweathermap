@@ -1,0 +1,868 @@
+{
+  "info": {
+    "_postman_id": "f095de6f-18e6-425a-a821-6fad81be8516",
+    "name": "OpenWeatherMap Statistical Weather API",
+    "description": "Returns statistical data on main weather parameters (temperature, pressure, humidity, wind, precipitation, clouds) for any day or month of the year at a global location. Useful for climatology, agriculture, and long-range planning. Available on the Expert plan.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:18:55.000Z",
+    "updatedAt": "2026-06-05T13:18:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f095de6f-18e6-425a-a821-6fad81be8516"
+  },
+  "item": [
+    {
+      "name": "aggregated",
+      "item": [
+        {
+          "name": "year",
+          "item": [
+            {
+              "name": "Yearly Aggregated Weather Statistics",
+              "id": "8f21c18c-f577-4ba8-be0d-c822ec0b7c5e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/aggregated/year?lat=<float>&lon=<float>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "aggregated",
+                    "year"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns 365 groups of statistical weather data for each day of the calendar year for the supplied coordinates."
+              },
+              "response": [
+                {
+                  "id": "3874eed3-6856-4442-8070-bf64c0df2413",
+                  "name": "Yearly statistics response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/year?lat=<float>&lon=<float>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "year"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"cod\": \"<integer>\",\n  \"city_id\": \"<integer>\",\n  \"calctime\": \"<float>\",\n  \"result\": {\n    \"month\": \"<integer>\",\n    \"day\": \"<integer>\",\n    \"temp\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"pressure\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"humidity\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"wind\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"precipitation\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"clouds\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"sunshine_hours\": \"<float>\"\n  }\n}",
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-3874eed3-6856-4442-8070-bf64c0df2413"
+                },
+                {
+                  "id": "9506f0b9-d3f4-46bd-be06-970e7beb4a93",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/year?lat=<float>&lon=<float>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "year"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-9506f0b9-d3f4-46bd-be06-970e7beb4a93"
+                },
+                {
+                  "id": "fb7a9fe5-e4ba-461d-bd1c-0a53d9ae7cd1",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/year?lat=<float>&lon=<float>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "year"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-fb7a9fe5-e4ba-461d-bd1c-0a53d9ae7cd1"
+                },
+                {
+                  "id": "7152e0f5-0c2a-476f-9fc4-e8f88ceab380",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/year?lat=<float>&lon=<float>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "year"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-7152e0f5-0c2a-476f-9fc4-e8f88ceab380"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:56.000Z",
+              "updatedAt": "2026-06-05T13:18:56.000Z",
+              "uid": "35240-8f21c18c-f577-4ba8-be0d-c822ec0b7c5e"
+            }
+          ],
+          "id": "72dea16f-72bd-451e-9a08-f7a68ad4ad5c",
+          "createdAt": "2026-06-05T13:18:56.000Z",
+          "updatedAt": "2026-06-05T13:18:56.000Z",
+          "uid": "35240-72dea16f-72bd-451e-9a08-f7a68ad4ad5c"
+        },
+        {
+          "name": "month",
+          "item": [
+            {
+              "name": "Monthly Aggregated Weather Statistics",
+              "id": "12870996-2624-41fe-ba9e-754d16b07331",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/aggregated/month?lat=<float>&lon=<float>&month=<integer>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "aggregated",
+                    "month"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Month of the year, 1-12.",
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns aggregated monthly weather statistics for the supplied coordinates and month."
+              },
+              "response": [
+                {
+                  "id": "182e675c-51dc-4196-8bc0-4807349006d1",
+                  "name": "Monthly statistics response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/month?lat=<float>&lon=<float>&month=<integer>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "month"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Month of the year, 1-12.",
+                          "key": "month",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"cod\": \"<integer>\",\n  \"city_id\": \"<integer>\",\n  \"calctime\": \"<float>\",\n  \"result\": {\n    \"month\": \"<integer>\",\n    \"day\": \"<integer>\",\n    \"temp\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"pressure\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"humidity\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"wind\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"precipitation\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"clouds\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"sunshine_hours\": \"<float>\"\n  }\n}",
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-182e675c-51dc-4196-8bc0-4807349006d1"
+                },
+                {
+                  "id": "a0f5f443-6f23-4062-a18b-7d4e041c95bb",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/month?lat=<float>&lon=<float>&month=<integer>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "month"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Month of the year, 1-12.",
+                          "key": "month",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-a0f5f443-6f23-4062-a18b-7d4e041c95bb"
+                },
+                {
+                  "id": "d04af5a3-06dc-4c21-b9c2-6905e12a52db",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/month?lat=<float>&lon=<float>&month=<integer>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "month"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Month of the year, 1-12.",
+                          "key": "month",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-d04af5a3-06dc-4c21-b9c2-6905e12a52db"
+                },
+                {
+                  "id": "6c09282f-352e-43a8-955a-e2867c3f7426",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/month?lat=<float>&lon=<float>&month=<integer>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "month"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Month of the year, 1-12.",
+                          "key": "month",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-6c09282f-352e-43a8-955a-e2867c3f7426"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:56.000Z",
+              "updatedAt": "2026-06-05T13:18:56.000Z",
+              "uid": "35240-12870996-2624-41fe-ba9e-754d16b07331"
+            }
+          ],
+          "id": "31a223c1-58fd-4132-82a0-67d17b0a1299",
+          "createdAt": "2026-06-05T13:18:56.000Z",
+          "updatedAt": "2026-06-05T13:18:56.000Z",
+          "uid": "35240-31a223c1-58fd-4132-82a0-67d17b0a1299"
+        },
+        {
+          "name": "day",
+          "item": [
+            {
+              "name": "Daily Aggregated Weather Statistics",
+              "id": "acc79d58-7bd8-4aa1-96a9-851f16a3fb7b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/aggregated/day?lat=<float>&lon=<float>&month=<integer>&day=<integer>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "aggregated",
+                    "day"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Month of the year, 1-12.",
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) Day of the month, 1-31.",
+                      "key": "day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns aggregated daily weather statistics for the supplied coordinates, month, and day."
+              },
+              "response": [
+                {
+                  "id": "36ff176a-a56c-43b2-8400-e0c574163e2f",
+                  "name": "Daily statistics response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/day?lat=<float>&lon=<float>&month=<integer>&day=<integer>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "day"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Month of the year, 1-12.",
+                          "key": "month",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Day of the month, 1-31.",
+                          "key": "day",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"cod\": \"<integer>\",\n  \"city_id\": \"<integer>\",\n  \"calctime\": \"<float>\",\n  \"result\": {\n    \"month\": \"<integer>\",\n    \"day\": \"<integer>\",\n    \"temp\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"pressure\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"humidity\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"wind\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"precipitation\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"clouds\": {\n      \"record_min\": \"<float>\",\n      \"record_max\": \"<float>\",\n      \"average_min\": \"<float>\",\n      \"average_max\": \"<float>\",\n      \"median\": \"<float>\",\n      \"mean\": \"<float>\",\n      \"p25\": \"<float>\",\n      \"p75\": \"<float>\",\n      \"st_dev\": \"<float>\",\n      \"num\": \"<integer>\"\n    },\n    \"sunshine_hours\": \"<float>\"\n  }\n}",
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-36ff176a-a56c-43b2-8400-e0c574163e2f"
+                },
+                {
+                  "id": "fc46d11a-f583-4916-a7d1-18f1fd3ec6fb",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/day?lat=<float>&lon=<float>&month=<integer>&day=<integer>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "day"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Month of the year, 1-12.",
+                          "key": "month",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Day of the month, 1-31.",
+                          "key": "day",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-fc46d11a-f583-4916-a7d1-18f1fd3ec6fb"
+                },
+                {
+                  "id": "2d1e0d4f-521d-486d-9d65-36c314c84562",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/day?lat=<float>&lon=<float>&month=<integer>&day=<integer>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "day"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Month of the year, 1-12.",
+                          "key": "month",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Day of the month, 1-31.",
+                          "key": "day",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-2d1e0d4f-521d-486d-9d65-36c314c84562"
+                },
+                {
+                  "id": "9c078731-cf7f-4d4d-a53f-de1db9ad1ac7",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/aggregated/day?lat=<float>&lon=<float>&month=<integer>&day=<integer>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "aggregated",
+                        "day"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Month of the year, 1-12.",
+                          "key": "month",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) Day of the month, 1-31.",
+                          "key": "day",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:56.000Z",
+                  "updatedAt": "2026-06-05T13:18:56.000Z",
+                  "uid": "35240-9c078731-cf7f-4d4d-a53f-de1db9ad1ac7"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:56.000Z",
+              "updatedAt": "2026-06-05T13:18:56.000Z",
+              "uid": "35240-acc79d58-7bd8-4aa1-96a9-851f16a3fb7b"
+            }
+          ],
+          "id": "3a36f746-b8e0-450d-8177-cb9caaac5879",
+          "createdAt": "2026-06-05T13:18:56.000Z",
+          "updatedAt": "2026-06-05T13:18:56.000Z",
+          "uid": "35240-3a36f746-b8e0-450d-8177-cb9caaac5879"
+        }
+      ],
+      "id": "8b35941f-9fca-43e2-8408-bf6dd6eef24d",
+      "createdAt": "2026-06-05T13:18:56.000Z",
+      "updatedAt": "2026-06-05T13:18:56.000Z",
+      "uid": "35240-8b35941f-9fca-43e2-8408-bf6dd6eef24d"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://history.openweathermap.org/data/2.5"
+    }
+  ]
+}

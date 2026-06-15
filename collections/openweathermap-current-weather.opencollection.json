@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Current Weather Data API",
+    "version": "2.5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Current Weather",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current Weather Data For A Coordinate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/2.5/weather",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Response format. Default is JSON. Use xml or html for alternative formats."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard (Kelvin), metric (Celsius), or imperial (Fahrenheit)."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code for the weather condition output text."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns current weather data for the supplied latitude and longitude. Data includes temperature, atmospheric pressure, humidity, visibility, wind, cloudiness, sunrise and sunset times, and a brief weather condition."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

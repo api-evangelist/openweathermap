@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Weather Stations API",
+    "version": "3.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Registered Weather Stations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/3.0/stations",
+            "params": [
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns the list of all weather stations registered to the API key."
+        },
+        {
+          "info": {
+            "name": "Register A New Weather Station",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openweathermap.org/data/3.0/stations",
+            "params": [
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a new weather station and returns the assigned station object."
+        },
+        {
+          "info": {
+            "name": "Retrieve A Weather Station",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/3.0/stations/:station_id",
+            "params": [
+              {
+                "name": "station_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns the station object for the supplied identifier."
+        },
+        {
+          "info": {
+            "name": "Update A Weather Station",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.openweathermap.org/data/3.0/stations/:station_id",
+            "params": [
+              {
+                "name": "station_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the station metadata for the supplied identifier."
+        },
+        {
+          "info": {
+            "name": "Delete A Weather Station",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openweathermap.org/data/3.0/stations/:station_id",
+            "params": [
+              {
+                "name": "station_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Removes the station permanently."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Measurements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Aggregated Measurements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/3.0/measurements",
+            "params": [
+              {
+                "name": "station_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Aggregation type. m minute, h hour, d day."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records returned."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns aggregated measurements for a station at minute, hour, or day granularity."
+        },
+        {
+          "info": {
+            "name": "Submit Station Measurements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openweathermap.org/data/3.0/measurements",
+            "params": [
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits one or more measurements collected from a registered station."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

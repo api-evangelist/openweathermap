@@ -1,0 +1,417 @@
+{
+  "info": {
+    "_postman_id": "d34ad576-6ca6-424b-9a09-d3ca561cb211",
+    "name": "OpenWeatherMap Historical Weather API",
+    "description": "Returns historical weather data for any location on the globe with one-hour granularity. Available on Professional and Expert plans. Data spans 47 plus years.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:18:54.000Z",
+    "updatedAt": "2026-06-05T13:18:55.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d34ad576-6ca6-424b-9a09-d3ca561cb211"
+  },
+  "item": [
+    {
+      "name": "history",
+      "item": [
+        {
+          "name": "city",
+          "item": [
+            {
+              "name": "Historical Hourly Weather By Coordinate",
+              "id": "e1eef72d-24bc-4f33-9727-4221cac2ead4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/history/city?lat=<float>&lon=<float>&type=hour&start=<long>&end=<long>&cnt=<integer>&units=imperial&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "history",
+                    "city"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Granularity. Currently only `hour` is supported.",
+                      "key": "type",
+                      "value": "hour"
+                    },
+                    {
+                      "description": "Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Unix UTC end timestamp. Alternative to `cnt`.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Number of hourly timestamps to return. Alternative to `end`.",
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns hourly historical weather records for the supplied latitude, longitude, and time window. Maximum request span on Professional and Expert plans is one week per call."
+              },
+              "response": [
+                {
+                  "id": "eb501f47-74d7-4de7-83b1-ff414dc51fe6",
+                  "name": "Historical weather response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/history/city?lat=<float>&lon=<float>&type=hour&start=<long>&end=<long>&cnt=<integer>&units=imperial&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "history",
+                        "city"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Granularity. Currently only `hour` is supported.",
+                          "key": "type",
+                          "value": "hour"
+                        },
+                        {
+                          "description": "Unix UTC start timestamp.",
+                          "key": "start",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Unix UTC end timestamp. Alternative to `cnt`.",
+                          "key": "end",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Number of hourly timestamps to return. Alternative to `end`.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"cod\": \"<string>\",\n  \"city_id\": \"<integer>\",\n  \"calctime\": \"<float>\",\n  \"list\": [\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"temp\": \"<float>\",\n        \"feels_like\": \"<float>\",\n        \"pressure\": \"<integer>\",\n        \"humidity\": \"<integer>\",\n        \"temp_min\": \"<float>\",\n        \"temp_max\": \"<float>\",\n        \"sea_level\": \"<integer>\",\n        \"grnd_level\": \"<integer>\"\n      },\n      \"wind\": {\n        \"speed\": \"<float>\",\n        \"deg\": \"<integer>\"\n      },\n      \"clouds\": {\n        \"all\": \"<integer>\"\n      },\n      \"rain\": {\n        \"1h\": \"<float>\",\n        \"3h\": \"<float>\"\n      },\n      \"snow\": {\n        \"1h\": \"<float>\",\n        \"3h\": \"<float>\"\n      },\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"temp\": \"<float>\",\n        \"feels_like\": \"<float>\",\n        \"pressure\": \"<integer>\",\n        \"humidity\": \"<integer>\",\n        \"temp_min\": \"<float>\",\n        \"temp_max\": \"<float>\",\n        \"sea_level\": \"<integer>\",\n        \"grnd_level\": \"<integer>\"\n      },\n      \"wind\": {\n        \"speed\": \"<float>\",\n        \"deg\": \"<integer>\"\n      },\n      \"clouds\": {\n        \"all\": \"<integer>\"\n      },\n      \"rain\": {\n        \"1h\": \"<float>\",\n        \"3h\": \"<float>\"\n      },\n      \"snow\": {\n        \"1h\": \"<float>\",\n        \"3h\": \"<float>\"\n      },\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T13:18:55.000Z",
+                  "updatedAt": "2026-06-05T13:18:55.000Z",
+                  "uid": "35240-eb501f47-74d7-4de7-83b1-ff414dc51fe6"
+                },
+                {
+                  "id": "f28ff88f-0bb3-4090-a8ce-88f39dfa5990",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/history/city?lat=<float>&lon=<float>&type=hour&start=<long>&end=<long>&cnt=<integer>&units=imperial&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "history",
+                        "city"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Granularity. Currently only `hour` is supported.",
+                          "key": "type",
+                          "value": "hour"
+                        },
+                        {
+                          "description": "Unix UTC start timestamp.",
+                          "key": "start",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Unix UTC end timestamp. Alternative to `cnt`.",
+                          "key": "end",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Number of hourly timestamps to return. Alternative to `end`.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:55.000Z",
+                  "updatedAt": "2026-06-05T13:18:55.000Z",
+                  "uid": "35240-f28ff88f-0bb3-4090-a8ce-88f39dfa5990"
+                },
+                {
+                  "id": "1b3e92cb-b49d-489d-b5ec-7c48255a85ec",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/history/city?lat=<float>&lon=<float>&type=hour&start=<long>&end=<long>&cnt=<integer>&units=imperial&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "history",
+                        "city"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Granularity. Currently only `hour` is supported.",
+                          "key": "type",
+                          "value": "hour"
+                        },
+                        {
+                          "description": "Unix UTC start timestamp.",
+                          "key": "start",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Unix UTC end timestamp. Alternative to `cnt`.",
+                          "key": "end",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Number of hourly timestamps to return. Alternative to `end`.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:55.000Z",
+                  "updatedAt": "2026-06-05T13:18:55.000Z",
+                  "uid": "35240-1b3e92cb-b49d-489d-b5ec-7c48255a85ec"
+                },
+                {
+                  "id": "73cbd858-d25d-4480-b8a1-d3046b203671",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/history/city?lat=<float>&lon=<float>&type=hour&start=<long>&end=<long>&cnt=<integer>&units=imperial&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "history",
+                        "city"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Granularity. Currently only `hour` is supported.",
+                          "key": "type",
+                          "value": "hour"
+                        },
+                        {
+                          "description": "Unix UTC start timestamp.",
+                          "key": "start",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Unix UTC end timestamp. Alternative to `cnt`.",
+                          "key": "end",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Number of hourly timestamps to return. Alternative to `end`.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:55.000Z",
+                  "updatedAt": "2026-06-05T13:18:55.000Z",
+                  "uid": "35240-73cbd858-d25d-4480-b8a1-d3046b203671"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:55.000Z",
+              "updatedAt": "2026-06-05T13:18:55.000Z",
+              "uid": "35240-e1eef72d-24bc-4f33-9727-4221cac2ead4"
+            }
+          ],
+          "id": "071aee64-3659-4b70-b808-c56d093da923",
+          "createdAt": "2026-06-05T13:18:55.000Z",
+          "updatedAt": "2026-06-05T13:18:55.000Z",
+          "uid": "35240-071aee64-3659-4b70-b808-c56d093da923"
+        }
+      ],
+      "id": "fbae0023-17de-4d2d-b8c5-d01f05d43e59",
+      "createdAt": "2026-06-05T13:18:55.000Z",
+      "updatedAt": "2026-06-05T13:18:55.000Z",
+      "uid": "35240-fbae0023-17de-4d2d-b8c5-d01f05d43e59"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://history.openweathermap.org/data/2.5"
+    }
+  ]
+}

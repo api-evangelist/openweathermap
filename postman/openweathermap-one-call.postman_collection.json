@@ -1,0 +1,1734 @@
+{
+  "info": {
+    "_postman_id": "81684fd7-c5fd-4d45-a43d-9a46f1a9dc52",
+    "name": "OpenWeatherMap One Call API 4.0",
+    "description": "OpenWeather One Call API 4.0 provides a unified weather timeline including current conditions, hourly, daily, 1-minute precipitation, 15-minute forecasts, government weather alerts, and 47+ years of historical data accessible through pay-per-call pricing.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:18:51.000Z",
+    "updatedAt": "2026-06-05T13:18:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-81684fd7-c5fd-4d45-a43d-9a46f1a9dc52"
+  },
+  "item": [
+    {
+      "name": "current",
+      "item": [
+        {
+          "name": "Current Weather From One Call",
+          "id": "1a9437d2-f300-4b29-b490-d8f962b4c82b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/current?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "current"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                  "key": "lat",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                  "key": "lon",
+                  "value": "<float>"
+                },
+                {
+                  "description": "Units of measurement. standard, metric, or imperial.",
+                  "key": "units",
+                  "value": "imperial"
+                },
+                {
+                  "description": "Localization language code.",
+                  "key": "lang",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns a single record with current conditions including temperature, humidity, pressure, wind, UV index, sunrise and sunset times, and weather descriptions for the supplied coordinates."
+          },
+          "response": [
+            {
+              "id": "62b2da3d-7867-41f0-8c24-c2df4476dc91",
+              "name": "One Call current weather response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/current?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "current"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"lat\": \"<float>\",\n  \"lon\": \"<float>\",\n  \"timezone\": \"<string>\",\n  \"timezone_offset\": \"<integer>\",\n  \"current\": {\n    \"dt\": \"<long>\",\n    \"sunrise\": \"<long>\",\n    \"sunset\": \"<long>\",\n    \"temp\": \"<float>\",\n    \"feels_like\": \"<float>\",\n    \"pressure\": \"<integer>\",\n    \"humidity\": \"<integer>\",\n    \"dew_point\": \"<float>\",\n    \"uvi\": \"<float>\",\n    \"clouds\": \"<integer>\",\n    \"visibility\": \"<integer>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_deg\": \"<integer>\",\n    \"weather\": [\n      {\n        \"id\": \"<integer>\",\n        \"main\": \"<string>\",\n        \"description\": \"<string>\",\n        \"icon\": \"<string>\"\n      },\n      {\n        \"id\": \"<integer>\",\n        \"main\": \"<string>\",\n        \"description\": \"<string>\",\n        \"icon\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-06-05T13:18:51.000Z",
+              "updatedAt": "2026-06-05T13:18:51.000Z",
+              "uid": "35240-62b2da3d-7867-41f0-8c24-c2df4476dc91"
+            },
+            {
+              "id": "94b3e90a-9524-4f82-a38f-0d1479e2eb0e",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/current?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "current"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:51.000Z",
+              "updatedAt": "2026-06-05T13:18:51.000Z",
+              "uid": "35240-94b3e90a-9524-4f82-a38f-0d1479e2eb0e"
+            },
+            {
+              "id": "f5bc55d5-c6db-4f81-a8a5-81dfd4e10db2",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/current?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "current"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:51.000Z",
+              "updatedAt": "2026-06-05T13:18:51.000Z",
+              "uid": "35240-f5bc55d5-c6db-4f81-a8a5-81dfd4e10db2"
+            },
+            {
+              "id": "d41d6f41-83e4-4840-9682-28d0c234856b",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/current?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "current"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:51.000Z",
+              "updatedAt": "2026-06-05T13:18:51.000Z",
+              "uid": "35240-d41d6f41-83e4-4840-9682-28d0c234856b"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:51.000Z",
+          "updatedAt": "2026-06-05T13:18:51.000Z",
+          "uid": "35240-1a9437d2-f300-4b29-b490-d8f962b4c82b"
+        }
+      ],
+      "id": "2117a060-103b-4ee9-97f5-eb89b437d5fc",
+      "createdAt": "2026-06-05T13:18:51.000Z",
+      "updatedAt": "2026-06-05T13:18:51.000Z",
+      "uid": "35240-2117a060-103b-4ee9-97f5-eb89b437d5fc"
+    },
+    {
+      "name": "timeline",
+      "item": [
+        {
+          "name": "1min",
+          "item": [
+            {
+              "name": "One Minute Timeline",
+              "id": "89bf92c7-1c90-46a9-b5f7-ea9f13c2aa4e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/timeline/1min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "timeline",
+                    "1min"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns up to 60 records covering precipitation forecasts and government weather alerts at one-minute granularity."
+              },
+              "response": [
+                {
+                  "id": "90e219d7-6e3c-4324-88de-c128e2875ab7",
+                  "name": "One Call one-minute timeline response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1min"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-90e219d7-6e3c-4324-88de-c128e2875ab7"
+                },
+                {
+                  "id": "7e01c1a5-7cbe-439b-ad71-adab573d6644",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1min"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-7e01c1a5-7cbe-439b-ad71-adab573d6644"
+                },
+                {
+                  "id": "744e268d-56c5-4ff2-a413-c4eaa8402bf3",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1min"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-744e268d-56c5-4ff2-a413-c4eaa8402bf3"
+                },
+                {
+                  "id": "674a88a9-9164-437e-9e87-ad99965e15e4",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1min"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-674a88a9-9164-437e-9e87-ad99965e15e4"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:51.000Z",
+              "updatedAt": "2026-06-05T13:18:51.000Z",
+              "uid": "35240-89bf92c7-1c90-46a9-b5f7-ea9f13c2aa4e"
+            }
+          ],
+          "id": "eb5a7a23-a381-4cd3-ae58-0f6c0915c74e",
+          "createdAt": "2026-06-05T13:18:51.000Z",
+          "updatedAt": "2026-06-05T13:18:51.000Z",
+          "uid": "35240-eb5a7a23-a381-4cd3-ae58-0f6c0915c74e"
+        },
+        {
+          "name": "15min",
+          "item": [
+            {
+              "name": "Fifteen Minute Timeline",
+              "id": "5fc3007b-b065-4a92-8a9c-eea5a62c94d2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/timeline/15min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "timeline",
+                    "15min"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns up to 50 records at 15-minute intervals including temperature, precipitation probability, and weather details."
+              },
+              "response": [
+                {
+                  "id": "d012c5e3-acea-4d9d-800f-ab83bf400171",
+                  "name": "One Call 15-minute timeline response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/15min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "15min"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-d012c5e3-acea-4d9d-800f-ab83bf400171"
+                },
+                {
+                  "id": "8772b966-01bf-478f-b146-597d52b895e9",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/15min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "15min"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-8772b966-01bf-478f-b146-597d52b895e9"
+                },
+                {
+                  "id": "aabcb279-aae3-4152-a467-ad832fc657f3",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/15min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "15min"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-aabcb279-aae3-4152-a467-ad832fc657f3"
+                },
+                {
+                  "id": "56ef9940-3543-4fdc-b63f-4e93e9d668e0",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/15min?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "15min"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-56ef9940-3543-4fdc-b63f-4e93e9d668e0"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:51.000Z",
+              "updatedAt": "2026-06-05T13:18:51.000Z",
+              "uid": "35240-5fc3007b-b065-4a92-8a9c-eea5a62c94d2"
+            }
+          ],
+          "id": "80c82faa-c348-4091-84b8-d6592a9c9d3c",
+          "createdAt": "2026-06-05T13:18:51.000Z",
+          "updatedAt": "2026-06-05T13:18:51.000Z",
+          "uid": "35240-80c82faa-c348-4091-84b8-d6592a9c9d3c"
+        },
+        {
+          "name": "1h",
+          "item": [
+            {
+              "name": "Hourly Timeline With History",
+              "id": "04b617ac-077c-464e-9ed2-e21318ce13e2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/timeline/1h?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "timeline",
+                    "1h"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns up to 20 records spanning 47 years of historical data and the next 48 hours of forecast at hourly granularity."
+              },
+              "response": [
+                {
+                  "id": "904ed27e-843b-44a2-9819-1ca5936d810b",
+                  "name": "One Call hourly timeline response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1h?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1h"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-904ed27e-843b-44a2-9819-1ca5936d810b"
+                },
+                {
+                  "id": "5c3930ec-3436-498e-92b7-91a02efc4fb4",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1h?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1h"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-5c3930ec-3436-498e-92b7-91a02efc4fb4"
+                },
+                {
+                  "id": "5e9b103e-d060-42f1-8753-cd07d568ef10",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1h?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1h"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-5e9b103e-d060-42f1-8753-cd07d568ef10"
+                },
+                {
+                  "id": "eea245ba-588f-4d38-abd5-abbe6c775eea",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1h?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1h"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-eea245ba-588f-4d38-abd5-abbe6c775eea"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:51.000Z",
+              "updatedAt": "2026-06-05T13:18:51.000Z",
+              "uid": "35240-04b617ac-077c-464e-9ed2-e21318ce13e2"
+            }
+          ],
+          "id": "1dd2fa66-6c84-4689-9045-e71cfe84967c",
+          "createdAt": "2026-06-05T13:18:51.000Z",
+          "updatedAt": "2026-06-05T13:18:51.000Z",
+          "uid": "35240-1dd2fa66-6c84-4689-9045-e71cfe84967c"
+        },
+        {
+          "name": "1day",
+          "item": [
+            {
+              "name": "Daily Timeline With Aggregates",
+              "id": "9b0059e4-13ac-4771-a45b-99a1ab4ae6b6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/timeline/1day?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "timeline",
+                    "1day"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "imperial"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns up to 10 records of daily aggregated weather data including moon phase, sunrise, sunset, and per-day summaries."
+              },
+              "response": [
+                {
+                  "id": "a76a0629-ba78-4e35-a6d6-f2264bbc102c",
+                  "name": "One Call daily timeline response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1day?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1day"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-a76a0629-ba78-4e35-a6d6-f2264bbc102c"
+                },
+                {
+                  "id": "aed6bec8-a6a3-4a96-9f16-88cc87a402f0",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1day?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1day"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-aed6bec8-a6a3-4a96-9f16-88cc87a402f0"
+                },
+                {
+                  "id": "07c5fe5f-440a-41aa-927d-ef7d9d48e363",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1day?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1day"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-07c5fe5f-440a-41aa-927d-ef7d9d48e363"
+                },
+                {
+                  "id": "2e866bb4-7fd2-41d4-b144-f2290c8e0e07",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/timeline/1day?lat=<float>&lon=<float>&units=imperial&lang=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "timeline",
+                        "1day"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "imperial"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-2e866bb4-7fd2-41d4-b144-f2290c8e0e07"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:51.000Z",
+              "updatedAt": "2026-06-05T13:18:51.000Z",
+              "uid": "35240-9b0059e4-13ac-4771-a45b-99a1ab4ae6b6"
+            }
+          ],
+          "id": "5851be6b-c862-4817-8a67-ef2ad5b78d04",
+          "createdAt": "2026-06-05T13:18:51.000Z",
+          "updatedAt": "2026-06-05T13:18:51.000Z",
+          "uid": "35240-5851be6b-c862-4817-8a67-ef2ad5b78d04"
+        }
+      ],
+      "id": "a2086c29-9d3d-4147-ac71-5528ebc55794",
+      "createdAt": "2026-06-05T13:18:51.000Z",
+      "updatedAt": "2026-06-05T13:18:51.000Z",
+      "uid": "35240-a2086c29-9d3d-4147-ac71-5528ebc55794"
+    },
+    {
+      "name": "alert",
+      "item": [
+        {
+          "name": "{alert_id}",
+          "item": [
+            {
+              "name": "Weather Alert Detail",
+              "id": "5341266e-c4c6-4c74-945c-1039e3e8c8bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/alert/:alert_id?appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alert",
+                    ":alert_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "10480a35-cd62-46cc-81bc-5c9c0c6b98a0",
+                      "key": "alert_id",
+                      "value": "<string>",
+                      "description": "(Required) Alert identifier returned by other One Call endpoints."
+                    }
+                  ]
+                },
+                "description": "Returns a single weather alert record with event name, timing, description, and originating agency."
+              },
+              "response": [
+                {
+                  "id": "2fcd4c1f-ad11-4b03-b6e3-bd4c6dcb1b4c",
+                  "name": "Alert detail response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/alert/:alert_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alert",
+                        ":alert_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "alert_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-2fcd4c1f-ad11-4b03-b6e3-bd4c6dcb1b4c"
+                },
+                {
+                  "id": "05221fce-6be0-45a5-b6b1-41d46749d211",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/alert/:alert_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alert",
+                        ":alert_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "alert_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-05221fce-6be0-45a5-b6b1-41d46749d211"
+                },
+                {
+                  "id": "c7333bfa-fb10-4feb-865e-256cd8840c79",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/alert/:alert_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alert",
+                        ":alert_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "alert_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-c7333bfa-fb10-4feb-865e-256cd8840c79"
+                },
+                {
+                  "id": "140164b1-db0d-461b-b179-aa65bd27a494",
+                  "name": "Alert not found.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/alert/:alert_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alert",
+                        ":alert_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "alert_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-140164b1-db0d-461b-b179-aa65bd27a494"
+                },
+                {
+                  "id": "06b0f1e6-9157-47c4-b504-7757068c8943",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/alert/:alert_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alert",
+                        ":alert_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "alert_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:51.000Z",
+                  "updatedAt": "2026-06-05T13:18:51.000Z",
+                  "uid": "35240-06b0f1e6-9157-47c4-b504-7757068c8943"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:51.000Z",
+              "updatedAt": "2026-06-05T13:18:51.000Z",
+              "uid": "35240-5341266e-c4c6-4c74-945c-1039e3e8c8bf"
+            }
+          ],
+          "id": "8bfd235c-4377-437a-929f-eb02b065ef58",
+          "createdAt": "2026-06-05T13:18:51.000Z",
+          "updatedAt": "2026-06-05T13:18:51.000Z",
+          "uid": "35240-8bfd235c-4377-437a-929f-eb02b065ef58"
+        }
+      ],
+      "id": "00d2640e-01e5-4e4d-a4b7-4a964eaeb1ab",
+      "createdAt": "2026-06-05T13:18:51.000Z",
+      "updatedAt": "2026-06-05T13:18:51.000Z",
+      "uid": "35240-00d2640e-01e5-4e4d-a4b7-4a964eaeb1ab"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openweathermap.org/data/4.0/onecall"
+    }
+  ]
+}

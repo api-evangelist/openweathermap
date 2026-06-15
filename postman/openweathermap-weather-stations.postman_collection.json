@@ -1,0 +1,1037 @@
+{
+  "info": {
+    "_postman_id": "e038a688-f8f6-4bc1-ba01-d674c2140bbe",
+    "name": "OpenWeatherMap Weather Stations API",
+    "description": "Register and manage personal weather stations and submit measurement data to OpenWeather. Aggregated readings are available for minute, hour, and day intervals.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:19:03.000Z",
+    "updatedAt": "2026-06-05T13:19:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e038a688-f8f6-4bc1-ba01-d674c2140bbe"
+  },
+  "item": [
+    {
+      "name": "stations",
+      "item": [
+        {
+          "name": "{station_id}",
+          "item": [
+            {
+              "name": "Retrieve A Weather Station",
+              "id": "51cdbe54-89b0-40aa-989a-6d6cf048f31d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/stations/:station_id?appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations",
+                    ":station_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "8a760ae2-7eee-4a8a-b54d-e7c7056e736c",
+                      "key": "station_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns the station object for the supplied identifier."
+              },
+              "response": [
+                {
+                  "id": "be415a37-44c3-4ec1-bb79-e0d832df9a34",
+                  "name": "Station response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/:station_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        ":station_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "station_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\",\n  \"id\": \"<string>\",\n  \"updated_at\": \"<dateTime>\",\n  \"created_at\": \"<dateTime>\",\n  \"rank\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T13:19:03.000Z",
+                  "updatedAt": "2026-06-05T13:19:03.000Z",
+                  "uid": "35240-be415a37-44c3-4ec1-bb79-e0d832df9a34"
+                }
+              ],
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-51cdbe54-89b0-40aa-989a-6d6cf048f31d"
+            },
+            {
+              "name": "Update A Weather Station",
+              "id": "16753201-44b2-400a-8903-16d3f914dbeb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stations/:station_id?appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations",
+                    ":station_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "351c42c3-5ef9-455b-a887-79b605fcd76a",
+                      "key": "station_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Updates the station metadata for the supplied identifier."
+              },
+              "response": [
+                {
+                  "id": "b61b36ba-2558-4a88-8742-41b195412c8f",
+                  "name": "Station updated.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/:station_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        ":station_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "station_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\",\n  \"id\": \"<string>\",\n  \"updated_at\": \"<dateTime>\",\n  \"created_at\": \"<dateTime>\",\n  \"rank\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T13:19:03.000Z",
+                  "updatedAt": "2026-06-05T13:19:03.000Z",
+                  "uid": "35240-b61b36ba-2558-4a88-8742-41b195412c8f"
+                }
+              ],
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-16753201-44b2-400a-8903-16d3f914dbeb"
+            },
+            {
+              "name": "Delete A Weather Station",
+              "id": "d2a7f5ed-0943-4ee2-9437-466300489b44",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/stations/:station_id?appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations",
+                    ":station_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "3e0e245b-3d4b-45b6-aac3-b7b9d905e1d0",
+                      "key": "station_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Removes the station permanently."
+              },
+              "response": [
+                {
+                  "id": "2635d4d1-3f1d-4d02-9e8f-b65f70ed06c5",
+                  "name": "Station deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/:station_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        ":station_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "station_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:19:03.000Z",
+                  "updatedAt": "2026-06-05T13:19:03.000Z",
+                  "uid": "35240-2635d4d1-3f1d-4d02-9e8f-b65f70ed06c5"
+                }
+              ],
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-d2a7f5ed-0943-4ee2-9437-466300489b44"
+            }
+          ],
+          "id": "ab2674b2-1aa0-474d-8755-7fad1f265b39",
+          "createdAt": "2026-06-05T13:19:03.000Z",
+          "updatedAt": "2026-06-05T13:19:03.000Z",
+          "uid": "35240-ab2674b2-1aa0-474d-8755-7fad1f265b39"
+        },
+        {
+          "name": "List Registered Weather Stations",
+          "id": "0fdf137f-50c5-4db5-8516-002b5eb65d54",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/stations?appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stations"
+              ],
+              "query": [
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the list of all weather stations registered to the API key."
+          },
+          "response": [
+            {
+              "id": "a36fcb1c-6719-44dd-97d9-a214dd3533b1",
+              "name": "Stations list response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/stations?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"external_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"latitude\": \"<float>\",\n    \"longitude\": \"<float>\",\n    \"altitude\": \"<float>\",\n    \"id\": \"<string>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_at\": \"<dateTime>\",\n    \"rank\": \"<integer>\"\n  },\n  {\n    \"external_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"latitude\": \"<float>\",\n    \"longitude\": \"<float>\",\n    \"altitude\": \"<float>\",\n    \"id\": \"<string>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_at\": \"<dateTime>\",\n    \"rank\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-a36fcb1c-6719-44dd-97d9-a214dd3533b1"
+            },
+            {
+              "id": "d40aa687-48b4-4d29-aeec-29eb3f326ab9",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/stations?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-d40aa687-48b4-4d29-aeec-29eb3f326ab9"
+            },
+            {
+              "id": "b988af74-fbd4-4a0e-810d-9cec2e1eb9ca",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/stations?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-b988af74-fbd4-4a0e-810d-9cec2e1eb9ca"
+            }
+          ],
+          "createdAt": "2026-06-05T13:19:03.000Z",
+          "updatedAt": "2026-06-05T13:19:03.000Z",
+          "uid": "35240-0fdf137f-50c5-4db5-8516-002b5eb65d54"
+        },
+        {
+          "name": "Register A New Weather Station",
+          "id": "6925076a-dbae-4b89-9143-8876d96d1700",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/stations?appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stations"
+              ],
+              "query": [
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Registers a new weather station and returns the assigned station object."
+          },
+          "response": [
+            {
+              "id": "13b259e5-d82e-46c8-b92f-9fdc0efa7f7a",
+              "name": "Station created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stations?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\",\n  \"id\": \"<string>\",\n  \"updated_at\": \"<dateTime>\",\n  \"created_at\": \"<dateTime>\",\n  \"rank\": \"<integer>\"\n}",
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-13b259e5-d82e-46c8-b92f-9fdc0efa7f7a"
+            },
+            {
+              "id": "e1b5d90c-fb91-41df-b2b4-12e74432a7c7",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stations?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-e1b5d90c-fb91-41df-b2b4-12e74432a7c7"
+            },
+            {
+              "id": "62b3650b-bfe6-40d3-811f-6218631ec83c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stations?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-62b3650b-bfe6-40d3-811f-6218631ec83c"
+            }
+          ],
+          "createdAt": "2026-06-05T13:19:03.000Z",
+          "updatedAt": "2026-06-05T13:19:03.000Z",
+          "uid": "35240-6925076a-dbae-4b89-9143-8876d96d1700"
+        }
+      ],
+      "id": "2f310d5e-30f0-430f-8b0c-c3e9607dd611",
+      "createdAt": "2026-06-05T13:19:03.000Z",
+      "updatedAt": "2026-06-05T13:19:03.000Z",
+      "uid": "35240-2f310d5e-30f0-430f-8b0c-c3e9607dd611"
+    },
+    {
+      "name": "measurements",
+      "item": [
+        {
+          "name": "Retrieve Aggregated Measurements",
+          "id": "4b428a72-4d29-434c-9abd-3cc192da14ea",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/measurements?station_id=<string>&type=d&limit=<integer>&from=<long>&to=<long>&appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "measurements"
+              ],
+              "query": [
+                {
+                  "description": "(Required) ",
+                  "key": "station_id",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) Aggregation type. m minute, h hour, d day.",
+                  "key": "type",
+                  "value": "d"
+                },
+                {
+                  "description": "(Required) Maximum number of records returned.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "key": "to",
+                  "value": "<long>"
+                },
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns aggregated measurements for a station at minute, hour, or day granularity."
+          },
+          "response": [
+            {
+              "id": "b2f2c66f-bb69-4ea9-ad8c-6cc24537ce32",
+              "name": "Aggregated measurements response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/measurements?station_id=<string>&type=d&limit=<integer>&from=<long>&to=<long>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "measurements"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "station_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) Aggregation type. m minute, h hour, d day.",
+                      "key": "type",
+                      "value": "d"
+                    },
+                    {
+                      "description": "(Required) Maximum number of records returned.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-b2f2c66f-bb69-4ea9-ad8c-6cc24537ce32"
+            }
+          ],
+          "createdAt": "2026-06-05T13:19:03.000Z",
+          "updatedAt": "2026-06-05T13:19:03.000Z",
+          "uid": "35240-4b428a72-4d29-434c-9abd-3cc192da14ea"
+        },
+        {
+          "name": "Submit Station Measurements",
+          "id": "7322d65e-7200-4231-a313-629943d57c8c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  },\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/measurements?appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "measurements"
+              ],
+              "query": [
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Submits one or more measurements collected from a registered station."
+          },
+          "response": [
+            {
+              "id": "a997d204-3614-4024-8897-d3973bf8d347",
+              "name": "Measurements accepted.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  },\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/measurements?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "measurements"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-a997d204-3614-4024-8897-d3973bf8d347"
+            },
+            {
+              "id": "52f70fd6-94e2-4b37-8412-9b8160e0b7ab",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  },\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/measurements?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "measurements"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-52f70fd6-94e2-4b37-8412-9b8160e0b7ab"
+            },
+            {
+              "id": "f47698af-457d-4244-a5cd-e48704f3c21b",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  },\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/measurements?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "measurements"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:19:03.000Z",
+              "updatedAt": "2026-06-05T13:19:03.000Z",
+              "uid": "35240-f47698af-457d-4244-a5cd-e48704f3c21b"
+            }
+          ],
+          "createdAt": "2026-06-05T13:19:03.000Z",
+          "updatedAt": "2026-06-05T13:19:03.000Z",
+          "uid": "35240-7322d65e-7200-4231-a313-629943d57c8c"
+        }
+      ],
+      "id": "b030b0fe-efdb-46fd-9e8c-2cb607b6a9c9",
+      "createdAt": "2026-06-05T13:19:03.000Z",
+      "updatedAt": "2026-06-05T13:19:03.000Z",
+      "uid": "35240-b030b0fe-efdb-46fd-9e8c-2cb607b6a9c9"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openweathermap.org/data/3.0"
+    }
+  ]
+}

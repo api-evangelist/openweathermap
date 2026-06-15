@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Geocoding API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Direct Geocoding By Location Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/geo/1.0/direct",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "City name, optional state and country codes, comma-separated."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of locations to return. Up to 5."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns geographic coordinates for a location specified by city name, optional state code (US only), and optional ISO 3166 country code."
+        },
+        {
+          "info": {
+            "name": "Direct Geocoding By Zip Or Post Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/geo/1.0/zip",
+            "params": [
+              {
+                "name": "zip",
+                "value": "",
+                "type": "query",
+                "description": "Zip code and country code, comma-separated."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns the coordinates for a zip or postal code, requires a country code suffix."
+        },
+        {
+          "info": {
+            "name": "Reverse Geocoding By Coordinate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/geo/1.0/reverse",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of locations to return."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns the location name or names associated with the supplied latitude and longitude."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

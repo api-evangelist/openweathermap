@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Weather Maps 1.0 API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Weather Maps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Weather Map Tile For A Layer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tile.openweathermap.org/map/:layer/:z/:x/:y.png",
+            "params": [
+              {
+                "name": "layer",
+                "value": "",
+                "type": "path",
+                "description": "Weather layer to render."
+              },
+              {
+                "name": "z",
+                "value": "",
+                "type": "path",
+                "description": "Tile zoom level."
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path",
+                "description": "Tile X coordinate."
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path",
+                "description": "Tile Y coordinate."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns a PNG tile image for the requested weather layer at the given z, x, y tile coordinate."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

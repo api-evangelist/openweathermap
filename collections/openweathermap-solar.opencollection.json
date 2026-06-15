@@ -1,0 +1,313 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Solar Energy APIs",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Solar Irradiance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solar Irradiance Interval Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/energy/2.0/solar/interval_data",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Date in YYYY-MM-DD format. Available from 1979-01-01 up to plus 15 days."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "Time resolution."
+              },
+              {
+                "name": "tz",
+                "value": "",
+                "type": "query",
+                "description": "Timezone in +-HH:MM format."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns clear-sky and cloudy-sky GHI, DNI, and DHI irradiance values at 15-minute, hourly, or daily granularity for the supplied coordinates and date."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Solar Panels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Modeled Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/energy/2.0/locations",
+            "params": [
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns all modeled locations associated with the API key."
+        },
+        {
+          "info": {
+            "name": "Create A Modeled Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openweathermap.org/energy/2.0/locations",
+            "params": [
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new modeled location with a coordinate point."
+        },
+        {
+          "info": {
+            "name": "Retrieve A Modeled Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/energy/2.0/location/:location_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns the location object for the supplied location identifier."
+        },
+        {
+          "info": {
+            "name": "Delete A Modeled Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openweathermap.org/energy/2.0/location/:location_id",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Deletes the location associated with the supplied identifier."
+        },
+        {
+          "info": {
+            "name": "List Solar Panels For A Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/energy/2.0/location/:location_id/panels",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns all solar panels associated with the supplied location."
+        },
+        {
+          "info": {
+            "name": "Create A Solar Panel For A Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openweathermap.org/energy/2.0/location/:location_id/panels",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new solar panel with the supplied physical configuration."
+        },
+        {
+          "info": {
+            "name": "Retrieve A Solar Panel",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/energy/2.0/panel/:panel_id",
+            "params": [
+              {
+                "name": "panel_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns the panel configuration for the supplied panel identifier."
+        },
+        {
+          "info": {
+            "name": "Delete A Solar Panel",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.openweathermap.org/energy/2.0/panel/:panel_id",
+            "params": [
+              {
+                "name": "panel_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Deletes the panel associated with the supplied identifier."
+        },
+        {
+          "info": {
+            "name": "Solar Panel Power Output And Irradiance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/energy/2.0/location/:location_id/interval_data",
+            "params": [
+              {
+                "name": "location_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Date in YYYY-MM-DD format."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tz",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns clear-sky and cloudy-sky irradiance and per-panel power and energy output at the requested interval for the supplied location and date."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

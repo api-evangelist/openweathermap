@@ -1,0 +1,769 @@
+{
+  "info": {
+    "_postman_id": "2ba11998-0fcd-4b34-b093-21d8f434fa28",
+    "name": "OpenWeatherMap Geocoding API",
+    "description": "Direct and reverse geocoding for city names, zip codes, and coordinate pairs. Supports city, state, country, and area-level resolution and is used to convert between location text and geographic coordinates.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:18:53.000Z",
+    "updatedAt": "2026-06-05T13:18:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2ba11998-0fcd-4b34-b093-21d8f434fa28"
+  },
+  "item": [
+    {
+      "name": "direct",
+      "item": [
+        {
+          "name": "Direct Geocoding By Location Name",
+          "id": "17ccd36c-11ea-4d0e-9fe1-695306fc0340",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/direct?q=<string>&limit=<integer>&appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "direct"
+              ],
+              "query": [
+                {
+                  "description": "(Required) City name, optional state and country codes, comma-separated.",
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of locations to return. Up to 5.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns geographic coordinates for a location specified by city name, optional state code (US only), and optional ISO 3166 country code."
+          },
+          "response": [
+            {
+              "id": "d5420486-50be-4a81-bf31-44a8c6622921",
+              "name": "Direct geocoding response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/direct?q=<string>&limit=<integer>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "direct"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) City name, optional state and country codes, comma-separated.",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of locations to return. Up to 5.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"local_names\": {\n      \"occaecatc05\": \"<string>\",\n      \"sint_8c0\": \"<string>\"\n    },\n    \"lat\": \"<float>\",\n    \"lon\": \"<float>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"local_names\": {\n      \"irure_58e\": \"<string>\",\n      \"irure_dc2\": \"<string>\"\n    },\n    \"lat\": \"<float>\",\n    \"lon\": \"<float>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-d5420486-50be-4a81-bf31-44a8c6622921"
+            },
+            {
+              "id": "2b9597b6-75c3-40f9-97b1-b39185ebdba8",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/direct?q=<string>&limit=<integer>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "direct"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) City name, optional state and country codes, comma-separated.",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of locations to return. Up to 5.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-2b9597b6-75c3-40f9-97b1-b39185ebdba8"
+            },
+            {
+              "id": "41526728-6bf0-44f2-9ef5-c69bae81f687",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/direct?q=<string>&limit=<integer>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "direct"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) City name, optional state and country codes, comma-separated.",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of locations to return. Up to 5.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-41526728-6bf0-44f2-9ef5-c69bae81f687"
+            },
+            {
+              "id": "897cc6ba-6b61-4898-a4ee-10d99bc6a402",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/direct?q=<string>&limit=<integer>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "direct"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) City name, optional state and country codes, comma-separated.",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of locations to return. Up to 5.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-897cc6ba-6b61-4898-a4ee-10d99bc6a402"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:54.000Z",
+          "updatedAt": "2026-06-05T13:18:54.000Z",
+          "uid": "35240-17ccd36c-11ea-4d0e-9fe1-695306fc0340"
+        }
+      ],
+      "id": "0c0b9ad2-52bc-44c4-8ded-905c369f4a2d",
+      "createdAt": "2026-06-05T13:18:54.000Z",
+      "updatedAt": "2026-06-05T13:18:54.000Z",
+      "uid": "35240-0c0b9ad2-52bc-44c4-8ded-905c369f4a2d"
+    },
+    {
+      "name": "zip",
+      "item": [
+        {
+          "name": "Direct Geocoding By Zip Or Post Code",
+          "id": "9839cd79-0e67-40ee-8f32-1abba67ef190",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/zip?zip=<string>&appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "zip"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Zip code and country code, comma-separated.",
+                  "key": "zip",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the coordinates for a zip or postal code, requires a country code suffix."
+          },
+          "response": [
+            {
+              "id": "3339abc8-31cd-4eea-adbd-b726c309c1c4",
+              "name": "Zip geocoding response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/zip?zip=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zip"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Zip code and country code, comma-separated.",
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"zip\": \"<string>\",\n  \"name\": \"<string>\",\n  \"lat\": \"<float>\",\n  \"lon\": \"<float>\",\n  \"country\": \"<string>\"\n}",
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-3339abc8-31cd-4eea-adbd-b726c309c1c4"
+            },
+            {
+              "id": "63fc1031-61ad-4236-af35-5c91826172e4",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/zip?zip=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zip"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Zip code and country code, comma-separated.",
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-63fc1031-61ad-4236-af35-5c91826172e4"
+            },
+            {
+              "id": "8835fee5-ed32-49ea-8f60-6ba32d8cbb92",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/zip?zip=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zip"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Zip code and country code, comma-separated.",
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-8835fee5-ed32-49ea-8f60-6ba32d8cbb92"
+            },
+            {
+              "id": "f159a0b7-d3f4-4908-8ed4-723bb65547c2",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/zip?zip=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "zip"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Zip code and country code, comma-separated.",
+                      "key": "zip",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-f159a0b7-d3f4-4908-8ed4-723bb65547c2"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:54.000Z",
+          "updatedAt": "2026-06-05T13:18:54.000Z",
+          "uid": "35240-9839cd79-0e67-40ee-8f32-1abba67ef190"
+        }
+      ],
+      "id": "e516d078-df60-4e48-a042-10b063eb886a",
+      "createdAt": "2026-06-05T13:18:54.000Z",
+      "updatedAt": "2026-06-05T13:18:54.000Z",
+      "uid": "35240-e516d078-df60-4e48-a042-10b063eb886a"
+    },
+    {
+      "name": "reverse",
+      "item": [
+        {
+          "name": "Reverse Geocoding By Coordinate",
+          "id": "bd89e46d-2ef4-4035-ad7b-4859425169a5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/reverse?lat=<float>&lon=<float>&limit=<integer>&appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reverse"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Latitude in decimal degrees.",
+                  "key": "lat",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) Longitude in decimal degrees.",
+                  "key": "lon",
+                  "value": "<float>"
+                },
+                {
+                  "description": "Maximum number of locations to return.",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the location name or names associated with the supplied latitude and longitude."
+          },
+          "response": [
+            {
+              "id": "680a7653-cc39-4cf5-9402-9c86813b57e0",
+              "name": "Reverse geocoding response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?lat=<float>&lon=<float>&limit=<integer>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Maximum number of locations to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"name\": \"<string>\",\n    \"local_names\": {\n      \"occaecatc05\": \"<string>\",\n      \"sint_8c0\": \"<string>\"\n    },\n    \"lat\": \"<float>\",\n    \"lon\": \"<float>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"local_names\": {\n      \"irure_58e\": \"<string>\",\n      \"irure_dc2\": \"<string>\"\n    },\n    \"lat\": \"<float>\",\n    \"lon\": \"<float>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-680a7653-cc39-4cf5-9402-9c86813b57e0"
+            },
+            {
+              "id": "da673d6d-aaa8-495e-8c19-bae0c34e1f96",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?lat=<float>&lon=<float>&limit=<integer>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Maximum number of locations to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-da673d6d-aaa8-495e-8c19-bae0c34e1f96"
+            },
+            {
+              "id": "970d7f04-c62a-41c1-a144-1ea0dbe30975",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?lat=<float>&lon=<float>&limit=<integer>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Maximum number of locations to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-970d7f04-c62a-41c1-a144-1ea0dbe30975"
+            },
+            {
+              "id": "3233c19d-1699-494f-89b0-56bd598017a8",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/reverse?lat=<float>&lon=<float>&limit=<integer>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reverse"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Maximum number of locations to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:54.000Z",
+              "updatedAt": "2026-06-05T13:18:54.000Z",
+              "uid": "35240-3233c19d-1699-494f-89b0-56bd598017a8"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:54.000Z",
+          "updatedAt": "2026-06-05T13:18:54.000Z",
+          "uid": "35240-bd89e46d-2ef4-4035-ad7b-4859425169a5"
+        }
+      ],
+      "id": "4b132326-60b4-4731-83d6-32916ae5014c",
+      "createdAt": "2026-06-05T13:18:54.000Z",
+      "updatedAt": "2026-06-05T13:18:54.000Z",
+      "uid": "35240-4b132326-60b4-4731-83d6-32916ae5014c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openweathermap.org/geo/1.0"
+    }
+  ]
+}

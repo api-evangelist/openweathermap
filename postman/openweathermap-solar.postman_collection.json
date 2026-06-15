@@ -1,0 +1,1220 @@
+{
+  "info": {
+    "_postman_id": "8eeab989-82bc-4153-9173-65a1931ff45c",
+    "name": "OpenWeatherMap Solar Energy APIs",
+    "description": "OpenWeather solar APIs covering solar irradiance and solar panel energy prediction. Provides GHI, DNI, DHI values for clear sky and cloudy sky models with 15-minute or hourly resolution and 47 plus years of historical coverage. Includes endpoints to manage modeled locations and solar panel configurations.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:18:58.000Z",
+    "updatedAt": "2026-06-05T13:18:59.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8eeab989-82bc-4153-9173-65a1931ff45c"
+  },
+  "item": [
+    {
+      "name": "solar",
+      "item": [
+        {
+          "name": "interval_data",
+          "item": [
+            {
+              "name": "Solar Irradiance Interval Data",
+              "id": "44e79944-bed7-4962-bd02-5c485994036f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/solar/interval_data?lat=<float>&lon=<float>&date=<date>&interval=1h&tz=<string>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "solar",
+                    "interval_data"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Date in YYYY-MM-DD format. Available from 1979-01-01 up to plus 15 days.",
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Time resolution.",
+                      "key": "interval",
+                      "value": "1h"
+                    },
+                    {
+                      "description": "Timezone in +-HH:MM format.",
+                      "key": "tz",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns clear-sky and cloudy-sky GHI, DNI, and DHI irradiance values at 15-minute, hourly, or daily granularity for the supplied coordinates and date."
+              },
+              "response": [
+                {
+                  "id": "f1edfb1b-fd78-408e-86f1-b2be9a8e825a",
+                  "name": "Solar irradiance interval data response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/solar/interval_data?lat=<float>&lon=<float>&date=<date>&interval=1h&tz=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "solar",
+                        "interval_data"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Date in YYYY-MM-DD format. Available from 1979-01-01 up to plus 15 days.",
+                          "key": "date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Time resolution.",
+                          "key": "interval",
+                          "value": "1h"
+                        },
+                        {
+                          "description": "Timezone in +-HH:MM format.",
+                          "key": "tz",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-f1edfb1b-fd78-408e-86f1-b2be9a8e825a"
+                },
+                {
+                  "id": "4b18dbe5-dc75-47fc-9695-05166579a1b9",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/solar/interval_data?lat=<float>&lon=<float>&date=<date>&interval=1h&tz=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "solar",
+                        "interval_data"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Date in YYYY-MM-DD format. Available from 1979-01-01 up to plus 15 days.",
+                          "key": "date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Time resolution.",
+                          "key": "interval",
+                          "value": "1h"
+                        },
+                        {
+                          "description": "Timezone in +-HH:MM format.",
+                          "key": "tz",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-4b18dbe5-dc75-47fc-9695-05166579a1b9"
+                },
+                {
+                  "id": "bc6d7de1-a216-4fd0-8dce-42fa5d769bbd",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/solar/interval_data?lat=<float>&lon=<float>&date=<date>&interval=1h&tz=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "solar",
+                        "interval_data"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Date in YYYY-MM-DD format. Available from 1979-01-01 up to plus 15 days.",
+                          "key": "date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Time resolution.",
+                          "key": "interval",
+                          "value": "1h"
+                        },
+                        {
+                          "description": "Timezone in +-HH:MM format.",
+                          "key": "tz",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-bc6d7de1-a216-4fd0-8dce-42fa5d769bbd"
+                },
+                {
+                  "id": "034cd08b-cf0b-4369-bdc6-bd158bfbc082",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/solar/interval_data?lat=<float>&lon=<float>&date=<date>&interval=1h&tz=<string>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "solar",
+                        "interval_data"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Date in YYYY-MM-DD format. Available from 1979-01-01 up to plus 15 days.",
+                          "key": "date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Time resolution.",
+                          "key": "interval",
+                          "value": "1h"
+                        },
+                        {
+                          "description": "Timezone in +-HH:MM format.",
+                          "key": "tz",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-034cd08b-cf0b-4369-bdc6-bd158bfbc082"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:59.000Z",
+              "updatedAt": "2026-06-05T13:18:59.000Z",
+              "uid": "35240-44e79944-bed7-4962-bd02-5c485994036f"
+            }
+          ],
+          "id": "92c527ee-55a1-4e21-ae5c-0f507c184412",
+          "createdAt": "2026-06-05T13:18:58.000Z",
+          "updatedAt": "2026-06-05T13:18:58.000Z",
+          "uid": "35240-92c527ee-55a1-4e21-ae5c-0f507c184412"
+        }
+      ],
+      "id": "15d99591-e9eb-4ac8-b005-9cf1fa4a3de4",
+      "createdAt": "2026-06-05T13:18:58.000Z",
+      "updatedAt": "2026-06-05T13:18:58.000Z",
+      "uid": "35240-15d99591-e9eb-4ac8-b005-9cf1fa4a3de4"
+    },
+    {
+      "name": "locations",
+      "item": [
+        {
+          "name": "List Modeled Locations",
+          "id": "e3fc57cf-d29c-4e15-86f0-ac4d9e3196b6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/locations?appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "locations"
+              ],
+              "query": [
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns all modeled locations associated with the API key."
+          },
+          "response": [
+            {
+              "id": "82c54b64-d80d-46ad-b991-59c25f0095bc",
+              "name": "Locations list response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/locations?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:59.000Z",
+              "updatedAt": "2026-06-05T13:18:59.000Z",
+              "uid": "35240-82c54b64-d80d-46ad-b991-59c25f0095bc"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:59.000Z",
+          "updatedAt": "2026-06-05T13:18:59.000Z",
+          "uid": "35240-e3fc57cf-d29c-4e15-86f0-ac4d9e3196b6"
+        },
+        {
+          "name": "Create A Modeled Location",
+          "id": "f06520f4-e18d-4c84-97d0-8f9e80718df1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"point\",\n  \"coordinates\": [\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\"\n    },\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/locations?appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "locations"
+              ],
+              "query": [
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Creates a new modeled location with a coordinate point."
+          },
+          "response": [
+            {
+              "id": "a938b0f3-c38c-4aa2-bad9-74404397d072",
+              "name": "Location created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"point\",\n  \"coordinates\": [\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\"\n    },\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/locations?appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "locations"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:59.000Z",
+              "updatedAt": "2026-06-05T13:18:59.000Z",
+              "uid": "35240-a938b0f3-c38c-4aa2-bad9-74404397d072"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:59.000Z",
+          "updatedAt": "2026-06-05T13:18:59.000Z",
+          "uid": "35240-f06520f4-e18d-4c84-97d0-8f9e80718df1"
+        }
+      ],
+      "id": "dbdf85b2-a805-4bc4-90fd-774da35dfaa1",
+      "createdAt": "2026-06-05T13:18:58.000Z",
+      "updatedAt": "2026-06-05T13:18:58.000Z",
+      "uid": "35240-dbdf85b2-a805-4bc4-90fd-774da35dfaa1"
+    },
+    {
+      "name": "location",
+      "item": [
+        {
+          "name": "{location_id}",
+          "item": [
+            {
+              "name": "panels",
+              "item": [
+                {
+                  "name": "List Solar Panels For A Location",
+                  "id": "554682e3-ab84-40c6-a7ea-6eb03a70ac45",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:location_id/panels?appid=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":location_id",
+                        "panels"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "de541c9f-0ebd-4b82-868c-3b536c2766ff",
+                          "key": "location_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns all solar panels associated with the supplied location."
+                  },
+                  "response": [
+                    {
+                      "id": "e200a028-e761-4fa0-a8b2-09df898eee97",
+                      "name": "Panels list response.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/panels?appid=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "panels"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) OpenWeather API key.",
+                              "key": "appid",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T13:18:59.000Z",
+                      "updatedAt": "2026-06-05T13:18:59.000Z",
+                      "uid": "35240-e200a028-e761-4fa0-a8b2-09df898eee97"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-554682e3-ab84-40c6-a7ea-6eb03a70ac45"
+                },
+                {
+                  "name": "Create A Solar Panel For A Location",
+                  "id": "9f2641e0-9940-481c-bdf6-273179381b42",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"cdte\",\n  \"area\": \"<float>\",\n  \"tilt\": \"<float>\",\n  \"azimuth\": \"<float>\",\n  \"peak_power\": \"<float>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:location_id/panels?appid=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":location_id",
+                        "panels"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "1a9b77f8-604f-4400-bf90-dec16aa244e6",
+                          "key": "location_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Creates a new solar panel with the supplied physical configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "a32418a5-3ffa-4ca2-b4ad-6aa0f22e222b",
+                      "name": "Panel created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"cdte\",\n  \"area\": \"<float>\",\n  \"tilt\": \"<float>\",\n  \"azimuth\": \"<float>\",\n  \"peak_power\": \"<float>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/panels?appid=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "panels"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) OpenWeather API key.",
+                              "key": "appid",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T13:18:59.000Z",
+                      "updatedAt": "2026-06-05T13:18:59.000Z",
+                      "uid": "35240-a32418a5-3ffa-4ca2-b4ad-6aa0f22e222b"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-9f2641e0-9940-481c-bdf6-273179381b42"
+                }
+              ],
+              "id": "815f2011-12dc-4e40-b1ea-d805f9bb3841",
+              "createdAt": "2026-06-05T13:18:58.000Z",
+              "updatedAt": "2026-06-05T13:18:58.000Z",
+              "uid": "35240-815f2011-12dc-4e40-b1ea-d805f9bb3841"
+            },
+            {
+              "name": "interval_data",
+              "item": [
+                {
+                  "name": "Solar Panel Power Output And Irradiance",
+                  "id": "7104c1d7-a9c9-460b-8cad-43c86a46401a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:location_id/interval_data?date=<date>&interval=1h&tz=<string>&appid=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":location_id",
+                        "interval_data"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Date in YYYY-MM-DD format.",
+                          "key": "date",
+                          "value": "<date>"
+                        },
+                        {
+                          "key": "interval",
+                          "value": "1h"
+                        },
+                        {
+                          "key": "tz",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "7febaea2-7739-47f2-920d-2618ea265ad5",
+                          "key": "location_id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns clear-sky and cloudy-sky irradiance and per-panel power and energy output at the requested interval for the supplied location and date."
+                  },
+                  "response": [
+                    {
+                      "id": "88e15e98-5722-42de-9926-905199fb67ee",
+                      "name": "Interval data response.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/location/:location_id/interval_data?date=<date>&interval=1h&tz=<string>&appid=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            ":location_id",
+                            "interval_data"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Date in YYYY-MM-DD format.",
+                              "key": "date",
+                              "value": "<date>"
+                            },
+                            {
+                              "key": "interval",
+                              "value": "1h"
+                            },
+                            {
+                              "key": "tz",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) OpenWeather API key.",
+                              "key": "appid",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "location_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T13:18:59.000Z",
+                      "updatedAt": "2026-06-05T13:18:59.000Z",
+                      "uid": "35240-88e15e98-5722-42de-9926-905199fb67ee"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-7104c1d7-a9c9-460b-8cad-43c86a46401a"
+                }
+              ],
+              "id": "0268d247-958e-4141-81c0-be6bc9df7202",
+              "createdAt": "2026-06-05T13:18:58.000Z",
+              "updatedAt": "2026-06-05T13:18:58.000Z",
+              "uid": "35240-0268d247-958e-4141-81c0-be6bc9df7202"
+            },
+            {
+              "name": "Retrieve A Modeled Location",
+              "id": "0560ba31-8cf2-43a9-943d-6390107375a7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/location/:location_id?appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "location",
+                    ":location_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "dab7e04f-a5a2-4c3a-b091-7733482e7d56",
+                      "key": "location_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns the location object for the supplied location identifier."
+              },
+              "response": [
+                {
+                  "id": "034c3391-7674-469c-98d9-483a7da9371a",
+                  "name": "Location response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:location_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":location_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "location_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-034c3391-7674-469c-98d9-483a7da9371a"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:59.000Z",
+              "updatedAt": "2026-06-05T13:18:59.000Z",
+              "uid": "35240-0560ba31-8cf2-43a9-943d-6390107375a7"
+            },
+            {
+              "name": "Delete A Modeled Location",
+              "id": "4b1f5fd2-0800-48c7-848d-d54913b49599",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/location/:location_id?appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "location",
+                    ":location_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "0e9ef424-c5bc-439c-bd58-977d2d5e4706",
+                      "key": "location_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes the location associated with the supplied identifier."
+              },
+              "response": [
+                {
+                  "id": "1c982d2a-e3dc-4ba3-93c6-aff46ecf4f17",
+                  "name": "Location deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/location/:location_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        ":location_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "location_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-1c982d2a-e3dc-4ba3-93c6-aff46ecf4f17"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:59.000Z",
+              "updatedAt": "2026-06-05T13:18:59.000Z",
+              "uid": "35240-4b1f5fd2-0800-48c7-848d-d54913b49599"
+            }
+          ],
+          "id": "adeb04a8-c0d8-45e1-8d40-eb13c0d02021",
+          "createdAt": "2026-06-05T13:18:58.000Z",
+          "updatedAt": "2026-06-05T13:18:58.000Z",
+          "uid": "35240-adeb04a8-c0d8-45e1-8d40-eb13c0d02021"
+        }
+      ],
+      "id": "40f78e1e-dbed-4be6-879b-9724a7c0604f",
+      "createdAt": "2026-06-05T13:18:58.000Z",
+      "updatedAt": "2026-06-05T13:18:58.000Z",
+      "uid": "35240-40f78e1e-dbed-4be6-879b-9724a7c0604f"
+    },
+    {
+      "name": "panel",
+      "item": [
+        {
+          "name": "{panel_id}",
+          "item": [
+            {
+              "name": "Retrieve A Solar Panel",
+              "id": "148b5ddb-db04-44a5-b05e-e92c035e3e4d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/panel/:panel_id?appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "panel",
+                    ":panel_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "36523caa-5087-48a6-82e2-710464761e49",
+                      "key": "panel_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Returns the panel configuration for the supplied panel identifier."
+              },
+              "response": [
+                {
+                  "id": "ca96d6e3-e9da-40dd-ab47-aaf1693a2e84",
+                  "name": "Panel response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/panel/:panel_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "panel",
+                        ":panel_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "panel_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-ca96d6e3-e9da-40dd-ab47-aaf1693a2e84"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:59.000Z",
+              "updatedAt": "2026-06-05T13:18:59.000Z",
+              "uid": "35240-148b5ddb-db04-44a5-b05e-e92c035e3e4d"
+            },
+            {
+              "name": "Delete A Solar Panel",
+              "id": "9a805c17-95c4-4edd-a6fa-18d73c1d4626",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/panel/:panel_id?appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "panel",
+                    ":panel_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "e0e2eb8c-7a55-4587-93e8-6fb812bc5658",
+                      "key": "panel_id",
+                      "value": "<string>",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Deletes the panel associated with the supplied identifier."
+              },
+              "response": [
+                {
+                  "id": "de4077ac-2b43-4b49-8f4a-a0a719846dde",
+                  "name": "Panel deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/panel/:panel_id?appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "panel",
+                        ":panel_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "panel_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:59.000Z",
+                  "updatedAt": "2026-06-05T13:18:59.000Z",
+                  "uid": "35240-de4077ac-2b43-4b49-8f4a-a0a719846dde"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:59.000Z",
+              "updatedAt": "2026-06-05T13:18:59.000Z",
+              "uid": "35240-9a805c17-95c4-4edd-a6fa-18d73c1d4626"
+            }
+          ],
+          "id": "6322ce67-a02e-4ced-a80c-f11730afa4ea",
+          "createdAt": "2026-06-05T13:18:58.000Z",
+          "updatedAt": "2026-06-05T13:18:58.000Z",
+          "uid": "35240-6322ce67-a02e-4ced-a80c-f11730afa4ea"
+        }
+      ],
+      "id": "4cab8347-cd49-4741-b7bf-e3e8b2dee430",
+      "createdAt": "2026-06-05T13:18:58.000Z",
+      "updatedAt": "2026-06-05T13:18:58.000Z",
+      "uid": "35240-4cab8347-cd49-4741-b7bf-e3e8b2dee430"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openweathermap.org/energy/2.0"
+    }
+  ]
+}

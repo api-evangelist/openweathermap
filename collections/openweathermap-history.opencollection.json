@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Historical Weather API",
+    "version": "2.5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Historical Hourly Weather By Coordinate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://history.openweathermap.org/data/2.5/history/city",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees."
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Granularity. Currently only `hour` is supported."
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Unix UTC start timestamp."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Unix UTC end timestamp. Alternative to `cnt`."
+              },
+              {
+                "name": "cnt",
+                "value": "",
+                "type": "query",
+                "description": "Number of hourly timestamps to return. Alternative to `end`."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns hourly historical weather records for the supplied latitude, longitude, and time window. Maximum request span on Professional and Expert plans is one week per call."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

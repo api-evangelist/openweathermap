@@ -1,0 +1,829 @@
+{
+  "info": {
+    "_postman_id": "72de949b-7254-41eb-82d6-109eec461d19",
+    "name": "OpenWeatherMap Air Pollution API",
+    "description": "Returns current, forecast, and historical air pollution data including the Air Quality Index and concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5, and PM10 for any coordinates on the globe.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:18:52.000Z",
+    "updatedAt": "2026-06-05T13:18:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-72de949b-7254-41eb-82d6-109eec461d19"
+  },
+  "item": [
+    {
+      "name": "air_pollution",
+      "item": [
+        {
+          "name": "forecast",
+          "item": [
+            {
+              "name": "Hourly Air Pollution Forecast",
+              "id": "e786c2db-f69e-418d-8d10-d14d769ce700",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/air_pollution/forecast?lat=<float>&lon=<float>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_pollution",
+                    "forecast"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns the hourly air pollution forecast for the next 5 days for the supplied latitude and longitude."
+              },
+              "response": [
+                {
+                  "id": "3929ce81-5b6d-4a18-9d8a-cdd28e5ce0bd",
+                  "name": "Air pollution forecast response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/air_pollution/forecast?lat=<float>&lon=<float>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "air_pollution",
+                        "forecast"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"coord\": {\n    \"lat\": \"<float>\",\n    \"lon\": \"<float>\"\n  },\n  \"list\": [\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"aqi\": \"<integer>\"\n      },\n      \"components\": {\n        \"co\": \"<float>\",\n        \"no\": \"<float>\",\n        \"no2\": \"<float>\",\n        \"o3\": \"<float>\",\n        \"so2\": \"<float>\",\n        \"pm2_5\": \"<float>\",\n        \"pm10\": \"<float>\",\n        \"nh3\": \"<float>\"\n      }\n    },\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"aqi\": \"<integer>\"\n      },\n      \"components\": {\n        \"co\": \"<float>\",\n        \"no\": \"<float>\",\n        \"no2\": \"<float>\",\n        \"o3\": \"<float>\",\n        \"so2\": \"<float>\",\n        \"pm2_5\": \"<float>\",\n        \"pm10\": \"<float>\",\n        \"nh3\": \"<float>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T13:18:53.000Z",
+                  "updatedAt": "2026-06-05T13:18:53.000Z",
+                  "uid": "35240-3929ce81-5b6d-4a18-9d8a-cdd28e5ce0bd"
+                },
+                {
+                  "id": "cec340cd-fd44-40bf-abd1-585d2fce7980",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/air_pollution/forecast?lat=<float>&lon=<float>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "air_pollution",
+                        "forecast"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:53.000Z",
+                  "updatedAt": "2026-06-05T13:18:53.000Z",
+                  "uid": "35240-cec340cd-fd44-40bf-abd1-585d2fce7980"
+                },
+                {
+                  "id": "361f271a-6e0a-4ec7-8608-0e9115c4c6f0",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/air_pollution/forecast?lat=<float>&lon=<float>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "air_pollution",
+                        "forecast"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:53.000Z",
+                  "updatedAt": "2026-06-05T13:18:53.000Z",
+                  "uid": "35240-361f271a-6e0a-4ec7-8608-0e9115c4c6f0"
+                },
+                {
+                  "id": "149da2d5-3909-4020-9343-2f485bda1838",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/air_pollution/forecast?lat=<float>&lon=<float>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "air_pollution",
+                        "forecast"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:53.000Z",
+                  "updatedAt": "2026-06-05T13:18:53.000Z",
+                  "uid": "35240-149da2d5-3909-4020-9343-2f485bda1838"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:53.000Z",
+              "updatedAt": "2026-06-05T13:18:53.000Z",
+              "uid": "35240-e786c2db-f69e-418d-8d10-d14d769ce700"
+            }
+          ],
+          "id": "417d56a3-6b31-462c-a127-b97bf23c66e6",
+          "createdAt": "2026-06-05T13:18:53.000Z",
+          "updatedAt": "2026-06-05T13:18:53.000Z",
+          "uid": "35240-417d56a3-6b31-462c-a127-b97bf23c66e6"
+        },
+        {
+          "name": "history",
+          "item": [
+            {
+              "name": "Historical Air Pollution Data",
+              "id": "3c44cbe2-677c-41d8-b82b-64bd1627d89c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/air_pollution/history?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_pollution",
+                    "history"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC end timestamp.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns historical hourly air pollution data for the supplied coordinates and time window. Data is available from 27 November 2020 onwards."
+              },
+              "response": [
+                {
+                  "id": "8c07f112-94eb-4dbf-8453-4b69db18e78c",
+                  "name": "Historical air pollution response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/air_pollution/history?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "air_pollution",
+                        "history"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Unix UTC start timestamp.",
+                          "key": "start",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) Unix UTC end timestamp.",
+                          "key": "end",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"coord\": {\n    \"lat\": \"<float>\",\n    \"lon\": \"<float>\"\n  },\n  \"list\": [\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"aqi\": \"<integer>\"\n      },\n      \"components\": {\n        \"co\": \"<float>\",\n        \"no\": \"<float>\",\n        \"no2\": \"<float>\",\n        \"o3\": \"<float>\",\n        \"so2\": \"<float>\",\n        \"pm2_5\": \"<float>\",\n        \"pm10\": \"<float>\",\n        \"nh3\": \"<float>\"\n      }\n    },\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"aqi\": \"<integer>\"\n      },\n      \"components\": {\n        \"co\": \"<float>\",\n        \"no\": \"<float>\",\n        \"no2\": \"<float>\",\n        \"o3\": \"<float>\",\n        \"so2\": \"<float>\",\n        \"pm2_5\": \"<float>\",\n        \"pm10\": \"<float>\",\n        \"nh3\": \"<float>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T13:18:53.000Z",
+                  "updatedAt": "2026-06-05T13:18:53.000Z",
+                  "uid": "35240-8c07f112-94eb-4dbf-8453-4b69db18e78c"
+                },
+                {
+                  "id": "f3adcc81-da80-4509-9758-c7b7e4bef264",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/air_pollution/history?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "air_pollution",
+                        "history"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Unix UTC start timestamp.",
+                          "key": "start",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) Unix UTC end timestamp.",
+                          "key": "end",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:53.000Z",
+                  "updatedAt": "2026-06-05T13:18:53.000Z",
+                  "uid": "35240-f3adcc81-da80-4509-9758-c7b7e4bef264"
+                },
+                {
+                  "id": "112578bb-cff3-44c9-a2fe-685e8b0f442c",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/air_pollution/history?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "air_pollution",
+                        "history"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Unix UTC start timestamp.",
+                          "key": "start",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) Unix UTC end timestamp.",
+                          "key": "end",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:53.000Z",
+                  "updatedAt": "2026-06-05T13:18:53.000Z",
+                  "uid": "35240-112578bb-cff3-44c9-a2fe-685e8b0f442c"
+                },
+                {
+                  "id": "45b801ee-fb14-4333-aa01-ae8415407f5e",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/air_pollution/history?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "air_pollution",
+                        "history"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Unix UTC start timestamp.",
+                          "key": "start",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) Unix UTC end timestamp.",
+                          "key": "end",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:53.000Z",
+                  "updatedAt": "2026-06-05T13:18:53.000Z",
+                  "uid": "35240-45b801ee-fb14-4333-aa01-ae8415407f5e"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:53.000Z",
+              "updatedAt": "2026-06-05T13:18:53.000Z",
+              "uid": "35240-3c44cbe2-677c-41d8-b82b-64bd1627d89c"
+            }
+          ],
+          "id": "3b696eec-5615-48d4-bd6e-d42013a7bbf6",
+          "createdAt": "2026-06-05T13:18:53.000Z",
+          "updatedAt": "2026-06-05T13:18:53.000Z",
+          "uid": "35240-3b696eec-5615-48d4-bd6e-d42013a7bbf6"
+        },
+        {
+          "name": "Current Air Pollution Data",
+          "id": "bfe491c0-4290-4f3d-9ae1-5c44443cf59f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/air_pollution?lat=<float>&lon=<float>&appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "air_pollution"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                  "key": "lat",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                  "key": "lon",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns current air pollution data including the Air Quality Index and concentrations of common pollutants for the supplied latitude and longitude."
+          },
+          "response": [
+            {
+              "id": "5bbbd816-824d-4d71-a180-7c56667593fa",
+              "name": "Current air pollution response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/air_pollution?lat=<float>&lon=<float>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_pollution"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"coord\": {\n    \"lat\": \"<float>\",\n    \"lon\": \"<float>\"\n  },\n  \"list\": [\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"aqi\": \"<integer>\"\n      },\n      \"components\": {\n        \"co\": \"<float>\",\n        \"no\": \"<float>\",\n        \"no2\": \"<float>\",\n        \"o3\": \"<float>\",\n        \"so2\": \"<float>\",\n        \"pm2_5\": \"<float>\",\n        \"pm10\": \"<float>\",\n        \"nh3\": \"<float>\"\n      }\n    },\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"aqi\": \"<integer>\"\n      },\n      \"components\": {\n        \"co\": \"<float>\",\n        \"no\": \"<float>\",\n        \"no2\": \"<float>\",\n        \"o3\": \"<float>\",\n        \"so2\": \"<float>\",\n        \"pm2_5\": \"<float>\",\n        \"pm10\": \"<float>\",\n        \"nh3\": \"<float>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-06-05T13:18:53.000Z",
+              "updatedAt": "2026-06-05T13:18:53.000Z",
+              "uid": "35240-5bbbd816-824d-4d71-a180-7c56667593fa"
+            },
+            {
+              "id": "c60c7c6a-73c1-49c4-a468-3aaf2c97fa69",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_pollution?lat=<float>&lon=<float>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_pollution"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:53.000Z",
+              "updatedAt": "2026-06-05T13:18:53.000Z",
+              "uid": "35240-c60c7c6a-73c1-49c4-a468-3aaf2c97fa69"
+            },
+            {
+              "id": "4388caa1-af85-45a7-a6ba-37d2a1fa779c",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_pollution?lat=<float>&lon=<float>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_pollution"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:53.000Z",
+              "updatedAt": "2026-06-05T13:18:53.000Z",
+              "uid": "35240-4388caa1-af85-45a7-a6ba-37d2a1fa779c"
+            },
+            {
+              "id": "8ba2f0bd-c772-4728-92e2-767f4c17f715",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/air_pollution?lat=<float>&lon=<float>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "air_pollution"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:53.000Z",
+              "updatedAt": "2026-06-05T13:18:53.000Z",
+              "uid": "35240-8ba2f0bd-c772-4728-92e2-767f4c17f715"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:53.000Z",
+          "updatedAt": "2026-06-05T13:18:53.000Z",
+          "uid": "35240-bfe491c0-4290-4f3d-9ae1-5c44443cf59f"
+        }
+      ],
+      "id": "3ecca711-90f3-40b9-98f9-3acd7568ebe9",
+      "createdAt": "2026-06-05T13:18:53.000Z",
+      "updatedAt": "2026-06-05T13:18:53.000Z",
+      "uid": "35240-3ecca711-90f3-40b9-98f9-3acd7568ebe9"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openweathermap.org/data/2.5"
+    }
+  ]
+}

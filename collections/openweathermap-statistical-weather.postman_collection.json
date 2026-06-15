@@ -1,0 +1,862 @@
+{
+  "item": [
+    {
+      "id": "d4b04276-888b-499a-9564-fc994837cff7",
+      "name": "Statistical Weather",
+      "description": {
+        "content": "Long-term statistical weather aggregates for any global location.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc3d6624-ab9c-4b69-90fe-1574ab7b8dd7",
+          "name": "Yearly Aggregated Weather Statistics",
+          "request": {
+            "name": "Yearly Aggregated Weather Statistics",
+            "description": {
+              "content": "Returns 365 groups of statistical weather data for each day of the calendar year for the supplied coordinates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "aggregated",
+                "year"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c424f43d-e834-4b53-b49f-2f62d3adddcd",
+              "name": "Yearly statistics response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "year"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cod\": 3259,\n  \"city_id\": 7822,\n  \"calctime\": 2809.451597303656,\n  \"result\": {\n    \"month\": 1748,\n    \"day\": 4588,\n    \"temp\": {\n      \"record_min\": 4621.153553191779,\n      \"record_max\": 641.7124848206557,\n      \"average_min\": 6731.400798234163,\n      \"average_max\": 8878.888963177205,\n      \"median\": 6732.9865989046975,\n      \"mean\": 2109.280461619464,\n      \"p25\": 1264.9764146387831,\n      \"p75\": 5490.353815008327,\n      \"st_dev\": 7139.526229595874,\n      \"num\": 4111\n    },\n    \"pressure\": {\n      \"record_min\": 1331.533033323631,\n      \"record_max\": 6290.403931020191,\n      \"average_min\": 2027.4017023100066,\n      \"average_max\": 8916.66090837249,\n      \"median\": 936.7232117445667,\n      \"mean\": 3059.5806245647127,\n      \"p25\": 3507.405795095726,\n      \"p75\": 7395.427605495502,\n      \"st_dev\": 5038.459818261398,\n      \"num\": 254\n    },\n    \"humidity\": {\n      \"record_min\": 6977.816588995037,\n      \"record_max\": 5232.620951387925,\n      \"average_min\": 5601.735271365697,\n      \"average_max\": 9765.323839930477,\n      \"median\": 8619.863149845842,\n      \"mean\": 13.744623825420188,\n      \"p25\": 7729.842076993931,\n      \"p75\": 2382.5711241042236,\n      \"st_dev\": 2614.391226774477,\n      \"num\": 2676\n    },\n    \"wind\": {\n      \"record_min\": 9662.896247357747,\n      \"record_max\": 8686.366205010712,\n      \"average_min\": 9535.507576017617,\n      \"average_max\": 8327.31295613806,\n      \"median\": 4920.36976363167,\n      \"mean\": 8028.967869705265,\n      \"p25\": 9820.491677924227,\n      \"p75\": 9991.990603944165,\n      \"st_dev\": 2886.941084664509,\n      \"num\": 29\n    },\n    \"precipitation\": {\n      \"record_min\": 930.5326172219696,\n      \"record_max\": 330.6218851755871,\n      \"average_min\": 2690.5968023668725,\n      \"average_max\": 3912.0092190827327,\n      \"median\": 2477.6888940347876,\n      \"mean\": 6386.529658870049,\n      \"p25\": 6196.49169709837,\n      \"p75\": 2797.1869885612055,\n      \"st_dev\": 4976.100344627159,\n      \"num\": 3437\n    },\n    \"clouds\": {\n      \"record_min\": 1115.2685045363153,\n      \"record_max\": 3146.7808098866467,\n      \"average_min\": 7673.115175592166,\n      \"average_max\": 4479.229730025529,\n      \"median\": 4728.888172141979,\n      \"mean\": 6661.709673874559,\n      \"p25\": 5716.554636179559,\n      \"p75\": 2104.7849700496836,\n      \"st_dev\": 5116.987036002632,\n      \"num\": 5949\n    },\n    \"sunshine_hours\": 1527.8308620165426\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09a13ee6-4ff2-48f9-a427-4069d2865427",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "year"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e27237b1-b0a4-48c3-89b7-2c222e6a9171",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "year"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "077451e6-8675-4aa6-b6a9-1b39b0efa252",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "year"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c1dfa35d-3954-4b58-ad0b-903a1a80d26b",
+          "name": "Monthly Aggregated Weather Statistics",
+          "request": {
+            "name": "Monthly Aggregated Weather Statistics",
+            "description": {
+              "content": "Returns aggregated monthly weather statistics for the supplied coordinates and month.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "aggregated",
+                "month"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "month",
+                  "value": "<integer>",
+                  "description": "(Required) Month of the year, 1-12."
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6f06a1c-6e3e-4497-ad96-455e4e1a4ec9",
+              "name": "Monthly statistics response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "month"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cod\": 3259,\n  \"city_id\": 7822,\n  \"calctime\": 2809.451597303656,\n  \"result\": {\n    \"month\": 1748,\n    \"day\": 4588,\n    \"temp\": {\n      \"record_min\": 4621.153553191779,\n      \"record_max\": 641.7124848206557,\n      \"average_min\": 6731.400798234163,\n      \"average_max\": 8878.888963177205,\n      \"median\": 6732.9865989046975,\n      \"mean\": 2109.280461619464,\n      \"p25\": 1264.9764146387831,\n      \"p75\": 5490.353815008327,\n      \"st_dev\": 7139.526229595874,\n      \"num\": 4111\n    },\n    \"pressure\": {\n      \"record_min\": 1331.533033323631,\n      \"record_max\": 6290.403931020191,\n      \"average_min\": 2027.4017023100066,\n      \"average_max\": 8916.66090837249,\n      \"median\": 936.7232117445667,\n      \"mean\": 3059.5806245647127,\n      \"p25\": 3507.405795095726,\n      \"p75\": 7395.427605495502,\n      \"st_dev\": 5038.459818261398,\n      \"num\": 254\n    },\n    \"humidity\": {\n      \"record_min\": 6977.816588995037,\n      \"record_max\": 5232.620951387925,\n      \"average_min\": 5601.735271365697,\n      \"average_max\": 9765.323839930477,\n      \"median\": 8619.863149845842,\n      \"mean\": 13.744623825420188,\n      \"p25\": 7729.842076993931,\n      \"p75\": 2382.5711241042236,\n      \"st_dev\": 2614.391226774477,\n      \"num\": 2676\n    },\n    \"wind\": {\n      \"record_min\": 9662.896247357747,\n      \"record_max\": 8686.366205010712,\n      \"average_min\": 9535.507576017617,\n      \"average_max\": 8327.31295613806,\n      \"median\": 4920.36976363167,\n      \"mean\": 8028.967869705265,\n      \"p25\": 9820.491677924227,\n      \"p75\": 9991.990603944165,\n      \"st_dev\": 2886.941084664509,\n      \"num\": 29\n    },\n    \"precipitation\": {\n      \"record_min\": 930.5326172219696,\n      \"record_max\": 330.6218851755871,\n      \"average_min\": 2690.5968023668725,\n      \"average_max\": 3912.0092190827327,\n      \"median\": 2477.6888940347876,\n      \"mean\": 6386.529658870049,\n      \"p25\": 6196.49169709837,\n      \"p75\": 2797.1869885612055,\n      \"st_dev\": 4976.100344627159,\n      \"num\": 3437\n    },\n    \"clouds\": {\n      \"record_min\": 1115.2685045363153,\n      \"record_max\": 3146.7808098866467,\n      \"average_min\": 7673.115175592166,\n      \"average_max\": 4479.229730025529,\n      \"median\": 4728.888172141979,\n      \"mean\": 6661.709673874559,\n      \"p25\": 5716.554636179559,\n      \"p75\": 2104.7849700496836,\n      \"st_dev\": 5116.987036002632,\n      \"num\": 5949\n    },\n    \"sunshine_hours\": 1527.8308620165426\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1570bd2c-b3e4-4b56-89fd-0f906f613b8d",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "month"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97a7e49c-c3b3-4bf6-841b-7772ee371019",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "month"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "20a4b160-ec17-47c9-82cd-7c18f508bb8d",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "month"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a18ff98-28b2-4fc4-8023-91d37ef6a307",
+          "name": "Daily Aggregated Weather Statistics",
+          "request": {
+            "name": "Daily Aggregated Weather Statistics",
+            "description": {
+              "content": "Returns aggregated daily weather statistics for the supplied coordinates, month, and day.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "aggregated",
+                "day"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "month",
+                  "value": "<integer>",
+                  "description": "(Required) Month of the year, 1-12."
+                },
+                {
+                  "disabled": false,
+                  "key": "day",
+                  "value": "<integer>",
+                  "description": "(Required) Day of the month, 1-31."
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c839cad-7d45-412f-90bf-f6c1cbf01208",
+              "name": "Daily statistics response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "day"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cod\": 3259,\n  \"city_id\": 7822,\n  \"calctime\": 2809.451597303656,\n  \"result\": {\n    \"month\": 1748,\n    \"day\": 4588,\n    \"temp\": {\n      \"record_min\": 4621.153553191779,\n      \"record_max\": 641.7124848206557,\n      \"average_min\": 6731.400798234163,\n      \"average_max\": 8878.888963177205,\n      \"median\": 6732.9865989046975,\n      \"mean\": 2109.280461619464,\n      \"p25\": 1264.9764146387831,\n      \"p75\": 5490.353815008327,\n      \"st_dev\": 7139.526229595874,\n      \"num\": 4111\n    },\n    \"pressure\": {\n      \"record_min\": 1331.533033323631,\n      \"record_max\": 6290.403931020191,\n      \"average_min\": 2027.4017023100066,\n      \"average_max\": 8916.66090837249,\n      \"median\": 936.7232117445667,\n      \"mean\": 3059.5806245647127,\n      \"p25\": 3507.405795095726,\n      \"p75\": 7395.427605495502,\n      \"st_dev\": 5038.459818261398,\n      \"num\": 254\n    },\n    \"humidity\": {\n      \"record_min\": 6977.816588995037,\n      \"record_max\": 5232.620951387925,\n      \"average_min\": 5601.735271365697,\n      \"average_max\": 9765.323839930477,\n      \"median\": 8619.863149845842,\n      \"mean\": 13.744623825420188,\n      \"p25\": 7729.842076993931,\n      \"p75\": 2382.5711241042236,\n      \"st_dev\": 2614.391226774477,\n      \"num\": 2676\n    },\n    \"wind\": {\n      \"record_min\": 9662.896247357747,\n      \"record_max\": 8686.366205010712,\n      \"average_min\": 9535.507576017617,\n      \"average_max\": 8327.31295613806,\n      \"median\": 4920.36976363167,\n      \"mean\": 8028.967869705265,\n      \"p25\": 9820.491677924227,\n      \"p75\": 9991.990603944165,\n      \"st_dev\": 2886.941084664509,\n      \"num\": 29\n    },\n    \"precipitation\": {\n      \"record_min\": 930.5326172219696,\n      \"record_max\": 330.6218851755871,\n      \"average_min\": 2690.5968023668725,\n      \"average_max\": 3912.0092190827327,\n      \"median\": 2477.6888940347876,\n      \"mean\": 6386.529658870049,\n      \"p25\": 6196.49169709837,\n      \"p75\": 2797.1869885612055,\n      \"st_dev\": 4976.100344627159,\n      \"num\": 3437\n    },\n    \"clouds\": {\n      \"record_min\": 1115.2685045363153,\n      \"record_max\": 3146.7808098866467,\n      \"average_min\": 7673.115175592166,\n      \"average_max\": 4479.229730025529,\n      \"median\": 4728.888172141979,\n      \"mean\": 6661.709673874559,\n      \"p25\": 5716.554636179559,\n      \"p75\": 2104.7849700496836,\n      \"st_dev\": 5116.987036002632,\n      \"num\": 5949\n    },\n    \"sunshine_hours\": 1527.8308620165426\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d24a4d49-dcb7-4638-afa7-274c607cf47d",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "day"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "150ed886-ad18-482d-bede-5b6e7d87d775",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "day"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d60d0345-63f9-4d5b-b63d-41c31237c891",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "aggregated",
+                    "day"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "day",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://history.openweathermap.org/data/2.5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0883aad8-581f-44a4-8f93-0e5921a5b861",
+    "name": "OpenWeatherMap Statistical Weather API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Returns statistical data on main weather parameters (temperature, pressure, humidity, wind, precipitation, clouds) for any day or month of the year at a global location. Useful for climatology, agriculture, and long-range planning. Available on the Expert plan.\n\nContact Support:\n Name: OpenWeather",
+      "type": "text/plain"
+    }
+  }
+}

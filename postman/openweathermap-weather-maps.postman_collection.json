@@ -1,0 +1,357 @@
+{
+  "info": {
+    "_postman_id": "b2f963c7-16d6-41af-afb4-80f186aabc2d",
+    "name": "OpenWeatherMap Weather Maps 1.0 API",
+    "description": "Tile map service that overlays weather data layers (clouds, precipitation, pressure, wind, temperature) on top of base maps using standard z/x/y tile coordinates. Compatible with Leaflet, OpenLayers, Google Maps, and other tile-based libraries.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:19:04.000Z",
+    "updatedAt": "2026-06-05T13:19:04.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b2f963c7-16d6-41af-afb4-80f186aabc2d"
+  },
+  "item": [
+    {
+      "name": "map",
+      "item": [
+        {
+          "name": "{layer}",
+          "item": [
+            {
+              "name": "{z}",
+              "item": [
+                {
+                  "name": "{x}",
+                  "item": [
+                    {
+                      "name": "{y}.png",
+                      "item": [
+                        {
+                          "name": "Weather Map Tile For A Layer",
+                          "id": "14388570-27db-47d8-997f-275c6d421dd9",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "image/png"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/map/:layer/:z/:x/{{y}}.png?appid=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "map",
+                                ":layer",
+                                ":z",
+                                ":x",
+                                "{{y}}.png"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) OpenWeather API key.",
+                                  "key": "appid",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9efe9c22-e08a-4f41-80ba-88ba12a952c4",
+                                  "key": "layer",
+                                  "value": "pressure_new",
+                                  "description": "(Required) Weather layer to render."
+                                },
+                                {
+                                  "id": "9f1d8f8a-3206-499d-aa36-3520292194c1",
+                                  "key": "z",
+                                  "value": "<integer>",
+                                  "description": "(Required) Tile zoom level."
+                                },
+                                {
+                                  "id": "7eb62169-5214-4354-8b46-d6bc05390762",
+                                  "key": "x",
+                                  "value": "<integer>",
+                                  "description": "(Required) Tile X coordinate."
+                                }
+                              ]
+                            },
+                            "description": "Returns a PNG tile image for the requested weather layer at the given z, x, y tile coordinate."
+                          },
+                          "response": [
+                            {
+                              "id": "2ce143cf-6c5f-4dd1-b3d4-e2a7f8d7db9d",
+                              "name": "PNG tile image.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "image/png"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/map/:layer/:z/:x/{{y}}.png?appid=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "map",
+                                    ":layer",
+                                    ":z",
+                                    ":x",
+                                    "{{y}}.png"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) OpenWeather API key.",
+                                      "key": "appid",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "layer"
+                                    },
+                                    {
+                                      "key": "z"
+                                    },
+                                    {
+                                      "key": "x"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "image/png"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<binary>",
+                              "createdAt": "2026-06-05T13:19:04.000Z",
+                              "updatedAt": "2026-06-05T13:19:04.000Z",
+                              "uid": "35240-2ce143cf-6c5f-4dd1-b3d4-e2a7f8d7db9d"
+                            },
+                            {
+                              "id": "87461e81-5e58-4b4d-ae9f-ff5d2d96c2c0",
+                              "name": "Invalid request parameters.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/map/:layer/:z/:x/{{y}}.png?appid=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "map",
+                                    ":layer",
+                                    ":z",
+                                    ":x",
+                                    "{{y}}.png"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) OpenWeather API key.",
+                                      "key": "appid",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "layer"
+                                    },
+                                    {
+                                      "key": "z"
+                                    },
+                                    {
+                                      "key": "x"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T13:19:04.000Z",
+                              "updatedAt": "2026-06-05T13:19:04.000Z",
+                              "uid": "35240-87461e81-5e58-4b4d-ae9f-ff5d2d96c2c0"
+                            },
+                            {
+                              "id": "2f9f29e6-6622-4bb6-adb3-77c7e27e6016",
+                              "name": "Unauthorized.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/map/:layer/:z/:x/{{y}}.png?appid=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "map",
+                                    ":layer",
+                                    ":z",
+                                    ":x",
+                                    "{{y}}.png"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) OpenWeather API key.",
+                                      "key": "appid",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "layer"
+                                    },
+                                    {
+                                      "key": "z"
+                                    },
+                                    {
+                                      "key": "x"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T13:19:04.000Z",
+                              "updatedAt": "2026-06-05T13:19:04.000Z",
+                              "uid": "35240-2f9f29e6-6622-4bb6-adb3-77c7e27e6016"
+                            },
+                            {
+                              "id": "6d0b06a1-ef64-4692-820d-3633c87bea21",
+                              "name": "Too many requests.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/map/:layer/:z/:x/{{y}}.png?appid=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "map",
+                                    ":layer",
+                                    ":z",
+                                    ":x",
+                                    "{{y}}.png"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) OpenWeather API key.",
+                                      "key": "appid",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "layer"
+                                    },
+                                    {
+                                      "key": "z"
+                                    },
+                                    {
+                                      "key": "x"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Too Many Requests",
+                              "code": 429,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T13:19:04.000Z",
+                              "updatedAt": "2026-06-05T13:19:04.000Z",
+                              "uid": "35240-6d0b06a1-ef64-4692-820d-3633c87bea21"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T13:19:04.000Z",
+                          "updatedAt": "2026-06-05T13:19:04.000Z",
+                          "uid": "35240-14388570-27db-47d8-997f-275c6d421dd9"
+                        }
+                      ],
+                      "id": "b8a4d9b6-9fbc-455f-aac9-8bd120f0b6c7",
+                      "createdAt": "2026-06-05T13:19:04.000Z",
+                      "updatedAt": "2026-06-05T13:19:04.000Z",
+                      "uid": "35240-b8a4d9b6-9fbc-455f-aac9-8bd120f0b6c7"
+                    }
+                  ],
+                  "id": "2f7a5e17-11e1-4265-b815-33a0ae7ad39c",
+                  "createdAt": "2026-06-05T13:19:04.000Z",
+                  "updatedAt": "2026-06-05T13:19:04.000Z",
+                  "uid": "35240-2f7a5e17-11e1-4265-b815-33a0ae7ad39c"
+                }
+              ],
+              "id": "f9635f3f-d16f-45d0-994d-ff623448f89a",
+              "createdAt": "2026-06-05T13:19:04.000Z",
+              "updatedAt": "2026-06-05T13:19:04.000Z",
+              "uid": "35240-f9635f3f-d16f-45d0-994d-ff623448f89a"
+            }
+          ],
+          "id": "1114a69c-9be8-45f2-af54-8911ef3c08e9",
+          "createdAt": "2026-06-05T13:19:04.000Z",
+          "updatedAt": "2026-06-05T13:19:04.000Z",
+          "uid": "35240-1114a69c-9be8-45f2-af54-8911ef3c08e9"
+        }
+      ],
+      "id": "48c8760d-5d79-4530-b5be-5b2c12d2da5a",
+      "createdAt": "2026-06-05T13:19:04.000Z",
+      "updatedAt": "2026-06-05T13:19:04.000Z",
+      "uid": "35240-48c8760d-5d79-4530-b5be-5b2c12d2da5a"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://tile.openweathermap.org"
+    },
+    {
+      "key": "y",
+      "value": "<integer>"
+    }
+  ]
+}

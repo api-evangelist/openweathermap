@@ -1,0 +1,304 @@
+{
+  "item": [
+    {
+      "id": "b4b10672-45eb-49da-ac63-3c6d3f15def1",
+      "name": "Road Risk",
+      "description": {
+        "content": "Route weather, road surface state, and alerts for a track of waypoints.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4e8290f8-fdcd-4dfc-9fda-e1d5ab6b9555",
+          "name": "Route Weather And Road Risk",
+          "request": {
+            "name": "Route Weather And Road Risk",
+            "description": {
+              "content": "Accepts a track of waypoints with coordinates and timestamps and returns route weather, road surface state, and alert information for each waypoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "2.5",
+                "roadrisk"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"track\": [\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    },\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd123472-68c1-405d-a8dd-ff57cb483544",
+              "name": "Road risk response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "2.5",
+                    "roadrisk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"track\": [\n    {\n      \"lat\": 8473.289618522975,\n      \"lon\": 1949.4227086154792,\n      \"dt\": 3355\n    },\n    {\n      \"lat\": 8399.58598187332,\n      \"lon\": 8222.175553475938,\n      \"dt\": 3530\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"dt\": 5277,\n    \"coord\": [\n      1558.5540729971015,\n      1830.2702334008213\n    ],\n    \"weather\": {\n      \"temp\": 2126.0782704588887,\n      \"wind_speed\": 225.65607517785136,\n      \"wind_deg\": 2875,\n      \"precipitation_intensity\": 9301.610794296683,\n      \"dew_point\": 4084.308705490546\n    },\n    \"road\": {\n      \"state\": 5482,\n      \"surface_temp\": 8049.861278671623\n    },\n    \"alerts\": [\n      {\n        \"sender_name\": \"string\",\n        \"event\": \"string\",\n        \"severity\": 0\n      },\n      {\n        \"sender_name\": \"string\",\n        \"event\": \"string\",\n        \"severity\": 2\n      }\n    ]\n  },\n  {\n    \"dt\": 6485,\n    \"coord\": [\n      2402.411393003987,\n      627.4874401266172\n    ],\n    \"weather\": {\n      \"temp\": 526.7852380968574,\n      \"wind_speed\": 4184.31891895652,\n      \"wind_deg\": 8429,\n      \"precipitation_intensity\": 3367.5794636058777,\n      \"dew_point\": 481.2748183307125\n    },\n    \"road\": {\n      \"state\": 6486,\n      \"surface_temp\": 3730.542822689307\n    },\n    \"alerts\": [\n      {\n        \"sender_name\": \"string\",\n        \"event\": \"string\",\n        \"severity\": 1\n      },\n      {\n        \"sender_name\": \"string\",\n        \"event\": \"string\",\n        \"severity\": 0\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbcc3c5e-eda2-409a-8546-6d79b532dc23",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "2.5",
+                    "roadrisk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"track\": [\n    {\n      \"lat\": 8473.289618522975,\n      \"lon\": 1949.4227086154792,\n      \"dt\": 3355\n    },\n    {\n      \"lat\": 8399.58598187332,\n      \"lon\": 8222.175553475938,\n      \"dt\": 3530\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "54ea49f2-fb6d-4ba1-add0-8dd3e2ec8bbc",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "2.5",
+                    "roadrisk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"track\": [\n    {\n      \"lat\": 8473.289618522975,\n      \"lon\": 1949.4227086154792,\n      \"dt\": 3355\n    },\n    {\n      \"lat\": 8399.58598187332,\n      \"lon\": 8222.175553475938,\n      \"dt\": 3530\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e6ec6e9-9065-446c-9328-28e331d9a261",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "2.5",
+                    "roadrisk"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"track\": [\n    {\n      \"lat\": 8473.289618522975,\n      \"lon\": 1949.4227086154792,\n      \"dt\": 3355\n    },\n    {\n      \"lat\": 8399.58598187332,\n      \"lon\": 8222.175553475938,\n      \"dt\": 3530\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openweathermap.org",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a6e2a136-b6d2-46c7-aa54-ffaa74fd86fc",
+    "name": "OpenWeatherMap Road Risk API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Returns route-specific weather data, national alerts, current conditions plus 5-day forecast, and 1 year of historical data for a sequence of waypoints. Available under a custom quote.\n\nContact Support:\n Name: OpenWeather",
+      "type": "text/plain"
+    }
+  }
+}

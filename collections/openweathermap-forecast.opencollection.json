@@ -1,0 +1,246 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Forecast APIs",
+    "version": "2.5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Forecast",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Five Day Three Hour Forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/2.5/forecast",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "cnt",
+                "value": "",
+                "type": "query",
+                "description": "Number of timestamps to return. Defaults to 40."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Response format. Default is JSON."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard, metric, or imperial."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns forecast weather data with 3-hour granularity for the next 5 days for the supplied latitude and longitude. Includes temperature, weather conditions, wind, precipitation probability, and more for 40 forecast timestamps."
+        },
+        {
+          "info": {
+            "name": "Four Day Hourly Forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/2.5/forecast/hourly",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "cnt",
+                "value": "",
+                "type": "query",
+                "description": "Number of hourly timestamps to return. Up to 96."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Response format. Default is JSON."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard, metric, or imperial."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns hourly forecast weather data for the next 4 days (up to 96 hourly timestamps) for the supplied latitude and longitude. Available on Developer, Professional, and Expert plans."
+        },
+        {
+          "info": {
+            "name": "Sixteen Day Daily Forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/2.5/forecast/daily",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "cnt",
+                "value": "",
+                "type": "query",
+                "description": "Number of days to return. 1 to 16."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Response format. Default is JSON."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard, metric, or imperial."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns daily forecast weather data for up to 16 days for the supplied latitude and longitude. Each daily entry includes morning, day, evening, night, and min/max temperatures."
+        },
+        {
+          "info": {
+            "name": "Thirty Day Climatic Forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/2.5/forecast/climate",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "cnt",
+                "value": "",
+                "type": "query",
+                "description": "Number of days to return. 1 to 30."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Response format. Default is JSON."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard, metric, or imperial."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns daily climatic forecast weather data for the next 30 days for the supplied latitude and longitude."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

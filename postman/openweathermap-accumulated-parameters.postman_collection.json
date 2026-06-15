@@ -1,0 +1,651 @@
+{
+  "info": {
+    "_postman_id": "87e4c7ef-cbce-413a-b9e4-0737a35f188c",
+    "name": "OpenWeatherMap Accumulated Parameters API",
+    "description": "Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:18:57.000Z",
+    "updatedAt": "2026-06-05T13:18:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-87e4c7ef-cbce-413a-b9e4-0737a35f188c"
+  },
+  "item": [
+    {
+      "name": "accumulated_temperature",
+      "item": [
+        {
+          "name": "Accumulated Temperature For A Time Window",
+          "id": "ccb27139-b439-46ab-97fa-a844ec494fca",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/accumulated_temperature?lat=<float>&lon=<float>&start=<long>&end=<long>&threshold=<float>&appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accumulated_temperature"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Latitude in decimal degrees.",
+                  "key": "lat",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) Longitude in decimal degrees.",
+                  "key": "lon",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) Unix UTC start timestamp.",
+                  "key": "start",
+                  "value": "<long>"
+                },
+                {
+                  "description": "(Required) Unix UTC end timestamp.",
+                  "key": "end",
+                  "value": "<long>"
+                },
+                {
+                  "description": "Minimum temperature value to include in the accumulation.",
+                  "key": "threshold",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the sum of daily mean temperatures above an optional threshold for the supplied coordinates and time window."
+          },
+          "response": [
+            {
+              "id": "8e0983a8-1ea2-430c-a1aa-1cefa225a543",
+              "name": "Accumulated temperature response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accumulated_temperature?lat=<float>&lon=<float>&start=<long>&end=<long>&threshold=<float>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accumulated_temperature"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC end timestamp.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Minimum temperature value to include in the accumulation.",
+                      "key": "threshold",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"date\": \"<long>\",\n    \"temp\": \"<float>\",\n    \"count\": \"<integer>\"\n  },\n  {\n    \"date\": \"<long>\",\n    \"temp\": \"<float>\",\n    \"count\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-06-05T13:18:57.000Z",
+              "updatedAt": "2026-06-05T13:18:57.000Z",
+              "uid": "35240-8e0983a8-1ea2-430c-a1aa-1cefa225a543"
+            },
+            {
+              "id": "08d8ad4e-b6fe-47c7-84ac-2ab99352e09c",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accumulated_temperature?lat=<float>&lon=<float>&start=<long>&end=<long>&threshold=<float>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accumulated_temperature"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC end timestamp.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Minimum temperature value to include in the accumulation.",
+                      "key": "threshold",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:57.000Z",
+              "updatedAt": "2026-06-05T13:18:57.000Z",
+              "uid": "35240-08d8ad4e-b6fe-47c7-84ac-2ab99352e09c"
+            },
+            {
+              "id": "d9675ec7-27ed-448d-9cba-aa8f33d98f19",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accumulated_temperature?lat=<float>&lon=<float>&start=<long>&end=<long>&threshold=<float>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accumulated_temperature"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC end timestamp.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Minimum temperature value to include in the accumulation.",
+                      "key": "threshold",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:57.000Z",
+              "updatedAt": "2026-06-05T13:18:57.000Z",
+              "uid": "35240-d9675ec7-27ed-448d-9cba-aa8f33d98f19"
+            },
+            {
+              "id": "309f4e3c-4de4-4277-a8a6-e75d9867e8c4",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accumulated_temperature?lat=<float>&lon=<float>&start=<long>&end=<long>&threshold=<float>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accumulated_temperature"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC end timestamp.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "Minimum temperature value to include in the accumulation.",
+                      "key": "threshold",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:57.000Z",
+              "updatedAt": "2026-06-05T13:18:57.000Z",
+              "uid": "35240-309f4e3c-4de4-4277-a8a6-e75d9867e8c4"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:57.000Z",
+          "updatedAt": "2026-06-05T13:18:57.000Z",
+          "uid": "35240-ccb27139-b439-46ab-97fa-a844ec494fca"
+        }
+      ],
+      "id": "7cee345f-914b-49ee-9042-41dbf501d824",
+      "createdAt": "2026-06-05T13:18:57.000Z",
+      "updatedAt": "2026-06-05T13:18:57.000Z",
+      "uid": "35240-7cee345f-914b-49ee-9042-41dbf501d824"
+    },
+    {
+      "name": "accumulated_precipitation",
+      "item": [
+        {
+          "name": "Accumulated Precipitation For A Time Window",
+          "id": "62e6bcb1-e66e-410f-a371-5bb97add0f92",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/accumulated_precipitation?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "accumulated_precipitation"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Latitude in decimal degrees.",
+                  "key": "lat",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) Longitude in decimal degrees.",
+                  "key": "lon",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) Unix UTC start timestamp.",
+                  "key": "start",
+                  "value": "<long>"
+                },
+                {
+                  "description": "(Required) Unix UTC end timestamp.",
+                  "key": "end",
+                  "value": "<long>"
+                },
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns the sum of precipitation for the supplied coordinates and time window."
+          },
+          "response": [
+            {
+              "id": "01ecd98f-60ac-4706-b671-c998d3cdd743",
+              "name": "Accumulated precipitation response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/accumulated_precipitation?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accumulated_precipitation"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC end timestamp.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"date\": \"<long>\",\n    \"rain\": \"<float>\",\n    \"count\": \"<integer>\"\n  },\n  {\n    \"date\": \"<long>\",\n    \"rain\": \"<float>\",\n    \"count\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-06-05T13:18:57.000Z",
+              "updatedAt": "2026-06-05T13:18:57.000Z",
+              "uid": "35240-01ecd98f-60ac-4706-b671-c998d3cdd743"
+            },
+            {
+              "id": "677ae74d-2179-4668-9047-8d68322e0095",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accumulated_precipitation?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accumulated_precipitation"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC end timestamp.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:57.000Z",
+              "updatedAt": "2026-06-05T13:18:57.000Z",
+              "uid": "35240-677ae74d-2179-4668-9047-8d68322e0095"
+            },
+            {
+              "id": "4197b612-7836-4fe4-bbf6-e770835b9f43",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accumulated_precipitation?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accumulated_precipitation"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC end timestamp.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:57.000Z",
+              "updatedAt": "2026-06-05T13:18:57.000Z",
+              "uid": "35240-4197b612-7836-4fe4-bbf6-e770835b9f43"
+            },
+            {
+              "id": "f8f172fd-5849-47d8-887d-bccefb943ca0",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/accumulated_precipitation?lat=<float>&lon=<float>&start=<long>&end=<long>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "accumulated_precipitation"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC start timestamp.",
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) Unix UTC end timestamp.",
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:57.000Z",
+              "updatedAt": "2026-06-05T13:18:57.000Z",
+              "uid": "35240-f8f172fd-5849-47d8-887d-bccefb943ca0"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:57.000Z",
+          "updatedAt": "2026-06-05T13:18:57.000Z",
+          "uid": "35240-62e6bcb1-e66e-410f-a371-5bb97add0f92"
+        }
+      ],
+      "id": "0e648670-f998-4371-a227-c0cf2433b986",
+      "createdAt": "2026-06-05T13:18:57.000Z",
+      "updatedAt": "2026-06-05T13:18:57.000Z",
+      "uid": "35240-0e648670-f998-4371-a227-c0cf2433b986"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://history.openweathermap.org/data/2.5/history"
+    }
+  ]
+}

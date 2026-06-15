@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Road Risk API",
+    "version": "2.5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Road Risk",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Route Weather And Road Risk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.openweathermap.org/data/2.5/roadrisk",
+            "params": [
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accepts a track of waypoints with coordinates and timestamps and returns route weather, road surface state, and alert information for each waypoint."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

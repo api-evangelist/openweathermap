@@ -1,0 +1,266 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap One Call API 4.0",
+    "version": "4.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "One Call",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current Weather From One Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/4.0/onecall/current",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard, metric, or imperial."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns a single record with current conditions including temperature, humidity, pressure, wind, UV index, sunrise and sunset times, and weather descriptions for the supplied coordinates."
+        },
+        {
+          "info": {
+            "name": "One Minute Timeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/4.0/onecall/timeline/1min",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard, metric, or imperial."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns up to 60 records covering precipitation forecasts and government weather alerts at one-minute granularity."
+        },
+        {
+          "info": {
+            "name": "Fifteen Minute Timeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/4.0/onecall/timeline/15min",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard, metric, or imperial."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns up to 50 records at 15-minute intervals including temperature, precipitation probability, and weather details."
+        },
+        {
+          "info": {
+            "name": "Hourly Timeline With History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/4.0/onecall/timeline/1h",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard, metric, or imperial."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns up to 20 records spanning 47 years of historical data and the next 48 hours of forecast at hourly granularity."
+        },
+        {
+          "info": {
+            "name": "Daily Timeline With Aggregates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/4.0/onecall/timeline/1day",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. standard, metric, or imperial."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "Localization language code."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns up to 10 records of daily aggregated weather data including moon phase, sunrise, sunset, and per-day summaries."
+        },
+        {
+          "info": {
+            "name": "Weather Alert Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/4.0/onecall/alert/:alert_id",
+            "params": [
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path",
+                "description": "Alert identifier returned by other One Call endpoints."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns a single weather alert record with event name, timing, description, and originating agency."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

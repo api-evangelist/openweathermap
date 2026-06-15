@@ -1,0 +1,334 @@
+{
+  "info": {
+    "_postman_id": "e84b7b77-d2a3-4209-8419-e84aa7740f96",
+    "name": "OpenWeatherMap Road Risk API",
+    "description": "Returns route-specific weather data, national alerts, current conditions plus 5-day forecast, and 1 year of historical data for a sequence of waypoints. Available under a custom quote.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:19:00.000Z",
+    "updatedAt": "2026-06-05T13:19:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e84b7b77-d2a3-4209-8419-e84aa7740f96"
+  },
+  "item": [
+    {
+      "name": "data",
+      "item": [
+        {
+          "name": "2.5",
+          "item": [
+            {
+              "name": "roadrisk",
+              "item": [
+                {
+                  "name": "Route Weather And Road Risk",
+                  "id": "99db9416-5d8d-4970-ad24-8b5e0969bdfc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"track\": [\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    },\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/data/2.5/roadrisk?appid=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "roadrisk"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Accepts a track of waypoints with coordinates and timestamps and returns route weather, road surface state, and alert information for each waypoint."
+                  },
+                  "response": [
+                    {
+                      "id": "1cc305f9-92e4-44e4-b020-e82cc0a939bf",
+                      "name": "Road risk response.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"track\": [\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    },\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/data/2.5/roadrisk?appid=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "2.5",
+                            "roadrisk"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) OpenWeather API key.",
+                              "key": "appid",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"dt\": \"<long>\",\n    \"coord\": [\n      \"<float>\",\n      \"<float>\"\n    ],\n    \"weather\": {\n      \"temp\": \"<float>\",\n      \"wind_speed\": \"<float>\",\n      \"wind_deg\": \"<integer>\",\n      \"precipitation_intensity\": \"<float>\",\n      \"dew_point\": \"<float>\"\n    },\n    \"road\": {\n      \"state\": \"<integer>\",\n      \"surface_temp\": \"<float>\"\n    },\n    \"alerts\": [\n      {\n        \"sender_name\": \"<string>\",\n        \"event\": \"<string>\",\n        \"severity\": \"<integer>\"\n      },\n      {\n        \"sender_name\": \"<string>\",\n        \"event\": \"<string>\",\n        \"severity\": \"<integer>\"\n      }\n    ]\n  },\n  {\n    \"dt\": \"<long>\",\n    \"coord\": [\n      \"<float>\",\n      \"<float>\"\n    ],\n    \"weather\": {\n      \"temp\": \"<float>\",\n      \"wind_speed\": \"<float>\",\n      \"wind_deg\": \"<integer>\",\n      \"precipitation_intensity\": \"<float>\",\n      \"dew_point\": \"<float>\"\n    },\n    \"road\": {\n      \"state\": \"<integer>\",\n      \"surface_temp\": \"<float>\"\n    },\n    \"alerts\": [\n      {\n        \"sender_name\": \"<string>\",\n        \"event\": \"<string>\",\n        \"severity\": \"<integer>\"\n      },\n      {\n        \"sender_name\": \"<string>\",\n        \"event\": \"<string>\",\n        \"severity\": \"<integer>\"\n      }\n    ]\n  }\n]",
+                      "createdAt": "2026-06-05T13:19:01.000Z",
+                      "updatedAt": "2026-06-05T13:19:01.000Z",
+                      "uid": "35240-1cc305f9-92e4-44e4-b020-e82cc0a939bf"
+                    },
+                    {
+                      "id": "246e6d83-8ac6-4a8a-92a5-c367a6292a99",
+                      "name": "Invalid request parameters.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"track\": [\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    },\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/data/2.5/roadrisk?appid=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "2.5",
+                            "roadrisk"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) OpenWeather API key.",
+                              "key": "appid",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T13:19:01.000Z",
+                      "updatedAt": "2026-06-05T13:19:01.000Z",
+                      "uid": "35240-246e6d83-8ac6-4a8a-92a5-c367a6292a99"
+                    },
+                    {
+                      "id": "44d80d8a-2eda-4b21-ab4e-7e157249aa8b",
+                      "name": "Unauthorized.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"track\": [\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    },\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/data/2.5/roadrisk?appid=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "2.5",
+                            "roadrisk"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) OpenWeather API key.",
+                              "key": "appid",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T13:19:01.000Z",
+                      "updatedAt": "2026-06-05T13:19:01.000Z",
+                      "uid": "35240-44d80d8a-2eda-4b21-ab4e-7e157249aa8b"
+                    },
+                    {
+                      "id": "387508f0-122e-407d-9caa-8b226ca86965",
+                      "name": "Too many requests.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"track\": [\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    },\n    {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\",\n      \"dt\": \"<long>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/data/2.5/roadrisk?appid=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "data",
+                            "2.5",
+                            "roadrisk"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) OpenWeather API key.",
+                              "key": "appid",
+                              "value": "<API Key>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T13:19:01.000Z",
+                      "updatedAt": "2026-06-05T13:19:01.000Z",
+                      "uid": "35240-387508f0-122e-407d-9caa-8b226ca86965"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T13:19:01.000Z",
+                  "updatedAt": "2026-06-05T13:19:01.000Z",
+                  "uid": "35240-99db9416-5d8d-4970-ad24-8b5e0969bdfc"
+                }
+              ],
+              "id": "134693ca-1bf5-4dbc-af23-42ad91c4b610",
+              "createdAt": "2026-06-05T13:19:01.000Z",
+              "updatedAt": "2026-06-05T13:19:01.000Z",
+              "uid": "35240-134693ca-1bf5-4dbc-af23-42ad91c4b610"
+            }
+          ],
+          "id": "233a68bf-f2fd-4fc9-a690-b0d1f6209e62",
+          "createdAt": "2026-06-05T13:19:01.000Z",
+          "updatedAt": "2026-06-05T13:19:01.000Z",
+          "uid": "35240-233a68bf-f2fd-4fc9-a690-b0d1f6209e62"
+        }
+      ],
+      "id": "39634570-c83b-4d8a-b0e5-57bb2348cea0",
+      "createdAt": "2026-06-05T13:19:01.000Z",
+      "updatedAt": "2026-06-05T13:19:01.000Z",
+      "uid": "35240-39634570-c83b-4d8a-b0e5-57bb2348cea0"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openweathermap.org"
+    }
+  ]
+}

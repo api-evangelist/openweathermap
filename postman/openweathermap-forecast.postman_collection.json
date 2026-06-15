@@ -1,0 +1,1566 @@
+{
+  "info": {
+    "_postman_id": "0a11f9a5-c7b1-4827-8619-de78f0cb9da2",
+    "name": "OpenWeatherMap Forecast APIs",
+    "description": "OpenWeather forecast APIs including 5-day/3-hour forecast, Hourly Forecast 4 Days, Daily Forecast 16 Days, and Climatic Forecast 30 Days. These forecasts provide weather predictions at varying granularities and time horizons for any global coordinate.\n\nContact Support:\n Name: OpenWeather",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T13:18:49.000Z",
+    "updatedAt": "2026-06-05T13:18:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0a11f9a5-c7b1-4827-8619-de78f0cb9da2"
+  },
+  "item": [
+    {
+      "name": "forecast",
+      "item": [
+        {
+          "name": "hourly",
+          "item": [
+            {
+              "name": "Four Day Hourly Forecast",
+              "id": "1f026f88-471f-4955-95de-03bcb59d31dc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<string>",
+                  "protocol": "https",
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "hourly"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Number of hourly timestamps to return. Up to 96.",
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Response format. Default is JSON.",
+                      "key": "mode",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "standard"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns hourly forecast weather data for the next 4 days (up to 96 hourly timestamps) for the supplied latitude and longitude. Available on Developer, Professional, and Expert plans."
+              },
+              "response": [
+                {
+                  "id": "5e6d6092-042f-4a2b-ac9e-1734849dc908",
+                  "name": "Hourly forecast response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "hourly"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of hourly timestamps to return. Up to 96.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"cod\": \"<string>\",\n  \"message\": \"<number>\",\n  \"cnt\": \"<integer>\",\n  \"list\": [\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"temp\": \"<float>\",\n        \"feels_like\": \"<float>\",\n        \"temp_min\": \"<float>\",\n        \"temp_max\": \"<float>\",\n        \"pressure\": \"<integer>\",\n        \"humidity\": \"<integer>\"\n      },\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ],\n      \"clouds\": {\n        \"all\": \"<integer>\"\n      },\n      \"wind\": {\n        \"speed\": \"<float>\",\n        \"deg\": \"<integer>\",\n        \"gust\": \"<float>\"\n      },\n      \"visibility\": \"<integer>\",\n      \"pop\": \"<float>\",\n      \"rain\": {\n        \"3h\": \"<float>\"\n      },\n      \"snow\": {\n        \"3h\": \"<float>\"\n      },\n      \"sys\": {\n        \"pod\": \"<string>\"\n      },\n      \"dt_txt\": \"<string>\"\n    },\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"temp\": \"<float>\",\n        \"feels_like\": \"<float>\",\n        \"temp_min\": \"<float>\",\n        \"temp_max\": \"<float>\",\n        \"pressure\": \"<integer>\",\n        \"humidity\": \"<integer>\"\n      },\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ],\n      \"clouds\": {\n        \"all\": \"<integer>\"\n      },\n      \"wind\": {\n        \"speed\": \"<float>\",\n        \"deg\": \"<integer>\",\n        \"gust\": \"<float>\"\n      },\n      \"visibility\": \"<integer>\",\n      \"pop\": \"<float>\",\n      \"rain\": {\n        \"3h\": \"<float>\"\n      },\n      \"snow\": {\n        \"3h\": \"<float>\"\n      },\n      \"sys\": {\n        \"pod\": \"<string>\"\n      },\n      \"dt_txt\": \"<string>\"\n    }\n  ],\n  \"city\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"coord\": {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\"\n    },\n    \"country\": \"<string>\",\n    \"population\": \"<integer>\",\n    \"timezone\": \"<integer>\",\n    \"sunrise\": \"<long>\",\n    \"sunset\": \"<long>\"\n  }\n}",
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-5e6d6092-042f-4a2b-ac9e-1734849dc908"
+                },
+                {
+                  "id": "37419d25-a8d8-4447-ae5a-bff95d30839c",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "hourly"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of hourly timestamps to return. Up to 96.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-37419d25-a8d8-4447-ae5a-bff95d30839c"
+                },
+                {
+                  "id": "04baa112-7099-4a15-a793-4f13fecec323",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "hourly"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of hourly timestamps to return. Up to 96.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-04baa112-7099-4a15-a793-4f13fecec323"
+                },
+                {
+                  "id": "f348b24b-d34c-4db6-aa06-9ccbb5edf27f",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "hourly"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of hourly timestamps to return. Up to 96.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-f348b24b-d34c-4db6-aa06-9ccbb5edf27f"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:50.000Z",
+              "updatedAt": "2026-06-05T13:18:50.000Z",
+              "uid": "35240-1f026f88-471f-4955-95de-03bcb59d31dc"
+            }
+          ],
+          "id": "38e79d35-2696-4097-b6c6-c61b9ba8aa0e",
+          "createdAt": "2026-06-05T13:18:50.000Z",
+          "updatedAt": "2026-06-05T13:18:50.000Z",
+          "uid": "35240-38e79d35-2696-4097-b6c6-c61b9ba8aa0e"
+        },
+        {
+          "name": "daily",
+          "item": [
+            {
+              "name": "Sixteen Day Daily Forecast",
+              "id": "e03891a2-2859-405c-a861-be95bd2c4e31",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "https://pro.openweathermap.org/data/2.5/forecast/daily?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<string>",
+                  "protocol": "https",
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "daily"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Number of days to return. 1 to 16.",
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Response format. Default is JSON.",
+                      "key": "mode",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "standard"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns daily forecast weather data for up to 16 days for the supplied latitude and longitude. Each daily entry includes morning, day, evening, night, and min/max temperatures."
+              },
+              "response": [
+                {
+                  "id": "af9c3451-c966-4d2d-b870-83918ff0589d",
+                  "name": "Daily forecast response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/daily?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "daily"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of days to return. 1 to 16.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"city\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"coord\": {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\"\n    },\n    \"country\": \"<string>\",\n    \"population\": \"<integer>\",\n    \"timezone\": \"<integer>\",\n    \"sunrise\": \"<long>\",\n    \"sunset\": \"<long>\"\n  },\n  \"cod\": \"<string>\",\n  \"message\": \"<number>\",\n  \"cnt\": \"<integer>\",\n  \"list\": [\n    {\n      \"dt\": \"<long>\",\n      \"sunrise\": \"<long>\",\n      \"sunset\": \"<long>\",\n      \"temp\": {\n        \"day\": \"<float>\",\n        \"min\": \"<float>\",\n        \"max\": \"<float>\",\n        \"night\": \"<float>\",\n        \"eve\": \"<float>\",\n        \"morn\": \"<float>\"\n      },\n      \"feels_like\": {\n        \"day\": \"<float>\",\n        \"night\": \"<float>\",\n        \"eve\": \"<float>\",\n        \"morn\": \"<float>\"\n      },\n      \"pressure\": \"<integer>\",\n      \"humidity\": \"<integer>\",\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ],\n      \"speed\": \"<float>\",\n      \"deg\": \"<integer>\",\n      \"gust\": \"<float>\",\n      \"clouds\": \"<integer>\",\n      \"rain\": \"<float>\",\n      \"snow\": \"<float>\",\n      \"pop\": \"<float>\"\n    },\n    {\n      \"dt\": \"<long>\",\n      \"sunrise\": \"<long>\",\n      \"sunset\": \"<long>\",\n      \"temp\": {\n        \"day\": \"<float>\",\n        \"min\": \"<float>\",\n        \"max\": \"<float>\",\n        \"night\": \"<float>\",\n        \"eve\": \"<float>\",\n        \"morn\": \"<float>\"\n      },\n      \"feels_like\": {\n        \"day\": \"<float>\",\n        \"night\": \"<float>\",\n        \"eve\": \"<float>\",\n        \"morn\": \"<float>\"\n      },\n      \"pressure\": \"<integer>\",\n      \"humidity\": \"<integer>\",\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ],\n      \"speed\": \"<float>\",\n      \"deg\": \"<integer>\",\n      \"gust\": \"<float>\",\n      \"clouds\": \"<integer>\",\n      \"rain\": \"<float>\",\n      \"snow\": \"<float>\",\n      \"pop\": \"<float>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-af9c3451-c966-4d2d-b870-83918ff0589d"
+                },
+                {
+                  "id": "d63076ba-2e4c-478a-b80f-484f79e0670f",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/daily?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "daily"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of days to return. 1 to 16.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-d63076ba-2e4c-478a-b80f-484f79e0670f"
+                },
+                {
+                  "id": "97116297-3a99-49a3-a0b7-3165851c4ca3",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/daily?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "daily"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of days to return. 1 to 16.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-97116297-3a99-49a3-a0b7-3165851c4ca3"
+                },
+                {
+                  "id": "ea5a5f3b-c138-48eb-a941-2f1fee766ffb",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/daily?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "daily"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of days to return. 1 to 16.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-ea5a5f3b-c138-48eb-a941-2f1fee766ffb"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:50.000Z",
+              "updatedAt": "2026-06-05T13:18:50.000Z",
+              "uid": "35240-e03891a2-2859-405c-a861-be95bd2c4e31"
+            }
+          ],
+          "id": "26b2ed43-8010-423b-bd8e-8d0fa648e934",
+          "createdAt": "2026-06-05T13:18:50.000Z",
+          "updatedAt": "2026-06-05T13:18:50.000Z",
+          "uid": "35240-26b2ed43-8010-423b-bd8e-8d0fa648e934"
+        },
+        {
+          "name": "climate",
+          "item": [
+            {
+              "name": "Thirty Day Climatic Forecast",
+              "id": "b3324736-b822-44bd-ab17-903304c0777b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "https://pro.openweathermap.org/data/2.5/forecast/climate?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<string>",
+                  "protocol": "https",
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "climate"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Number of days to return. 1 to 30.",
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Response format. Default is JSON.",
+                      "key": "mode",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "standard"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns daily climatic forecast weather data for the next 30 days for the supplied latitude and longitude."
+              },
+              "response": [
+                {
+                  "id": "90f6df43-d54e-4d5f-96e9-cd441b5279e6",
+                  "name": "Climatic forecast response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/climate?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "climate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of days to return. 1 to 30.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"city\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"coord\": {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\"\n    },\n    \"country\": \"<string>\",\n    \"population\": \"<integer>\",\n    \"timezone\": \"<integer>\",\n    \"sunrise\": \"<long>\",\n    \"sunset\": \"<long>\"\n  },\n  \"cod\": \"<string>\",\n  \"message\": \"<number>\",\n  \"cnt\": \"<integer>\",\n  \"list\": [\n    {\n      \"dt\": \"<long>\",\n      \"sunrise\": \"<long>\",\n      \"sunset\": \"<long>\",\n      \"temp\": {\n        \"day\": \"<float>\",\n        \"min\": \"<float>\",\n        \"max\": \"<float>\",\n        \"night\": \"<float>\",\n        \"eve\": \"<float>\",\n        \"morn\": \"<float>\"\n      },\n      \"feels_like\": {\n        \"day\": \"<float>\",\n        \"night\": \"<float>\",\n        \"eve\": \"<float>\",\n        \"morn\": \"<float>\"\n      },\n      \"pressure\": \"<integer>\",\n      \"humidity\": \"<integer>\",\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ],\n      \"speed\": \"<float>\",\n      \"deg\": \"<integer>\",\n      \"gust\": \"<float>\",\n      \"clouds\": \"<integer>\",\n      \"rain\": \"<float>\",\n      \"snow\": \"<float>\",\n      \"pop\": \"<float>\"\n    },\n    {\n      \"dt\": \"<long>\",\n      \"sunrise\": \"<long>\",\n      \"sunset\": \"<long>\",\n      \"temp\": {\n        \"day\": \"<float>\",\n        \"min\": \"<float>\",\n        \"max\": \"<float>\",\n        \"night\": \"<float>\",\n        \"eve\": \"<float>\",\n        \"morn\": \"<float>\"\n      },\n      \"feels_like\": {\n        \"day\": \"<float>\",\n        \"night\": \"<float>\",\n        \"eve\": \"<float>\",\n        \"morn\": \"<float>\"\n      },\n      \"pressure\": \"<integer>\",\n      \"humidity\": \"<integer>\",\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ],\n      \"speed\": \"<float>\",\n      \"deg\": \"<integer>\",\n      \"gust\": \"<float>\",\n      \"clouds\": \"<integer>\",\n      \"rain\": \"<float>\",\n      \"snow\": \"<float>\",\n      \"pop\": \"<float>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-90f6df43-d54e-4d5f-96e9-cd441b5279e6"
+                },
+                {
+                  "id": "d8cf5b9d-4c66-4870-978e-a40cd6a18c39",
+                  "name": "Invalid request parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/climate?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "climate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of days to return. 1 to 30.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-d8cf5b9d-4c66-4870-978e-a40cd6a18c39"
+                },
+                {
+                  "id": "4a5fa0c0-1ae5-4891-a8c1-f1d82f2408f4",
+                  "name": "Unauthorized.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/climate?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "climate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of days to return. 1 to 30.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-4a5fa0c0-1ae5-4891-a8c1-f1d82f2408f4"
+                },
+                {
+                  "id": "c79e2839-e2d1-42b9-840d-d2b8b4a5d957",
+                  "name": "Too many requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "https://pro.openweathermap.org/data/2.5/forecast/climate?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                      "protocol": "https",
+                      "host": [
+                        "pro",
+                        "openweathermap",
+                        "org"
+                      ],
+                      "path": [
+                        "data",
+                        "2.5",
+                        "forecast",
+                        "climate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                          "key": "lat",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                          "key": "lon",
+                          "value": "<float>"
+                        },
+                        {
+                          "description": "Number of days to return. 1 to 30.",
+                          "key": "cnt",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Response format. Default is JSON.",
+                          "key": "mode",
+                          "value": "xml"
+                        },
+                        {
+                          "description": "Units of measurement. standard, metric, or imperial.",
+                          "key": "units",
+                          "value": "standard"
+                        },
+                        {
+                          "description": "Localization language code.",
+                          "key": "lang",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OpenWeather API key.",
+                          "key": "appid",
+                          "value": "<API Key>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T13:18:50.000Z",
+                  "updatedAt": "2026-06-05T13:18:50.000Z",
+                  "uid": "35240-c79e2839-e2d1-42b9-840d-d2b8b4a5d957"
+                }
+              ],
+              "createdAt": "2026-06-05T13:18:50.000Z",
+              "updatedAt": "2026-06-05T13:18:50.000Z",
+              "uid": "35240-b3324736-b822-44bd-ab17-903304c0777b"
+            }
+          ],
+          "id": "0f913714-8e5c-45b0-9b10-14ecd6574cdc",
+          "createdAt": "2026-06-05T13:18:50.000Z",
+          "updatedAt": "2026-06-05T13:18:50.000Z",
+          "uid": "35240-0f913714-8e5c-45b0-9b10-14ecd6574cdc"
+        },
+        {
+          "name": "Five Day Three Hour Forecast",
+          "id": "167eac4c-6bba-494d-a032-f063ed14e23b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/forecast?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "forecast"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                  "key": "lat",
+                  "value": "<float>"
+                },
+                {
+                  "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                  "key": "lon",
+                  "value": "<float>"
+                },
+                {
+                  "description": "Number of timestamps to return. Defaults to 40.",
+                  "key": "cnt",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Response format. Default is JSON.",
+                  "key": "mode",
+                  "value": "xml"
+                },
+                {
+                  "description": "Units of measurement. standard, metric, or imperial.",
+                  "key": "units",
+                  "value": "standard"
+                },
+                {
+                  "description": "Localization language code.",
+                  "key": "lang",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) OpenWeather API key.",
+                  "key": "appid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Returns forecast weather data with 3-hour granularity for the next 5 days for the supplied latitude and longitude. Includes temperature, weather conditions, wind, precipitation probability, and more for 40 forecast timestamps."
+          },
+          "response": [
+            {
+              "id": "498c0248-6ecf-482b-937b-05dd295eeb10",
+              "name": "Five day three hour forecast response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/forecast?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forecast"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Number of timestamps to return. Defaults to 40.",
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Response format. Default is JSON.",
+                      "key": "mode",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "standard"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"cod\": \"<string>\",\n  \"message\": \"<number>\",\n  \"cnt\": \"<integer>\",\n  \"list\": [\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"temp\": \"<float>\",\n        \"feels_like\": \"<float>\",\n        \"temp_min\": \"<float>\",\n        \"temp_max\": \"<float>\",\n        \"pressure\": \"<integer>\",\n        \"humidity\": \"<integer>\"\n      },\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ],\n      \"clouds\": {\n        \"all\": \"<integer>\"\n      },\n      \"wind\": {\n        \"speed\": \"<float>\",\n        \"deg\": \"<integer>\",\n        \"gust\": \"<float>\"\n      },\n      \"visibility\": \"<integer>\",\n      \"pop\": \"<float>\",\n      \"rain\": {\n        \"3h\": \"<float>\"\n      },\n      \"snow\": {\n        \"3h\": \"<float>\"\n      },\n      \"sys\": {\n        \"pod\": \"<string>\"\n      },\n      \"dt_txt\": \"<string>\"\n    },\n    {\n      \"dt\": \"<long>\",\n      \"main\": {\n        \"temp\": \"<float>\",\n        \"feels_like\": \"<float>\",\n        \"temp_min\": \"<float>\",\n        \"temp_max\": \"<float>\",\n        \"pressure\": \"<integer>\",\n        \"humidity\": \"<integer>\"\n      },\n      \"weather\": [\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"main\": \"<string>\",\n          \"description\": \"<string>\",\n          \"icon\": \"<string>\"\n        }\n      ],\n      \"clouds\": {\n        \"all\": \"<integer>\"\n      },\n      \"wind\": {\n        \"speed\": \"<float>\",\n        \"deg\": \"<integer>\",\n        \"gust\": \"<float>\"\n      },\n      \"visibility\": \"<integer>\",\n      \"pop\": \"<float>\",\n      \"rain\": {\n        \"3h\": \"<float>\"\n      },\n      \"snow\": {\n        \"3h\": \"<float>\"\n      },\n      \"sys\": {\n        \"pod\": \"<string>\"\n      },\n      \"dt_txt\": \"<string>\"\n    }\n  ],\n  \"city\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"coord\": {\n      \"lat\": \"<float>\",\n      \"lon\": \"<float>\"\n    },\n    \"country\": \"<string>\",\n    \"population\": \"<integer>\",\n    \"timezone\": \"<integer>\",\n    \"sunrise\": \"<long>\",\n    \"sunset\": \"<long>\"\n  }\n}",
+              "createdAt": "2026-06-05T13:18:50.000Z",
+              "updatedAt": "2026-06-05T13:18:50.000Z",
+              "uid": "35240-498c0248-6ecf-482b-937b-05dd295eeb10"
+            },
+            {
+              "id": "0156a7a3-638c-46c3-a070-73c78b23e276",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/forecast?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forecast"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Number of timestamps to return. Defaults to 40.",
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Response format. Default is JSON.",
+                      "key": "mode",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "standard"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:50.000Z",
+              "updatedAt": "2026-06-05T13:18:50.000Z",
+              "uid": "35240-0156a7a3-638c-46c3-a070-73c78b23e276"
+            },
+            {
+              "id": "d1c24276-822d-4260-a1f8-ce1f7aa153fd",
+              "name": "Unauthorized. Missing or invalid API key.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/forecast?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forecast"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Number of timestamps to return. Defaults to 40.",
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Response format. Default is JSON.",
+                      "key": "mode",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "standard"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:50.000Z",
+              "updatedAt": "2026-06-05T13:18:50.000Z",
+              "uid": "35240-d1c24276-822d-4260-a1f8-ce1f7aa153fd"
+            },
+            {
+              "id": "8f9f6db4-c005-4776-9cbe-bad378de9200",
+              "name": "Location not found.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/forecast?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forecast"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Number of timestamps to return. Defaults to 40.",
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Response format. Default is JSON.",
+                      "key": "mode",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "standard"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:50.000Z",
+              "updatedAt": "2026-06-05T13:18:50.000Z",
+              "uid": "35240-8f9f6db4-c005-4776-9cbe-bad378de9200"
+            },
+            {
+              "id": "df577568-a340-4bfc-b385-9f218bcf8ad8",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/forecast?lat=<float>&lon=<float>&cnt=<integer>&mode=xml&units=standard&lang=<string>&appid=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "forecast"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Latitude in decimal degrees, range -90 to 90.",
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "(Required) Longitude in decimal degrees, range -180 to 180.",
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "description": "Number of timestamps to return. Defaults to 40.",
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Response format. Default is JSON.",
+                      "key": "mode",
+                      "value": "xml"
+                    },
+                    {
+                      "description": "Units of measurement. standard, metric, or imperial.",
+                      "key": "units",
+                      "value": "standard"
+                    },
+                    {
+                      "description": "Localization language code.",
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) OpenWeather API key.",
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-06-05T13:18:50.000Z",
+              "updatedAt": "2026-06-05T13:18:50.000Z",
+              "uid": "35240-df577568-a340-4bfc-b385-9f218bcf8ad8"
+            }
+          ],
+          "createdAt": "2026-06-05T13:18:50.000Z",
+          "updatedAt": "2026-06-05T13:18:50.000Z",
+          "uid": "35240-167eac4c-6bba-494d-a032-f063ed14e23b"
+        }
+      ],
+      "id": "b1a3e0ce-67b1-41ee-9192-7772bd8900a6",
+      "createdAt": "2026-06-05T13:18:50.000Z",
+      "updatedAt": "2026-06-05T13:18:50.000Z",
+      "uid": "35240-b1a3e0ce-67b1-41ee-9192-7772bd8900a6"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.openweathermap.org/data/2.5"
+    }
+  ]
+}
