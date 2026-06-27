@@ -47,7 +47,7 @@ apis:
     url: json-schema/openweathermap-current-weather-schema.json
   - type: JSONStructure
     url: json-structure/openweathermap-current-weather-structure.json
-  - type: Example
+  - type: Examples
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
@@ -75,7 +75,7 @@ apis:
     url: openapi/openweathermap-forecast-openapi.yml
   - type: JSONSchema
     url: json-schema/openweathermap-forecast-schema.json
-  - type: Example
+  - type: Examples
     url: examples/forecast-five-day-example.json
 - aid: openweathermap:one-call
   name: One Call API 4.0
@@ -93,7 +93,7 @@ apis:
     url: https://openweathermap.org/api/one-call-4
   - type: OpenAPI
     url: openapi/openweathermap-one-call-openapi.yml
-  - type: Example
+  - type: Examples
     url: examples/one-call-current-example.json
 - aid: openweathermap:air-pollution
   name: Air Pollution API
@@ -114,7 +114,7 @@ apis:
     url: json-schema/openweathermap-air-pollution-schema.json
   - type: JSONStructure
     url: json-structure/openweathermap-air-pollution-structure.json
-  - type: Example
+  - type: Examples
     url: examples/air-pollution-current-example.json
 - aid: openweathermap:geocoding
   name: Geocoding API
@@ -133,7 +133,7 @@ apis:
     url: json-schema/openweathermap-geocoding-schema.json
   - type: JSONStructure
     url: json-structure/openweathermap-geocoding-structure.json
-  - type: Example
+  - type: Examples
     url: examples/geocoding-direct-example.json
 - aid: openweathermap:history
   name: Historical Weather API
@@ -149,7 +149,7 @@ apis:
     url: https://openweathermap.org/history
   - type: OpenAPI
     url: openapi/openweathermap-history-openapi.yml
-  - type: Example
+  - type: Examples
     url: examples/history-city-example.json
 - aid: openweathermap:statistical
   name: Statistical Weather Data API
@@ -167,7 +167,7 @@ apis:
     url: https://openweathermap.org/api/statistics-api
   - type: OpenAPI
     url: openapi/openweathermap-statistical-weather-openapi.yml
-  - type: Example
+  - type: Examples
     url: examples/statistical-month-example.json
 - aid: openweathermap:accumulated-parameters
   name: Accumulated Parameters API
@@ -185,7 +185,7 @@ apis:
     url: https://openweathermap.org/api/accumulated-parameters
   - type: OpenAPI
     url: openapi/openweathermap-accumulated-parameters-openapi.yml
-  - type: Example
+  - type: Examples
     url: examples/accumulated-temperature-example.json
 - aid: openweathermap:solar
   name: Solar Energy APIs
@@ -205,7 +205,7 @@ apis:
     url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
   - type: OpenAPI
     url: openapi/openweathermap-solar-openapi.yml
-  - type: Example
+  - type: Examples
     url: examples/solar-irradiance-interval-example.json
 - aid: openweathermap:road-risk
   name: Road Risk API
@@ -223,7 +223,7 @@ apis:
     url: https://openweathermap.org/api/road-risk
   - type: OpenAPI
     url: openapi/openweathermap-road-risk-openapi.yml
-  - type: Example
+  - type: Examples
     url: examples/road-risk-example.json
 - aid: openweathermap:weather-stations
   name: Weather Stations API
@@ -242,7 +242,7 @@ apis:
     url: openapi/openweathermap-weather-stations-openapi.yml
   - type: JSONSchema
     url: json-schema/openweathermap-station-schema.json
-  - type: Example
+  - type: Examples
     url: examples/weather-stations-create-example.json
 - aid: openweathermap:weather-maps
   name: Weather Maps 1.0
@@ -260,46 +260,35 @@ apis:
     url: https://openweathermap.org/api/weathermaps
   - type: OpenAPI
     url: openapi/openweathermap-weather-maps-openapi.yml
-  - type: Example
+  - type: Examples
     url: examples/weather-maps-tile-example.json
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/openweathermap/overview
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/openweathermap-air-quality-by-city-workflow.yml
-    name: OpenWeatherMap Air Quality By City
-    summary: Geocode a city name, then fetch current air pollution and its hourly
-      forecast.
-  - url: arazzo/openweathermap-coordinate-weather-and-air-snapshot-workflow.yml
-    name: OpenWeatherMap Coordinate Weather And Air Snapshot
-    summary: From raw coordinates, gather current weather, One Call current conditions,
-      and air pollution.
-  - url: arazzo/openweathermap-historical-air-pollution-window-workflow.yml
-    name: OpenWeatherMap Historical Air Pollution Window
-    summary: Geocode a city, then fetch historical air pollution for a window and
-      the current reading.
-  - url: arazzo/openweathermap-locate-and-report-current-weather-workflow.yml
-    name: OpenWeatherMap Locate And Report Current Weather
-    summary: Geocode a city name, then fetch current weather and a five day forecast
-      for it.
-  - url: arazzo/openweathermap-multi-horizon-forecast-workflow.yml
-    name: OpenWeatherMap Multi Horizon Forecast
-    summary: Geocode a city, then stack hourly, daily, and climatic forecasts for
-      it.
-  - url: arazzo/openweathermap-reverse-geocode-weather-workflow.yml
-    name: OpenWeatherMap Reverse Geocode Weather
-    summary: Turn coordinates into a place name, then fetch current weather and One
-      Call conditions.
-  - url: arazzo/openweathermap-weather-map-overlay-context-workflow.yml
-    name: OpenWeatherMap Weather Map Overlay Context
-    summary: Geocode a city, read its current weather, then fetch a matching weather
-      map tile.
-  - url: arazzo/openweathermap-zip-to-forecast-workflow.yml
-    name: OpenWeatherMap Zip To Forecast
-    summary: Resolve a zip or postal code to coordinates, then return five day and
-      sixteen day forecasts.
+- type: Arazzo
+  url: arazzo/openweathermap-air-quality-by-city-workflow.yml
+  name: OpenWeatherMap Air Quality By City
+- type: Arazzo
+  url: arazzo/openweathermap-coordinate-weather-and-air-snapshot-workflow.yml
+  name: OpenWeatherMap Coordinate Weather And Air Snapshot
+- type: Arazzo
+  url: arazzo/openweathermap-historical-air-pollution-window-workflow.yml
+  name: OpenWeatherMap Historical Air Pollution Window
+- type: Arazzo
+  url: arazzo/openweathermap-locate-and-report-current-weather-workflow.yml
+  name: OpenWeatherMap Locate And Report Current Weather
+- type: Arazzo
+  url: arazzo/openweathermap-multi-horizon-forecast-workflow.yml
+  name: OpenWeatherMap Multi Horizon Forecast
+- type: Arazzo
+  url: arazzo/openweathermap-reverse-geocode-weather-workflow.yml
+  name: OpenWeatherMap Reverse Geocode Weather
+- type: Arazzo
+  url: arazzo/openweathermap-weather-map-overlay-context-workflow.yml
+  name: OpenWeatherMap Weather Map Overlay Context
+- type: Arazzo
+  url: arazzo/openweathermap-zip-to-forecast-workflow.yml
+  name: OpenWeatherMap Zip To Forecast
 - type: Website
   url: https://openweathermap.org/
   name: Website
@@ -315,7 +304,7 @@ common:
 - type: Authentication
   url: https://openweathermap.org/appid
   name: How to Start Working with the API
-- type: SignUp
+- type: Signup
   url: https://home.openweathermap.org/users/sign_up
   name: Sign Up
 - type: Login

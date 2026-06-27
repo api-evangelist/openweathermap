@@ -3,13 +3,12 @@
   "feeds": [
     {
       "source": "https://openweather.co.uk/blog",
-      "error": "URLError"
-    },
-    {
-      "source": "https://openweathermap.org/marketplace",
-      "error": "URLError"
+      "feed_url": "",
+      "saved": 0,
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 1,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:59:03Z",
+  "post_count": 3,
+  "agent_pulled": "2026-06-27"
 }
