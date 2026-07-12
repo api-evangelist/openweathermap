@@ -263,6 +263,10 @@ apis:
   - type: Examples
     url: examples/weather-maps-tile-example.json
 common:
+- type: DomainSecurity
+  url: security/openweathermap-domain-security.yml
+- type: Authentication
+  url: authentication/openweathermap-authentication.yml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/openweathermap/overview
 - type: Arazzo

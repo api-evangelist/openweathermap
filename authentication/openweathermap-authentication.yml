@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openweathermap-accumulated-parameters-openapi.yml, openapi/openweathermap-air-pollution-openapi.yml,
+  openapi/openweathermap-current-weather-openapi.yml, openapi/openweathermap-forecast-openapi.yml,
+  openapi/openweathermap-geocoding-openapi.yml, openapi/openweathermap-history-openapi.yml,
+  openapi/openweathermap-one-call-openapi.yml, openapi/openweathermap-road-risk-openapi.yml,
+  openapi/openweathermap-solar-openapi.yml, openapi/openweathermap-statistical-weather-openapi.yml,
+  openapi/openweathermap-weather-maps-openapi.yml, openapi/openweathermap-weather-stations-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: appid
+  type: apiKey
+  in: query
+  parameter: appid
+  sources:
+  - openapi/openweathermap-accumulated-parameters-openapi.yml
+  - openapi/openweathermap-air-pollution-openapi.yml
+  - openapi/openweathermap-current-weather-openapi.yml
+  - openapi/openweathermap-forecast-openapi.yml
+  - openapi/openweathermap-geocoding-openapi.yml
+  - openapi/openweathermap-history-openapi.yml
+  - openapi/openweathermap-one-call-openapi.yml
+  - openapi/openweathermap-road-risk-openapi.yml
+  - openapi/openweathermap-solar-openapi.yml
+  - openapi/openweathermap-statistical-weather-openapi.yml
+  - openapi/openweathermap-weather-maps-openapi.yml
+  - openapi/openweathermap-weather-stations-openapi.yml
