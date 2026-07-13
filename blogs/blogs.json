@@ -2,13 +2,14 @@
   "repo": "openweathermap",
   "feeds": [
     {
-      "source": "https://openweather.co.uk/blog",
-      "feed_url": "",
+      "source": "https://openweathermap.org/marketplace",
+      "feed_url": "https://openweathermap.org/marketplace",
+      "title": "",
       "saved": 0,
-      "method": "agent-scrape"
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:59:03Z",
-  "post_count": 3,
-  "agent_pulled": "2026-06-27"
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 6,
+  "agent_pulled": "2026-07-04"
 }
