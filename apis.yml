@@ -263,6 +263,8 @@ apis:
   - type: Examples
     url: examples/weather-maps-tile-example.json
 common:
+- type: AgenticAccess
+  url: agentic-access/openweathermap-agentic-access.yml
 - type: DomainSecurity
   url: security/openweathermap-domain-security.yml
 - type: Authentication
