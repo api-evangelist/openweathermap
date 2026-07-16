@@ -1,0 +1,31 @@
+generated: '2026-06-20'
+method: searched
+source: live probes of /.well-known/* on OpenWeather hosts
+note: >-
+  No /.well-known/ discovery documents are published on any OpenWeather host.
+  security.txt, openid-configuration, oauth-authorization-server, api-catalog,
+  and ai-plugin.json all return 404. This is expected for an apiKey-authenticated
+  (appid) service with no OAuth/OIDC surface. Absence recorded as valid data.
+hosts:
+  - host: https://openweathermap.org
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://api.openweathermap.org
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://history.openweathermap.org
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+  - host: https://pro.openweathermap.org
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://tile.openweathermap.org
+    documents:
+      - {path: /.well-known/security.txt, status: 404}

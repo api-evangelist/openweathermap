@@ -1,0 +1,11 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for OpenWeatherMap Statistical Weather API
+  version: 1.0.0
+extends: openapi/openweathermap-statistical-weather-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: openweathermap
+    x-apievangelist-enriched: '2026-06-20'
+    x-apievangelist-auth: apiKey appid (query)

@@ -1,0 +1,39 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  OpenWeather API docs (openweathermap.org/api, /price, /faq) and OpenAPI servers[];
+  status page and deprecation-header support probed live.
+versioning:
+  scheme: uri-path
+  note: >-
+    Each product carries its own version segment in the base path: Current/Forecast/
+    Air Pollution use /data/2.5, Weather Stations use /data/3.0, One Call uses
+    /data/4.0/onecall (with 3.0 still available at /data/3.0/onecall), Geocoding uses
+    /geo/1.0, Solar uses /energy/2.0. Pro-tier forecast products are served from
+    pro.openweathermap.org.
+  current:
+    current-weather: '2.5'
+    forecast: '2.5'
+    air-pollution: '2.5'
+    one-call: '4.0'
+    geocoding: '1.0'
+    weather-stations: '3.0'
+    solar: '2.0'
+deprecation:
+  sunset_header: false
+  deprecation_header: false
+  policy_url: https://openweathermap.org/faq
+  notes:
+    - >-
+      One Call API 2.5 (/data/2.5/onecall) has been retired in favor of One Call 3.0
+      and 4.0; new subscriptions use 3.0/4.0. RFC 8594 Sunset/Deprecation headers are
+      not emitted by the API.
+    - >-
+      Deprecations are communicated via the docs, blog, and email rather than machine-
+      readable response headers.
+sla:
+  url: https://openweather.co.uk/terms
+  note: Contractual SLAs with uptime commitments are offered on Enterprise plans; no public uptime target is published for self-service tiers.
+status_page: null
+status_page_note: No public status page found (openweathermap.org/status and status.openweathermap.org both unreachable).
+deprecated_operations: []

@@ -1,0 +1,119 @@
+generated: '2026-06-20'
+method: derived
+source: derived from OpenAPI 4xx/5xx responses across openapi/*.yml; envelope confirmed from OpenWeather
+  docs
+format: json
+envelope:
+  content_type: application/json
+  shape: '{"cod": <int status>, "message": "<human readable error>"}'
+  note: OpenWeather returns a JSON error envelope with numeric cod and a message string; it does not use
+    RFC 9457 application/problem+json.
+problems:
+- status: 400
+  title: Bad Request
+  description: Invalid request parameters.
+  remediation: Check required query parameters (lat/lon, dates, ids) and their formats.
+  source_operations:
+  - openapi/openweathermap-accumulated-parameters-openapi.yml#getAccumulatedPrecipitation
+  - openapi/openweathermap-accumulated-parameters-openapi.yml#getAccumulatedTemperature
+  - openapi/openweathermap-air-pollution-openapi.yml#getAirPollutionForecast
+  - openapi/openweathermap-air-pollution-openapi.yml#getAirPollutionHistory
+  - openapi/openweathermap-air-pollution-openapi.yml#getCurrentAirPollution
+  - openapi/openweathermap-current-weather-openapi.yml#getCurrentWeather
+  - openapi/openweathermap-forecast-openapi.yml#getForecastClimate
+  - openapi/openweathermap-forecast-openapi.yml#getForecastDaily
+  - openapi/openweathermap-forecast-openapi.yml#getForecastFiveDay
+  - openapi/openweathermap-forecast-openapi.yml#getForecastHourly
+  - openapi/openweathermap-geocoding-openapi.yml#getDirectGeocoding
+  - openapi/openweathermap-geocoding-openapi.yml#getReverseGeocoding
+  - openapi/openweathermap-geocoding-openapi.yml#getZipGeocoding
+  - openapi/openweathermap-history-openapi.yml#getHistoricalWeatherCity
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallAlert
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallCurrent
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineDay
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineFifteenMinute
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineHour
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineOneMinute
+  - openapi/openweathermap-road-risk-openapi.yml#postRoadRisk
+  - openapi/openweathermap-solar-openapi.yml#getSolarIrradianceIntervalData
+  - openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedDay
+  - openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedMonth
+  - openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedYear
+  - openapi/openweathermap-weather-maps-openapi.yml#getWeatherMapTile
+  - openapi/openweathermap-weather-stations-openapi.yml#createStation
+  - openapi/openweathermap-weather-stations-openapi.yml#postMeasurements
+- status: 401
+  title: Unauthorized
+  description: Unauthorized.
+  remediation: Supply a valid API key via the appid query parameter; new keys can take a couple of hours
+    to activate.
+  source_operations:
+  - openapi/openweathermap-accumulated-parameters-openapi.yml#getAccumulatedPrecipitation
+  - openapi/openweathermap-accumulated-parameters-openapi.yml#getAccumulatedTemperature
+  - openapi/openweathermap-air-pollution-openapi.yml#getAirPollutionForecast
+  - openapi/openweathermap-air-pollution-openapi.yml#getAirPollutionHistory
+  - openapi/openweathermap-air-pollution-openapi.yml#getCurrentAirPollution
+  - openapi/openweathermap-current-weather-openapi.yml#getCurrentWeather
+  - openapi/openweathermap-forecast-openapi.yml#getForecastClimate
+  - openapi/openweathermap-forecast-openapi.yml#getForecastDaily
+  - openapi/openweathermap-forecast-openapi.yml#getForecastFiveDay
+  - openapi/openweathermap-forecast-openapi.yml#getForecastHourly
+  - openapi/openweathermap-geocoding-openapi.yml#getDirectGeocoding
+  - openapi/openweathermap-geocoding-openapi.yml#getReverseGeocoding
+  - openapi/openweathermap-geocoding-openapi.yml#getZipGeocoding
+  - openapi/openweathermap-history-openapi.yml#getHistoricalWeatherCity
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallAlert
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallCurrent
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineDay
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineFifteenMinute
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineHour
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineOneMinute
+  - openapi/openweathermap-road-risk-openapi.yml#postRoadRisk
+  - openapi/openweathermap-solar-openapi.yml#getSolarIrradianceIntervalData
+  - openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedDay
+  - openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedMonth
+  - openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedYear
+  - openapi/openweathermap-weather-maps-openapi.yml#getWeatherMapTile
+  - openapi/openweathermap-weather-stations-openapi.yml#createStation
+  - openapi/openweathermap-weather-stations-openapi.yml#listStations
+  - openapi/openweathermap-weather-stations-openapi.yml#postMeasurements
+- status: 404
+  title: Not Found
+  description: Location not found.
+  remediation: Verify the requested location, id, or resource exists.
+  source_operations:
+  - openapi/openweathermap-current-weather-openapi.yml#getCurrentWeather
+  - openapi/openweathermap-forecast-openapi.yml#getForecastFiveDay
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallAlert
+- status: 429
+  title: Too Many Requests
+  description: Too many requests.
+  remediation: Reduce request rate or upgrade the subscription plan; the free tier is limited to 60 calls/minute.
+  source_operations:
+  - openapi/openweathermap-accumulated-parameters-openapi.yml#getAccumulatedPrecipitation
+  - openapi/openweathermap-accumulated-parameters-openapi.yml#getAccumulatedTemperature
+  - openapi/openweathermap-air-pollution-openapi.yml#getAirPollutionForecast
+  - openapi/openweathermap-air-pollution-openapi.yml#getAirPollutionHistory
+  - openapi/openweathermap-air-pollution-openapi.yml#getCurrentAirPollution
+  - openapi/openweathermap-current-weather-openapi.yml#getCurrentWeather
+  - openapi/openweathermap-forecast-openapi.yml#getForecastClimate
+  - openapi/openweathermap-forecast-openapi.yml#getForecastDaily
+  - openapi/openweathermap-forecast-openapi.yml#getForecastFiveDay
+  - openapi/openweathermap-forecast-openapi.yml#getForecastHourly
+  - openapi/openweathermap-geocoding-openapi.yml#getDirectGeocoding
+  - openapi/openweathermap-geocoding-openapi.yml#getReverseGeocoding
+  - openapi/openweathermap-geocoding-openapi.yml#getZipGeocoding
+  - openapi/openweathermap-history-openapi.yml#getHistoricalWeatherCity
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallAlert
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallCurrent
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineDay
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineFifteenMinute
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineHour
+  - openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineOneMinute
+  - openapi/openweathermap-road-risk-openapi.yml#postRoadRisk
+  - openapi/openweathermap-solar-openapi.yml#getSolarIrradianceIntervalData
+  - openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedDay
+  - openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedMonth
+  - openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedYear
+  - openapi/openweathermap-weather-maps-openapi.yml#getWeatherMapTile
+  - openapi/openweathermap-weather-stations-openapi.yml#listStations

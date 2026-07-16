@@ -1,0 +1,85 @@
+generated: '2026-06-20'
+method: searched
+source: PyPI, npm registry search, and the OpenWeatherMap GitHub organization (https://github.com/OpenWeatherMap)
+note: >-
+  OpenWeather does not publish an official REST API client SDK for any language;
+  the documented integration path is direct HTTPS calls with the appid API key.
+  The organization does publish first-party open-source software: the Deker
+  multidimensional-array storage engine (used internally for weather time series,
+  released on PyPI) and Leaflet map-tile layer plugins (GitHub source, not on npm).
+  Community client libraries exist but are third-party (official: false).
+packages:
+  - language: python
+    registry: pypi
+    name: deker
+    url: https://pypi.org/project/deker/
+    install: pip install deker
+    official: true
+    role: storage-engine
+    description: OpenWeather's open-source multidimensional array storage engine (author "OpenWeather").
+  - language: python
+    registry: pypi
+    name: deker-tools
+    url: https://pypi.org/project/deker-tools/
+    install: pip install deker-tools
+    official: true
+    role: storage-engine
+    description: Shared functions library for Deker components.
+  - language: python
+    registry: pypi
+    name: deker-local-adapters
+    url: https://pypi.org/project/deker-local-adapters/
+    install: pip install deker-local-adapters
+    official: true
+    role: storage-engine
+    description: Local filesystem HDF5 storage adapters for Deker.
+  - language: python
+    registry: pypi
+    name: deker-shell
+    url: https://pypi.org/project/deker-shell/
+    install: pip install deker-shell
+    official: true
+    role: storage-engine
+    description: Interactive management shell for Deker.
+  - language: javascript
+    registry: github
+    name: leaflet-weather-layer
+    url: https://github.com/openweathermap/leaflet-weather-layer
+    official: true
+    role: map-tile-layer
+    description: First-party Leaflet layer for OpenWeather map tile overlays (source-only, not published to npm).
+  - language: javascript
+    registry: github
+    name: leaflet-coupled-layers
+    url: https://github.com/openweathermap/leaflet-coupled-layers
+    official: true
+    role: map-tile-layer
+    description: First-party Leaflet plugin adding a layers control with coupled tile layers.
+  - language: go
+    registry: github
+    name: thash
+    url: https://github.com/openweathermap/thash
+    official: true
+    role: utility
+    description: First-party Go library for working with tile-hash (map tiles).
+  - language: python
+    registry: pypi
+    name: pyowm
+    url: https://pypi.org/project/pyowm/
+    install: pip install pyowm
+    official: false
+    description: Popular community Python client for the OpenWeather APIs (author Claudio Sparpaglione).
+  - language: javascript
+    registry: npm
+    name: openweathermap-ts
+    url: https://www.npmjs.com/package/openweathermap-ts
+    install: npm install openweathermap-ts
+    official: false
+    description: Community TypeScript client for the OpenWeather APIs.
+  - language: javascript
+    registry: npm
+    name: openweathermap-node
+    url: https://www.npmjs.com/package/openweathermap-node
+    install: npm install openweathermap-node
+    official: false
+    description: Community Node.js client for the OpenWeather APIs.

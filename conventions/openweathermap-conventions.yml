@@ -1,0 +1,77 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  derived from OpenAPI (openapi/*.yml), rate-limits/openweathermap-rate-limits.yml,
+  authentication/openweathermap-authentication.yml, errors/openweathermap-problem-types.yml,
+  and OpenWeather API docs.
+authentication:
+  style: api-key
+  scheme: appid
+  location: query
+  parameter: appid
+  note: >-
+    Every operation is authenticated by an API key passed as the appid query
+    parameter. There is no OAuth/OIDC surface, so no scopes artifact applies.
+  see: authentication/openweathermap-authentication.yml
+request:
+  base_hosts:
+    - https://api.openweathermap.org
+    - https://pro.openweathermap.org
+    - https://history.openweathermap.org
+    - https://tile.openweathermap.org
+  content_types_out:
+    - application/json
+    - application/xml
+    - text/html
+  format_selector:
+    param: mode
+    values: [json, xml, html]
+    default: json
+    note: Applies to weather/forecast endpoints; JSON is the default and primary format.
+  units:
+    param: units
+    values: [standard, metric, imperial]
+    default: standard
+    note: standard is Kelvin; metric is Celsius; imperial is Fahrenheit.
+  localization:
+    param: lang
+    note: Condition text is returned in 40+ languages via the lang parameter.
+  geolocation:
+    style: coordinate-query
+    params: [lat, lon]
+    note: >-
+      Most endpoints are addressed by decimal lat/lon. City name, zip, and coordinate
+      resolution are handled by the Geocoding API rather than by name lookups on the
+      weather endpoints.
+pagination:
+  supported: false
+  note: >-
+    Endpoints are addressed by coordinate and time window rather than by collection;
+    no cursor/offset pagination is declared. Bulk history is delivered as downloadable
+    files via the Marketplace.
+idempotency:
+  header: null
+  note: >-
+    No Idempotency-Key header is declared. Read operations (the bulk of the surface)
+    are naturally idempotent; Weather Stations and Solar expose standard REST
+    create/update/delete semantics.
+versioning:
+  style: uri-path
+  see: lifecycle/openweathermap-lifecycle.yml
+error_envelope:
+  content_type: application/json
+  shape: '{"cod": <int status>, "message": "<human readable error>"}'
+  format: json
+  note: Not RFC 9457 application/problem+json.
+  see: errors/openweathermap-problem-types.yml
+rate_limiting:
+  signaling_headers:
+    limit: X-RateLimit-Limit
+    remaining: X-RateLimit-Remaining
+    reset: X-RateLimit-Reset
+    retry_after: Retry-After
+  throttled_status: 429
+  see: rate-limits/openweathermap-rate-limits.yml
+request_tracing:
+  request_id_header: null
+  note: No documented request-id / correlation header.

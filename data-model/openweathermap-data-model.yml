@@ -1,0 +1,61 @@
+generated: '2026-06-20'
+method: derived
+source: derived from OpenAPI schemas/operations in weather-stations and solar specs
+note: Most OpenWeather APIs are stateless query endpoints (weather/forecast/air/geocoding/maps) with no
+  persisted entities. Persisted resources exist only in the Weather Stations and Solar Energy APIs.
+entities:
+- name: Station
+  api: openweathermap:weather-stations
+  id_field: ID
+  operations:
+  - listStations
+  - createStation
+  - getStation
+  - updateStation
+  - deleteStation
+  source: openapi/openweathermap-weather-stations-openapi.yml
+- name: Measurement
+  api: openweathermap:weather-stations
+  belongs_to: Station
+  via: station_id
+  operations:
+  - getMeasurements
+  - postMeasurements
+  source: openapi/openweathermap-weather-stations-openapi.yml
+- name: SolarLocation
+  api: openweathermap:solar
+  id_field: id
+  operations:
+  - listSolarLocations
+  - createSolarLocation
+  - getSolarLocation
+  - deleteSolarLocation
+  source: openapi/openweathermap-solar-openapi.yml
+- name: SolarPanel
+  api: openweathermap:solar
+  belongs_to: SolarLocation
+  via: location_id
+  operations:
+  - listSolarPanels
+  - createSolarPanel
+  - getSolarPanel
+  - deleteSolarPanel
+  - getSolarPanelIntervalData
+  source: openapi/openweathermap-solar-openapi.yml
+relationships:
+- from: Measurement
+  to: Station
+  type: belongs_to
+  via: station_id
+- from: Station
+  to: Measurement
+  type: has_many
+  via: station_id
+- from: SolarPanel
+  to: SolarLocation
+  type: belongs_to
+  via: location_id
+- from: SolarLocation
+  to: SolarPanel
+  type: has_many
+  via: location_id

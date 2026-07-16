@@ -1,0 +1,136 @@
+generated: '2026-06-20'
+method: derived
+source: derived from OpenAPI operations across openapi/*.yml
+status: candidate
+note: No official OpenWeather-hosted MCP server is published. Community MCP servers exist (see apis.yml
+  Tools). This is a candidate tool surface derived one-tool-per-operation from the harvested OpenAPI.
+server:
+  name: openweathermap
+  transport: stdio
+tools:
+- name: getAccumulatedPrecipitation
+  description: Accumulated Precipitation For A Time Window
+  source_operation: openapi/openweathermap-accumulated-parameters-openapi.yml#getAccumulatedPrecipitation
+- name: getAccumulatedTemperature
+  description: Accumulated Temperature For A Time Window
+  source_operation: openapi/openweathermap-accumulated-parameters-openapi.yml#getAccumulatedTemperature
+- name: getAirPollutionForecast
+  description: Hourly Air Pollution Forecast
+  source_operation: openapi/openweathermap-air-pollution-openapi.yml#getAirPollutionForecast
+- name: getAirPollutionHistory
+  description: Historical Air Pollution Data
+  source_operation: openapi/openweathermap-air-pollution-openapi.yml#getAirPollutionHistory
+- name: getCurrentAirPollution
+  description: Current Air Pollution Data
+  source_operation: openapi/openweathermap-air-pollution-openapi.yml#getCurrentAirPollution
+- name: getCurrentWeather
+  description: Current Weather Data For A Coordinate
+  source_operation: openapi/openweathermap-current-weather-openapi.yml#getCurrentWeather
+- name: getForecastClimate
+  description: Thirty Day Climatic Forecast
+  source_operation: openapi/openweathermap-forecast-openapi.yml#getForecastClimate
+- name: getForecastDaily
+  description: Sixteen Day Daily Forecast
+  source_operation: openapi/openweathermap-forecast-openapi.yml#getForecastDaily
+- name: getForecastFiveDay
+  description: Five Day Three Hour Forecast
+  source_operation: openapi/openweathermap-forecast-openapi.yml#getForecastFiveDay
+- name: getForecastHourly
+  description: Four Day Hourly Forecast
+  source_operation: openapi/openweathermap-forecast-openapi.yml#getForecastHourly
+- name: getDirectGeocoding
+  description: Direct Geocoding By Location Name
+  source_operation: openapi/openweathermap-geocoding-openapi.yml#getDirectGeocoding
+- name: getReverseGeocoding
+  description: Reverse Geocoding By Coordinate
+  source_operation: openapi/openweathermap-geocoding-openapi.yml#getReverseGeocoding
+- name: getZipGeocoding
+  description: Direct Geocoding By Zip Or Post Code
+  source_operation: openapi/openweathermap-geocoding-openapi.yml#getZipGeocoding
+- name: getHistoricalWeatherCity
+  description: Historical Hourly Weather By Coordinate
+  source_operation: openapi/openweathermap-history-openapi.yml#getHistoricalWeatherCity
+- name: getOneCallAlert
+  description: Weather Alert Detail
+  source_operation: openapi/openweathermap-one-call-openapi.yml#getOneCallAlert
+- name: getOneCallCurrent
+  description: Current Weather From One Call
+  source_operation: openapi/openweathermap-one-call-openapi.yml#getOneCallCurrent
+- name: getOneCallTimelineDay
+  description: Daily Timeline With Aggregates
+  source_operation: openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineDay
+- name: getOneCallTimelineFifteenMinute
+  description: Fifteen Minute Timeline
+  source_operation: openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineFifteenMinute
+- name: getOneCallTimelineHour
+  description: Hourly Timeline With History
+  source_operation: openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineHour
+- name: getOneCallTimelineOneMinute
+  description: One Minute Timeline
+  source_operation: openapi/openweathermap-one-call-openapi.yml#getOneCallTimelineOneMinute
+- name: postRoadRisk
+  description: Route Weather And Road Risk
+  source_operation: openapi/openweathermap-road-risk-openapi.yml#postRoadRisk
+- name: createSolarLocation
+  description: Create A Modeled Location
+  source_operation: openapi/openweathermap-solar-openapi.yml#createSolarLocation
+- name: createSolarPanel
+  description: Create A Solar Panel For A Location
+  source_operation: openapi/openweathermap-solar-openapi.yml#createSolarPanel
+- name: deleteSolarLocation
+  description: Delete A Modeled Location
+  source_operation: openapi/openweathermap-solar-openapi.yml#deleteSolarLocation
+- name: deleteSolarPanel
+  description: Delete A Solar Panel
+  source_operation: openapi/openweathermap-solar-openapi.yml#deleteSolarPanel
+- name: getSolarIrradianceIntervalData
+  description: Solar Irradiance Interval Data
+  source_operation: openapi/openweathermap-solar-openapi.yml#getSolarIrradianceIntervalData
+- name: getSolarLocation
+  description: Retrieve A Modeled Location
+  source_operation: openapi/openweathermap-solar-openapi.yml#getSolarLocation
+- name: getSolarPanel
+  description: Retrieve A Solar Panel
+  source_operation: openapi/openweathermap-solar-openapi.yml#getSolarPanel
+- name: getSolarPanelIntervalData
+  description: Solar Panel Power Output And Irradiance
+  source_operation: openapi/openweathermap-solar-openapi.yml#getSolarPanelIntervalData
+- name: listSolarLocations
+  description: List Modeled Locations
+  source_operation: openapi/openweathermap-solar-openapi.yml#listSolarLocations
+- name: listSolarPanels
+  description: List Solar Panels For A Location
+  source_operation: openapi/openweathermap-solar-openapi.yml#listSolarPanels
+- name: getStatisticalAggregatedDay
+  description: Daily Aggregated Weather Statistics
+  source_operation: openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedDay
+- name: getStatisticalAggregatedMonth
+  description: Monthly Aggregated Weather Statistics
+  source_operation: openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedMonth
+- name: getStatisticalAggregatedYear
+  description: Yearly Aggregated Weather Statistics
+  source_operation: openapi/openweathermap-statistical-weather-openapi.yml#getStatisticalAggregatedYear
+- name: getWeatherMapTile
+  description: Weather Map Tile For A Layer
+  source_operation: openapi/openweathermap-weather-maps-openapi.yml#getWeatherMapTile
+- name: createStation
+  description: Register A New Weather Station
+  source_operation: openapi/openweathermap-weather-stations-openapi.yml#createStation
+- name: deleteStation
+  description: Delete A Weather Station
+  source_operation: openapi/openweathermap-weather-stations-openapi.yml#deleteStation
+- name: getMeasurements
+  description: Retrieve Aggregated Measurements
+  source_operation: openapi/openweathermap-weather-stations-openapi.yml#getMeasurements
+- name: getStation
+  description: Retrieve A Weather Station
+  source_operation: openapi/openweathermap-weather-stations-openapi.yml#getStation
+- name: listStations
+  description: List Registered Weather Stations
+  source_operation: openapi/openweathermap-weather-stations-openapi.yml#listStations
+- name: postMeasurements
+  description: Submit Station Measurements
+  source_operation: openapi/openweathermap-weather-stations-openapi.yml#postMeasurements
+- name: updateStation
+  description: Update A Weather Station
+  source_operation: openapi/openweathermap-weather-stations-openapi.yml#updateStation

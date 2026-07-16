@@ -1,0 +1,31 @@
+generated: '2026-06-20'
+method: searched
+source: OpenWeatherMap GitHub organization (https://github.com/OpenWeatherMap)
+note: >-
+  First-party client-side / embeddable UI components published by OpenWeather.
+  These are distinct from the (absent) server-side API client SDKs: they render
+  OpenWeather map-tile data and time-selection UI directly in the browser.
+families:
+  - name: Leaflet map layers
+    loader: Leaflet
+    components:
+      - name: leaflet-weather-layer
+        url: https://github.com/openweathermap/leaflet-weather-layer
+        description: Leaflet layer that overlays OpenWeather weather map tiles on a base map.
+      - name: leaflet-coupled-layers
+        url: https://github.com/openweathermap/leaflet-coupled-layers
+        description: Leaflet plugin adding a layers control with coupled tile layers.
+  - name: UI widgets
+    components:
+      - name: choose-a-period
+        url: https://github.com/openweathermap/choose-a-period
+        description: UI component for selecting time periods (used with historical/forecast map layers).
+  - name: Geospatial platform
+    components:
+      - name: VANE-intro
+        url: https://github.com/openweathermap/VANE-intro
+        description: Interactive introduction to OpenWeather's VANE geospatial platform.
+compatibility:
+  - Leaflet
+  - OpenLayers
+  - Google Maps

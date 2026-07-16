@@ -1,0 +1,31 @@
+generated: '2026-06-20'
+method: derived
+source: derived from OpenAPI securitySchemes/responses/tags across openapi/*.yml
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme; auth is apiKey (appid query parameter).
+- id: openid-connect
+  conforms: false
+- id: apikey-auth
+  conforms: true
+  evidence: All operations secured by apiKey scheme 'appid' in query.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a JSON {cod,message} envelope, not application/problem+json.
+- id: openapi-3.1
+  conforms: true
+  evidence: All 12 specs declare openapi 3.1.0.
+- id: rest-json
+  conforms: true
+  evidence: JSON request/response over HTTPS REST endpoints.
+- id: pagination
+  conforms: false
+  evidence: Query-by-coordinate/time endpoints; no cursor/offset pagination declared.
+- id: idempotency-keys
+  conforms: false
+  evidence: No Idempotency-Key header declared; GETs are naturally idempotent.
+- id: tile-map-service
+  conforms: true
+  evidence: Weather Maps 1.0 uses standard z/x/y XYZ tile coordinates (Leaflet/OpenLayers/Google Maps
+    compatible).
