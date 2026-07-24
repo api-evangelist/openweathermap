@@ -1,38 +1,37 @@
 openapi: 3.1.0
 info:
-  title: OpenWeatherMap Road Risk API
+  title: OpenWeatherMap Accumulated Parameters Road Risk API
   version: 2.5.0
-  description: >-
-    Returns route-specific weather data, national alerts, current conditions
-    plus 5-day forecast, and 1 year of historical data for a sequence of
-    waypoints. Available under a custom quote.
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
   contact:
     name: OpenWeather
-    url: https://openweathermap.org/api/road-risk
+    url: https://openweathermap.org/api/accumulated-parameters
   license:
     name: Creative Commons Attribution-ShareAlike 4.0 International
     url: https://creativecommons.org/licenses/by-sa/4.0/
 servers:
-  - url: https://api.openweathermap.org
-    description: Road Risk API base URL
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Road Risk
+  description: Route weather, road surface state, and alerts for a track of waypoints.
 paths:
   /data/2.5/roadrisk:
     post:
       operationId: postRoadRisk
       summary: Route Weather And Road Risk
-      description: >-
-        Accepts a track of waypoints with coordinates and timestamps and
-        returns route weather, road surface state, and alert information for
-        each waypoint.
+      description: Accepts a track of waypoints with coordinates and timestamps and returns route weather, road surface state, and alert information for each waypoint.
       tags:
-        - Road Risk
+      - Road Risk
       parameters:
-        - name: appid
-          in: query
-          required: true
-          description: OpenWeather API key.
-          schema:
-            type: string
+      - name: appid
+        in: query
+        required: true
+        description: OpenWeather API key.
+        schema:
+          type: string
       requestBody:
         required: true
         content:
@@ -56,32 +55,6 @@ paths:
           description: Too many requests.
 components:
   schemas:
-    RoadRiskTrackPoint:
-      type: object
-      required:
-        - lat
-        - lon
-        - dt
-      properties:
-        lat:
-          type: number
-          format: float
-        lon:
-          type: number
-          format: float
-        dt:
-          type: integer
-          format: int64
-          description: Unix timestamp. 1 year past to 5 days future.
-    RoadRiskRequest:
-      type: object
-      required:
-        - track
-      properties:
-        track:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoadRiskTrackPoint'
     RoadRiskResponseItem:
       type: object
       properties:
@@ -132,13 +105,34 @@ components:
                 type: integer
                 minimum: 0
                 maximum: 4
+    RoadRiskRequest:
+      type: object
+      required:
+      - track
+      properties:
+        track:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoadRiskTrackPoint'
+    RoadRiskTrackPoint:
+      type: object
+      required:
+      - lat
+      - lon
+      - dt
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        dt:
+          type: integer
+          format: int64
+          description: Unix timestamp. 1 year past to 5 days future.
   securitySchemes:
     appid:
       type: apiKey
       in: query
       name: appid
-security:
-  - appid: []
-tags:
-  - name: Road Risk
-    description: Route weather, road surface state, and alerts for a track of waypoints.

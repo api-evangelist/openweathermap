@@ -1,38 +1,36 @@
 openapi: 3.1.0
 info:
-  title: OpenWeatherMap One Call API 4.0
-  version: 4.0.0
-  description: >-
-    OpenWeather One Call API 4.0 provides a unified weather timeline including
-    current conditions, hourly, daily, 1-minute precipitation, 15-minute
-    forecasts, government weather alerts, and 47+ years of historical data
-    accessible through pay-per-call pricing.
+  title: OpenWeatherMap Accumulated Parameters One Call API
+  version: 2.5.0
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
   contact:
     name: OpenWeather
-    url: https://openweathermap.org/api/one-call-4
+    url: https://openweathermap.org/api/accumulated-parameters
   license:
     name: Creative Commons Attribution-ShareAlike 4.0 International
     url: https://creativecommons.org/licenses/by-sa/4.0/
 servers:
-  - url: https://api.openweathermap.org/data/4.0/onecall
-    description: One Call API 4.0 base URL
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: One Call
+  description: Unified timeline API with current, forecast, and historical weather plus alerts.
 paths:
   /current:
     get:
       operationId: getOneCallCurrent
       summary: Current Weather From One Call
-      description: >-
-        Returns a single record with current conditions including temperature,
-        humidity, pressure, wind, UV index, sunrise and sunset times, and
-        weather descriptions for the supplied coordinates.
+      description: Returns a single record with current conditions including temperature, humidity, pressure, wind, UV index, sunrise and sunset times, and weather descriptions for the supplied coordinates.
       tags:
-        - One Call
+      - One Call
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - $ref: '#/components/parameters/Units'
-        - $ref: '#/components/parameters/Lang'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - $ref: '#/components/parameters/Units'
+      - $ref: '#/components/parameters/Lang'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: One Call current weather response.
@@ -50,17 +48,15 @@ paths:
     get:
       operationId: getOneCallTimelineOneMinute
       summary: One Minute Timeline
-      description: >-
-        Returns up to 60 records covering precipitation forecasts and
-        government weather alerts at one-minute granularity.
+      description: Returns up to 60 records covering precipitation forecasts and government weather alerts at one-minute granularity.
       tags:
-        - One Call
+      - One Call
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - $ref: '#/components/parameters/Units'
-        - $ref: '#/components/parameters/Lang'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - $ref: '#/components/parameters/Units'
+      - $ref: '#/components/parameters/Lang'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: One Call one-minute timeline response.
@@ -74,17 +70,15 @@ paths:
     get:
       operationId: getOneCallTimelineFifteenMinute
       summary: Fifteen Minute Timeline
-      description: >-
-        Returns up to 50 records at 15-minute intervals including temperature,
-        precipitation probability, and weather details.
+      description: Returns up to 50 records at 15-minute intervals including temperature, precipitation probability, and weather details.
       tags:
-        - One Call
+      - One Call
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - $ref: '#/components/parameters/Units'
-        - $ref: '#/components/parameters/Lang'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - $ref: '#/components/parameters/Units'
+      - $ref: '#/components/parameters/Lang'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: One Call 15-minute timeline response.
@@ -98,17 +92,15 @@ paths:
     get:
       operationId: getOneCallTimelineHour
       summary: Hourly Timeline With History
-      description: >-
-        Returns up to 20 records spanning 47 years of historical data and the
-        next 48 hours of forecast at hourly granularity.
+      description: Returns up to 20 records spanning 47 years of historical data and the next 48 hours of forecast at hourly granularity.
       tags:
-        - One Call
+      - One Call
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - $ref: '#/components/parameters/Units'
-        - $ref: '#/components/parameters/Lang'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - $ref: '#/components/parameters/Units'
+      - $ref: '#/components/parameters/Lang'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: One Call hourly timeline response.
@@ -122,17 +114,15 @@ paths:
     get:
       operationId: getOneCallTimelineDay
       summary: Daily Timeline With Aggregates
-      description: >-
-        Returns up to 10 records of daily aggregated weather data including
-        moon phase, sunrise, sunset, and per-day summaries.
+      description: Returns up to 10 records of daily aggregated weather data including moon phase, sunrise, sunset, and per-day summaries.
       tags:
-        - One Call
+      - One Call
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - $ref: '#/components/parameters/Units'
-        - $ref: '#/components/parameters/Lang'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - $ref: '#/components/parameters/Units'
+      - $ref: '#/components/parameters/Lang'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: One Call daily timeline response.
@@ -146,19 +136,17 @@ paths:
     get:
       operationId: getOneCallAlert
       summary: Weather Alert Detail
-      description: >-
-        Returns a single weather alert record with event name, timing,
-        description, and originating agency.
+      description: Returns a single weather alert record with event name, timing, description, and originating agency.
       tags:
-        - One Call
+      - One Call
       parameters:
-        - name: alert_id
-          in: path
-          required: true
-          description: Alert identifier returned by other One Call endpoints.
-          schema:
-            type: string
-        - $ref: '#/components/parameters/Appid'
+      - name: alert_id
+        in: path
+        required: true
+        description: Alert identifier returned by other One Call endpoints.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Alert detail response.
@@ -180,6 +168,20 @@ components:
       schema:
         type: number
         format: float
+    Lang:
+      name: lang
+      in: query
+      required: false
+      description: Localization language code.
+      schema:
+        type: string
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
     Lon:
       name: lon
       in: query
@@ -196,23 +198,9 @@ components:
       schema:
         type: string
         enum:
-          - standard
-          - metric
-          - imperial
-    Lang:
-      name: lang
-      in: query
-      required: false
-      description: Localization language code.
-      schema:
-        type: string
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
+        - standard
+        - metric
+        - imperial
   schemas:
     OneCallCurrentResponse:
       type: object
@@ -282,8 +270,3 @@ components:
       type: apiKey
       in: query
       name: appid
-security:
-  - appid: []
-tags:
-  - name: One Call
-    description: Unified timeline API with current, forecast, and historical weather plus alerts.

@@ -1,50 +1,45 @@
 openapi: 3.1.0
 info:
-  title: OpenWeatherMap Forecast APIs
+  title: OpenWeatherMap Accumulated Parameters Forecast API
   version: 2.5.0
-  description: >-
-    OpenWeather forecast APIs including 5-day/3-hour forecast, Hourly Forecast
-    4 Days, Daily Forecast 16 Days, and Climatic Forecast 30 Days. These
-    forecasts provide weather predictions at varying granularities and time
-    horizons for any global coordinate.
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
   contact:
     name: OpenWeather
-    url: https://openweathermap.org/api
+    url: https://openweathermap.org/api/accumulated-parameters
   license:
     name: Creative Commons Attribution-ShareAlike 4.0 International
     url: https://creativecommons.org/licenses/by-sa/4.0/
 servers:
-  - url: https://api.openweathermap.org/data/2.5
-    description: 5-day/3-hour Forecast API base URL
-  - url: https://pro.openweathermap.org/data/2.5
-    description: Pro forecast APIs base URL (Hourly Forecast 4 Days, Daily Forecast 16 Days, Climatic Forecast 30 Days)
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Forecast
+  description: Weather forecasts at multiple granularities and time horizons.
 paths:
   /forecast:
     get:
       operationId: getForecastFiveDay
       summary: Five Day Three Hour Forecast
-      description: >-
-        Returns forecast weather data with 3-hour granularity for the next 5 days
-        for the supplied latitude and longitude. Includes temperature, weather
-        conditions, wind, precipitation probability, and more for 40 forecast
-        timestamps.
+      description: Returns forecast weather data with 3-hour granularity for the next 5 days for the supplied latitude and longitude. Includes temperature, weather conditions, wind, precipitation probability, and more for 40 forecast timestamps.
       tags:
-        - Forecast
+      - Forecast
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - name: cnt
-          in: query
-          required: false
-          description: Number of timestamps to return. Defaults to 40.
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 40
-        - $ref: '#/components/parameters/Mode'
-        - $ref: '#/components/parameters/Units'
-        - $ref: '#/components/parameters/Lang'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: cnt
+        in: query
+        required: false
+        description: Number of timestamps to return. Defaults to 40.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 40
+      - $ref: '#/components/parameters/Mode'
+      - $ref: '#/components/parameters/Units'
+      - $ref: '#/components/parameters/Lang'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Five day three hour forecast response.
@@ -64,29 +59,26 @@ paths:
     get:
       operationId: getForecastHourly
       summary: Four Day Hourly Forecast
-      description: >-
-        Returns hourly forecast weather data for the next 4 days (up to 96
-        hourly timestamps) for the supplied latitude and longitude. Available
-        on Developer, Professional, and Expert plans.
+      description: Returns hourly forecast weather data for the next 4 days (up to 96 hourly timestamps) for the supplied latitude and longitude. Available on Developer, Professional, and Expert plans.
       tags:
-        - Forecast
+      - Forecast
       servers:
-        - url: https://pro.openweathermap.org/data/2.5
+      - url: https://pro.openweathermap.org/data/2.5
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - name: cnt
-          in: query
-          required: false
-          description: Number of hourly timestamps to return. Up to 96.
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 96
-        - $ref: '#/components/parameters/Mode'
-        - $ref: '#/components/parameters/Units'
-        - $ref: '#/components/parameters/Lang'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: cnt
+        in: query
+        required: false
+        description: Number of hourly timestamps to return. Up to 96.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 96
+      - $ref: '#/components/parameters/Mode'
+      - $ref: '#/components/parameters/Units'
+      - $ref: '#/components/parameters/Lang'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Hourly forecast response.
@@ -104,29 +96,26 @@ paths:
     get:
       operationId: getForecastDaily
       summary: Sixteen Day Daily Forecast
-      description: >-
-        Returns daily forecast weather data for up to 16 days for the supplied
-        latitude and longitude. Each daily entry includes morning, day,
-        evening, night, and min/max temperatures.
+      description: Returns daily forecast weather data for up to 16 days for the supplied latitude and longitude. Each daily entry includes morning, day, evening, night, and min/max temperatures.
       tags:
-        - Forecast
+      - Forecast
       servers:
-        - url: https://pro.openweathermap.org/data/2.5
+      - url: https://pro.openweathermap.org/data/2.5
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - name: cnt
-          in: query
-          required: false
-          description: Number of days to return. 1 to 16.
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 16
-        - $ref: '#/components/parameters/Mode'
-        - $ref: '#/components/parameters/Units'
-        - $ref: '#/components/parameters/Lang'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: cnt
+        in: query
+        required: false
+        description: Number of days to return. 1 to 16.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 16
+      - $ref: '#/components/parameters/Mode'
+      - $ref: '#/components/parameters/Units'
+      - $ref: '#/components/parameters/Lang'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Daily forecast response.
@@ -144,28 +133,26 @@ paths:
     get:
       operationId: getForecastClimate
       summary: Thirty Day Climatic Forecast
-      description: >-
-        Returns daily climatic forecast weather data for the next 30 days for
-        the supplied latitude and longitude.
+      description: Returns daily climatic forecast weather data for the next 30 days for the supplied latitude and longitude.
       tags:
-        - Forecast
+      - Forecast
       servers:
-        - url: https://pro.openweathermap.org/data/2.5
+      - url: https://pro.openweathermap.org/data/2.5
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - name: cnt
-          in: query
-          required: false
-          description: Number of days to return. 1 to 30.
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 30
-        - $ref: '#/components/parameters/Mode'
-        - $ref: '#/components/parameters/Units'
-        - $ref: '#/components/parameters/Lang'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: cnt
+        in: query
+        required: false
+        description: Number of days to return. 1 to 30.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 30
+      - $ref: '#/components/parameters/Mode'
+      - $ref: '#/components/parameters/Units'
+      - $ref: '#/components/parameters/Lang'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Climatic forecast response.
@@ -180,59 +167,22 @@ paths:
         '429':
           description: Too many requests.
 components:
-  parameters:
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees, range -90 to 90.
-      schema:
-        type: number
-        format: float
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees, range -180 to 180.
-      schema:
-        type: number
-        format: float
-    Mode:
-      name: mode
-      in: query
-      required: false
-      description: Response format. Default is JSON.
-      schema:
-        type: string
-        enum:
-          - json
-          - xml
-    Units:
-      name: units
-      in: query
-      required: false
-      description: Units of measurement. standard, metric, or imperial.
-      schema:
-        type: string
-        enum:
-          - standard
-          - metric
-          - imperial
-    Lang:
-      name: lang
-      in: query
-      required: false
-      description: Localization language code.
-      schema:
-        type: string
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   schemas:
+    DailyForecastResponse:
+      type: object
+      properties:
+        city:
+          $ref: '#/components/schemas/City'
+        cod:
+          type: string
+        message:
+          type: number
+        cnt:
+          type: integer
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/DailyForecastItem'
     City:
       type: object
       properties:
@@ -261,17 +211,21 @@ components:
         sunset:
           type: integer
           format: int64
-    Weather:
+    ForecastResponse:
       type: object
       properties:
-        id:
+        cod:
+          type: string
+        message:
+          type: number
+        cnt:
           type: integer
-        main:
-          type: string
-        description:
-          type: string
-        icon:
-          type: string
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ForecastItem'
+        city:
+          $ref: '#/components/schemas/City'
     ForecastItem:
       type: object
       properties:
@@ -341,21 +295,6 @@ components:
               type: string
         dt_txt:
           type: string
-    ForecastResponse:
-      type: object
-      properties:
-        cod:
-          type: string
-        message:
-          type: number
-        cnt:
-          type: integer
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ForecastItem'
-        city:
-          $ref: '#/components/schemas/City'
     DailyForecastItem:
       type: object
       properties:
@@ -431,28 +370,71 @@ components:
         pop:
           type: number
           format: float
-    DailyForecastResponse:
+    Weather:
       type: object
       properties:
-        city:
-          $ref: '#/components/schemas/City'
-        cod:
-          type: string
-        message:
-          type: number
-        cnt:
+        id:
           type: integer
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/DailyForecastItem'
+        main:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+  parameters:
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Lang:
+      name: lang
+      in: query
+      required: false
+      description: Localization language code.
+      schema:
+        type: string
+    Mode:
+      name: mode
+      in: query
+      required: false
+      description: Response format. Default is JSON.
+      schema:
+        type: string
+        enum:
+        - json
+        - xml
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
+    Units:
+      name: units
+      in: query
+      required: false
+      description: Units of measurement. standard, metric, or imperial.
+      schema:
+        type: string
+        enum:
+        - standard
+        - metric
+        - imperial
   securitySchemes:
     appid:
       type: apiKey
       in: query
       name: appid
-security:
-  - appid: []
-tags:
-  - name: Forecast
-    description: Weather forecasts at multiple granularities and time horizons.

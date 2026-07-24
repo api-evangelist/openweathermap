@@ -1,0 +1,217 @@
+openapi: 3.1.0
+info:
+  title: OpenWeatherMap Accumulated Parameters Statistical Weather API
+  version: 2.5.0
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api/accumulated-parameters
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+servers:
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Statistical Weather
+  description: Long-term statistical weather aggregates for any global location.
+paths:
+  /aggregated/year:
+    get:
+      operationId: getStatisticalAggregatedYear
+      summary: Yearly Aggregated Weather Statistics
+      description: Returns 365 groups of statistical weather data for each day of the calendar year for the supplied coordinates.
+      tags:
+      - Statistical Weather
+      parameters:
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Yearly statistics response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatisticalResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /aggregated/month:
+    get:
+      operationId: getStatisticalAggregatedMonth
+      summary: Monthly Aggregated Weather Statistics
+      description: Returns aggregated monthly weather statistics for the supplied coordinates and month.
+      tags:
+      - Statistical Weather
+      parameters:
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: month
+        in: query
+        required: true
+        description: Month of the year, 1-12.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 12
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Monthly statistics response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatisticalResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /aggregated/day:
+    get:
+      operationId: getStatisticalAggregatedDay
+      summary: Daily Aggregated Weather Statistics
+      description: Returns aggregated daily weather statistics for the supplied coordinates, month, and day.
+      tags:
+      - Statistical Weather
+      parameters:
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: month
+        in: query
+        required: true
+        description: Month of the year, 1-12.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 12
+      - name: day
+        in: query
+        required: true
+        description: Day of the month, 1-31.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 31
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Daily statistics response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatisticalResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+components:
+  schemas:
+    StatisticalResult:
+      type: object
+      properties:
+        month:
+          type: integer
+        day:
+          type: integer
+        temp:
+          $ref: '#/components/schemas/StatisticalParameter'
+        pressure:
+          $ref: '#/components/schemas/StatisticalParameter'
+        humidity:
+          $ref: '#/components/schemas/StatisticalParameter'
+        wind:
+          $ref: '#/components/schemas/StatisticalParameter'
+        precipitation:
+          $ref: '#/components/schemas/StatisticalParameter'
+        clouds:
+          $ref: '#/components/schemas/StatisticalParameter'
+        sunshine_hours:
+          type: number
+          format: float
+    StatisticalParameter:
+      type: object
+      properties:
+        record_min:
+          type: number
+          format: float
+        record_max:
+          type: number
+          format: float
+        average_min:
+          type: number
+          format: float
+        average_max:
+          type: number
+          format: float
+        median:
+          type: number
+          format: float
+        mean:
+          type: number
+          format: float
+        p25:
+          type: number
+          format: float
+        p75:
+          type: number
+          format: float
+        st_dev:
+          type: number
+          format: float
+        num:
+          type: integer
+    StatisticalResponse:
+      type: object
+      properties:
+        cod:
+          type: integer
+        city_id:
+          type: integer
+        calctime:
+          type: number
+          format: float
+        result:
+          oneOf:
+          - $ref: '#/components/schemas/StatisticalResult'
+          - type: array
+            items:
+              $ref: '#/components/schemas/StatisticalResult'
+  parameters:
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid

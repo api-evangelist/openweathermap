@@ -1,46 +1,46 @@
 openapi: 3.1.0
 info:
-  title: OpenWeatherMap Geocoding API
-  version: 1.0.0
-  description: >-
-    Direct and reverse geocoding for city names, zip codes, and coordinate
-    pairs. Supports city, state, country, and area-level resolution and is
-    used to convert between location text and geographic coordinates.
+  title: OpenWeatherMap Accumulated Parameters Geocoding API
+  version: 2.5.0
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
   contact:
     name: OpenWeather
-    url: https://openweathermap.org/api/geocoding-api
+    url: https://openweathermap.org/api/accumulated-parameters
   license:
     name: Creative Commons Attribution-ShareAlike 4.0 International
     url: https://creativecommons.org/licenses/by-sa/4.0/
 servers:
-  - url: https://api.openweathermap.org/geo/1.0
-    description: Geocoding API base URL
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Geocoding
+  description: Direct and reverse geocoding between location names and coordinates.
 paths:
   /direct:
     get:
       operationId: getDirectGeocoding
       summary: Direct Geocoding By Location Name
-      description: >-
-        Returns geographic coordinates for a location specified by city name,
-        optional state code (US only), and optional ISO 3166 country code.
+      description: Returns geographic coordinates for a location specified by city name, optional state code (US only), and optional ISO 3166 country code.
       tags:
-        - Geocoding
+      - Geocoding
       parameters:
-        - name: q
-          in: query
-          required: true
-          description: City name, optional state and country codes, comma-separated.
-          schema:
-            type: string
-        - name: limit
-          in: query
-          required: false
-          description: Maximum number of locations to return. Up to 5.
-          schema:
-            type: integer
-            minimum: 1
-            maximum: 5
-        - $ref: '#/components/parameters/Appid'
+      - name: q
+        in: query
+        required: true
+        description: City name, optional state and country codes, comma-separated.
+        schema:
+          type: string
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of locations to return. Up to 5.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 5
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Direct geocoding response.
@@ -60,19 +60,17 @@ paths:
     get:
       operationId: getZipGeocoding
       summary: Direct Geocoding By Zip Or Post Code
-      description: >-
-        Returns the coordinates for a zip or postal code, requires a country
-        code suffix.
+      description: Returns the coordinates for a zip or postal code, requires a country code suffix.
       tags:
-        - Geocoding
+      - Geocoding
       parameters:
-        - name: zip
-          in: query
-          required: true
-          description: Zip code and country code, comma-separated.
-          schema:
-            type: string
-        - $ref: '#/components/parameters/Appid'
+      - name: zip
+        in: query
+        required: true
+        description: Zip code and country code, comma-separated.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Zip geocoding response.
@@ -90,33 +88,31 @@ paths:
     get:
       operationId: getReverseGeocoding
       summary: Reverse Geocoding By Coordinate
-      description: >-
-        Returns the location name or names associated with the supplied
-        latitude and longitude.
+      description: Returns the location name or names associated with the supplied latitude and longitude.
       tags:
-        - Geocoding
+      - Geocoding
       parameters:
-        - name: lat
-          in: query
-          required: true
-          description: Latitude in decimal degrees.
-          schema:
-            type: number
-            format: float
-        - name: lon
-          in: query
-          required: true
-          description: Longitude in decimal degrees.
-          schema:
-            type: number
-            format: float
-        - name: limit
-          in: query
-          required: false
-          description: Maximum number of locations to return.
-          schema:
-            type: integer
-        - $ref: '#/components/parameters/Appid'
+      - name: lat
+        in: query
+        required: true
+        description: Latitude in decimal degrees.
+        schema:
+          type: number
+          format: float
+      - name: lon
+        in: query
+        required: true
+        description: Longitude in decimal degrees.
+        schema:
+          type: number
+          format: float
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of locations to return.
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Reverse geocoding response.
@@ -133,14 +129,6 @@ paths:
         '429':
           description: Too many requests.
 components:
-  parameters:
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   schemas:
     GeocodingResult:
       type: object
@@ -176,13 +164,16 @@ components:
           format: float
         country:
           type: string
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   securitySchemes:
     appid:
       type: apiKey
       in: query
       name: appid
-security:
-  - appid: []
-tags:
-  - name: Geocoding
-    description: Direct and reverse geocoding between location names and coordinates.

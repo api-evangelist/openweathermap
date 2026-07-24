@@ -1,0 +1,181 @@
+openapi: 3.1.0
+info:
+  title: OpenWeatherMap Accumulated Parameters Stations API
+  version: 2.5.0
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api/accumulated-parameters
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+servers:
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Stations
+  description: Register, retrieve, update, and delete personal weather stations.
+paths:
+  /stations:
+    get:
+      operationId: listStations
+      summary: List Registered Weather Stations
+      description: Returns the list of all weather stations registered to the API key.
+      tags:
+      - Stations
+      parameters:
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Stations list response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Station'
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+    post:
+      operationId: createStation
+      summary: Register A New Weather Station
+      description: Registers a new weather station and returns the assigned station object.
+      tags:
+      - Stations
+      parameters:
+      - $ref: '#/components/parameters/Appid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StationInput'
+      responses:
+        '201':
+          description: Station created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Station'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+  /stations/{station_id}:
+    get:
+      operationId: getStation
+      summary: Retrieve A Weather Station
+      description: Returns the station object for the supplied identifier.
+      tags:
+      - Stations
+      parameters:
+      - name: station_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Station response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Station'
+    put:
+      operationId: updateStation
+      summary: Update A Weather Station
+      description: Updates the station metadata for the supplied identifier.
+      tags:
+      - Stations
+      parameters:
+      - name: station_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StationInput'
+      responses:
+        '200':
+          description: Station updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Station'
+    delete:
+      operationId: deleteStation
+      summary: Delete A Weather Station
+      description: Removes the station permanently.
+      tags:
+      - Stations
+      parameters:
+      - name: station_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '204':
+          description: Station deleted.
+components:
+  schemas:
+    StationInput:
+      type: object
+      required:
+      - external_id
+      - name
+      - latitude
+      - longitude
+      properties:
+        external_id:
+          type: string
+        name:
+          type: string
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        altitude:
+          type: number
+          format: float
+    Station:
+      allOf:
+      - $ref: '#/components/schemas/StationInput'
+      - type: object
+        properties:
+          id:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          created_at:
+            type: string
+            format: date-time
+          rank:
+            type: integer
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid

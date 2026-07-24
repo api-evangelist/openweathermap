@@ -1,35 +1,34 @@
 openapi: 3.1.0
 info:
-  title: OpenWeatherMap Air Pollution API
+  title: OpenWeatherMap Accumulated Parameters Air Pollution API
   version: 2.5.0
-  description: >-
-    Returns current, forecast, and historical air pollution data including the
-    Air Quality Index and concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5,
-    and PM10 for any coordinates on the globe.
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
   contact:
     name: OpenWeather
-    url: https://openweathermap.org/api/air-pollution
+    url: https://openweathermap.org/api/accumulated-parameters
   license:
     name: Creative Commons Attribution-ShareAlike 4.0 International
     url: https://creativecommons.org/licenses/by-sa/4.0/
 servers:
-  - url: https://api.openweathermap.org/data/2.5
-    description: Air Pollution API base URL
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Air Pollution
+  description: Current, forecast, and historical air pollution data with AQI.
 paths:
   /air_pollution:
     get:
       operationId: getCurrentAirPollution
       summary: Current Air Pollution Data
-      description: >-
-        Returns current air pollution data including the Air Quality Index and
-        concentrations of common pollutants for the supplied latitude and
-        longitude.
+      description: Returns current air pollution data including the Air Quality Index and concentrations of common pollutants for the supplied latitude and longitude.
       tags:
-        - Air Pollution
+      - Air Pollution
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Current air pollution response.
@@ -47,15 +46,13 @@ paths:
     get:
       operationId: getAirPollutionForecast
       summary: Hourly Air Pollution Forecast
-      description: >-
-        Returns the hourly air pollution forecast for the next 5 days for the
-        supplied latitude and longitude.
+      description: Returns the hourly air pollution forecast for the next 5 days for the supplied latitude and longitude.
       tags:
-        - Air Pollution
+      - Air Pollution
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Air pollution forecast response.
@@ -73,30 +70,27 @@ paths:
     get:
       operationId: getAirPollutionHistory
       summary: Historical Air Pollution Data
-      description: >-
-        Returns historical hourly air pollution data for the supplied
-        coordinates and time window. Data is available from 27 November 2020
-        onwards.
+      description: Returns historical hourly air pollution data for the supplied coordinates and time window. Data is available from 27 November 2020 onwards.
       tags:
-        - Air Pollution
+      - Air Pollution
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - name: start
-          in: query
-          required: true
-          description: Unix UTC start timestamp.
-          schema:
-            type: integer
-            format: int64
-        - name: end
-          in: query
-          required: true
-          description: Unix UTC end timestamp.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: start
+        in: query
+        required: true
+        description: Unix UTC start timestamp.
+        schema:
+          type: integer
+          format: int64
+      - name: end
+        in: query
+        required: true
+        description: Unix UTC end timestamp.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Historical air pollution response.
@@ -120,6 +114,13 @@ components:
       schema:
         type: number
         format: float
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
     Lon:
       name: lon
       in: query
@@ -128,21 +129,30 @@ components:
       schema:
         type: number
         format: float
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   schemas:
+    AirPollutionResponse:
+      type: object
+      properties:
+        coord:
+          type: object
+          properties:
+            lat:
+              type: number
+              format: float
+            lon:
+              type: number
+              format: float
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/AirPollutionListItem'
     AirPollutionComponents:
       type: object
       properties:
         co:
           type: number
           format: float
-        no:
+        false:
           type: number
           format: float
         no2:
@@ -177,29 +187,8 @@ components:
               description: Air Quality Index. 1 Good, 2 Fair, 3 Moderate, 4 Poor, 5 Very Poor.
         components:
           $ref: '#/components/schemas/AirPollutionComponents'
-    AirPollutionResponse:
-      type: object
-      properties:
-        coord:
-          type: object
-          properties:
-            lat:
-              type: number
-              format: float
-            lon:
-              type: number
-              format: float
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/AirPollutionListItem'
   securitySchemes:
     appid:
       type: apiKey
       in: query
       name: appid
-security:
-  - appid: []
-tags:
-  - name: Air Pollution
-    description: Current, forecast, and historical air pollution data with AQI.

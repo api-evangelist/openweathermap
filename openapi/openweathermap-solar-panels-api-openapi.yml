@@ -1,0 +1,260 @@
+openapi: 3.1.0
+info:
+  title: OpenWeatherMap Accumulated Parameters Solar Panels API
+  version: 2.5.0
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api/accumulated-parameters
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+servers:
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Solar Panels
+  description: Manage modeled locations and solar panel configurations and retrieve power output.
+paths:
+  /locations:
+    get:
+      operationId: listSolarLocations
+      summary: List Modeled Locations
+      description: Returns all modeled locations associated with the API key.
+      tags:
+      - Solar Panels
+      parameters:
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Locations list response.
+    post:
+      operationId: createSolarLocation
+      summary: Create A Modeled Location
+      description: Creates a new modeled location with a coordinate point.
+      tags:
+      - Solar Panels
+      parameters:
+      - $ref: '#/components/parameters/Appid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLocationRequest'
+      responses:
+        '201':
+          description: Location created.
+  /location/{location_id}:
+    get:
+      operationId: getSolarLocation
+      summary: Retrieve A Modeled Location
+      description: Returns the location object for the supplied location identifier.
+      tags:
+      - Solar Panels
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Location response.
+    delete:
+      operationId: deleteSolarLocation
+      summary: Delete A Modeled Location
+      description: Deletes the location associated with the supplied identifier.
+      tags:
+      - Solar Panels
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '204':
+          description: Location deleted.
+  /location/{location_id}/panels:
+    get:
+      operationId: listSolarPanels
+      summary: List Solar Panels For A Location
+      description: Returns all solar panels associated with the supplied location.
+      tags:
+      - Solar Panels
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Panels list response.
+    post:
+      operationId: createSolarPanel
+      summary: Create A Solar Panel For A Location
+      description: Creates a new solar panel with the supplied physical configuration.
+      tags:
+      - Solar Panels
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePanelRequest'
+      responses:
+        '201':
+          description: Panel created.
+  /panel/{panel_id}:
+    get:
+      operationId: getSolarPanel
+      summary: Retrieve A Solar Panel
+      description: Returns the panel configuration for the supplied panel identifier.
+      tags:
+      - Solar Panels
+      parameters:
+      - name: panel_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Panel response.
+    delete:
+      operationId: deleteSolarPanel
+      summary: Delete A Solar Panel
+      description: Deletes the panel associated with the supplied identifier.
+      tags:
+      - Solar Panels
+      parameters:
+      - name: panel_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '204':
+          description: Panel deleted.
+  /location/{location_id}/interval_data:
+    get:
+      operationId: getSolarPanelIntervalData
+      summary: Solar Panel Power Output And Irradiance
+      description: Returns clear-sky and cloudy-sky irradiance and per-panel power and energy output at the requested interval for the supplied location and date.
+      tags:
+      - Solar Panels
+      parameters:
+      - name: location_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: date
+        in: query
+        required: true
+        description: Date in YYYY-MM-DD format.
+        schema:
+          type: string
+          format: date
+      - name: interval
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 15m
+          - 1h
+          - 1d
+      - name: tz
+        in: query
+        required: false
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Interval data response.
+components:
+  schemas:
+    CreatePanelRequest:
+      type: object
+      required:
+      - type
+      - area
+      - tilt
+      - azimuth
+      - peak_power
+      properties:
+        type:
+          type: string
+          enum:
+          - mono-si
+          - poly-si
+          - tf-as
+          - cdte
+        area:
+          type: number
+          format: float
+          description: Panel surface area in square meters.
+        tilt:
+          type: number
+          format: float
+          description: Tilt angle in degrees.
+        azimuth:
+          type: number
+          format: float
+          description: Azimuth in degrees.
+        peak_power:
+          type: number
+          format: float
+          description: Panel peak power output in watts.
+    CreateLocationRequest:
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - point
+        coordinates:
+          type: array
+          items:
+            type: object
+            properties:
+              lat:
+                type: number
+                format: float
+              lon:
+                type: number
+                format: float
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid

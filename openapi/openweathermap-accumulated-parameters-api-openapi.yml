@@ -2,10 +2,7 @@ openapi: 3.1.0
 info:
   title: OpenWeatherMap Accumulated Parameters API
   version: 2.5.0
-  description: >-
-    Returns accumulated temperature and accumulated precipitation totals over a
-    user-specified historical time window. Targeted at agricultural and
-    energy-sector applications. Available on Professional and Expert plans.
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
   contact:
     name: OpenWeather
     url: https://openweathermap.org/api/accumulated-parameters
@@ -13,43 +10,46 @@ info:
     name: Creative Commons Attribution-ShareAlike 4.0 International
     url: https://creativecommons.org/licenses/by-sa/4.0/
 servers:
-  - url: https://history.openweathermap.org/data/2.5/history
-    description: Accumulated Parameters API base URL
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Accumulated Parameters
+  description: Accumulated temperature and precipitation totals for agriculture.
 paths:
   /accumulated_temperature:
     get:
       operationId: getAccumulatedTemperature
       summary: Accumulated Temperature For A Time Window
-      description: >-
-        Returns the sum of daily mean temperatures above an optional threshold
-        for the supplied coordinates and time window.
+      description: Returns the sum of daily mean temperatures above an optional threshold for the supplied coordinates and time window.
       tags:
-        - Accumulated Parameters
+      - Accumulated Parameters
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - name: start
-          in: query
-          required: true
-          description: Unix UTC start timestamp.
-          schema:
-            type: integer
-            format: int64
-        - name: end
-          in: query
-          required: true
-          description: Unix UTC end timestamp.
-          schema:
-            type: integer
-            format: int64
-        - name: threshold
-          in: query
-          required: false
-          description: Minimum temperature value to include in the accumulation.
-          schema:
-            type: number
-            format: float
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: start
+        in: query
+        required: true
+        description: Unix UTC start timestamp.
+        schema:
+          type: integer
+          format: int64
+      - name: end
+        in: query
+        required: true
+        description: Unix UTC end timestamp.
+        schema:
+          type: integer
+          format: int64
+      - name: threshold
+        in: query
+        required: false
+        description: Minimum temperature value to include in the accumulation.
+        schema:
+          type: number
+          format: float
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Accumulated temperature response.
@@ -69,29 +69,27 @@ paths:
     get:
       operationId: getAccumulatedPrecipitation
       summary: Accumulated Precipitation For A Time Window
-      description: >-
-        Returns the sum of precipitation for the supplied coordinates and time
-        window.
+      description: Returns the sum of precipitation for the supplied coordinates and time window.
       tags:
-        - Accumulated Parameters
+      - Accumulated Parameters
       parameters:
-        - $ref: '#/components/parameters/Lat'
-        - $ref: '#/components/parameters/Lon'
-        - name: start
-          in: query
-          required: true
-          description: Unix UTC start timestamp.
-          schema:
-            type: integer
-            format: int64
-        - name: end
-          in: query
-          required: true
-          description: Unix UTC end timestamp.
-          schema:
-            type: integer
-            format: int64
-        - $ref: '#/components/parameters/Appid'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: start
+        in: query
+        required: true
+        description: Unix UTC start timestamp.
+        schema:
+          type: integer
+          format: int64
+      - name: end
+        in: query
+        required: true
+        description: Unix UTC end timestamp.
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/Appid'
       responses:
         '200':
           description: Accumulated precipitation response.
@@ -117,6 +115,13 @@ components:
       schema:
         type: number
         format: float
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
     Lon:
       name: lon
       in: query
@@ -125,13 +130,6 @@ components:
       schema:
         type: number
         format: float
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   schemas:
     AccumulatedTemperatureItem:
       type: object
@@ -160,8 +158,3 @@ components:
       type: apiKey
       in: query
       name: appid
-security:
-  - appid: []
-tags:
-  - name: Accumulated Parameters
-    description: Accumulated temperature and precipitation totals for agriculture.

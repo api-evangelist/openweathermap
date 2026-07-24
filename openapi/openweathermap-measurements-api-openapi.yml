@@ -1,0 +1,161 @@
+openapi: 3.1.0
+info:
+  title: OpenWeatherMap Accumulated Parameters Measurements API
+  version: 2.5.0
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api/accumulated-parameters
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+servers:
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Measurements
+  description: Submit and retrieve aggregated weather station measurements.
+paths:
+  /measurements:
+    get:
+      operationId: getMeasurements
+      summary: Retrieve Aggregated Measurements
+      description: Returns aggregated measurements for a station at minute, hour, or day granularity.
+      tags:
+      - Measurements
+      parameters:
+      - name: station_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: query
+        required: true
+        description: Aggregation type. m minute, h hour, d day.
+        schema:
+          type: string
+          enum:
+          - m
+          - h
+          - d
+      - name: limit
+        in: query
+        required: true
+        description: Maximum number of records returned.
+        schema:
+          type: integer
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - name: to
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Aggregated measurements response.
+    post:
+      operationId: postMeasurements
+      summary: Submit Station Measurements
+      description: Submits one or more measurements collected from a registered station.
+      tags:
+      - Measurements
+      parameters:
+      - $ref: '#/components/parameters/Appid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Measurement'
+      responses:
+        '204':
+          description: Measurements accepted.
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+components:
+  schemas:
+    Measurement:
+      type: object
+      required:
+      - station_id
+      - dt
+      properties:
+        station_id:
+          type: string
+        dt:
+          type: integer
+          format: int64
+        temperature:
+          type: number
+          format: float
+          description: Air temperature in Celsius.
+        wind_speed:
+          type: number
+          format: float
+        wind_gust:
+          type: number
+          format: float
+        pressure:
+          type: number
+          format: float
+          description: Pressure in hectopascals.
+        humidity:
+          type: number
+          format: float
+        rain_1h:
+          type: number
+          format: float
+        rain_6h:
+          type: number
+          format: float
+        rain_24h:
+          type: number
+          format: float
+        snow_1h:
+          type: number
+          format: float
+        snow_6h:
+          type: number
+          format: float
+        snow_24h:
+          type: number
+          format: float
+        dew_point:
+          type: number
+          format: float
+        heat_index:
+          type: number
+          format: float
+        humidex:
+          type: number
+          format: float
+        visibility_distance:
+          type: number
+          format: float
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid

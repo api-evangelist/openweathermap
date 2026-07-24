@@ -1,0 +1,224 @@
+openapi: 3.1.0
+info:
+  title: OpenWeatherMap Accumulated Parameters Current Weather API
+  version: 2.5.0
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api/accumulated-parameters
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+servers:
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Current Weather
+  description: Current weather data for any geographic coordinates worldwide.
+paths:
+  /weather:
+    get:
+      operationId: getCurrentWeather
+      summary: Current Weather Data For A Coordinate
+      description: Returns current weather data for the supplied latitude and longitude. Data includes temperature, atmospheric pressure, humidity, visibility, wind, cloudiness, sunrise and sunset times, and a brief weather condition.
+      tags:
+      - Current Weather
+      parameters:
+      - name: lat
+        in: query
+        required: true
+        description: Latitude in decimal degrees, range -90 to 90.
+        schema:
+          type: number
+          format: float
+      - name: lon
+        in: query
+        required: true
+        description: Longitude in decimal degrees, range -180 to 180.
+        schema:
+          type: number
+          format: float
+      - name: mode
+        in: query
+        required: false
+        description: Response format. Default is JSON. Use xml or html for alternative formats.
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          - html
+      - name: units
+        in: query
+        required: false
+        description: Units of measurement. standard (Kelvin), metric (Celsius), or imperial (Fahrenheit).
+        schema:
+          type: string
+          enum:
+          - standard
+          - metric
+          - imperial
+      - name: lang
+        in: query
+        required: false
+        description: Localization language code for the weather condition output text.
+        schema:
+          type: string
+      - name: appid
+        in: query
+        required: true
+        description: OpenWeather API key.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Current weather response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentWeatherResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized. Missing or invalid API key.
+        '404':
+          description: Location not found.
+        '429':
+          description: Too many requests. Rate or quota limit exceeded.
+components:
+  schemas:
+    Clouds:
+      type: object
+      properties:
+        all:
+          type: integer
+          description: Cloudiness percentage.
+    Sys:
+      type: object
+      properties:
+        type:
+          type: integer
+        id:
+          type: integer
+        country:
+          type: string
+        sunrise:
+          type: integer
+          format: int64
+        sunset:
+          type: integer
+          format: int64
+    Wind:
+      type: object
+      properties:
+        speed:
+          type: number
+          format: float
+        deg:
+          type: integer
+        gust:
+          type: number
+          format: float
+    Precipitation:
+      type: object
+      properties:
+        1h:
+          type: number
+          format: float
+          description: Precipitation volume for the last hour in mm.
+        3h:
+          type: number
+          format: float
+          description: Precipitation volume for the last 3 hours in mm.
+    CurrentWeatherResponse:
+      type: object
+      properties:
+        coord:
+          $ref: '#/components/schemas/Coord'
+        weather:
+          type: array
+          items:
+            $ref: '#/components/schemas/Weather'
+        base:
+          type: string
+        main:
+          $ref: '#/components/schemas/Main'
+        visibility:
+          type: integer
+        wind:
+          $ref: '#/components/schemas/Wind'
+        clouds:
+          $ref: '#/components/schemas/Clouds'
+        rain:
+          $ref: '#/components/schemas/Precipitation'
+        snow:
+          $ref: '#/components/schemas/Precipitation'
+        dt:
+          type: integer
+          format: int64
+        sys:
+          $ref: '#/components/schemas/Sys'
+        timezone:
+          type: integer
+        id:
+          type: integer
+        name:
+          type: string
+        cod:
+          type: integer
+    Coord:
+      type: object
+      properties:
+        lon:
+          type: number
+          format: float
+          description: Longitude of the location.
+        lat:
+          type: number
+          format: float
+          description: Latitude of the location.
+    Weather:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Weather condition ID.
+        main:
+          type: string
+          description: Group of weather parameters (Rain, Snow, Clouds, etc.).
+        description:
+          type: string
+          description: Weather condition within the group.
+        icon:
+          type: string
+          description: Weather icon ID.
+    Main:
+      type: object
+      properties:
+        temp:
+          type: number
+          format: float
+        feels_like:
+          type: number
+          format: float
+        temp_min:
+          type: number
+          format: float
+        temp_max:
+          type: number
+          format: float
+        pressure:
+          type: integer
+        humidity:
+          type: integer
+        sea_level:
+          type: integer
+        grnd_level:
+          type: integer
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid

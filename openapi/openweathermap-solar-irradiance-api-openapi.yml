@@ -1,0 +1,93 @@
+openapi: 3.1.0
+info:
+  title: OpenWeatherMap Accumulated Parameters Solar Irradiance API
+  version: 2.5.0
+  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api/accumulated-parameters
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+servers:
+- url: https://history.openweathermap.org/data/2.5/history
+  description: Accumulated Parameters API base URL
+security:
+- appid: []
+tags:
+- name: Solar Irradiance
+  description: Solar irradiance values for clear and cloudy sky models.
+paths:
+  /solar/interval_data:
+    get:
+      operationId: getSolarIrradianceIntervalData
+      summary: Solar Irradiance Interval Data
+      description: Returns clear-sky and cloudy-sky GHI, DNI, and DHI irradiance values at 15-minute, hourly, or daily granularity for the supplied coordinates and date.
+      tags:
+      - Solar Irradiance
+      parameters:
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/Lon'
+      - name: date
+        in: query
+        required: true
+        description: Date in YYYY-MM-DD format. Available from 1979-01-01 up to plus 15 days.
+        schema:
+          type: string
+          format: date
+      - name: interval
+        in: query
+        required: false
+        description: Time resolution.
+        schema:
+          type: string
+          enum:
+          - 15m
+          - 1h
+          - 1d
+      - name: tz
+        in: query
+        required: false
+        description: Timezone in +-HH:MM format.
+        schema:
+          type: string
+      - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Solar irradiance interval data response.
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+components:
+  parameters:
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid
