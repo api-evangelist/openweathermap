@@ -6,6 +6,19 @@ description: OpenWeather (operating openweathermap.org) is a global weather data
   and a worldwide network of weather stations, served through REST APIs across a freemium, multi-tier,
   and pay-per-call commercial model.
 url: https://openweathermap.org/api
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-05-28'
 modified: '2026-06-20'
@@ -27,20 +40,18 @@ tags:
 - Road Risk
 - Public APIs
 apis:
-- aid: openweathermap:current-weather
-  name: Current Weather Data API
-  description: Returns current weather data for any location on Earth, including over 200,000 cities,
-    sourced from satellites, radars, models, and a global network of weather stations.
+- aid: openweathermap:openweathermap-accumulated-parameters-api
+  name: OpenWeatherMap Accumulated Parameters API
+  description: Accumulated temperature and precipitation totals for agriculture.
   humanURL: https://openweathermap.org/current
   baseURL: https://api.openweathermap.org/data/2.5
   tags:
-  - Weather
-  - Current Weather
+  - Accumulated Parameters
   properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-accumulated-parameters-api-openapi.yml
   - type: Documentation
     url: https://openweathermap.org/current
-  - type: OpenAPI
-    url: openapi/openweathermap-current-weather-openapi.yml
   - type: JSONSchema
     url: json-schema/openweathermap-current-weather-schema.json
   - type: JSONStructure
@@ -49,20 +60,8 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - url: graphql/openweathermap-graphql.md
-    type: GraphQL
-  - type: Overlay
-    url: overlays/openweathermap-current-weather-overlay.yaml
-- aid: openweathermap:forecast
-  name: Forecast APIs
-  description: OpenWeather forecast surface including the public 5-day/3-hour forecast plus pro hourly
-    (4 days), daily (16 days), and climatic (30 days) forecasts.
-  humanURL: https://openweathermap.org/forecast5
-  baseURL: https://api.openweathermap.org/data/2.5
-  tags:
-  - Weather
-  - Forecast
-  properties:
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -71,214 +70,1180 @@ apis:
     url: https://openweathermap.org/forecast16
   - type: Documentation
     url: https://openweathermap.org/api/forecast30
-  - type: OpenAPI
-    url: openapi/openweathermap-forecast-openapi.yml
   - type: JSONSchema
     url: json-schema/openweathermap-forecast-schema.json
   - type: Examples
     url: examples/forecast-five-day-example.json
-  - type: Overlay
-    url: overlays/openweathermap-forecast-overlay.yaml
-- aid: openweathermap:one-call
-  name: One Call API 4.0
-  description: Unified weather timeline including current conditions, hourly, daily, 1-minute precipitation,
-    15-minute forecasts, government weather alerts, and 47 plus years of historical data via pay-per-call
-    pricing.
-  humanURL: https://openweathermap.org/api/one-call-4
-  baseURL: https://api.openweathermap.org/data/4.0/onecall
-  tags:
-  - Weather
-  - Forecast
-  - History
-  properties:
   - type: Documentation
     url: https://openweathermap.org/api/one-call-4
-  - type: OpenAPI
-    url: openapi/openweathermap-one-call-openapi.yml
   - type: Examples
     url: examples/one-call-current-example.json
-  - type: Overlay
-    url: overlays/openweathermap-one-call-overlay.yaml
-- aid: openweathermap:air-pollution
-  name: Air Pollution API
-  description: Current, forecast, and historical air pollution data including the Air Quality Index and
-    concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5, and PM10 for any coordinates on the globe.
-  humanURL: https://openweathermap.org/api/air-pollution
-  baseURL: https://api.openweathermap.org/data/2.5
-  tags:
-  - Air Pollution
-  - Air Quality
-  properties:
   - type: Documentation
     url: https://openweathermap.org/api/air-pollution
-  - type: OpenAPI
-    url: openapi/openweathermap-air-pollution-openapi.yml
   - type: JSONSchema
     url: json-schema/openweathermap-air-pollution-schema.json
   - type: JSONStructure
     url: json-structure/openweathermap-air-pollution-structure.json
   - type: Examples
     url: examples/air-pollution-current-example.json
-  - type: Overlay
-    url: overlays/openweathermap-air-pollution-overlay.yaml
-- aid: openweathermap:geocoding
-  name: Geocoding API
-  description: Direct and reverse geocoding for city names, postal codes, and coordinate pairs. Supports
-    city, state, country, and area-level resolution.
-  humanURL: https://openweathermap.org/api/geocoding-api
-  baseURL: https://api.openweathermap.org/geo/1.0
-  tags:
-  - Geocoding
-  properties:
   - type: Documentation
     url: https://openweathermap.org/api/geocoding-api
-  - type: OpenAPI
-    url: openapi/openweathermap-geocoding-openapi.yml
   - type: JSONSchema
     url: json-schema/openweathermap-geocoding-schema.json
   - type: JSONStructure
     url: json-structure/openweathermap-geocoding-structure.json
   - type: Examples
     url: examples/geocoding-direct-example.json
-  - type: Overlay
-    url: overlays/openweathermap-geocoding-overlay.yaml
-- aid: openweathermap:history
-  name: Historical Weather API
-  description: Historical weather observations for any global coordinate at one-hour granularity, spanning
-    47 plus years. Available on Professional and Expert plans.
-  humanURL: https://openweathermap.org/history
-  baseURL: https://history.openweathermap.org/data/2.5
-  tags:
-  - Weather
-  - History
-  properties:
   - type: Documentation
     url: https://openweathermap.org/history
-  - type: OpenAPI
-    url: openapi/openweathermap-history-openapi.yml
   - type: Examples
     url: examples/history-city-example.json
-  - type: Overlay
-    url: overlays/openweathermap-history-overlay.yaml
-- aid: openweathermap:statistical
-  name: Statistical Weather Data API
-  description: Statistical aggregates (record min/max, average, mean, percentiles, standard deviation)
-    for main weather parameters on any day, month, or yearly basis. Expert plan only.
-  humanURL: https://openweathermap.org/api/statistics-api
-  baseURL: https://history.openweathermap.org/data/2.5
-  tags:
-  - Weather
-  - Climate
-  - Statistics
-  properties:
   - type: Documentation
     url: https://openweathermap.org/api/statistics-api
-  - type: OpenAPI
-    url: openapi/openweathermap-statistical-weather-openapi.yml
   - type: Examples
     url: examples/statistical-month-example.json
-  - type: Overlay
-    url: overlays/openweathermap-statistical-weather-overlay.yaml
-- aid: openweathermap:accumulated-parameters
-  name: Accumulated Parameters API
-  description: Accumulated temperature and precipitation totals over a historical time window, primarily
-    for agriculture and energy applications. Available on Professional and Expert plans.
-  humanURL: https://openweathermap.org/api/accumulated-parameters
-  baseURL: https://history.openweathermap.org/data/2.5/history
-  tags:
-  - Weather
-  - History
-  - Agriculture
-  properties:
   - type: Documentation
     url: https://openweathermap.org/api/accumulated-parameters
-  - type: OpenAPI
-    url: openapi/openweathermap-accumulated-parameters-openapi.yml
   - type: Examples
     url: examples/accumulated-temperature-example.json
-  - type: Overlay
-    url: overlays/openweathermap-accumulated-parameters-overlay.yaml
-- aid: openweathermap:solar
-  name: Solar Energy APIs
-  description: Solar Irradiance API (GHI, DNI, DHI for clear and cloudy sky models, 15 minute or hourly
-    intervals, 47 plus years history) and Solar Panel Energy Prediction API (manage modeled locations
-    and solar panel configurations and retrieve per-panel power and energy output).
-  humanURL: https://openweathermap.org/api/solar-irradiance
-  baseURL: https://api.openweathermap.org/energy/2.0
-  tags:
-  - Solar
-  - Energy
-  properties:
   - type: Documentation
     url: https://openweathermap.org/api/solar-irradiance
   - type: Documentation
     url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
-  - type: OpenAPI
-    url: openapi/openweathermap-solar-openapi.yml
   - type: Examples
     url: examples/solar-irradiance-interval-example.json
-  - type: Overlay
-    url: overlays/openweathermap-solar-overlay.yaml
-- aid: openweathermap:road-risk
-  name: Road Risk API
-  description: Route-specific weather data, national alerts, current conditions plus five-day forecast,
-    and one year of historical data for a sequence of waypoints. Custom quote required.
-  humanURL: https://openweathermap.org/api/road-risk
-  baseURL: https://api.openweathermap.org
-  tags:
-  - Weather
-  - Routing
-  - Risk
-  properties:
   - type: Documentation
     url: https://openweathermap.org/api/road-risk
-  - type: OpenAPI
-    url: openapi/openweathermap-road-risk-openapi.yml
   - type: Examples
     url: examples/road-risk-example.json
-  - type: Overlay
-    url: overlays/openweathermap-road-risk-overlay.yaml
-- aid: openweathermap:weather-stations
-  name: Weather Stations API
-  description: Register and manage personal weather stations and submit measurement data. Aggregated readings
-    are retrievable at minute, hour, and day granularity.
-  humanURL: https://openweathermap.org/stations
-  baseURL: https://api.openweathermap.org/data/3.0
-  tags:
-  - Weather
-  - Stations
-  - IoT
-  properties:
   - type: Documentation
     url: https://openweathermap.org/stations
-  - type: OpenAPI
-    url: openapi/openweathermap-weather-stations-openapi.yml
   - type: JSONSchema
     url: json-schema/openweathermap-station-schema.json
   - type: Examples
     url: examples/weather-stations-create-example.json
-  - type: Overlay
-    url: overlays/openweathermap-weather-stations-overlay.yaml
-- aid: openweathermap:weather-maps
-  name: Weather Maps 1.0
-  description: Tile map service overlaying weather data layers (clouds, precipitation, pressure, wind,
-    temperature) on top of base maps using standard z/x/y tile coordinates. Compatible with Leaflet, OpenLayers,
-    Google Maps.
-  humanURL: https://openweathermap.org/api/weathermaps
-  baseURL: https://tile.openweathermap.org
-  tags:
-  - Weather
-  - Maps
-  - Tiles
-  properties:
   - type: Documentation
     url: https://openweathermap.org/api/weathermaps
-  - type: OpenAPI
-    url: openapi/openweathermap-weather-maps-openapi.yml
   - type: Examples
     url: examples/weather-maps-tile-example.json
-  - type: Overlay
-    url: overlays/openweathermap-weather-maps-overlay.yaml
+- aid: openweathermap:openweathermap-air-pollution-api
+  name: OpenWeatherMap Air Pollution API
+  description: Current, forecast, and historical air pollution data with AQI.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Air Pollution
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-air-pollution-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-current-weather-api
+  name: OpenWeatherMap Current Weather API
+  description: Current weather data for any geographic coordinates worldwide.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Current Weather
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-current-weather-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-forecast-api
+  name: OpenWeatherMap Forecast API
+  description: Weather forecasts at multiple granularities and time horizons.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Forecast
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-forecast-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-geocoding-api
+  name: OpenWeatherMap Geocoding API
+  description: Direct and reverse geocoding between location names and coordinates.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Geocoding
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-geocoding-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-history-api
+  name: OpenWeatherMap History API
+  description: Historical weather records by coordinate with hourly granularity.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - History
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-history-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-measurements-api
+  name: OpenWeatherMap Measurements API
+  description: Submit and retrieve aggregated weather station measurements.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Measurements
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-measurements-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-one-call-api
+  name: OpenWeatherMap One Call API
+  description: Unified timeline API with current, forecast, and historical weather plus alerts.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - One Call
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-one-call-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-road-risk-api
+  name: OpenWeatherMap Road Risk API
+  description: Route weather, road surface state, and alerts for a track of waypoints.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Road Risk
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-road-risk-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-solar-irradiance-api
+  name: OpenWeatherMap Solar Irradiance API
+  description: Solar irradiance values for clear and cloudy sky models.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Solar Irradiance
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-solar-irradiance-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-solar-panels-api
+  name: OpenWeatherMap Solar Panels API
+  description: Manage modeled locations and solar panel configurations and retrieve power output.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Solar Panels
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-solar-panels-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-stations-api
+  name: OpenWeatherMap Stations API
+  description: Register, retrieve, update, and delete personal weather stations.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Stations
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-stations-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-statistical-weather-api
+  name: OpenWeatherMap Statistical Weather API
+  description: Long-term statistical weather aggregates for any global location.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Statistical Weather
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-statistical-weather-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
+- aid: openweathermap:openweathermap-weather-maps-api
+  name: OpenWeatherMap Weather Maps API
+  description: Weather layer tile service for map overlays.
+  humanURL: https://openweathermap.org/current
+  baseURL: https://api.openweathermap.org/data/2.5
+  tags:
+  - Weather Maps
+  properties:
+  - type: OpenAPI
+    url: openapi/openweathermap-weather-maps-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/current
+  - type: JSONSchema
+    url: json-schema/openweathermap-current-weather-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-current-weather-structure.json
+  - type: Examples
+    url: examples/current-weather-example.json
+  - type: Authentication
+    url: https://openweathermap.org/appid
+  - type: GraphQL
+    url: graphql/openweathermap-graphql.md
+  - type: Documentation
+    url: https://openweathermap.org/forecast5
+  - type: Documentation
+    url: https://openweathermap.org/api/hourly-forecast
+  - type: Documentation
+    url: https://openweathermap.org/forecast16
+  - type: Documentation
+    url: https://openweathermap.org/api/forecast30
+  - type: JSONSchema
+    url: json-schema/openweathermap-forecast-schema.json
+  - type: Examples
+    url: examples/forecast-five-day-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-4
+  - type: Examples
+    url: examples/one-call-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: JSONSchema
+    url: json-schema/openweathermap-air-pollution-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-air-pollution-structure.json
+  - type: Examples
+    url: examples/air-pollution-current-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/geocoding-api
+  - type: JSONSchema
+    url: json-schema/openweathermap-geocoding-schema.json
+  - type: JSONStructure
+    url: json-structure/openweathermap-geocoding-structure.json
+  - type: Examples
+    url: examples/geocoding-direct-example.json
+  - type: Documentation
+    url: https://openweathermap.org/history
+  - type: Examples
+    url: examples/history-city-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/statistics-api
+  - type: Examples
+    url: examples/statistical-month-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/accumulated-parameters
+  - type: Examples
+    url: examples/accumulated-temperature-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-irradiance
+  - type: Documentation
+    url: https://openweathermap.org/api/solar-panels-and-energy-prediction-2
+  - type: Examples
+    url: examples/solar-irradiance-interval-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/road-risk
+  - type: Examples
+    url: examples/road-risk-example.json
+  - type: Documentation
+    url: https://openweathermap.org/stations
+  - type: JSONSchema
+    url: json-schema/openweathermap-station-schema.json
+  - type: Examples
+    url: examples/weather-stations-create-example.json
+  - type: Documentation
+    url: https://openweathermap.org/api/weathermaps
+  - type: Examples
+    url: examples/weather-maps-tile-example.json
 common:
 - type: AgenticAccess
   url: agentic-access/openweathermap-agentic-access.yml
