@@ -1,0 +1,289 @@
+openapi: 3.1.0
+info:
+  title: OpenWeatherMap One Call API 4.0
+  version: 4.0.0
+  description: >-
+    OpenWeather One Call API 4.0 provides a unified weather timeline including
+    current conditions, hourly, daily, 1-minute precipitation, 15-minute
+    forecasts, government weather alerts, and 47+ years of historical data
+    accessible through pay-per-call pricing.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api/one-call-4
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
+servers:
+  - url: https://api.openweathermap.org/data/4.0/onecall
+    description: One Call API 4.0 base URL
+paths:
+  /current:
+    get:
+      operationId: getOneCallCurrent
+      summary: Current Weather From One Call
+      description: >-
+        Returns a single record with current conditions including temperature,
+        humidity, pressure, wind, UV index, sunrise and sunset times, and
+        weather descriptions for the supplied coordinates.
+      tags:
+        - One Call
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Lang'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: One Call current weather response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OneCallCurrentResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /timeline/1min:
+    get:
+      operationId: getOneCallTimelineOneMinute
+      summary: One Minute Timeline
+      description: >-
+        Returns up to 60 records covering precipitation forecasts and
+        government weather alerts at one-minute granularity.
+      tags:
+        - One Call
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Lang'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: One Call one-minute timeline response.
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /timeline/15min:
+    get:
+      operationId: getOneCallTimelineFifteenMinute
+      summary: Fifteen Minute Timeline
+      description: >-
+        Returns up to 50 records at 15-minute intervals including temperature,
+        precipitation probability, and weather details.
+      tags:
+        - One Call
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Lang'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: One Call 15-minute timeline response.
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /timeline/1h:
+    get:
+      operationId: getOneCallTimelineHour
+      summary: Hourly Timeline With History
+      description: >-
+        Returns up to 20 records spanning 47 years of historical data and the
+        next 48 hours of forecast at hourly granularity.
+      tags:
+        - One Call
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Lang'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: One Call hourly timeline response.
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /timeline/1day:
+    get:
+      operationId: getOneCallTimelineDay
+      summary: Daily Timeline With Aggregates
+      description: >-
+        Returns up to 10 records of daily aggregated weather data including
+        moon phase, sunrise, sunset, and per-day summaries.
+      tags:
+        - One Call
+      parameters:
+        - $ref: '#/components/parameters/Lat'
+        - $ref: '#/components/parameters/Lon'
+        - $ref: '#/components/parameters/Units'
+        - $ref: '#/components/parameters/Lang'
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: One Call daily timeline response.
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /alert/{alert_id}:
+    get:
+      operationId: getOneCallAlert
+      summary: Weather Alert Detail
+      description: >-
+        Returns a single weather alert record with event name, timing,
+        description, and originating agency.
+      tags:
+        - One Call
+      parameters:
+        - name: alert_id
+          in: path
+          required: true
+          description: Alert identifier returned by other One Call endpoints.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/Appid'
+      responses:
+        '200':
+          description: Alert detail response.
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '404':
+          description: Alert not found.
+        '429':
+          description: Too many requests.
+components:
+  parameters:
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
+    Units:
+      name: units
+      in: query
+      required: false
+      description: Units of measurement. standard, metric, or imperial.
+      schema:
+        type: string
+        enum:
+          - standard
+          - metric
+          - imperial
+    Lang:
+      name: lang
+      in: query
+      required: false
+      description: Localization language code.
+      schema:
+        type: string
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+  schemas:
+    OneCallCurrentResponse:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        timezone:
+          type: string
+        timezone_offset:
+          type: integer
+        current:
+          type: object
+          properties:
+            dt:
+              type: integer
+              format: int64
+            sunrise:
+              type: integer
+              format: int64
+            sunset:
+              type: integer
+              format: int64
+            temp:
+              type: number
+              format: float
+            feels_like:
+              type: number
+              format: float
+            pressure:
+              type: integer
+            humidity:
+              type: integer
+            dew_point:
+              type: number
+              format: float
+            uvi:
+              type: number
+              format: float
+            clouds:
+              type: integer
+            visibility:
+              type: integer
+            wind_speed:
+              type: number
+              format: float
+            wind_deg:
+              type: integer
+            weather:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  main:
+                    type: string
+                  description:
+                    type: string
+                  icon:
+                    type: string
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid
+security:
+  - appid: []
+tags:
+  - name: One Call
+    description: Unified timeline API with current, forecast, and historical weather plus alerts.

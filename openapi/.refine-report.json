@@ -1,0 +1,40 @@
+{
+  "provider": "openweathermap",
+  "sources": [
+    "openweathermap-accumulated-parameters-api-openapi.yml",
+    "openweathermap-air-pollution-api-openapi.yml",
+    "openweathermap-current-weather-api-openapi.yml",
+    "openweathermap-forecast-api-openapi.yml",
+    "openweathermap-geocoding-api-openapi.yml",
+    "openweathermap-history-api-openapi.yml",
+    "openweathermap-measurements-api-openapi.yml",
+    "openweathermap-one-call-api-openapi.yml",
+    "openweathermap-road-risk-api-openapi.yml",
+    "openweathermap-solar-irradiance-api-openapi.yml",
+    "openweathermap-solar-panels-api-openapi.yml",
+    "openweathermap-stations-api-openapi.yml",
+    "openweathermap-statistical-weather-api-openapi.yml",
+    "openweathermap-weather-maps-api-openapi.yml"
+  ],
+  "outputs": [
+    "openweathermap-accumulated-parameters-api-openapi.yml",
+    "openweathermap-air-pollution-api-openapi.yml",
+    "openweathermap-current-weather-api-openapi.yml",
+    "openweathermap-forecast-api-openapi.yml",
+    "openweathermap-geocoding-api-openapi.yml",
+    "openweathermap-history-api-openapi.yml",
+    "openweathermap-measurements-api-openapi.yml",
+    "openweathermap-one-call-api-openapi.yml",
+    "openweathermap-road-risk-api-openapi.yml",
+    "openweathermap-solar-irradiance-api-openapi.yml",
+    "openweathermap-solar-panels-api-openapi.yml",
+    "openweathermap-stations-api-openapi.yml",
+    "openweathermap-statistical-weather-api-openapi.yml",
+    "openweathermap-weather-maps-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
