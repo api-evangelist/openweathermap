@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Accumulated Parameters Solar Irradiance API",
+    "version": "2.5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Solar Irradiance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solar Irradiance Interval Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://history.openweathermap.org/data/2.5/history/solar/interval_data",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Date in YYYY-MM-DD format. Available from 1979-01-01 up to plus 15 days."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "Time resolution."
+              },
+              {
+                "name": "tz",
+                "value": "",
+                "type": "query",
+                "description": "Timezone in +-HH:MM format."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns clear-sky and cloudy-sky GHI, DNI, and DHI irradiance values at 15-minute, hourly, or daily granularity for the supplied coordinates and date."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,407 @@
+{
+  "item": [
+    {
+      "id": "1a25e438-8c9a-405d-a8f1-104fe350706d",
+      "name": "History",
+      "description": {
+        "content": "Historical weather records by coordinate with hourly granularity.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a7f5538b-e746-43b4-8f45-c86063453c0c",
+          "name": "Historical Hourly Weather By Coordinate",
+          "request": {
+            "name": "Historical Hourly Weather By Coordinate",
+            "description": {
+              "content": "Returns hourly historical weather records for the supplied latitude, longitude, and time window. Maximum request span on Professional and Expert plans is one week per call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "history",
+                "city"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude in decimal degrees."
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Granularity. Currently only `hour` is supported."
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<long>",
+                  "description": "Unix UTC start timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<long>",
+                  "description": "Unix UTC end timestamp. Alternative to `cnt`."
+                },
+                {
+                  "disabled": false,
+                  "key": "cnt",
+                  "value": "<integer>",
+                  "description": "Number of hourly timestamps to return. Alternative to `end`."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba5bf934-70f6-4c82-9495-4dbca918420f",
+              "name": "Historical weather response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"cod\": \"string\",\n  \"city_id\": 4034,\n  \"calctime\": 2473.5748330267015,\n  \"list\": [\n    {\n      \"dt\": 874,\n      \"main\": {\n        \"temp\": 4297.97628245687,\n        \"feels_like\": 2211.6190819353,\n        \"pressure\": 9762,\n        \"humidity\": 3447,\n        \"temp_min\": 5795.439266566474,\n        \"temp_max\": 1824.1514346371723,\n        \"sea_level\": 1109,\n        \"grnd_level\": 1354\n      },\n      \"wind\": {\n        \"speed\": 1355.284342688653,\n        \"deg\": 1069\n      },\n      \"clouds\": {\n        \"all\": 2776\n      },\n      \"rain\": {\n        \"1h\": 9280.674063904919,\n        \"3h\": 5157.598575826134\n      },\n      \"snow\": {\n        \"1h\": 3254.5323021424897,\n        \"3h\": 9892.108024791163\n      },\n      \"weather\": [\n        {\n          \"id\": 6282,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 2580,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ]\n    },\n    {\n      \"dt\": 5700,\n      \"main\": {\n        \"temp\": 2157.214410486179,\n        \"feels_like\": 2005.2778950588367,\n        \"pressure\": 5427,\n        \"humidity\": 4677,\n        \"temp_min\": 9485.280190606049,\n        \"temp_max\": 6145.8888723230375,\n        \"sea_level\": 3266,\n        \"grnd_level\": 3751\n      },\n      \"wind\": {\n        \"speed\": 1330.653076266951,\n        \"deg\": 8372\n      },\n      \"clouds\": {\n        \"all\": 5594\n      },\n      \"rain\": {\n        \"1h\": 8438.061511750562,\n        \"3h\": 3120.940231517604\n      },\n      \"snow\": {\n        \"1h\": 1770.0050951613466,\n        \"3h\": 3370.767915556576\n      },\n      \"weather\": [\n        {\n          \"id\": 411,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 2429,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7224828d-9f44-4f39-b4e9-18aa05e57cf8",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "200e2229-948a-4c0a-a0d0-5f8a6965db27",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82aed355-ec1a-4098-a296-587cc6dc0483",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "history",
+                    "city"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://history.openweathermap.org/data/2.5/history",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f5521e78-5568-4033-ab89-c9373757ef6b",
+    "name": "OpenWeatherMap Accumulated Parameters History API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.\n\nContact Support:\n Name: OpenWeather",
+      "type": "text/plain"
+    }
+  }
+}

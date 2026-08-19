@@ -1,0 +1,389 @@
+{
+  "item": [
+    {
+      "id": "633c400c-2103-4031-8172-860d0d8df7ac",
+      "name": "Weather Maps",
+      "description": {
+        "content": "Weather layer tile service for map overlays.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2410c51-04bd-4245-87a4-b767b62bf0c4",
+          "name": "Weather Map Tile For A Layer",
+          "request": {
+            "name": "Weather Map Tile For A Layer",
+            "description": {
+              "content": "Returns a PNG tile image for the requested weather layer at the given z, x, y tile coordinate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "map",
+                ":layer",
+                ":z",
+                ":x",
+                "{{y}}.png"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "layer",
+                  "description": "(Required) Weather layer to render."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "z",
+                  "description": "(Required) Tile zoom level."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "x",
+                  "description": "(Required) Tile X coordinate."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b66fabe-1ebd-4832-9af6-ccad702f4026",
+              "name": "PNG tile image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    ":layer",
+                    ":z",
+                    ":x",
+                    "{{y}}.png"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer",
+                      "description": "(Required) Weather layer to render."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Tile zoom level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile X coordinate."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a32cf1a-b676-47f9-a626-1b429b4d6ba8",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    ":layer",
+                    ":z",
+                    ":x",
+                    "{{y}}.png"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer",
+                      "description": "(Required) Weather layer to render."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Tile zoom level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile X coordinate."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "254ecc59-b0b7-4c65-b3e2-67ee9fab3ee0",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    ":layer",
+                    ":z",
+                    ":x",
+                    "{{y}}.png"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer",
+                      "description": "(Required) Weather layer to render."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Tile zoom level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile X coordinate."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ef2e5ce-c54d-4438-b0a1-26ea48530d73",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "map",
+                    ":layer",
+                    ":z",
+                    ":x",
+                    "{{y}}.png"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer",
+                      "description": "(Required) Weather layer to render."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Tile zoom level."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "x",
+                      "description": "(Required) Tile X coordinate."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://history.openweathermap.org/data/2.5/history",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Tile Y coordinate.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "y"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7068a0d4-0cdf-4b70-929f-0fd92d706719",
+    "name": "OpenWeatherMap Accumulated Parameters Weather Maps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.\n\nContact Support:\n Name: OpenWeather",
+      "type": "text/plain"
+    }
+  }
+}

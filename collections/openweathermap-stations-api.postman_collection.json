@@ -1,0 +1,731 @@
+{
+  "item": [
+    {
+      "id": "3ea2fe17-2bd4-47a0-abda-fb3fe6d2e858",
+      "name": "Stations",
+      "description": {
+        "content": "Register, retrieve, update, and delete personal weather stations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "540eb2eb-b9aa-431b-93f4-55615648c9af",
+          "name": "List Registered Weather Stations",
+          "request": {
+            "name": "List Registered Weather Stations",
+            "description": {
+              "content": "Returns the list of all weather stations registered to the API key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11b1f2b5-5770-446a-96b1-5eae8779d4d9",
+              "name": "Stations list response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"external_id\": \"string\",\n    \"name\": \"string\",\n    \"latitude\": 5038.653509863652,\n    \"longitude\": 4602.5427053264175,\n    \"altitude\": 2264.827219636183,\n    \"id\": \"string\",\n    \"updated_at\": \"1974-09-11T01:18:08.693Z\",\n    \"created_at\": \"2001-01-10T23:00:37.325Z\",\n    \"rank\": 1918\n  },\n  {\n    \"external_id\": \"string\",\n    \"name\": \"string\",\n    \"latitude\": 5024.4108506868015,\n    \"longitude\": 9054.448629794604,\n    \"altitude\": 7839.049019955443,\n    \"id\": \"string\",\n    \"updated_at\": \"1980-08-28T09:41:07.564Z\",\n    \"created_at\": \"2025-02-10T12:49:39.574Z\",\n    \"rank\": 6479\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c9a22e6-336a-4c7a-9f0f-b91f1b99eac6",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b3cdcab-b9fc-4c85-a110-8ed2eab02508",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dcf6b8e-84bc-4c7a-9d2d-6c7db35b8548",
+          "name": "Register A New Weather Station",
+          "request": {
+            "name": "Register A New Weather Station",
+            "description": {
+              "content": "Registers a new weather station and returns the assigned station object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "24b17d4f-77ab-44ac-bc42-642c624b78de",
+              "name": "Station created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"external_id\": \"string\",\n  \"name\": \"string\",\n  \"latitude\": 3908.4169413845325,\n  \"longitude\": 8236.767373875384,\n  \"altitude\": 4431.33976578461,\n  \"id\": \"string\",\n  \"updated_at\": \"1980-08-07T07:18:17.216Z\",\n  \"created_at\": \"1979-01-21T00:42:25.929Z\",\n  \"rank\": 1361\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a438e55d-e2c9-4aec-b20e-cb874b5bcde0",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f716420-8bf9-4137-b043-8b0b950abb8a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c1784c8-d77c-482f-9fd4-6a0bf73bdaf6",
+          "name": "Retrieve A Weather Station",
+          "request": {
+            "name": "Retrieve A Weather Station",
+            "description": {
+              "content": "Returns the station object for the supplied identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stations",
+                ":station_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "station_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7cda93a1-218f-4216-a001-fdb358d5a455",
+              "name": "Station response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations",
+                    ":station_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "station_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"external_id\": \"string\",\n  \"name\": \"string\",\n  \"latitude\": 3908.4169413845325,\n  \"longitude\": 8236.767373875384,\n  \"altitude\": 4431.33976578461,\n  \"id\": \"string\",\n  \"updated_at\": \"1980-08-07T07:18:17.216Z\",\n  \"created_at\": \"1979-01-21T00:42:25.929Z\",\n  \"rank\": 1361\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95acb2cb-3b5e-4083-a7d7-64a1d27b30ed",
+          "name": "Update A Weather Station",
+          "request": {
+            "name": "Update A Weather Station",
+            "description": {
+              "content": "Updates the station metadata for the supplied identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stations",
+                ":station_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "station_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "332afed9-7a7f-4259-99a8-359d885af518",
+              "name": "Station updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations",
+                    ":station_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "station_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"external_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"latitude\": \"<float>\",\n  \"longitude\": \"<float>\",\n  \"altitude\": \"<float>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"external_id\": \"string\",\n  \"name\": \"string\",\n  \"latitude\": 3908.4169413845325,\n  \"longitude\": 8236.767373875384,\n  \"altitude\": 4431.33976578461,\n  \"id\": \"string\",\n  \"updated_at\": \"1980-08-07T07:18:17.216Z\",\n  \"created_at\": \"1979-01-21T00:42:25.929Z\",\n  \"rank\": 1361\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dda89d4-069d-4337-b8ca-9652985e0497",
+          "name": "Delete A Weather Station",
+          "request": {
+            "name": "Delete A Weather Station",
+            "description": {
+              "content": "Removes the station permanently.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stations",
+                ":station_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "station_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6da8ab83-41ef-45b0-a536-8d3a0bbbb2d7",
+              "name": "Station deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stations",
+                    ":station_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "station_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://history.openweathermap.org/data/2.5/history",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3228403a-a665-483b-856f-1f67c806b6ba",
+    "name": "OpenWeatherMap Accumulated Parameters Stations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.\n\nContact Support:\n Name: OpenWeather",
+      "type": "text/plain"
+    }
+  }
+}

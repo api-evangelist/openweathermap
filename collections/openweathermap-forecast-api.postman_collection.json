@@ -1,0 +1,1529 @@
+{
+  "item": [
+    {
+      "id": "ab85a516-9565-461f-a5f2-a5855045a448",
+      "name": "Forecast",
+      "description": {
+        "content": "Weather forecasts at multiple granularities and time horizons.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a028e180-aaca-48f2-be10-09559158f85c",
+          "name": "Five Day Three Hour Forecast",
+          "request": {
+            "name": "Five Day Three Hour Forecast",
+            "description": {
+              "content": "Returns forecast weather data with 3-hour granularity for the next 5 days for the supplied latitude and longitude. Includes temperature, weather conditions, wind, precipitation probability, and more for 40 forecast timestamps.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "forecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude in decimal degrees, range -90 to 90."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude in decimal degrees, range -180 to 180."
+                },
+                {
+                  "disabled": false,
+                  "key": "cnt",
+                  "value": "<integer>",
+                  "description": "Number of timestamps to return. Defaults to 40."
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Response format. Default is JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Units of measurement. standard, metric, or imperial."
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Localization language code."
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e71d4565-f7b2-4e93-8240-4a2064071d0e",
+              "name": "Five day three hour forecast response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cod\": \"string\",\n  \"message\": 2525.243570899576,\n  \"cnt\": 8813,\n  \"list\": [\n    {\n      \"dt\": 6275,\n      \"main\": {\n        \"temp\": 7021.066904315557,\n        \"feels_like\": 1580.2177311856424,\n        \"temp_min\": 230.95892315668553,\n        \"temp_max\": 1271.5861961172182,\n        \"pressure\": 5862,\n        \"humidity\": 8041\n      },\n      \"weather\": [\n        {\n          \"id\": 725,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 5399,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ],\n      \"clouds\": {\n        \"all\": 1484\n      },\n      \"wind\": {\n        \"speed\": 478.18878975947945,\n        \"deg\": 7683,\n        \"gust\": 7849.081426754378\n      },\n      \"visibility\": 9648,\n      \"pop\": 8318.812445600473,\n      \"rain\": {\n        \"3h\": 7186.3079430095995\n      },\n      \"snow\": {\n        \"3h\": 4732.669156442432\n      },\n      \"sys\": {\n        \"pod\": \"string\"\n      },\n      \"dt_txt\": \"string\"\n    },\n    {\n      \"dt\": 2184,\n      \"main\": {\n        \"temp\": 1221.070361393295,\n        \"feels_like\": 5737.746138459185,\n        \"temp_min\": 2673.5019018176918,\n        \"temp_max\": 5330.9569008354265,\n        \"pressure\": 6801,\n        \"humidity\": 4781\n      },\n      \"weather\": [\n        {\n          \"id\": 3385,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 8467,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ],\n      \"clouds\": {\n        \"all\": 4922\n      },\n      \"wind\": {\n        \"speed\": 8305.97261565749,\n        \"deg\": 8123,\n        \"gust\": 4835.896088974152\n      },\n      \"visibility\": 2578,\n      \"pop\": 9500.63475988342,\n      \"rain\": {\n        \"3h\": 5323.929084990778\n      },\n      \"snow\": {\n        \"3h\": 542.7774949444986\n      },\n      \"sys\": {\n        \"pod\": \"string\"\n      },\n      \"dt_txt\": \"string\"\n    }\n  ],\n  \"city\": {\n    \"id\": 3740,\n    \"name\": \"string\",\n    \"coord\": {\n      \"lat\": 5516.453623596131,\n      \"lon\": 5451.4185372322445\n    },\n    \"country\": \"string\",\n    \"population\": 1829,\n    \"timezone\": 6718,\n    \"sunrise\": 8649,\n    \"sunset\": 8453\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65bfc8e5-38b9-4fc3-b96f-50134b8cb80c",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ca3fe11-1615-4238-a515-d07c8cd7e4f4",
+              "name": "Unauthorized. Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e91a428-a288-4870-8bfb-b80b84530c81",
+              "name": "Location not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "67240ea8-2e85-4e23-8fee-ed43bb56b322",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60c01a48-8b6d-4f15-bbbc-a098b144a10a",
+          "name": "Four Day Hourly Forecast",
+          "request": {
+            "name": "Four Day Hourly Forecast",
+            "description": {
+              "content": "Returns hourly forecast weather data for the next 4 days (up to 96 hourly timestamps) for the supplied latitude and longitude. Available on Developer, Professional, and Expert plans.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "data",
+                "2.5",
+                "forecast",
+                "hourly"
+              ],
+              "host": [
+                "pro",
+                "openweathermap",
+                "org"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude in decimal degrees, range -90 to 90."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude in decimal degrees, range -180 to 180."
+                },
+                {
+                  "disabled": false,
+                  "key": "cnt",
+                  "value": "<integer>",
+                  "description": "Number of hourly timestamps to return. Up to 96."
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Response format. Default is JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Units of measurement. standard, metric, or imperial."
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Localization language code."
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "276f51dc-6abf-4065-b0d1-929a5d1d1fca",
+              "name": "Hourly forecast response.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "hourly"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cod\": \"string\",\n  \"message\": 2525.243570899576,\n  \"cnt\": 8813,\n  \"list\": [\n    {\n      \"dt\": 6275,\n      \"main\": {\n        \"temp\": 7021.066904315557,\n        \"feels_like\": 1580.2177311856424,\n        \"temp_min\": 230.95892315668553,\n        \"temp_max\": 1271.5861961172182,\n        \"pressure\": 5862,\n        \"humidity\": 8041\n      },\n      \"weather\": [\n        {\n          \"id\": 725,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 5399,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ],\n      \"clouds\": {\n        \"all\": 1484\n      },\n      \"wind\": {\n        \"speed\": 478.18878975947945,\n        \"deg\": 7683,\n        \"gust\": 7849.081426754378\n      },\n      \"visibility\": 9648,\n      \"pop\": 8318.812445600473,\n      \"rain\": {\n        \"3h\": 7186.3079430095995\n      },\n      \"snow\": {\n        \"3h\": 4732.669156442432\n      },\n      \"sys\": {\n        \"pod\": \"string\"\n      },\n      \"dt_txt\": \"string\"\n    },\n    {\n      \"dt\": 2184,\n      \"main\": {\n        \"temp\": 1221.070361393295,\n        \"feels_like\": 5737.746138459185,\n        \"temp_min\": 2673.5019018176918,\n        \"temp_max\": 5330.9569008354265,\n        \"pressure\": 6801,\n        \"humidity\": 4781\n      },\n      \"weather\": [\n        {\n          \"id\": 3385,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 8467,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ],\n      \"clouds\": {\n        \"all\": 4922\n      },\n      \"wind\": {\n        \"speed\": 8305.97261565749,\n        \"deg\": 8123,\n        \"gust\": 4835.896088974152\n      },\n      \"visibility\": 2578,\n      \"pop\": 9500.63475988342,\n      \"rain\": {\n        \"3h\": 5323.929084990778\n      },\n      \"snow\": {\n        \"3h\": 542.7774949444986\n      },\n      \"sys\": {\n        \"pod\": \"string\"\n      },\n      \"dt_txt\": \"string\"\n    }\n  ],\n  \"city\": {\n    \"id\": 3740,\n    \"name\": \"string\",\n    \"coord\": {\n      \"lat\": 5516.453623596131,\n      \"lon\": 5451.4185372322445\n    },\n    \"country\": \"string\",\n    \"population\": 1829,\n    \"timezone\": 6718,\n    \"sunrise\": 8649,\n    \"sunset\": 8453\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d32d8591-14bb-4aa6-8926-906a9ee7f271",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "hourly"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b730bd3-701a-4d16-8c23-284a5d534a63",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "hourly"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be7ed285-43c9-4a23-a7c9-96f03bf98802",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "hourly"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c4da22da-245f-4afb-9601-5beb5b1c7885",
+          "name": "Sixteen Day Daily Forecast",
+          "request": {
+            "name": "Sixteen Day Daily Forecast",
+            "description": {
+              "content": "Returns daily forecast weather data for up to 16 days for the supplied latitude and longitude. Each daily entry includes morning, day, evening, night, and min/max temperatures.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "data",
+                "2.5",
+                "forecast",
+                "daily"
+              ],
+              "host": [
+                "pro",
+                "openweathermap",
+                "org"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude in decimal degrees, range -90 to 90."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude in decimal degrees, range -180 to 180."
+                },
+                {
+                  "disabled": false,
+                  "key": "cnt",
+                  "value": "<integer>",
+                  "description": "Number of days to return. 1 to 16."
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Response format. Default is JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Units of measurement. standard, metric, or imperial."
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Localization language code."
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eeef85e4-97c8-429f-a5b1-62e559cf222e",
+              "name": "Daily forecast response.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "daily"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"city\": {\n    \"id\": 1148,\n    \"name\": \"string\",\n    \"coord\": {\n      \"lat\": 5501.884721431271,\n      \"lon\": 5635.829281608971\n    },\n    \"country\": \"string\",\n    \"population\": 6083,\n    \"timezone\": 8472,\n    \"sunrise\": 1624,\n    \"sunset\": 314\n  },\n  \"cod\": \"string\",\n  \"message\": 3619.0679628411094,\n  \"cnt\": 2901,\n  \"list\": [\n    {\n      \"dt\": 914,\n      \"sunrise\": 3421,\n      \"sunset\": 8063,\n      \"temp\": {\n        \"day\": 1072.4941677338363,\n        \"min\": 1388.2135764348236,\n        \"max\": 4809.41336912977,\n        \"night\": 1988.8037399847847,\n        \"eve\": 4178.90659273309,\n        \"morn\": 5814.62038175905\n      },\n      \"feels_like\": {\n        \"day\": 7223.146616695185,\n        \"night\": 5081.85782322351,\n        \"eve\": 6867.634757527411,\n        \"morn\": 4401.162724493429\n      },\n      \"pressure\": 3618,\n      \"humidity\": 7628,\n      \"weather\": [\n        {\n          \"id\": 2221,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 6193,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ],\n      \"speed\": 1082.1432991237334,\n      \"deg\": 2978,\n      \"gust\": 1229.5011037244963,\n      \"clouds\": 7903,\n      \"rain\": 459.1906263053491,\n      \"snow\": 862.0576032070127,\n      \"pop\": 8598.358403455677\n    },\n    {\n      \"dt\": 7403,\n      \"sunrise\": 6175,\n      \"sunset\": 9927,\n      \"temp\": {\n        \"day\": 5492.607697262581,\n        \"min\": 9310.384256631014,\n        \"max\": 7987.56066109235,\n        \"night\": 8538.342991953803,\n        \"eve\": 684.3120304381567,\n        \"morn\": 3594.4421644294875\n      },\n      \"feels_like\": {\n        \"day\": 540.9095424949872,\n        \"night\": 3799.5513468469167,\n        \"eve\": 81.22311375136304,\n        \"morn\": 6676.688412542379\n      },\n      \"pressure\": 2831,\n      \"humidity\": 8849,\n      \"weather\": [\n        {\n          \"id\": 8995,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 9075,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ],\n      \"speed\": 9251.06947658948,\n      \"deg\": 521,\n      \"gust\": 5888.414172372249,\n      \"clouds\": 4285,\n      \"rain\": 5613.073796891443,\n      \"snow\": 4101.6406151213405,\n      \"pop\": 2455.449104856331\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35789f5c-e5da-4238-9acc-142b11d9e878",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "daily"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af8e3144-fbcd-4862-b6c8-38b9940e7a2d",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "daily"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0cbfdce8-8c44-4f7a-8ac4-852c0dd18559",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "daily"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32f88112-819b-4550-a35c-44943f30547b",
+          "name": "Thirty Day Climatic Forecast",
+          "request": {
+            "name": "Thirty Day Climatic Forecast",
+            "description": {
+              "content": "Returns daily climatic forecast weather data for the next 30 days for the supplied latitude and longitude.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "data",
+                "2.5",
+                "forecast",
+                "climate"
+              ],
+              "host": [
+                "pro",
+                "openweathermap",
+                "org"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) Latitude in decimal degrees, range -90 to 90."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) Longitude in decimal degrees, range -180 to 180."
+                },
+                {
+                  "disabled": false,
+                  "key": "cnt",
+                  "value": "<integer>",
+                  "description": "Number of days to return. 1 to 30."
+                },
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Response format. Default is JSON."
+                },
+                {
+                  "disabled": false,
+                  "key": "units",
+                  "value": "<string>",
+                  "description": "Units of measurement. standard, metric, or imperial."
+                },
+                {
+                  "disabled": false,
+                  "key": "lang",
+                  "value": "<string>",
+                  "description": "Localization language code."
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e712dee1-9a2c-4a47-867d-051f0554697d",
+              "name": "Climatic forecast response.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "climate"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"city\": {\n    \"id\": 1148,\n    \"name\": \"string\",\n    \"coord\": {\n      \"lat\": 5501.884721431271,\n      \"lon\": 5635.829281608971\n    },\n    \"country\": \"string\",\n    \"population\": 6083,\n    \"timezone\": 8472,\n    \"sunrise\": 1624,\n    \"sunset\": 314\n  },\n  \"cod\": \"string\",\n  \"message\": 3619.0679628411094,\n  \"cnt\": 2901,\n  \"list\": [\n    {\n      \"dt\": 914,\n      \"sunrise\": 3421,\n      \"sunset\": 8063,\n      \"temp\": {\n        \"day\": 1072.4941677338363,\n        \"min\": 1388.2135764348236,\n        \"max\": 4809.41336912977,\n        \"night\": 1988.8037399847847,\n        \"eve\": 4178.90659273309,\n        \"morn\": 5814.62038175905\n      },\n      \"feels_like\": {\n        \"day\": 7223.146616695185,\n        \"night\": 5081.85782322351,\n        \"eve\": 6867.634757527411,\n        \"morn\": 4401.162724493429\n      },\n      \"pressure\": 3618,\n      \"humidity\": 7628,\n      \"weather\": [\n        {\n          \"id\": 2221,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 6193,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ],\n      \"speed\": 1082.1432991237334,\n      \"deg\": 2978,\n      \"gust\": 1229.5011037244963,\n      \"clouds\": 7903,\n      \"rain\": 459.1906263053491,\n      \"snow\": 862.0576032070127,\n      \"pop\": 8598.358403455677\n    },\n    {\n      \"dt\": 7403,\n      \"sunrise\": 6175,\n      \"sunset\": 9927,\n      \"temp\": {\n        \"day\": 5492.607697262581,\n        \"min\": 9310.384256631014,\n        \"max\": 7987.56066109235,\n        \"night\": 8538.342991953803,\n        \"eve\": 684.3120304381567,\n        \"morn\": 3594.4421644294875\n      },\n      \"feels_like\": {\n        \"day\": 540.9095424949872,\n        \"night\": 3799.5513468469167,\n        \"eve\": 81.22311375136304,\n        \"morn\": 6676.688412542379\n      },\n      \"pressure\": 2831,\n      \"humidity\": 8849,\n      \"weather\": [\n        {\n          \"id\": 8995,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        },\n        {\n          \"id\": 9075,\n          \"main\": \"string\",\n          \"description\": \"string\",\n          \"icon\": \"string\"\n        }\n      ],\n      \"speed\": 9251.06947658948,\n      \"deg\": 521,\n      \"gust\": 5888.414172372249,\n      \"clouds\": 4285,\n      \"rain\": 5613.073796891443,\n      \"snow\": 4101.6406151213405,\n      \"pop\": 2455.449104856331\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62447008-822a-4476-8e10-c428cb6c2e49",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "climate"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "82cd756f-a37e-4ff7-840a-1ef434aef57a",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "climate"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2f097a7-7073-48dc-b8ad-e1a4c614901f",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "forecast",
+                    "climate"
+                  ],
+                  "host": [
+                    "pro",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "cnt",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "units",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://history.openweathermap.org/data/2.5/history",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4e5efa55-9388-4ff5-9b2b-af4453326b95",
+    "name": "OpenWeatherMap Accumulated Parameters Forecast API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.\n\nContact Support:\n Name: OpenWeather",
+      "type": "text/plain"
+    }
+  }
+}

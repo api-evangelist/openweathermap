@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeatherMap Accumulated Parameters Measurements API",
+    "version": "2.5.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Measurements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Aggregated Measurements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://history.openweathermap.org/data/2.5/history/measurements",
+            "params": [
+              {
+                "name": "station_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Aggregation type. m minute, h hour, d day."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records returned."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns aggregated measurements for a station at minute, hour, or day granularity."
+        },
+        {
+          "info": {
+            "name": "Submit Station Measurements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://history.openweathermap.org/data/2.5/history/measurements",
+            "params": [
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits one or more measurements collected from a registered station."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -134,3 +134,9 @@ tools:
 - name: updateStation
   description: Update A Weather Station
   source_operation: openapi/openweathermap-weather-stations-openapi.yml#updateStation
+deployment:
+  mode: none
+  verified: derived
+  tools: 42
+  checked: '2026-08-12'
+  source: catalog MCP census

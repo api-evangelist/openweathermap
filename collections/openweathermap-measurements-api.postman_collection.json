@@ -1,0 +1,360 @@
+{
+  "item": [
+    {
+      "id": "90f424ff-d03b-49c1-b0b0-58ae829b9e54",
+      "name": "Measurements",
+      "description": {
+        "content": "Submit and retrieve aggregated weather station measurements.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ffd513a2-33a5-4184-8004-20c4bed65def",
+          "name": "Retrieve Aggregated Measurements",
+          "request": {
+            "name": "Retrieve Aggregated Measurements",
+            "description": {
+              "content": "Returns aggregated measurements for a station at minute, hour, or day granularity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "measurements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "station_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "(Required) Aggregation type. m minute, h hour, d day."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "(Required) Maximum number of records returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<long>"
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2854d4d6-0524-4a2c-bf7c-410e22c64d58",
+              "name": "Aggregated measurements response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measurements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "station_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c92ea29-c8b9-47a6-84ec-2b679e6d2d43",
+          "name": "Submit Station Measurements",
+          "request": {
+            "name": "Submit Station Measurements",
+            "description": {
+              "content": "Submits one or more measurements collected from a registered station.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "measurements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) OpenWeather API key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  },\n  {\n    \"station_id\": \"<string>\",\n    \"dt\": \"<long>\",\n    \"temperature\": \"<float>\",\n    \"wind_speed\": \"<float>\",\n    \"wind_gust\": \"<float>\",\n    \"pressure\": \"<float>\",\n    \"humidity\": \"<float>\",\n    \"rain_1h\": \"<float>\",\n    \"rain_6h\": \"<float>\",\n    \"rain_24h\": \"<float>\",\n    \"snow_1h\": \"<float>\",\n    \"snow_6h\": \"<float>\",\n    \"snow_24h\": \"<float>\",\n    \"dew_point\": \"<float>\",\n    \"heat_index\": \"<float>\",\n    \"humidex\": \"<float>\",\n    \"visibility_distance\": \"<float>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8290cc78-729b-4f90-b369-73f1151e2124",
+              "name": "Measurements accepted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measurements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"station_id\": \"string\",\n    \"dt\": 3834,\n    \"temperature\": 7399.841254638308,\n    \"wind_speed\": 3142.3826634305697,\n    \"wind_gust\": 8379.24305129128,\n    \"pressure\": 2469.156152123716,\n    \"humidity\": 9109.729036178867,\n    \"rain_1h\": 8137.377274890117,\n    \"rain_6h\": 6312.513921225418,\n    \"rain_24h\": 276.62473081343506,\n    \"snow_1h\": 6563.51330893024,\n    \"snow_6h\": 9237.234532075083,\n    \"snow_24h\": 4541.532297585832,\n    \"dew_point\": 1450.5584556444185,\n    \"heat_index\": 3951.643705802247,\n    \"humidex\": 7186.501643156068,\n    \"visibility_distance\": 6643.796510133035\n  },\n  {\n    \"station_id\": \"string\",\n    \"dt\": 3015,\n    \"temperature\": 1308.1773248075058,\n    \"wind_speed\": 3368.3612610435675,\n    \"wind_gust\": 1853.1208229791241,\n    \"pressure\": 5893.3091601592605,\n    \"humidity\": 3277.1012524518796,\n    \"rain_1h\": 2005.2134917421915,\n    \"rain_6h\": 1679.0778625449855,\n    \"rain_24h\": 652.097274834047,\n    \"snow_1h\": 9903.19027793108,\n    \"snow_6h\": 3902.771740937113,\n    \"snow_24h\": 471.1923922405148,\n    \"dew_point\": 2452.0927161577256,\n    \"heat_index\": 7064.317666350271,\n    \"humidex\": 6303.56059283941,\n    \"visibility_distance\": 2897.4110306739785\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "478a34e6-24da-4f44-8bbd-83a6c5ca2214",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measurements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"station_id\": \"string\",\n    \"dt\": 3834,\n    \"temperature\": 7399.841254638308,\n    \"wind_speed\": 3142.3826634305697,\n    \"wind_gust\": 8379.24305129128,\n    \"pressure\": 2469.156152123716,\n    \"humidity\": 9109.729036178867,\n    \"rain_1h\": 8137.377274890117,\n    \"rain_6h\": 6312.513921225418,\n    \"rain_24h\": 276.62473081343506,\n    \"snow_1h\": 6563.51330893024,\n    \"snow_6h\": 9237.234532075083,\n    \"snow_24h\": 4541.532297585832,\n    \"dew_point\": 1450.5584556444185,\n    \"heat_index\": 3951.643705802247,\n    \"humidex\": 7186.501643156068,\n    \"visibility_distance\": 6643.796510133035\n  },\n  {\n    \"station_id\": \"string\",\n    \"dt\": 3015,\n    \"temperature\": 1308.1773248075058,\n    \"wind_speed\": 3368.3612610435675,\n    \"wind_gust\": 1853.1208229791241,\n    \"pressure\": 5893.3091601592605,\n    \"humidity\": 3277.1012524518796,\n    \"rain_1h\": 2005.2134917421915,\n    \"rain_6h\": 1679.0778625449855,\n    \"rain_24h\": 652.097274834047,\n    \"snow_1h\": 9903.19027793108,\n    \"snow_6h\": 3902.771740937113,\n    \"snow_24h\": 471.1923922405148,\n    \"dew_point\": 2452.0927161577256,\n    \"heat_index\": 7064.317666350271,\n    \"humidex\": 6303.56059283941,\n    \"visibility_distance\": 2897.4110306739785\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5870c3e-d1a4-47c6-ac98-206009142285",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "measurements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"station_id\": \"string\",\n    \"dt\": 3834,\n    \"temperature\": 7399.841254638308,\n    \"wind_speed\": 3142.3826634305697,\n    \"wind_gust\": 8379.24305129128,\n    \"pressure\": 2469.156152123716,\n    \"humidity\": 9109.729036178867,\n    \"rain_1h\": 8137.377274890117,\n    \"rain_6h\": 6312.513921225418,\n    \"rain_24h\": 276.62473081343506,\n    \"snow_1h\": 6563.51330893024,\n    \"snow_6h\": 9237.234532075083,\n    \"snow_24h\": 4541.532297585832,\n    \"dew_point\": 1450.5584556444185,\n    \"heat_index\": 3951.643705802247,\n    \"humidex\": 7186.501643156068,\n    \"visibility_distance\": 6643.796510133035\n  },\n  {\n    \"station_id\": \"string\",\n    \"dt\": 3015,\n    \"temperature\": 1308.1773248075058,\n    \"wind_speed\": 3368.3612610435675,\n    \"wind_gust\": 1853.1208229791241,\n    \"pressure\": 5893.3091601592605,\n    \"humidity\": 3277.1012524518796,\n    \"rain_1h\": 2005.2134917421915,\n    \"rain_6h\": 1679.0778625449855,\n    \"rain_24h\": 652.097274834047,\n    \"snow_1h\": 9903.19027793108,\n    \"snow_6h\": 3902.771740937113,\n    \"snow_24h\": 471.1923922405148,\n    \"dew_point\": 2452.0927161577256,\n    \"heat_index\": 7064.317666350271,\n    \"humidex\": 6303.56059283941,\n    \"visibility_distance\": 2897.4110306739785\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://history.openweathermap.org/data/2.5/history",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1eec6df6-6c79-4279-8b34-4966065f3e3b",
+    "name": "OpenWeatherMap Accumulated Parameters Measurements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.\n\nContact Support:\n Name: OpenWeather",
+      "type": "text/plain"
+    }
+  }
+}
