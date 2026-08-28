@@ -11,11 +11,11 @@ info:
     executed without opening the underlying OpenAPI descriptions.
   version: 1.0.0
 sourceDescriptions:
-- name: geocodingApi
-  url: ../openapi/openweathermap-geocoding-openapi.yml
-  type: openapi
 - name: airPollutionApi
-  url: ../openapi/openweathermap-air-pollution-openapi.yml
+  url: ../openapi/openweathermap-air-pollution-api-openapi.yml
+  type: openapi
+- name: geocodingApi
+  url: ../openapi/openweathermap-geocoding-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: air-quality-by-city

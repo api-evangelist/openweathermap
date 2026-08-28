@@ -12,14 +12,14 @@ info:
     without opening the underlying OpenAPI descriptions.
   version: 1.0.0
 sourceDescriptions:
+- name: airPollutionApi
+  url: ../openapi/openweathermap-air-pollution-api-openapi.yml
+  type: openapi
 - name: currentWeatherApi
-  url: ../openapi/openweathermap-current-weather-openapi.yml
+  url: ../openapi/openweathermap-current-weather-api-openapi.yml
   type: openapi
 - name: oneCallApi
-  url: ../openapi/openweathermap-one-call-openapi.yml
-  type: openapi
-- name: airPollutionApi
-  url: ../openapi/openweathermap-air-pollution-openapi.yml
+  url: ../openapi/openweathermap-one-call-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: coordinate-weather-and-air-snapshot

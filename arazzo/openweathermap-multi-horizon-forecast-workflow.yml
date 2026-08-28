@@ -13,11 +13,11 @@ info:
     underlying OpenAPI descriptions.
   version: 1.0.0
 sourceDescriptions:
-- name: geocodingApi
-  url: ../openapi/openweathermap-geocoding-openapi.yml
-  type: openapi
 - name: forecastApi
-  url: ../openapi/openweathermap-forecast-openapi.yml
+  url: ../openapi/openweathermap-forecast-api-openapi.yml
+  type: openapi
+- name: geocodingApi
+  url: ../openapi/openweathermap-geocoding-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: multi-horizon-forecast
