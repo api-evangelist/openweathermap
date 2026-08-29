@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OpenWeatherMap Accumulated Parameters Geocoding API
-  version: 2.5.0
-  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
+  title: OpenWeatherMap Geocoding API
+  version: 1.0.0
+  description: Direct and reverse geocoding for city names, zip codes, and coordinate pairs. Supports city, state, country, and area-level resolution and is used to convert between location text and geographic coordinates.
   contact:
     name: OpenWeather
-    url: https://openweathermap.org/api/accumulated-parameters
+    url: https://openweathermap.org/api/geocoding-api
   license:
     name: Creative Commons Attribution-ShareAlike 4.0 International
     url: https://creativecommons.org/licenses/by-sa/4.0/
 servers:
-- url: https://history.openweathermap.org/data/2.5/history
-  description: Accumulated Parameters API base URL
+- url: https://api.openweathermap.org/geo/1.0
+  description: Geocoding API base URL
 security:
 - appid: []
 tags:
@@ -129,6 +129,14 @@ paths:
         '429':
           description: Too many requests.
 components:
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   schemas:
     GeocodingResult:
       type: object
@@ -164,14 +172,6 @@ components:
           format: float
         country:
           type: string
-  parameters:
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   securitySchemes:
     appid:
       type: apiKey

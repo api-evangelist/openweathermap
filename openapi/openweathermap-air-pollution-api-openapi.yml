@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OpenWeatherMap Accumulated Parameters Air Pollution API
+  title: OpenWeatherMap Air Pollution API
   version: 2.5.0
-  description: Returns accumulated temperature and accumulated precipitation totals over a user-specified historical time window. Targeted at agricultural and energy-sector applications. Available on Professional and Expert plans.
+  description: Returns current, forecast, and historical air pollution data including the Air Quality Index and concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5, and PM10 for any coordinates on the globe.
   contact:
     name: OpenWeather
-    url: https://openweathermap.org/api/accumulated-parameters
+    url: https://openweathermap.org/api/air-pollution
   license:
     name: Creative Commons Attribution-ShareAlike 4.0 International
     url: https://creativecommons.org/licenses/by-sa/4.0/
 servers:
-- url: https://history.openweathermap.org/data/2.5/history
-  description: Accumulated Parameters API base URL
+- url: https://api.openweathermap.org/data/2.5
+  description: Air Pollution API base URL
 security:
 - appid: []
 tags:
@@ -106,11 +106,11 @@ paths:
           description: Too many requests.
 components:
   parameters:
-    Lat:
-      name: lat
+    Lon:
+      name: lon
       in: query
       required: true
-      description: Latitude in decimal degrees, range -90 to 90.
+      description: Longitude in decimal degrees, range -180 to 180.
       schema:
         type: number
         format: float
@@ -121,15 +121,29 @@ components:
       description: OpenWeather API key.
       schema:
         type: string
-    Lon:
-      name: lon
+    Lat:
+      name: lat
       in: query
       required: true
-      description: Longitude in decimal degrees, range -180 to 180.
+      description: Latitude in decimal degrees, range -90 to 90.
       schema:
         type: number
         format: float
   schemas:
+    AirPollutionListItem:
+      type: object
+      properties:
+        dt:
+          type: integer
+          format: int64
+        main:
+          type: object
+          properties:
+            aqi:
+              type: integer
+              description: Air Quality Index. 1 Good, 2 Fair, 3 Moderate, 4 Poor, 5 Very Poor.
+        components:
+          $ref: '#/components/schemas/AirPollutionComponents'
     AirPollutionResponse:
       type: object
       properties:
@@ -173,20 +187,6 @@ components:
         nh3:
           type: number
           format: float
-    AirPollutionListItem:
-      type: object
-      properties:
-        dt:
-          type: integer
-          format: int64
-        main:
-          type: object
-          properties:
-            aqi:
-              type: integer
-              description: Air Quality Index. 1 Good, 2 Fair, 3 Moderate, 4 Poor, 5 Very Poor.
-        components:
-          $ref: '#/components/schemas/AirPollutionComponents'
   securitySchemes:
     appid:
       type: apiKey
