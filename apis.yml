@@ -25,11 +25,12 @@ accessModel:
   try_now: true
   public: false
   label: Freemium · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 specificationVersion: '0.23'
 created: '2026-05-28'
@@ -1479,8 +1480,9 @@ common:
 - type: WellKnown
   url: well-known/openweathermap-well-known.yml
   name: Well-Known Discovery
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/openweathermap-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
   name: MCP Server (candidate)
 - type: LLMsTxt
   url: llms/openweathermap-llms.txt
