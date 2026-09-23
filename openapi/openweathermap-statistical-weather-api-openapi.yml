@@ -115,31 +115,29 @@ paths:
         '429':
           description: Too many requests.
 components:
-  parameters:
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees.
-      schema:
-        type: number
-        format: float
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees.
-      schema:
-        type: number
-        format: float
   schemas:
+    StatisticalResult:
+      type: object
+      properties:
+        month:
+          type: integer
+        day:
+          type: integer
+        temp:
+          $ref: '#/components/schemas/StatisticalParameter'
+        pressure:
+          $ref: '#/components/schemas/StatisticalParameter'
+        humidity:
+          $ref: '#/components/schemas/StatisticalParameter'
+        wind:
+          $ref: '#/components/schemas/StatisticalParameter'
+        precipitation:
+          $ref: '#/components/schemas/StatisticalParameter'
+        clouds:
+          $ref: '#/components/schemas/StatisticalParameter'
+        sunshine_hours:
+          type: number
+          format: float
     StatisticalParameter:
       type: object
       properties:
@@ -188,28 +186,30 @@ components:
           - type: array
             items:
               $ref: '#/components/schemas/StatisticalResult'
-    StatisticalResult:
-      type: object
-      properties:
-        month:
-          type: integer
-        day:
-          type: integer
-        temp:
-          $ref: '#/components/schemas/StatisticalParameter'
-        pressure:
-          $ref: '#/components/schemas/StatisticalParameter'
-        humidity:
-          $ref: '#/components/schemas/StatisticalParameter'
-        wind:
-          $ref: '#/components/schemas/StatisticalParameter'
-        precipitation:
-          $ref: '#/components/schemas/StatisticalParameter'
-        clouds:
-          $ref: '#/components/schemas/StatisticalParameter'
-        sunshine_hours:
-          type: number
-          format: float
+  parameters:
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   securitySchemes:
     appid:
       type: apiKey

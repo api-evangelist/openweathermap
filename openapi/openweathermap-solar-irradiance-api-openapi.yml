@@ -63,6 +63,13 @@ paths:
           description: Too many requests.
 components:
   parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
     Lon:
       name: lon
       in: query
@@ -79,13 +86,6 @@ components:
       schema:
         type: number
         format: float
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   securitySchemes:
     appid:
       type: apiKey

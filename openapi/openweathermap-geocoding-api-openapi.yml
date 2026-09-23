@@ -138,6 +138,21 @@ components:
       schema:
         type: string
   schemas:
+    ZipGeocodingResult:
+      type: object
+      properties:
+        zip:
+          type: string
+        name:
+          type: string
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        country:
+          type: string
     GeocodingResult:
       type: object
       properties:
@@ -156,21 +171,6 @@ components:
         country:
           type: string
         state:
-          type: string
-    ZipGeocodingResult:
-      type: object
-      properties:
-        zip:
-          type: string
-        name:
-          type: string
-        lat:
-          type: number
-          format: float
-        lon:
-          type: number
-          format: float
-        country:
           type: string
   securitySchemes:
     appid:

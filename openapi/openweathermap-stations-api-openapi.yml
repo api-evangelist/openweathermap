@@ -129,7 +129,30 @@ paths:
         '204':
           description: Station deleted.
 components:
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   schemas:
+    Station:
+      allOf:
+      - $ref: '#/components/schemas/StationInput'
+      - type: object
+        properties:
+          id:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          created_at:
+            type: string
+            format: date-time
+          rank:
+            type: integer
     StationInput:
       type: object
       required:
@@ -151,29 +174,6 @@ components:
         altitude:
           type: number
           format: float
-    Station:
-      allOf:
-      - $ref: '#/components/schemas/StationInput'
-      - type: object
-        properties:
-          id:
-            type: string
-          updated_at:
-            type: string
-            format: date-time
-          created_at:
-            type: string
-            format: date-time
-          rank:
-            type: integer
-  parameters:
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   securitySchemes:
     appid:
       type: apiKey
