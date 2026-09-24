@@ -73,8 +73,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -159,8 +157,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -245,8 +241,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -331,8 +325,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -417,8 +409,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -503,8 +493,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -589,8 +577,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -675,8 +661,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -761,8 +745,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -847,8 +829,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -933,8 +913,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -1019,8 +997,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -1105,8 +1081,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
@@ -1191,8 +1165,6 @@ apis:
     url: examples/current-weather-example.json
   - type: Authentication
     url: https://openweathermap.org/appid
-  - type: GraphQL
-    url: graphql/openweathermap-graphql.md
   - type: Documentation
     url: https://openweathermap.org/forecast5
   - type: Documentation
