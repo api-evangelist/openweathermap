@@ -129,14 +129,6 @@ paths:
         '204':
           description: Station deleted.
 components:
-  parameters:
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   schemas:
     Station:
       allOf:
@@ -174,6 +166,14 @@ components:
         altitude:
           type: number
           format: float
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   securitySchemes:
     appid:
       type: apiKey

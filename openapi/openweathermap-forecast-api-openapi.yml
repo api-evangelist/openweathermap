@@ -169,7 +169,85 @@ paths:
         '429':
           description: Too many requests.
 components:
+  parameters:
+    Lang:
+      name: lang
+      in: query
+      required: false
+      description: Localization language code.
+      schema:
+        type: string
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Units:
+      name: units
+      in: query
+      required: false
+      description: Units of measurement. standard, metric, or imperial.
+      schema:
+        type: string
+        enum:
+        - standard
+        - metric
+        - imperial
+    Mode:
+      name: mode
+      in: query
+      required: false
+      description: Response format. Default is JSON.
+      schema:
+        type: string
+        enum:
+        - json
+        - xml
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
   schemas:
+    Weather:
+      type: object
+      properties:
+        id:
+          type: integer
+        main:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
+    ForecastResponse:
+      type: object
+      properties:
+        cod:
+          type: string
+        message:
+          type: number
+        cnt:
+          type: integer
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ForecastItem'
+        city:
+          $ref: '#/components/schemas/City'
     City:
       type: object
       properties:
@@ -198,6 +276,75 @@ components:
         sunset:
           type: integer
           format: int64
+    ForecastItem:
+      type: object
+      properties:
+        dt:
+          type: integer
+          format: int64
+        main:
+          type: object
+          properties:
+            temp:
+              type: number
+              format: float
+            feels_like:
+              type: number
+              format: float
+            temp_min:
+              type: number
+              format: float
+            temp_max:
+              type: number
+              format: float
+            pressure:
+              type: integer
+            humidity:
+              type: integer
+        weather:
+          type: array
+          items:
+            $ref: '#/components/schemas/Weather'
+        clouds:
+          type: object
+          properties:
+            all:
+              type: integer
+        wind:
+          type: object
+          properties:
+            speed:
+              type: number
+              format: float
+            deg:
+              type: integer
+            gust:
+              type: number
+              format: float
+        visibility:
+          type: integer
+        pop:
+          type: number
+          format: float
+        rain:
+          type: object
+          properties:
+            3h:
+              type: number
+              format: float
+        snow:
+          type: object
+          properties:
+            3h:
+              type: number
+              format: float
+        sys:
+          type: object
+          properties:
+            pod:
+              type: string
+        dt_txt:
+          type: string
     DailyForecastItem:
       type: object
       properties:
@@ -273,32 +420,6 @@ components:
         pop:
           type: number
           format: float
-    ForecastResponse:
-      type: object
-      properties:
-        cod:
-          type: string
-        message:
-          type: number
-        cnt:
-          type: integer
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ForecastItem'
-        city:
-          $ref: '#/components/schemas/City'
-    Weather:
-      type: object
-      properties:
-        id:
-          type: integer
-        main:
-          type: string
-        description:
-          type: string
-        icon:
-          type: string
     DailyForecastResponse:
       type: object
       properties:
@@ -314,127 +435,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DailyForecastItem'
-    ForecastItem:
-      type: object
-      properties:
-        dt:
-          type: integer
-          format: int64
-        main:
-          type: object
-          properties:
-            temp:
-              type: number
-              format: float
-            feels_like:
-              type: number
-              format: float
-            temp_min:
-              type: number
-              format: float
-            temp_max:
-              type: number
-              format: float
-            pressure:
-              type: integer
-            humidity:
-              type: integer
-        weather:
-          type: array
-          items:
-            $ref: '#/components/schemas/Weather'
-        clouds:
-          type: object
-          properties:
-            all:
-              type: integer
-        wind:
-          type: object
-          properties:
-            speed:
-              type: number
-              format: float
-            deg:
-              type: integer
-            gust:
-              type: number
-              format: float
-        visibility:
-          type: integer
-        pop:
-          type: number
-          format: float
-        rain:
-          type: object
-          properties:
-            3h:
-              type: number
-              format: float
-        snow:
-          type: object
-          properties:
-            3h:
-              type: number
-              format: float
-        sys:
-          type: object
-          properties:
-            pod:
-              type: string
-        dt_txt:
-          type: string
-  parameters:
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees, range -180 to 180.
-      schema:
-        type: number
-        format: float
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees, range -90 to 90.
-      schema:
-        type: number
-        format: float
-    Units:
-      name: units
-      in: query
-      required: false
-      description: Units of measurement. standard, metric, or imperial.
-      schema:
-        type: string
-        enum:
-        - standard
-        - metric
-        - imperial
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
-    Lang:
-      name: lang
-      in: query
-      required: false
-      description: Localization language code.
-      schema:
-        type: string
-    Mode:
-      name: mode
-      in: query
-      required: false
-      description: Response format. Default is JSON.
-      schema:
-        type: string
-        enum:
-        - json
-        - xml
   securitySchemes:
     appid:
       type: apiKey

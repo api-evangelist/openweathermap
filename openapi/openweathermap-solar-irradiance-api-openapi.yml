@@ -63,6 +63,14 @@ paths:
           description: Too many requests.
 components:
   parameters:
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
     Appid:
       name: appid
       in: query
@@ -75,14 +83,6 @@ components:
       in: query
       required: true
       description: Longitude in decimal degrees, range -180 to 180.
-      schema:
-        type: number
-        format: float
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees, range -90 to 90.
       schema:
         type: number
         format: float

@@ -129,14 +129,6 @@ paths:
         '429':
           description: Too many requests.
 components:
-  parameters:
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   schemas:
     ZipGeocodingResult:
       type: object
@@ -172,6 +164,14 @@ components:
           type: string
         state:
           type: string
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   securitySchemes:
     appid:
       type: apiKey

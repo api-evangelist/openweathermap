@@ -130,14 +130,6 @@ components:
         count:
           type: integer
   parameters:
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees.
-      schema:
-        type: number
-        format: float
     Lat:
       name: lat
       in: query
@@ -153,6 +145,14 @@ components:
       description: OpenWeather API key.
       schema:
         type: string
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
   securitySchemes:
     appid:
       type: apiKey
