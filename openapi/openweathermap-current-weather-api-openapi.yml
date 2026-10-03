@@ -89,32 +89,12 @@ paths:
           description: Too many requests. Rate or quota limit exceeded.
 components:
   schemas:
-    Weather:
+    Clouds:
       type: object
       properties:
-        id:
+        all:
           type: integer
-          description: Weather condition ID.
-        main:
-          type: string
-          description: Group of weather parameters (Rain, Snow, Clouds, etc.).
-        description:
-          type: string
-          description: Weather condition within the group.
-        icon:
-          type: string
-          description: Weather icon ID.
-    Coord:
-      type: object
-      properties:
-        lon:
-          type: number
-          format: float
-          description: Longitude of the location.
-        lat:
-          type: number
-          format: float
-          description: Latitude of the location.
+          description: Cloudiness percentage.
     CurrentWeatherResponse:
       type: object
       properties:
@@ -151,6 +131,28 @@ components:
           type: string
         cod:
           type: integer
+    Precipitation:
+      type: object
+      properties:
+        1h:
+          type: number
+          format: float
+          description: Precipitation volume for the last hour in mm.
+        3h:
+          type: number
+          format: float
+          description: Precipitation volume for the last 3 hours in mm.
+    Wind:
+      type: object
+      properties:
+        speed:
+          type: number
+          format: float
+        deg:
+          type: integer
+        gust:
+          type: number
+          format: float
     Sys:
       type: object
       properties:
@@ -166,23 +168,17 @@ components:
         sunset:
           type: integer
           format: int64
-    Clouds:
+    Coord:
       type: object
       properties:
-        all:
-          type: integer
-          description: Cloudiness percentage.
-    Wind:
-      type: object
-      properties:
-        speed:
+        lon:
           type: number
           format: float
-        deg:
-          type: integer
-        gust:
+          description: Longitude of the location.
+        lat:
           type: number
           format: float
+          description: Latitude of the location.
     Main:
       type: object
       properties:
@@ -206,17 +202,21 @@ components:
           type: integer
         grnd_level:
           type: integer
-    Precipitation:
+    Weather:
       type: object
       properties:
-        1h:
-          type: number
-          format: float
-          description: Precipitation volume for the last hour in mm.
-        3h:
-          type: number
-          format: float
-          description: Precipitation volume for the last 3 hours in mm.
+        id:
+          type: integer
+          description: Weather condition ID.
+        main:
+          type: string
+          description: Group of weather parameters (Rain, Snow, Clouds, etc.).
+        description:
+          type: string
+          description: Weather condition within the group.
+        icon:
+          type: string
+          description: Weather icon ID.
   securitySchemes:
     appid:
       type: apiKey

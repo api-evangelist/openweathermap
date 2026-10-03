@@ -107,17 +107,6 @@ paths:
           description: Too many requests.
 components:
   schemas:
-    AccumulatedTemperatureItem:
-      type: object
-      properties:
-        date:
-          type: integer
-          format: int64
-        temp:
-          type: number
-          format: float
-        count:
-          type: integer
     AccumulatedPrecipitationItem:
       type: object
       properties:
@@ -129,7 +118,25 @@ components:
           format: float
         count:
           type: integer
+    AccumulatedTemperatureItem:
+      type: object
+      properties:
+        date:
+          type: integer
+          format: int64
+        temp:
+          type: number
+          format: float
+        count:
+          type: integer
   parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
     Lat:
       name: lat
       in: query
@@ -138,13 +145,6 @@ components:
       schema:
         type: number
         format: float
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
     Lon:
       name: lon
       in: query

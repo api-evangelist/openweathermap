@@ -167,6 +167,13 @@ components:
       description: Localization language code.
       schema:
         type: string
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
     Units:
       name: units
       in: query
@@ -186,13 +193,6 @@ components:
       schema:
         type: number
         format: float
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
     Lon:
       name: lon
       in: query

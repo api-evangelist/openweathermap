@@ -187,6 +187,13 @@ components:
           type: number
           format: float
   parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
     Lat:
       name: lat
       in: query
@@ -195,13 +202,6 @@ components:
       schema:
         type: number
         format: float
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
     Lon:
       name: lon
       in: query

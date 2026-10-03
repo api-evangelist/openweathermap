@@ -105,54 +105,28 @@ paths:
         '429':
           description: Too many requests.
 components:
-  parameters:
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees, range -90 to 90.
-      schema:
-        type: number
-        format: float
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees, range -180 to 180.
-      schema:
-        type: number
-        format: float
   schemas:
-    AirPollutionResponse:
+    AirPollutionListItem:
       type: object
       properties:
-        coord:
+        dt:
+          type: integer
+          format: int64
+        main:
           type: object
           properties:
-            lat:
-              type: number
-              format: float
-            lon:
-              type: number
-              format: float
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/AirPollutionListItem'
+            aqi:
+              type: integer
+              description: Air Quality Index. 1 Good, 2 Fair, 3 Moderate, 4 Poor, 5 Very Poor.
+        components:
+          $ref: '#/components/schemas/AirPollutionComponents'
     AirPollutionComponents:
       type: object
       properties:
         co:
           type: number
           format: float
-        false:
+        'no':
           type: number
           format: float
         no2:
@@ -173,20 +147,46 @@ components:
         nh3:
           type: number
           format: float
-    AirPollutionListItem:
+    AirPollutionResponse:
       type: object
       properties:
-        dt:
-          type: integer
-          format: int64
-        main:
+        coord:
           type: object
           properties:
-            aqi:
-              type: integer
-              description: Air Quality Index. 1 Good, 2 Fair, 3 Moderate, 4 Poor, 5 Very Poor.
-        components:
-          $ref: '#/components/schemas/AirPollutionComponents'
+            lat:
+              type: number
+              format: float
+            lon:
+              type: number
+              format: float
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/AirPollutionListItem'
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
   securitySchemes:
     appid:
       type: apiKey

@@ -191,14 +191,6 @@ paths:
         '200':
           description: Interval data response.
 components:
-  parameters:
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   schemas:
     CreatePanelRequest:
       type: object
@@ -253,6 +245,14 @@ components:
               lon:
                 type: number
                 format: float
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   securitySchemes:
     appid:
       type: apiKey
