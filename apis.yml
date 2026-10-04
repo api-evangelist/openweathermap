@@ -1230,23 +1230,6 @@ apis:
     url: https://openweathermap.org/api/weathermaps
   - type: Examples
     url: examples/weather-maps-tile-example.json
-- aid: openweathermap:openweathermap-one-call-3-api
-  name: OpenWeatherMap One Call API 3.0
-  description: Combined current weather, minute, hourly and daily forecasts, government alerts, and historical
-    weather (timemachine) for a coordinate. Requires the One Call by Call subscription.
-  humanURL: https://openweathermap.org/api/one-call-3
-  baseURL: https://api.openweathermap.org/data/3.0
-  tags:
-  - One Call
-  properties:
-  - type: OpenAPI
-    url: openapi/openweathermap-one-call-3-api-openapi.yml
-  - type: Documentation
-    url: https://openweathermap.org/api/one-call-3
-  - type: Pricing
-    url: https://openweathermap.org/price
-  - type: Signup
-    url: https://home.openweathermap.org/users/sign_up
 common:
 - type: Overlay
   url: overlays/openweathermap-accumulated-parameters-overlay.yaml

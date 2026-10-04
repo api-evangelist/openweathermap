@@ -106,6 +106,30 @@ paths:
         '429':
           description: Too many requests.
 components:
+  parameters:
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   schemas:
     AccumulatedPrecipitationItem:
       type: object
@@ -129,30 +153,6 @@ components:
           format: float
         count:
           type: integer
-  parameters:
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees.
-      schema:
-        type: number
-        format: float
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees.
-      schema:
-        type: number
-        format: float
   securitySchemes:
     appid:
       type: apiKey

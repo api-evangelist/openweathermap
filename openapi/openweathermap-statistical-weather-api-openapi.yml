@@ -115,6 +115,30 @@ paths:
         '429':
           description: Too many requests.
 components:
+  parameters:
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees.
+      schema:
+        type: number
+        format: float
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   schemas:
     StatisticalParameter:
       type: object
@@ -148,22 +172,6 @@ components:
           format: float
         num:
           type: integer
-    StatisticalResponse:
-      type: object
-      properties:
-        cod:
-          type: integer
-        city_id:
-          type: integer
-        calctime:
-          type: number
-          format: float
-        result:
-          oneOf:
-          - $ref: '#/components/schemas/StatisticalResult'
-          - type: array
-            items:
-              $ref: '#/components/schemas/StatisticalResult'
     StatisticalResult:
       type: object
       properties:
@@ -186,30 +194,22 @@ components:
         sunshine_hours:
           type: number
           format: float
-  parameters:
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees.
-      schema:
-        type: number
-        format: float
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees.
-      schema:
-        type: number
-        format: float
+    StatisticalResponse:
+      type: object
+      properties:
+        cod:
+          type: integer
+        city_id:
+          type: integer
+        calctime:
+          type: number
+          format: float
+        result:
+          oneOf:
+          - $ref: '#/components/schemas/StatisticalResult'
+          - type: array
+            items:
+              $ref: '#/components/schemas/StatisticalResult'
   securitySchemes:
     appid:
       type: apiKey

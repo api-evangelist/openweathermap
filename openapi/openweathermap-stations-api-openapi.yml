@@ -130,21 +130,6 @@ paths:
           description: Station deleted.
 components:
   schemas:
-    Station:
-      allOf:
-      - $ref: '#/components/schemas/StationInput'
-      - type: object
-        properties:
-          id:
-            type: string
-          updated_at:
-            type: string
-            format: date-time
-          created_at:
-            type: string
-            format: date-time
-          rank:
-            type: integer
     StationInput:
       type: object
       required:
@@ -166,6 +151,21 @@ components:
         altitude:
           type: number
           format: float
+    Station:
+      allOf:
+      - $ref: '#/components/schemas/StationInput'
+      - type: object
+        properties:
+          id:
+            type: string
+          updated_at:
+            type: string
+            format: date-time
+          created_at:
+            type: string
+            format: date-time
+          rank:
+            type: integer
   parameters:
     Appid:
       name: appid

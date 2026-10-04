@@ -169,102 +169,18 @@ paths:
         '429':
           description: Too many requests.
 components:
-  parameters:
-    Lang:
-      name: lang
-      in: query
-      required: false
-      description: Localization language code.
-      schema:
-        type: string
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
-    Units:
-      name: units
-      in: query
-      required: false
-      description: Units of measurement. standard, metric, or imperial.
-      schema:
-        type: string
-        enum:
-        - standard
-        - metric
-        - imperial
-    Mode:
-      name: mode
-      in: query
-      required: false
-      description: Response format. Default is JSON.
-      schema:
-        type: string
-        enum:
-        - json
-        - xml
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees, range -90 to 90.
-      schema:
-        type: number
-        format: float
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees, range -180 to 180.
-      schema:
-        type: number
-        format: float
   schemas:
-    ForecastResponse:
-      type: object
-      properties:
-        cod:
-          type: string
-        message:
-          type: number
-        cnt:
-          type: integer
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/ForecastItem'
-        city:
-          $ref: '#/components/schemas/City'
-    City:
+    Weather:
       type: object
       properties:
         id:
           type: integer
-        name:
+        main:
           type: string
-        coord:
-          type: object
-          properties:
-            lat:
-              type: number
-              format: float
-            lon:
-              type: number
-              format: float
-        country:
+        description:
           type: string
-        population:
-          type: integer
-        timezone:
-          type: integer
-        sunrise:
-          type: integer
-          format: int64
-        sunset:
-          type: integer
-          format: int64
+        icon:
+          type: string
     DailyForecastItem:
       type: object
       properties:
@@ -340,6 +256,34 @@ components:
         pop:
           type: number
           format: float
+    City:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        coord:
+          type: object
+          properties:
+            lat:
+              type: number
+              format: float
+            lon:
+              type: number
+              format: float
+        country:
+          type: string
+        population:
+          type: integer
+        timezone:
+          type: integer
+        sunrise:
+          type: integer
+          format: int64
+        sunset:
+          type: integer
+          format: int64
     ForecastItem:
       type: object
       properties:
@@ -409,6 +353,21 @@ components:
               type: string
         dt_txt:
           type: string
+    ForecastResponse:
+      type: object
+      properties:
+        cod:
+          type: string
+        message:
+          type: number
+        cnt:
+          type: integer
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ForecastItem'
+        city:
+          $ref: '#/components/schemas/City'
     DailyForecastResponse:
       type: object
       properties:
@@ -424,17 +383,58 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DailyForecastItem'
-    Weather:
-      type: object
-      properties:
-        id:
-          type: integer
-        main:
-          type: string
-        description:
-          type: string
-        icon:
-          type: string
+  parameters:
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Units:
+      name: units
+      in: query
+      required: false
+      description: Units of measurement. standard, metric, or imperial.
+      schema:
+        type: string
+        enum:
+        - standard
+        - metric
+        - imperial
+    Lang:
+      name: lang
+      in: query
+      required: false
+      description: Localization language code.
+      schema:
+        type: string
+    Mode:
+      name: mode
+      in: query
+      required: false
+      description: Response format. Default is JSON.
+      schema:
+        type: string
+        enum:
+        - json
+        - xml
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   securitySchemes:
     appid:
       type: apiKey

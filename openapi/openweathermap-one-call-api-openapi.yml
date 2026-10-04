@@ -159,48 +159,6 @@ paths:
         '429':
           description: Too many requests.
 components:
-  parameters:
-    Lang:
-      name: lang
-      in: query
-      required: false
-      description: Localization language code.
-      schema:
-        type: string
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
-    Units:
-      name: units
-      in: query
-      required: false
-      description: Units of measurement. standard, metric, or imperial.
-      schema:
-        type: string
-        enum:
-        - standard
-        - metric
-        - imperial
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees, range -90 to 90.
-      schema:
-        type: number
-        format: float
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees, range -180 to 180.
-      schema:
-        type: number
-        format: float
   schemas:
     OneCallCurrentResponse:
       type: object
@@ -265,6 +223,48 @@ components:
                     type: string
                   icon:
                     type: string
+  parameters:
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Units:
+      name: units
+      in: query
+      required: false
+      description: Units of measurement. standard, metric, or imperial.
+      schema:
+        type: string
+        enum:
+        - standard
+        - metric
+        - imperial
+    Lang:
+      name: lang
+      in: query
+      required: false
+      description: Localization language code.
+      schema:
+        type: string
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   securitySchemes:
     appid:
       type: apiKey

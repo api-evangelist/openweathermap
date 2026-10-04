@@ -87,6 +87,14 @@ paths:
         '401':
           description: Unauthorized.
 components:
+  parameters:
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
   schemas:
     Measurement:
       type: object
@@ -146,14 +154,6 @@ components:
         visibility_distance:
           type: number
           format: float
-  parameters:
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
   securitySchemes:
     appid:
       type: apiKey

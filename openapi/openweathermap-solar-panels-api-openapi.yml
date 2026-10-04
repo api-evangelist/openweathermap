@@ -192,6 +192,27 @@ paths:
           description: Interval data response.
 components:
   schemas:
+    CreateLocationRequest:
+      type: object
+      required:
+      - type
+      - coordinates
+      properties:
+        type:
+          type: string
+          enum:
+          - point
+        coordinates:
+          type: array
+          items:
+            type: object
+            properties:
+              lat:
+                type: number
+                format: float
+              lon:
+                type: number
+                format: float
     CreatePanelRequest:
       type: object
       required:
@@ -224,27 +245,6 @@ components:
           type: number
           format: float
           description: Panel peak power output in watts.
-    CreateLocationRequest:
-      type: object
-      required:
-      - type
-      - coordinates
-      properties:
-        type:
-          type: string
-          enum:
-          - point
-        coordinates:
-          type: array
-          items:
-            type: object
-            properties:
-              lat:
-                type: number
-                format: float
-              lon:
-                type: number
-                format: float
   parameters:
     Appid:
       name: appid

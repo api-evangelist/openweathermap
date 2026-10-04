@@ -47,7 +47,7 @@
     "openweathermap-statistical-weather-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "openweathermap-weather-maps-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "openweathermap-weather-stations-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "apis.yml register: written (+0 apis, 14 total)"
   ],
   "skipped": [
     "openweathermap-accumulated-parameters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
