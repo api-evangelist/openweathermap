@@ -55,6 +55,15 @@ paths:
           description: Too many requests.
 components:
   schemas:
+    RoadRiskRequest:
+      type: object
+      required:
+      - track
+      properties:
+        track:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoadRiskTrackPoint'
     RoadRiskResponseItem:
       type: object
       properties:
@@ -122,15 +131,6 @@ components:
           type: integer
           format: int64
           description: Unix timestamp. 1 year past to 5 days future.
-    RoadRiskRequest:
-      type: object
-      required:
-      - track
-      properties:
-        track:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoadRiskTrackPoint'
   securitySchemes:
     appid:
       type: apiKey

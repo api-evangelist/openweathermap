@@ -98,6 +98,22 @@ paths:
           description: Too many requests.
 components:
   schemas:
+    HistoricalWeatherResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        cod:
+          type: string
+        city_id:
+          type: integer
+        calctime:
+          type: number
+          format: float
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/HistoricalWeatherListItem'
     HistoricalWeatherListItem:
       type: object
       properties:
@@ -171,22 +187,6 @@ components:
                 type: string
               icon:
                 type: string
-    HistoricalWeatherResponse:
-      type: object
-      properties:
-        message:
-          type: string
-        cod:
-          type: string
-        city_id:
-          type: integer
-        calctime:
-          type: number
-          format: float
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/HistoricalWeatherListItem'
   securitySchemes:
     appid:
       type: apiKey

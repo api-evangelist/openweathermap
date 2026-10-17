@@ -1,17 +1,16 @@
 openapi: 3.2.0
 info:
-  title: OpenWeatherMap API 4.0 One Call API
-  version: 4.0.0
-  description: OpenWeather One Call API 4.0 provides a unified weather timeline including current conditions, hourly, daily, 1-minute precipitation, 15-minute forecasts, government weather alerts, and 47+ years of historical data accessible through pay-per-call pricing.
-  contact:
-    name: OpenWeather
-    url: https://openweathermap.org/api/one-call-4
+  title: Openweathermap One Call API
   license:
     name: Creative Commons Attribution-ShareAlike 4.0 International
     url: https://creativecommons.org/licenses/by-sa/4.0/
+  version: '1.0'
+  description: 'Operations tagged One Call across 2 of this provider''s published API definitions: openweathermap-one-call-openapi.yml, openweathermap-one-call-3-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.openweathermap.org/data/4.0/onecall
   description: One Call API 4.0 base URL
+- url: https://api.openweathermap.org/data/3.0
+  description: One Call API base URL
 security:
 - appid: []
 tags:
@@ -44,6 +43,9 @@ paths:
           description: Unauthorized.
         '429':
           description: Too many requests.
+    servers:
+    - url: https://api.openweathermap.org/data/4.0/onecall
+      description: One Call API 4.0 base URL
   /timeline/1min:
     get:
       operationId: getOneCallTimelineOneMinute
@@ -66,6 +68,9 @@ paths:
           description: Unauthorized.
         '429':
           description: Too many requests.
+    servers:
+    - url: https://api.openweathermap.org/data/4.0/onecall
+      description: One Call API 4.0 base URL
   /timeline/15min:
     get:
       operationId: getOneCallTimelineFifteenMinute
@@ -88,6 +93,9 @@ paths:
           description: Unauthorized.
         '429':
           description: Too many requests.
+    servers:
+    - url: https://api.openweathermap.org/data/4.0/onecall
+      description: One Call API 4.0 base URL
   /timeline/1h:
     get:
       operationId: getOneCallTimelineHour
@@ -110,6 +118,9 @@ paths:
           description: Unauthorized.
         '429':
           description: Too many requests.
+    servers:
+    - url: https://api.openweathermap.org/data/4.0/onecall
+      description: One Call API 4.0 base URL
   /timeline/1day:
     get:
       operationId: getOneCallTimelineDay
@@ -132,6 +143,9 @@ paths:
           description: Unauthorized.
         '429':
           description: Too many requests.
+    servers:
+    - url: https://api.openweathermap.org/data/4.0/onecall
+      description: One Call API 4.0 base URL
   /alert/{alert_id}:
     get:
       operationId: getOneCallAlert
@@ -158,7 +172,182 @@ paths:
           description: Alert not found.
         '429':
           description: Too many requests.
+    servers:
+    - url: https://api.openweathermap.org/data/4.0/onecall
+      description: One Call API 4.0 base URL
+  /onecall:
+    get:
+      operationId: getOneCall
+      summary: Current and forecast weather data for a coordinate
+      description: Returns current weather, minute-by-minute forecast for one hour, hourly forecast for 48 hours, daily forecast for 8 days, and any government weather alerts for the supplied latitude and longitude.
+      tags:
+      - One Call
+      parameters:
+      - name: lat
+        in: query
+        required: true
+        description: Latitude in decimal degrees, range -90 to 90.
+        schema:
+          type: number
+          format: float
+      - name: lon
+        in: query
+        required: true
+        description: Longitude in decimal degrees, range -180 to 180.
+        schema:
+          type: number
+          format: float
+      - name: exclude
+        in: query
+        required: false
+        description: Comma-separated list of forecast blocks to omit from the response. Allowed values are current, minutely, hourly, daily, and alerts.
+        schema:
+          type: string
+      - name: units
+        in: query
+        required: false
+        description: Units of measurement. One of standard, metric, or imperial. Default is standard (Kelvin, m/s).
+        schema:
+          type: string
+          enum:
+          - standard
+          - metric
+          - imperial
+      - name: lang
+        in: query
+        required: false
+        description: ISO language code for localized response text.
+        schema:
+          type: string
+      - name: appid
+        in: query
+        required: true
+        description: OpenWeather API key.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with combined weather data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OneCallResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized. Missing or invalid API key.
+        '429':
+          description: Too many requests. Rate or quota limit exceeded.
+    servers:
+    - url: https://api.openweathermap.org/data/3.0
+      description: One Call API base URL
+  /onecall/timemachine:
+    get:
+      operationId: getOneCallTimemachine
+      summary: Historical weather data for a coordinate and timestamp
+      description: Returns historical weather data for the supplied latitude, longitude, and Unix UTC timestamp. Data depth depends on the subscription plan.
+      tags:
+      - One Call
+      parameters:
+      - name: lat
+        in: query
+        required: true
+        description: Latitude in decimal degrees.
+        schema:
+          type: number
+          format: float
+      - name: lon
+        in: query
+        required: true
+        description: Longitude in decimal degrees.
+        schema:
+          type: number
+          format: float
+      - name: dt
+        in: query
+        required: true
+        description: Unix UTC timestamp for the requested historical reading.
+        schema:
+          type: integer
+          format: int64
+      - name: units
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - standard
+          - metric
+          - imperial
+      - name: lang
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: appid
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Historical weather data response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+    servers:
+    - url: https://api.openweathermap.org/data/3.0
+      description: One Call API base URL
 components:
+  parameters:
+    Units:
+      name: units
+      in: query
+      required: false
+      description: Units of measurement. standard, metric, or imperial.
+      schema:
+        type: string
+        enum:
+        - standard
+        - metric
+        - imperial
+    Lat:
+      name: lat
+      in: query
+      required: true
+      description: Latitude in decimal degrees, range -90 to 90.
+      schema:
+        type: number
+        format: float
+    Appid:
+      name: appid
+      in: query
+      required: true
+      description: OpenWeather API key.
+      schema:
+        type: string
+    Lang:
+      name: lang
+      in: query
+      required: false
+      description: Localization language code.
+      schema:
+        type: string
+    Lon:
+      name: lon
+      in: query
+      required: true
+      description: Longitude in decimal degrees, range -180 to 180.
+      schema:
+        type: number
+        format: float
   schemas:
     OneCallCurrentResponse:
       type: object
@@ -223,50 +412,42 @@ components:
                     type: string
                   icon:
                     type: string
-  parameters:
-    Lon:
-      name: lon
-      in: query
-      required: true
-      description: Longitude in decimal degrees, range -180 to 180.
-      schema:
-        type: number
-        format: float
-    Lat:
-      name: lat
-      in: query
-      required: true
-      description: Latitude in decimal degrees, range -90 to 90.
-      schema:
-        type: number
-        format: float
-    Units:
-      name: units
-      in: query
-      required: false
-      description: Units of measurement. standard, metric, or imperial.
-      schema:
-        type: string
-        enum:
-        - standard
-        - metric
-        - imperial
-    Lang:
-      name: lang
-      in: query
-      required: false
-      description: Localization language code.
-      schema:
-        type: string
-    Appid:
-      name: appid
-      in: query
-      required: true
-      description: OpenWeather API key.
-      schema:
-        type: string
+    OneCallResponse:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        timezone:
+          type: string
+        timezone_offset:
+          type: integer
+        current:
+          type: object
+        minutely:
+          type: array
+          items:
+            type: object
+        hourly:
+          type: array
+          items:
+            type: object
+        daily:
+          type: array
+          items:
+            type: object
+        alerts:
+          type: array
+          items:
+            type: object
   securitySchemes:
     appid:
       type: apiKey
       in: query
       name: appid
+x-refined-from:
+- openweathermap-one-call-openapi.yml
+- openweathermap-one-call-3-api-openapi.yml

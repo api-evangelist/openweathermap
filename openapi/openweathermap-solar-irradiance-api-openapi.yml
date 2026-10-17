@@ -63,14 +63,13 @@ paths:
           description: Too many requests.
 components:
   parameters:
-    Lon:
-      name: lon
+    Appid:
+      name: appid
       in: query
       required: true
-      description: Longitude in decimal degrees, range -180 to 180.
+      description: OpenWeather API key.
       schema:
-        type: number
-        format: float
+        type: string
     Lat:
       name: lat
       in: query
@@ -79,13 +78,14 @@ components:
       schema:
         type: number
         format: float
-    Appid:
-      name: appid
+    Lon:
+      name: lon
       in: query
       required: true
-      description: OpenWeather API key.
+      description: Longitude in decimal degrees, range -180 to 180.
       schema:
-        type: string
+        type: number
+        format: float
   securitySchemes:
     appid:
       type: apiKey

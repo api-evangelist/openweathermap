@@ -104,21 +104,6 @@ components:
         icon:
           type: string
           description: Weather icon ID.
-    Sys:
-      type: object
-      properties:
-        type:
-          type: integer
-        id:
-          type: integer
-        country:
-          type: string
-        sunrise:
-          type: integer
-          format: int64
-        sunset:
-          type: integer
-          format: int64
     Main:
       type: object
       properties:
@@ -142,17 +127,17 @@ components:
           type: integer
         grnd_level:
           type: integer
-    Wind:
+    Precipitation:
       type: object
       properties:
-        speed:
+        1h:
           type: number
           format: float
-        deg:
-          type: integer
-        gust:
+          description: Precipitation volume for the last hour in mm.
+        3h:
           type: number
           format: float
+          description: Precipitation volume for the last 3 hours in mm.
     Coord:
       type: object
       properties:
@@ -164,12 +149,32 @@ components:
           type: number
           format: float
           description: Latitude of the location.
-    Clouds:
+    Wind:
       type: object
       properties:
-        all:
+        speed:
+          type: number
+          format: float
+        deg:
           type: integer
-          description: Cloudiness percentage.
+        gust:
+          type: number
+          format: float
+    Sys:
+      type: object
+      properties:
+        type:
+          type: integer
+        id:
+          type: integer
+        country:
+          type: string
+        sunrise:
+          type: integer
+          format: int64
+        sunset:
+          type: integer
+          format: int64
     CurrentWeatherResponse:
       type: object
       properties:
@@ -206,17 +211,12 @@ components:
           type: string
         cod:
           type: integer
-    Precipitation:
+    Clouds:
       type: object
       properties:
-        1h:
-          type: number
-          format: float
-          description: Precipitation volume for the last hour in mm.
-        3h:
-          type: number
-          format: float
-          description: Precipitation volume for the last 3 hours in mm.
+        all:
+          type: integer
+          description: Cloudiness percentage.
   securitySchemes:
     appid:
       type: apiKey
