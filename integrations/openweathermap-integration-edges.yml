@@ -117,13 +117,77 @@ edges:
     builder: 'community (Meltano Hub variant maintainers: airbyte, matatika)'
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
+- partner_name: PyPI
+  partner: pypi
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (Python)
+  evidence: https://pypi.org/project/deker/
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: PyPI (public registry JSON)
+    spec_file: null
+    language: Python
+    packages:
+    - name: deker
+      version: 1.1.7
+      released: '2024-07-03'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/deker/
+      repo_leg: github-org:openweathermap
+      publisher_leg: email:openweathermap.org
+      matched_by: domain
+    - name: deker-local-adapters
+      version: 1.1.2
+      released: '2024-07-03'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/deker-local-adapters/
+      repo_leg: github-org:openweathermap
+      publisher_leg: email:openweathermap.org
+      matched_by: domain
+    - name: deker-shell
+      version: 1.1.0
+      released: '2024-01-04'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/deker-shell/
+      repo_leg: github-org:openweathermap
+      publisher_leg: email:openweathermap.org
+      matched_by: domain
+    - name: deker-tools
+      version: 1.1.0
+      released: '2023-12-28'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/deker-tools/
+      repo_leg: github-org:openweathermap
+      publisher_leg: email:openweathermap.org
+      matched_by: domain
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 generated: '2026-10-14'
 method: searched
 checked:
+- https://api.nuget.org/v3
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
+- https://crates.io/api/v1
 - https://github.com/meltano/hub
 - https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/
+- https://proxy.golang.org
+- https://pypi.org/pypi
 - https://registry.modelcontextprotocol.io/v0/servers
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 source:
 - https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/
