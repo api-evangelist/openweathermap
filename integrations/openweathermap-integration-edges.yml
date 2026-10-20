@@ -1,4 +1,61 @@
 edges:
+- partner_name: PyPI
+  partner: pypi
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (Python)
+  evidence: https://pypi.org/project/deker/
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: PyPI (public registry JSON)
+    spec_file: null
+    language: Python
+    packages:
+    - name: deker
+      version: 1.1.7
+      released: '2024-07-03'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/deker/
+      repo_leg: github-org:openweathermap
+      publisher_leg: email:openweathermap.org
+      matched_by: domain
+    - name: deker-local-adapters
+      version: 1.1.2
+      released: '2024-07-03'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/deker-local-adapters/
+      repo_leg: github-org:openweathermap
+      publisher_leg: email:openweathermap.org
+      matched_by: domain
+    - name: deker-shell
+      version: 1.1.0
+      released: '2024-01-04'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/deker-shell/
+      repo_leg: github-org:openweathermap
+      publisher_leg: email:openweathermap.org
+      matched_by: domain
+    - name: deker-tools
+      version: 1.1.0
+      released: '2023-12-28'
+      released_field: upload_time
+      lapsed: true
+      page: https://pypi.org/project/deker-tools/
+      repo_leg: github-org:openweathermap
+      publisher_leg: email:openweathermap.org
+      matched_by: domain
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 - partner_name: MCP Registry
   partner: mcp
   partner_match: register
@@ -14,7 +71,7 @@ edges:
     registered_name: org.openweathermap/agents
     register_id: org.openweathermap/agents
     detected_by: sweep-agent-tools.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   mcp_registry:
     servers:
     - org.openweathermap/agents
@@ -30,31 +87,6 @@ edges:
   - namespace-domain
   detected_by: sweep-agent-tools.py
   first_seen: '2026-10-14'
-- partner_name: n8n
-  partner: n8n
-  partner_match: aggregator
-  type: marketplace
-  marketplace: n8n-nodes-base
-  channel: open-source-node
-  relationship: ipaas-bridge
-  direction: third-party
-  evidence: https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/OpenWeatherMap
-  category: null
-  contract_reference:
-    register: n8n built-in nodes (n8n-io/n8n packages/nodes-base)
-    spec_file: null
-    role: ipaas-connector:n8n-nodes-base
-    registered_name: OpenWeatherMap
-    matched_domain: openweathermap.org
-    matched_by: domain
-    detected_by: sweep-workflow-automation.py
-    detected: '2026-10-15'
-    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
-    node_path: OpenWeatherMap
-    trigger: false
-    builder: n8n (built-in node)
-  detected_by: sweep-workflow-automation.py
-  first_seen: '2026-10-15'
 - partner_name: Airbyte
   partner: airbyte
   partner_match: aggregator
@@ -117,63 +149,31 @@ edges:
     builder: 'community (Meltano Hub variant maintainers: airbyte, matatika)'
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
-- partner_name: PyPI
-  partner: pypi
-  partner_match: register
-  type: register
-  direction: provider-built
-  category: official SDK (Python)
-  evidence: https://pypi.org/project/deker/
-  channel: package-registry
-  relationship: distribution-channel
+- partner_name: n8n
+  partner: n8n
+  partner_match: aggregator
+  type: marketplace
+  marketplace: n8n-nodes-base
+  channel: open-source-node
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/OpenWeatherMap
+  category: null
   contract_reference:
-    register: PyPI (public registry JSON)
+    register: n8n built-in nodes (n8n-io/n8n packages/nodes-base)
     spec_file: null
-    language: Python
-    packages:
-    - name: deker
-      version: 1.1.7
-      released: '2024-07-03'
-      released_field: upload_time
-      lapsed: true
-      page: https://pypi.org/project/deker/
-      repo_leg: github-org:openweathermap
-      publisher_leg: email:openweathermap.org
-      matched_by: domain
-    - name: deker-local-adapters
-      version: 1.1.2
-      released: '2024-07-03'
-      released_field: upload_time
-      lapsed: true
-      page: https://pypi.org/project/deker-local-adapters/
-      repo_leg: github-org:openweathermap
-      publisher_leg: email:openweathermap.org
-      matched_by: domain
-    - name: deker-shell
-      version: 1.1.0
-      released: '2024-01-04'
-      released_field: upload_time
-      lapsed: true
-      page: https://pypi.org/project/deker-shell/
-      repo_leg: github-org:openweathermap
-      publisher_leg: email:openweathermap.org
-      matched_by: domain
-    - name: deker-tools
-      version: 1.1.0
-      released: '2023-12-28'
-      released_field: upload_time
-      lapsed: true
-      page: https://pypi.org/project/deker-tools/
-      repo_leg: github-org:openweathermap
-      publisher_leg: email:openweathermap.org
-      matched_by: domain
-    current: false
-    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
-      24 months'
-    detected_by: sweep-official-sdks.py
-    detected: '2026-10-18'
-  detected_by: sweep-official-sdks.py
-  first_seen: '2026-10-18'
+    role: ipaas-connector:n8n-nodes-base
+    registered_name: OpenWeatherMap
+    matched_domain: openweathermap.org
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    node_path: OpenWeatherMap
+    trigger: false
+    builder: n8n (built-in node)
+  detected_by: sweep-workflow-automation.py
+  first_seen: '2026-10-15'
 generated: '2026-10-14'
 method: searched
 checked:
@@ -183,6 +183,7 @@ checked:
 - https://crates.io/api/v1
 - https://github.com/meltano/hub
 - https://github.com/n8n-io/n8n/tree/860f1273ebd73fabbd668cbec2c49ed9b48a286d/packages/nodes-base/nodes/
+- https://github.com/n8n-io/n8n/tree/f73dc337f8dc61a4fd44aebe41c55faafe4f53a4/packages/nodes-base/nodes/
 - https://proxy.golang.org
 - https://pypi.org/pypi
 - https://registry.modelcontextprotocol.io/v0/servers
