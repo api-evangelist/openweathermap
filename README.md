@@ -1,4 +1,4 @@
-# OpenWeatherMap (openweathermap)
+# OpenWeatherMap
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,320 +66,257 @@
 
 OpenWeather (operating openweathermap.org) is a global weather data platform delivering current weather, multi-horizon forecasts, historical archives, climate statistics, air pollution, solar irradiance, road risk, geocoding, and weather map tiles. Data is sourced from satellites, weather models, radars, and a worldwide network of weather stations, served through REST APIs across a freemium, multi-tier, and pay-per-call commercial model.
 
-**APIs.json:** [https://openweathermap.org/api](https://openweathermap.org/api)
+**Areas:** Weather · Forecast · Climate · Air Pollution · Air Quality · Solar · Geocoding · History · Maps · Road Risk · Public APIs · Forecasting
 
-## Tags
+## OpenWeatherMap on APIs.io
 
-- Weather
-- Forecast
-- Climate
-- Air Pollution
-- Air Quality
-- Solar
-- Geocoding
-- History
-- Maps
-- Road Risk
-- Public APIs
+Everything profiled for OpenWeatherMap is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/openweathermap/](https://apis.io/providers/openweathermap/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (14)
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-29
+- [OpenWeatherMap Accumulated Parameters API](https://apis.io/apis/openweathermap/openweathermap-accumulated-parameters-api/) — Accumulated temperature and precipitation totals for agriculture.
+- [OpenWeatherMap Air Pollution API](https://apis.io/apis/openweathermap/openweathermap-air-pollution-api/) — Current, forecast, and historical air pollution data with AQI.
+- [OpenWeatherMap Current Weather API](https://apis.io/apis/openweathermap/openweathermap-current-weather-api/) — Current weather data for any geographic coordinates worldwide.
+- [OpenWeatherMap Forecast API](https://apis.io/apis/openweathermap/openweathermap-forecast-api/) — Weather forecasts at multiple granularities and time horizons.
+- [OpenWeatherMap Geocoding API](https://apis.io/apis/openweathermap/openweathermap-geocoding-api/) — Direct and reverse geocoding between location names and coordinates.
+- [OpenWeatherMap History API](https://apis.io/apis/openweathermap/openweathermap-history-api/) — Historical weather records by coordinate with hourly granularity.
+- [OpenWeatherMap Measurements API](https://apis.io/apis/openweathermap/openweathermap-measurements-api/) — Submit and retrieve aggregated weather station measurements.
+- [OpenWeatherMap One Call API](https://apis.io/apis/openweathermap/openweathermap-one-call-api/) — Unified timeline API with current, forecast, and historical weather plus alerts.
+- [OpenWeatherMap Road Risk API](https://apis.io/apis/openweathermap/openweathermap-road-risk-api/) — Route weather, road surface state, and alerts for a track of waypoints.
+- [OpenWeatherMap Solar Irradiance API](https://apis.io/apis/openweathermap/openweathermap-solar-irradiance-api/) — Solar irradiance values for clear and cloudy sky models.
+- [OpenWeatherMap Solar Panels API](https://apis.io/apis/openweathermap/openweathermap-solar-panels-api/) — Manage modeled locations and solar panel configurations and retrieve power output.
+- [OpenWeatherMap Stations API](https://apis.io/apis/openweathermap/openweathermap-stations-api/) — Register, retrieve, update, and delete personal weather stations.
+- [OpenWeatherMap Statistical Weather API](https://apis.io/apis/openweathermap/openweathermap-statistical-weather-api/) — Long-term statistical weather aggregates for any global location.
+- [OpenWeatherMap Weather Maps API](https://apis.io/apis/openweathermap/openweathermap-weather-maps-api/) — Weather layer tile service for map overlays.
 
-## APIs
+### Published properties
 
-### Current Weather Data API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Returns current weather data for any location on Earth, including over 200,000 cities, sourced from satellites, radars, models, and a global network of weather stations.
+#### Arazzo workflows (8)
 
-- **Human URL:** [https://openweathermap.org/current](https://openweathermap.org/current)
-- **Base URL:** `https://api.openweathermap.org/data/2.5`
+Multi-step workflows that chain operations into a business task.
 
-#### Tags
+- [OpenWeatherMap Air Quality By City](https://apis.io/arazzos/openweathermap/openweathermap-air-quality-by-city-workflow/)
+- [OpenWeatherMap Coordinate Weather And Air Snapshot](https://apis.io/arazzos/openweathermap/openweathermap-coordinate-weather-and-air-snapshot-workflow/)
+- [OpenWeatherMap Historical Air Pollution Window](https://apis.io/arazzos/openweathermap/openweathermap-historical-air-pollution-window-workflow/)
+- [OpenWeatherMap Locate And Report Current Weather](https://apis.io/arazzos/openweathermap/openweathermap-locate-and-report-current-weather-workflow/)
+- [OpenWeatherMap Multi Horizon Forecast](https://apis.io/arazzos/openweathermap/openweathermap-multi-horizon-forecast-workflow/)
+- [OpenWeatherMap Reverse Geocode Weather](https://apis.io/arazzos/openweathermap/openweathermap-reverse-geocode-weather-workflow/)
+- [OpenWeatherMap Weather Map Overlay Context](https://apis.io/arazzos/openweathermap/openweathermap-weather-map-overlay-context-workflow/)
+- [OpenWeatherMap Zip To Forecast](https://apis.io/arazzos/openweathermap/openweathermap-zip-to-forecast-workflow/)
 
-- Weather
-- Current Weather
+#### GraphQL (1)
 
-#### Properties
+GraphQL schemas.
 
-- [Documentation](https://openweathermap.org/current)
-- [OpenAPI](openapi/openweathermap-current-weather-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-current-weather.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-current-weather.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/openweathermap-current-weather-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/openweathermap-current-weather-structure.json)
-- [Example](examples/current-weather-example.json)
-- [Authentication](https://openweathermap.org/appid)
+- [Moved to /providers/openweathermap/](https://apis.io/graphqls/openweathermap/openweathermap-graphql/)
 
-### Forecast APIs
+#### MCP servers (1)
 
-OpenWeather forecast surface including the public 5-day/3-hour forecast plus pro hourly (4 days), daily (16 days), and climatic (30 days) forecasts.
+Model Context Protocol servers that expose the API to agents.
 
-- **Human URL:** [https://openweathermap.org/forecast5](https://openweathermap.org/forecast5)
-- **Base URL:** `https://api.openweathermap.org/data/2.5`
+- [openweathermap](https://apis.io/servers/openweathermap/openweathermap/)
 
-#### Tags
+#### Agentic access (1)
 
-- Weather
-- Forecast
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Properties
+- [Openweathermap Agentic Access](https://apis.io/agentic-access/openweathermap/openweathermap-agentic-access/)
 
-- [Documentation](https://openweathermap.org/forecast5)
-- [Documentation](https://openweathermap.org/api/hourly-forecast)
-- [Documentation](https://openweathermap.org/forecast16)
-- [Documentation](https://openweathermap.org/api/forecast30)
-- [OpenAPI](openapi/openweathermap-forecast-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-forecast.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-forecast.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/openweathermap-forecast-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/forecast-five-day-example.json)
+#### JSON Schema (5)
 
-### One Call API 4.0
+The data models the API reads and writes.
 
-Unified weather timeline including current conditions, hourly, daily, 1-minute precipitation, 15-minute forecasts, government weather alerts, and 47 plus years of historical data via pay-per-call pricing.
+- [OpenWeatherMap Air Pollution](https://apis.io/schemas/openweathermap/openweathermap-air-pollution/)
+- [OpenWeatherMap Current Weather](https://apis.io/schemas/openweathermap/openweathermap-current-weather/)
+- [OpenWeatherMap Forecast Item](https://apis.io/schemas/openweathermap/openweathermap-forecast/)
+- [OpenWeatherMap Geocoding Result](https://apis.io/schemas/openweathermap/openweathermap-geocoding/)
+- [OpenWeatherMap Weather Station](https://apis.io/schemas/openweathermap/openweathermap-station/)
 
-- **Human URL:** [https://openweathermap.org/api/one-call-4](https://openweathermap.org/api/one-call-4)
-- **Base URL:** `https://api.openweathermap.org/data/4.0/onecall`
+#### JSON Structure (3)
 
-#### Tags
+Data models expressed in JSON Structure.
 
-- Weather
-- Forecast
-- History
+- [Openweathermap Air Pollution Structure](https://apis.io/json-structure/openweathermap/openweathermap-air-pollution-structure/)
+- [Openweathermap Current Weather Structure](https://apis.io/json-structure/openweathermap/openweathermap-current-weather-structure/)
+- [Openweathermap Geocoding Structure](https://apis.io/json-structure/openweathermap/openweathermap-geocoding-structure/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://openweathermap.org/api/one-call-4)
-- [OpenAPI](openapi/openweathermap-one-call-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-one-call.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-one-call.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/one-call-current-example.json)
+Linked-data contexts for the provider's vocabulary.
 
-### Air Pollution API
+- [Openweathermap Context](https://apis.io/jsonld/openweathermap/openweathermap-context/)
 
-Current, forecast, and historical air pollution data including the Air Quality Index and concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5, and PM10 for any coordinates on the globe.
+#### Vocabulary (1)
 
-- **Human URL:** [https://openweathermap.org/api/air-pollution](https://openweathermap.org/api/air-pollution)
-- **Base URL:** `https://api.openweathermap.org/data/2.5`
+The provider's domain terms, defined.
 
-#### Tags
+- [OpenWeatherMap Vocabulary](https://apis.io/vocabularies/openweathermap/openweathermap-vocabulary/)
 
-- Air Pollution
-- Air Quality
+#### Examples (12)
 
-#### Properties
+Example requests and responses.
 
-- [Documentation](https://openweathermap.org/api/air-pollution)
-- [OpenAPI](openapi/openweathermap-air-pollution-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-air-pollution.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-air-pollution.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/openweathermap-air-pollution-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/openweathermap-air-pollution-structure.json)
-- [Example](examples/air-pollution-current-example.json)
+- [Accumulated Temperature Example](https://apis.io/examples/openweathermap/accumulated-temperature-example/)
+- [Air Pollution Current Example](https://apis.io/examples/openweathermap/air-pollution-current-example/)
+- [Current Weather Example](https://apis.io/examples/openweathermap/current-weather-example/)
+- [Forecast Five Day Example](https://apis.io/examples/openweathermap/forecast-five-day-example/)
+- [Geocoding Direct Example](https://apis.io/examples/openweathermap/geocoding-direct-example/)
+- [History City Example](https://apis.io/examples/openweathermap/history-city-example/)
+- [One Call Current Example](https://apis.io/examples/openweathermap/one-call-current-example/)
+- [Road Risk Example](https://apis.io/examples/openweathermap/road-risk-example/)
+- [Solar Irradiance Interval Example](https://apis.io/examples/openweathermap/solar-irradiance-interval-example/)
+- [Statistical Month Example](https://apis.io/examples/openweathermap/statistical-month-example/)
+- [Weather Maps Tile Example](https://apis.io/examples/openweathermap/weather-maps-tile-example/)
+- [Weather Stations Create Example](https://apis.io/examples/openweathermap/weather-stations-create-example/)
 
-### Geocoding API
+#### Collections (38)
 
-Direct and reverse geocoding for city names, postal codes, and coordinate pairs. Supports city, state, country, and area-level resolution.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://openweathermap.org/api/geocoding-api](https://openweathermap.org/api/geocoding-api)
-- **Base URL:** `https://api.openweathermap.org/geo/1.0`
+- [OpenWeatherMap Accumulated Parameters API](https://apis.io/collections/openweathermap/open-openweathermap-accumulated-parameters/)
+- [OpenWeatherMap Accumulated Parameters API](https://apis.io/collections/openweathermap/open-openweathermap-accumulated-parameters-api/)
+- [OpenWeatherMap Air Pollution API](https://apis.io/collections/openweathermap/open-openweathermap-air-pollution/)
+- [OpenWeatherMap Accumulated Parameters Air Pollution API](https://apis.io/collections/openweathermap/open-openweathermap-air-pollution-api/)
+- [OpenWeatherMap Current Weather Data API](https://apis.io/collections/openweathermap/open-openweathermap-current-weather/)
+- [OpenWeatherMap Accumulated Parameters Current Weather API](https://apis.io/collections/openweathermap/open-openweathermap-current-weather-api/)
+- [OpenWeatherMap Forecast APIs](https://apis.io/collections/openweathermap/open-openweathermap-forecast/)
+- [OpenWeatherMap Accumulated Parameters Forecast API](https://apis.io/collections/openweathermap/open-openweathermap-forecast-api/)
+- [OpenWeatherMap Geocoding API](https://apis.io/collections/openweathermap/open-openweathermap-geocoding/)
+- [OpenWeatherMap Accumulated Parameters Geocoding API](https://apis.io/collections/openweathermap/open-openweathermap-geocoding-api/)
+- [OpenWeatherMap Historical Weather API](https://apis.io/collections/openweathermap/open-openweathermap-history/)
+- [OpenWeatherMap Accumulated Parameters History API](https://apis.io/collections/openweathermap/open-openweathermap-history-api/)
+- [OpenWeatherMap Accumulated Parameters Measurements API](https://apis.io/collections/openweathermap/open-openweathermap-measurements-api/)
+- [OpenWeatherMap One Call API 4.0](https://apis.io/collections/openweathermap/open-openweathermap-one-call/)
+- [OpenWeatherMap Accumulated Parameters One Call API](https://apis.io/collections/openweathermap/open-openweathermap-one-call-api/)
+- [OpenWeatherMap Road Risk API](https://apis.io/collections/openweathermap/open-openweathermap-road-risk/)
+- [OpenWeatherMap Accumulated Parameters Road Risk API](https://apis.io/collections/openweathermap/open-openweathermap-road-risk-api/)
+- [OpenWeatherMap Solar Energy APIs](https://apis.io/collections/openweathermap/open-openweathermap-solar/)
+- [OpenWeatherMap Accumulated Parameters Solar Irradiance API](https://apis.io/collections/openweathermap/open-openweathermap-solar-irradiance-api/)
+- [OpenWeatherMap Accumulated Parameters Solar Panels API](https://apis.io/collections/openweathermap/open-openweathermap-solar-panels-api/)
+- [OpenWeatherMap Accumulated Parameters Stations API](https://apis.io/collections/openweathermap/open-openweathermap-stations-api/)
+- [OpenWeatherMap Statistical Weather API](https://apis.io/collections/openweathermap/open-openweathermap-statistical-weather/)
+- [OpenWeatherMap Accumulated Parameters Statistical Weather API](https://apis.io/collections/openweathermap/open-openweathermap-statistical-weather-api/)
+- [OpenWeatherMap Weather Maps 1.0 API](https://apis.io/collections/openweathermap/open-openweathermap-weather-maps/)
+- [OpenWeatherMap Accumulated Parameters Weather Maps API](https://apis.io/collections/openweathermap/open-openweathermap-weather-maps-api/)
+- …and 13 more published on APIs.io
 
-#### Tags
+#### Overlays (12)
 
-- Geocoding
+OpenAPI overlays, including conversational phrasing for each operation.
 
-#### Properties
+- [Openweathermap Accumulated Parameters Overlay](https://apis.io/overlays/openweathermap/openweathermap-accumulated-parameters-overlay/)
+- [Openweathermap Air Pollution Overlay](https://apis.io/overlays/openweathermap/openweathermap-air-pollution-overlay/)
+- [Openweathermap Current Weather Overlay](https://apis.io/overlays/openweathermap/openweathermap-current-weather-overlay/)
+- [Openweathermap Forecast Overlay](https://apis.io/overlays/openweathermap/openweathermap-forecast-overlay/)
+- [Openweathermap Geocoding Overlay](https://apis.io/overlays/openweathermap/openweathermap-geocoding-overlay/)
+- [Openweathermap History Overlay](https://apis.io/overlays/openweathermap/openweathermap-history-overlay/)
+- [Openweathermap One Call Overlay](https://apis.io/overlays/openweathermap/openweathermap-one-call-overlay/)
+- [Openweathermap Road Risk Overlay](https://apis.io/overlays/openweathermap/openweathermap-road-risk-overlay/)
+- [Openweathermap Solar Overlay](https://apis.io/overlays/openweathermap/openweathermap-solar-overlay/)
+- [Openweathermap Statistical Weather Overlay](https://apis.io/overlays/openweathermap/openweathermap-statistical-weather-overlay/)
+- [Openweathermap Weather Maps Overlay](https://apis.io/overlays/openweathermap/openweathermap-weather-maps-overlay/)
+- [Openweathermap Weather Stations Overlay](https://apis.io/overlays/openweathermap/openweathermap-weather-stations-overlay/)
 
-- [Documentation](https://openweathermap.org/api/geocoding-api)
-- [OpenAPI](openapi/openweathermap-geocoding-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-geocoding.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-geocoding.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/openweathermap-geocoding-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/openweathermap-geocoding-structure.json)
-- [Example](examples/geocoding-direct-example.json)
+#### Governance rules (2)
 
-### Historical Weather API
+Spectral rulesets for the provider's contracts.
 
-Historical weather observations for any global coordinate at one-hour granularity, spanning 47 plus years. Available on Professional and Expert plans.
+- [OpenWeatherMap — jsonschema rules](https://apis.io/rules/openweathermap/openweathermap-jsonschema-spectral-rules/)
+- [OpenWeatherMap API Rules](https://apis.io/rules/openweathermap/openweathermap-rules/)
 
-- **Human URL:** [https://openweathermap.org/history](https://openweathermap.org/history)
-- **Base URL:** `https://history.openweathermap.org/data/2.5`
+#### Security (2)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Weather
-- History
+- [Openweathermap Authentication](https://apis.io/security/openweathermap/openweathermap-authentication/)
+- [Openweathermap Domain Security](https://apis.io/security/openweathermap/openweathermap-domain-security/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://openweathermap.org/history)
-- [OpenAPI](openapi/openweathermap-history-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-history.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-history.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/history-city-example.json)
+Published plans, tiers and prices.
 
-### Statistical Weather Data API
+- [Openweathermap Plans Pricing](https://apis.io/plans/openweathermap/openweathermap-plans-pricing/)
 
-Statistical aggregates (record min/max, average, mean, percentiles, standard deviation) for main weather parameters on any day, month, or yearly basis. Expert plan only.
+#### Rate limits (1)
 
-- **Human URL:** [https://openweathermap.org/api/statistics-api](https://openweathermap.org/api/statistics-api)
-- **Base URL:** `https://history.openweathermap.org/data/2.5`
+Published request limits.
 
-#### Tags
+- [Openweathermap Rate Limits](https://apis.io/rate-limits/openweathermap/openweathermap-rate-limits/)
 
-- Weather
-- Climate
-- Statistics
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://openweathermap.org/api/statistics-api)
-- [OpenAPI](openapi/openweathermap-statistical-weather-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-statistical-weather.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-statistical-weather.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/statistical-month-example.json)
+- [Openweathermap Finops](https://apis.io/finops/openweathermap/openweathermap-finops/)
 
-### Accumulated Parameters API
+## Where to find this API
 
-Accumulated temperature and precipitation totals over a historical time window, primarily for agriculture and energy applications. Available on Professional and Expert plans.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://openweathermap.org/api/accumulated-parameters](https://openweathermap.org/api/accumulated-parameters)
-- **Base URL:** `https://history.openweathermap.org/data/2.5/history`
-
-#### Tags
-
-- Weather
-- History
-- Agriculture
-
-#### Properties
-
-- [Documentation](https://openweathermap.org/api/accumulated-parameters)
-- [OpenAPI](openapi/openweathermap-accumulated-parameters-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-accumulated-parameters.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-accumulated-parameters.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/accumulated-temperature-example.json)
-
-### Solar Energy APIs
-
-Solar Irradiance API (GHI, DNI, DHI for clear and cloudy sky models, 15 minute or hourly intervals, 47 plus years history) and Solar Panel Energy Prediction API (manage modeled locations and solar panel configurations and retrieve per-panel power and energy output).
-
-- **Human URL:** [https://openweathermap.org/api/solar-irradiance](https://openweathermap.org/api/solar-irradiance)
-- **Base URL:** `https://api.openweathermap.org/energy/2.0`
-
-#### Tags
-
-- Solar
-- Energy
-
-#### Properties
-
-- [Documentation](https://openweathermap.org/api/solar-irradiance)
-- [Documentation](https://openweathermap.org/api/solar-panels-and-energy-prediction-2)
-- [OpenAPI](openapi/openweathermap-solar-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-solar.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-solar.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/solar-irradiance-interval-example.json)
-
-### Road Risk API
-
-Route-specific weather data, national alerts, current conditions plus five-day forecast, and one year of historical data for a sequence of waypoints. Custom quote required.
-
-- **Human URL:** [https://openweathermap.org/api/road-risk](https://openweathermap.org/api/road-risk)
-- **Base URL:** `https://api.openweathermap.org`
-
-#### Tags
-
-- Weather
-- Routing
-- Risk
-
-#### Properties
-
-- [Documentation](https://openweathermap.org/api/road-risk)
-- [OpenAPI](openapi/openweathermap-road-risk-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-road-risk.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-road-risk.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/road-risk-example.json)
-
-### Weather Stations API
-
-Register and manage personal weather stations and submit measurement data. Aggregated readings are retrievable at minute, hour, and day granularity.
-
-- **Human URL:** [https://openweathermap.org/stations](https://openweathermap.org/stations)
-- **Base URL:** `https://api.openweathermap.org/data/3.0`
-
-#### Tags
-
-- Weather
-- Stations
-- IoT
-
-#### Properties
-
-- [Documentation](https://openweathermap.org/stations)
-- [OpenAPI](openapi/openweathermap-weather-stations-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-weather-stations.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-weather-stations.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/openweathermap-station-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/weather-stations-create-example.json)
-
-### Weather Maps 1.0
-
-Tile map service overlaying weather data layers (clouds, precipitation, pressure, wind, temperature) on top of base maps using standard z/x/y tile coordinates. Compatible with Leaflet, OpenLayers, Google Maps.
-
-- **Human URL:** [https://openweathermap.org/api/weathermaps](https://openweathermap.org/api/weathermaps)
-- **Base URL:** `https://tile.openweathermap.org`
-
-#### Tags
-
-- Weather
-- Maps
-- Tiles
-
-#### Properties
-
-- [Documentation](https://openweathermap.org/api/weathermaps)
-- [OpenAPI](openapi/openweathermap-weather-maps-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/openweathermap-weather-maps.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/openweathermap-weather-maps.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/weather-maps-tile-example.json)
-
-## Common Properties
-
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
 - [Website](https://openweathermap.org/)
-- [Developer Portal](https://openweathermap.org/api)
-- [Getting Started](https://openweathermap.org/guide)
-- [API Reference](https://openweathermap.org/api)
-- [Authentication](https://openweathermap.org/appid)
-- [Sign Up](https://home.openweathermap.org/users/sign_up)
-- [Login](https://home.openweathermap.org/users/sign_in)
-- [Console](https://dashboard.openweather.co.uk/)
+- [Documentation](https://openweathermap.org/technology)
+- [Getting started](https://openweathermap.org/guide)
+- [API reference](https://openweathermap.org/api)
 - [Pricing](https://openweathermap.org/price)
-- [Plans](plans/openweathermap-plans-pricing.yml)
-- [Rate Limits](rate-limits/openweathermap-rate-limits.yml)
-- [Marketplace](https://openweathermap.org/marketplace)
-- [Blog](https://openweather.co.uk/blog)
-- [F A Q](https://openweathermap.org/faq)
 - [Support](https://openweathermap.org/support-centre)
-- [Terms of Service](https://openweather.co.uk/terms)
-- [Privacy Policy](https://openweather.co.uk/privacy-policy)
-- [GitHub Organization](https://github.com/OpenWeatherMap)
-- [LinkedIn](https://www.linkedin.com/company/openweathermap)
-- [Spectral Rules](rules/openweathermap-rules.yml)
-- [Vocabulary](vocabulary/openweathermap-vocabulary.yml)
-- [JSON-LD](json-ld/openweathermap-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
-- [Kubernetes C R D](undefined)
-- [Tools](undefined)
+- [Blog](https://openweather.co.uk/blog)
+- [Terms of service](https://openweather.co.uk/terms)
+- [Privacy policy](https://openweather.co.uk/privacy-policy)
+- [GitHub](https://github.com/OpenWeatherMap)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 54.1** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 85.7 |
+| Contract quality | 68.8 |
+| Contract governance | 31.8 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 65.5 |
+| Access clarity | 35.5 |
+
+**Agent readiness 22.5** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/openweathermap/](https://apis.io/providers/openweathermap/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for OpenWeatherMap: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/openweathermap/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
